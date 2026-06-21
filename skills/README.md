@@ -40,7 +40,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-review | `biz-review/` | Weekly/quarterly business review |
 | biz-market-validate | `biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| session-control | `session-control/` | Session open/close, HANDOFF, NEXT |
+| session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
 
 **Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand overhaul` → `@biz-pricing set` → `@biz-content publish` → ...
 

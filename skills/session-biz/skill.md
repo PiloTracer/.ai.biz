@@ -1,12 +1,12 @@
 ---
-name: session-control
+name: session-biz
 description: >-
   Session open and close. Loads HANDOFF, NEXT, UNKNOWNS. Updates HANDOFF
   with session artifacts and state. Optional git commit.
-  session-control start, session-control close, session-control status.
+  session-biz start, session-biz close, session-biz status.
 ---
 
-# session-control
+# session-biz
 
 **Purpose:** Lightweight bookend for every AI-assisted work session. Start loads context. Close saves state. No over-engineering.
 
@@ -27,7 +27,7 @@ description: >-
 ## I1 — Start mode
 
 ```
-@session-control start
+@session-biz start
 ```
 
 1. Read `HANDOFF.md` into context.
@@ -42,7 +42,7 @@ description: >-
 ## I2 — Close mode
 
 ```
-@session-control close
+@session-biz close
 ```
 
 1. Summarize what was done this session (bullet points).
@@ -62,7 +62,7 @@ description: >-
 ## I3 — Status mode
 
 ```
-@session-control status
+@session-biz status
 ```
 
 Reports:
@@ -88,4 +88,4 @@ Reports:
 
 ---
 
-*Modeled after `.ai/skills/session-control/` concept. Kept intentionally minimal.*
+*Modeled after `.ai/skills/session-biz/` concept. Kept intentionally minimal.*

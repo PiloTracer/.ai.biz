@@ -64,7 +64,7 @@ Read these at the start of every conversation:
 |------|---------|
 | **`.ai.biz/START_HERE.md`** | What to invoke right now; decision tree |
 | **`.ai.biz/CONVENTIONS.md`** | Business framework conventions |
-| **`.work.biz/context/HANDOFF.md`** | Session handoff (session-control read/write) |
+| **`.work.biz/context/HANDOFF.md`** | Session handoff (session-biz read/write) |
 | **`.work.biz/plans/NEXT.md`** | Tactical next action + active phase |
 | **`.work.biz/plans/UNKNOWNS.md`** | Open unknowns and blocked decisions |
 
@@ -110,7 +110,7 @@ Reusable agent skills live under `.ai.biz/skills/`. Each skill is a subfolder co
 | biz-review | `.ai.biz/skills/biz-review/` | Weekly/quarterly business review |
 | biz-market-validate | `.ai.biz/skills/biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `.ai.biz/skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| session-control | `.ai.biz/skills/session-control/` | Session open/close; HANDOFF, NEXT |
+| session-biz | `.ai.biz/skills/session-biz/` | Session open/close; HANDOFF, NEXT |
 
 **Usage:** When a task matches a skill's purpose, read `skill.md` and follow the workflow.
 

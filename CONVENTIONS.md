@@ -5,7 +5,7 @@
 ### Skills
 - Format: `{prefix}-{role}` in **kebab-case** (lowercase ASCII, hyphens)
 - Business OS prefix: `biz-` (e.g., `biz-strategy`, `biz-content`)
-- System skills: `deploy-files`, `deploy-repo`, `session-control`
+- System skills: `deploy-files`, `deploy-repo`, `session-biz`
 
 ### Documents
 - Strategy documents: `strategy_<topic>.md`

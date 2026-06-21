@@ -29,8 +29,8 @@
 | Engage in communities | `@biz-community engage` |
 | Diagnose pipeline bottlenecks | `@biz-pipeline-diagnosis run` |
 | Review weekly progress | `@biz-review weekly` |
-| Close your session | `@session-control close` |
-| Open a session | `@session-control start` |
+| Close your session | `@session-biz close` |
+| Open a session | `@session-biz start` |
 | Deploy `.ai.biz/` to another project | `@deploy-files copy - <path>` |
 
 ## Readiness states

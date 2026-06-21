@@ -50,8 +50,8 @@
 
 | Need | Command |
 |------|---------|
-| **Where am I / what's next?** | `@session-control status` + `.work.biz/context/HANDOFF.md` + `.work.biz/plans/NEXT.md` |
-| One-paragraph status (no writes) | `@session-control status` |
+| **Where am I / what's next?** | `@session-biz status` + `.work.biz/context/HANDOFF.md` + `.work.biz/plans/NEXT.md` |
+| One-paragraph status (no writes) | `@session-biz status` |
 | Are we still in strategy or executing? | `@biz-strategy status` **or** `@biz-review status` |
 
 ---
@@ -96,8 +96,8 @@
 ## 6. Close for the day
 
 ```text
-@session-control close                      # safe default — drafts message, no commit
-@session-control close commit               # commits with drafted message
+@session-biz close                      # safe default — drafts message, no commit
+@session-biz close commit               # commits with drafted message
 ```
 
 ---

@@ -65,7 +65,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
 | 2 | Review `.work.biz/context/HANDOFF.md` — set date and initial status | User |
 | 3 | Review `.work.biz/plans/NEXT.md` — confirm current phase | User |
 | 4 | Run `@biz-strategy greenfield` to define niche and offer | Agent |
-| 5 | Run `@session-control start` to open first session | Agent |
+| 5 | Run `@session-biz start` to open first session | Agent |
 
 ---
 
@@ -102,7 +102,7 @@ Output a summary table. If the project is fully bootstrapped, recommend next ski
 
 ```text
 @biz-strategy greenfield        # define niche, offer, target buyer
-@session-control start          # open first session
+@session-biz start          # open first session
 @biz-brand audit                # assess current brand presence
 ```
 

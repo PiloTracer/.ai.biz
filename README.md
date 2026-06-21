@@ -13,10 +13,10 @@ bash .ai.biz/templates/bootstrap.sh    # 30-second setup, any project
 Then in chat:
 
 ```text
-@session-control start             # bookend the day
+@session-biz start             # bookend the day
 @biz-bootstrap init                # scaffold .work.biz/
 @biz-strategy greenfield           # define niche, offer, positioning
-@session-control close             # update HANDOFF · draft commit message
+@session-biz close             # update HANDOFF · draft commit message
 ```
 
 **Lost?** → [`START_HERE.md`](START_HERE.md) · **All commands** → [Skills at a glance](#skills-at-a-glance)
@@ -102,11 +102,11 @@ Business OS is a **gated pipeline**: each stage unlocks the next. Skills enforce
 
   ┌─ EVERY SESSION ──────────────────────────────────────────────┐
 
-  @session-control start          ← load HANDOFF · NEXT · UNKNOWNS
+  @session-biz start          ← load HANDOFF · NEXT · UNKNOWNS
         │
         │  … your business development work …
         ▼
-  @session-control close          ← refresh HANDOFF + NEXT; draft commit message
+  @session-biz close          ← refresh HANDOFF + NEXT; draft commit message
 
   └──────────────────────────────────────────────────────────────┘
 
@@ -144,7 +144,7 @@ All **15** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-review** | Weekly/quarterly pipeline, content, and business health review | `weekly` · `quarterly` · `status` |
 | **biz-market-validate** | Test offers, niches, and channels with low-cost experiments | `test` · `design` · `status` |
 | **biz-pipeline-diagnosis** | Identify which funnel stage is the bottleneck | `run` · `status` |
-| **session-control** | Session bookends; updates HANDOFF + NEXT | `start` · `close` · `status` |
+| **session-biz** | Session bookends; updates HANDOFF + NEXT | `start` · `close` · `status` |
 | **deploy-files** | Deploy `.ai.biz/` into target project (clean rsync) | `copy - <path>` · `status` |
 | **deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
 

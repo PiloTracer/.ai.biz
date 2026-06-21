@@ -10,4 +10,4 @@ This directory is the **project's memory** — it holds everything the Business 
 | `pipeline/pipeline_tracker.md` | Sales pipeline and metrics |
 | `research/research_index.md` | Research evidence index |
 
-> **Template — your project's HANDOFF.md will be filled by `@session-control` and `@biz-review`**
+> **Template — your project's HANDOFF.md will be filled by `@session-biz` and `@biz-review`**
