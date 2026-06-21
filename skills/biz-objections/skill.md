@@ -178,10 +178,10 @@ An objection is handled well when:
 
 > Current status recorded in `.work/plans/progress_tracker.md`.
 
-| Campo | Estado |
+| Field | Status |
 |-------|--------|
-| Estado actual | ⬜ Pendiente |
-| Último insumo recibido | — |
-| Fecha última actualización | — |
-| Notas | — |
-| Siguiente paso | Activar en Fase 3 cuando surja objeción |
+| Current state | Pending |
+| Last input received | — |
+| Last update date | — |
+| Notes | — |
+| Next step | Activate in Phase 3 when objection arises |

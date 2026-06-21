@@ -43,7 +43,7 @@ Before routing, read the following to understand current context:
 
 If any of these files don't exist yet (project not bootstrapped), the first recommendation is `@biz-bootstrap init`.
 
-Also read `skills/SKILL_DEPENDENCIES.md` to know the current gate graph.
+Also read `skills/README.md` to know the full skill registry and canonical verbs, and `skills/SKILL_DEPENDENCIES.md` to know the current gate graph.
 
 ---
 
@@ -54,22 +54,27 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | Intent cluster | Example requests | Skill(s) to route | Gate required |
 |---|---|---|---|
 | **Setup / bootstrap** | "start a new project", "set up my business folder", "create .work.biz" | `@biz-bootstrap init` | — |
-| **Strategy / niche / offer** | "figure out my niche", "define my offer", "who should I target", "what should I sell" | `@biz-strategy greenfield` or `probe` | scaffold |
-| **Market validation** | "test if my idea works", "validate my niche", "run an experiment" | `@biz-market-validate test` | strategy-ready |
-| **Brand / LinkedIn / website** | "fix my LinkedIn", "rewrite my profile", "update my website", "make me look professional" | `@biz-brand audit` → `@biz-brand overhaul` | strategy-ready |
-| **Pricing** | "how much should I charge", "set my prices", "price this project" | `@biz-pricing set` | strategy-ready |
+| **Strategy / niche / offer** | "figure out my niche", "define my offer", "who should I target", "what should I sell", "certify my strategy", "check if strategy is ready", "how's my strategy looking" | `@biz-strategy` (greenfield, probe, certify, or status per parse invocation) | scaffold |
+| **Market validation** | "test if my idea works", "validate my niche", "run an experiment", "design a validation test", "design an experiment" | `@biz-market-validate` (test, design, or status per parse invocation) | — (can run any time) |
+| **Brand / LinkedIn / website** | "fix my LinkedIn", "rewrite my profile", "update my website", "make me look professional", "check my brand presence", "how's my LinkedIn doing" | `@biz-brand` (audit, overhaul, or status per parse invocation) | strategy-ready |
+| **Pricing** | "how much should I charge", "set my prices", "price this project", "revise my pricing", "is my pricing right", "what's my current price" | `@biz-pricing` (set, revise, or status per parse invocation) | strategy-ready |
 | **Content / LinkedIn posts** | "write a LinkedIn post", "publish an article", "create content", "content calendar" | `@biz-content publish` or `plan` | brand-ready |
-| **Community** | "join communities", "engage on Reddit", "find my audience" | `@biz-community engage` | brand-ready |
+| **Community** | "join communities", "engage on Reddit", "find my audience", "find communities to join", "where should I participate" | `@biz-community` (engage, find, or status per parse invocation) | brand-ready |
 | **Referrals** | "ask for referrals", "get introduced" | `@biz-referrals ask` | — |
 | **Discovery / sales calls** | "prepare for a call", "run a discovery call", "I have a prospect meeting" | `@biz-discovery prepare` or `run` | pipeline-ready |
-| **Proposals** | "write a proposal", "scope this project" | `@biz-proposal write` | pipeline-ready + pricing set |
-| **Objections** | "client said it's too expensive", "handle objections", "overcome price concerns" | `@biz-objections handle` | sales-ready |
+| **Proposals** | "write a proposal", "scope this project", "review my proposal before sending", "check proposal pipeline" | `@biz-proposal` (write, review, or status per parse invocation) | pipeline-ready |
+| **Objections** | "client said it's too expensive", "handle objections", "overcome price concerns", "roleplay objection responses" | `@biz-objections handle` or `roleplay` | active deal |
 | **Pipeline diagnosis** | "nothing is converting", "find my bottleneck", "why aren't we closing" | `@biz-pipeline-diagnosis run` | pipeline tracker with data |
-| **Review / health** | "weekly review", "how are we doing", "progress check" | `@biz-review weekly` | at least one strategy doc |
+| **Review / health** | "weekly review", "quarterly review", "how are we doing", "progress check" | `@biz-review` (weekly, quarterly, or status per parse invocation) | at least one strategy doc |
 | **Session management** | "start the day", "close the session", "what was I doing" | `@session-biz start` or `close` or `status` | scaffold |
 | **Project orientation** | "where am I", "what should I do next", "I'm lost" | `@session-biz status` + `@biz-review status` | — |
+| **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@deploy-files copy - <path>` or `@deploy-repo` (clone, archive, or status per parse invocation) | — |
 
 If the request spans multiple intents (e.g., "I want to fix my LinkedIn and start posting content"), route through all matching skills in gate order.
+
+**Verb selection:** After mapping intent to a skill, read that skill's `skill.md` **Parse invocation** table to select the correct verb for the user's phrasing. The verbs listed above are the most common — the skill's own parse table is authoritative. For example, "certify my strategy" maps to `@biz-strategy` intent cluster; the director then reads `biz-strategy/skill.md` to confirm `certify` is the correct verb. If a user asks for something the skill does not support, report the gap.
+
+**Status requests:** Free-text requests asking "how is X doing", "check X", or "what's the state of X" should route to the matching skill's `status` mode (read-only). If the user simply wants orientation ("where am I", "what's next"), use the "Project orientation" row above.
 
 ---
 
@@ -78,7 +83,7 @@ If the request spans multiple intents (e.g., "I want to fix my LinkedIn and star
 Before invoking any skill, verify its prerequisites against `SKILL_DEPENDENCIES.md`:
 
 ```
-strategy-ready → brand-ready → pipeline-ready → sales-ready
+scaffold → strategy-ready → brand-ready → pipeline-ready → sales-ready → active deal
 ```
 
 ### Check each gate:
@@ -86,10 +91,20 @@ strategy-ready → brand-ready → pipeline-ready → sales-ready
 | Gate | How to verify | If not met |
 |------|--------------|------------|
 | scaffold | `.work.biz/` exists | Route to `@biz-bootstrap init` first |
-| strategy-ready | `strategy_niche*.md` or equivalent exists in `.work.biz/plans/` | Route to `@biz-strategy greenfield` first |
-| brand-ready | LinkedIn / website aligned (check via `@biz-brand status`) | Route to `@biz-brand overhaul` first |
+| strategy-ready | Strategy docs exist + certified (.work.biz/plans/) | Route to `@biz-strategy greenfield` → `@biz-strategy certify` |
+| brand-ready | LinkedIn / website aligned to offer (check via `@biz-brand status`) | Route to `@biz-brand audit` → `@biz-brand overhaul` |
 | pipeline-ready | Pipeline tracker configured + pricing set | Route to `@biz-pricing set` + configure tracker |
 | sales-ready | Discovery call process verified | Route to `@biz-discovery run` first |
+| active deal | At least one deal in pipeline tracker with stage ≥ Conversation | Route to `@biz-discovery run` first to generate pipeline |
+
+### Informal prerequisites
+
+Some skills have lighter prerequisites that are not formal gates:
+
+| Skill | Requires | How to verify |
+|-------|---------|---------------|
+| `@biz-review weekly` | At least one strategy doc exists | Check `.work.biz/plans/` for any `strategy_*.md` |
+| `@biz-pipeline-diagnosis run` | Pipeline tracker has data | Check `.work.biz/pipeline/pipeline_tracker.md` has ≥1 row of deal data |
 
 **Blocked output shape:**
 
@@ -151,8 +166,11 @@ After execution:
 
 ## References
 
+**Loaded during I0 (gate + registry):**
 - `skills/README.md` — full skill registry with descriptions and verbs
 - `skills/SKILL_DEPENDENCIES.md` — gate graph and prerequisite checks
-- `START_HERE.md` — operator decision tree
-- `PROCESS_ROUTER.md` — quick routing table
-- `CONVENTIONS.md` — naming, phases, core principles
+
+**Operator reference (not loaded by director — available if needed):**
+- `START_HERE.md` — operator decision tree; useful when user is disoriented
+- `PROCESS_ROUTER.md` — quick routing table; useful as a secondary intent-matching aid
+- `CONVENTIONS.md` — naming, phases, core principles; referenced during gap detection (I4)

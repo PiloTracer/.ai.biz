@@ -95,6 +95,7 @@ Available skills (`.ai.biz/skills/`):
 | biz-market-validate | Test offers before committing |
 | biz-pipeline-diagnosis | Find funnel bottlenecks |
 | session-biz | Session open/close |
+| biz-director | Universal orchestrator; free-text → skill routing |
 
 ---
 

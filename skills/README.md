@@ -68,9 +68,13 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `engage` | Participate in community |
 | `test` | Run a validation experiment |
 | `design` | Plan an experiment |
-| `review` | Assess performance |
+| `review` | Assess a proposal before sending (biz-proposal) or assess business performance (biz-review) |
 | `plan` | Create a content/publishing plan |
 | `revise` | Update an existing decision |
+| `find` | Find communities to join (biz-community) |
+| `weekly` | Weekly business review (biz-review) |
+| `quarterly` | Quarterly strategic review (biz-review) |
+| `roleplay` | Practice objection handling (biz-objections) |
 | `close` / `start` | Session bookends |
 | `clone` / `archive` | Deploy modes |
 | `copy` | Deploy files mode |

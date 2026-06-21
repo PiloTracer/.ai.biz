@@ -84,16 +84,16 @@ Business OS is a **gated pipeline**: each stage unlocks the next. Skills enforce
   @biz-strategy greenfield
         │
         │  Produces: niche decision, unified offer, target buyer, channel plan
-        │  State: strategy-ready
         ▼
-  @biz-strategy certify brand-ready
+  @biz-strategy certify
         │
-        │  Deep consistency check
-        │  State: brand-ready
+        │  Deep consistency check; certifies strategy-ready
+        │  State: strategy-ready
         ▼
   @biz-brand audit  │  @biz-brand overhaul
         │
         │  Produces: LinkedIn, website, brand assets aligned to offer
+        │  State: brand-ready
         ▼
   @biz-pricing set  │  @biz-strategy status
         │

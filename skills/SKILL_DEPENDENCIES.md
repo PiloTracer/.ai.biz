@@ -11,13 +11,13 @@ biz-strategy greenfield
        │
        │  Produces: strategy-ready (certified by @biz-strategy certify)
        ▼
-biz-strategy certify brand-ready
+biz-strategy certify
        │
        │  Gate: strategy-ready must be certified
        ▼
 biz-brand audit / overhaul
        │
-       │  Produces: brand-ready (verified by @biz-brand status → pipeline-ready)
+       │  Produces: brand-ready (strategy-certified + brand overhaul complete)
        ▼
 biz-pricing set  ← requires strategy-ready
        │
@@ -30,10 +30,10 @@ biz-proposal write ← requires pricing set
 biz-objections handle ← requires active deal
 biz-referrals ask  ← no strict gate (can start anytime)
        │
-       ▼
-biz-review weekly  ← requires at least one strategy doc
-biz-market-validate test ← can run at any time (recommended before strategy)
-biz-pipeline-diagnosis run ← requires pipeline tracker with data
+       │
+       ├── biz-review weekly  ← requires at least one strategy doc
+       ├── biz-market-validate test ← can run at any time (recommended before committing to a strategy)
+       └── biz-pipeline-diagnosis run ← requires pipeline tracker with data
 ```
 
 ## biz-director (meta-skill)
@@ -51,6 +51,7 @@ biz-pipeline-diagnosis run ← requires pipeline tracker with data
 | 2 | brand-ready | LinkedIn/website aligned to offer | `@biz-brand audit` + `@biz-brand overhaul` |
 | 3 | pipeline-ready | Pipeline tracker configured, pricing set | `@biz-pricing set` + `@biz-review status` |
 | 4 | sales-ready | Discovery call run, process verified | `@biz-discovery run` |
+| 5 | active deal | At least one deal in pipeline tracker at Conversation stage or later | `@biz-discovery run` or `@biz-proposal write` |
 
 ## Blocked Report Shape
 
