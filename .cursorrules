@@ -111,6 +111,7 @@ Reusable agent skills live under `.ai.biz/skills/`. Each skill is a subfolder co
 | biz-market-validate | `.ai.biz/skills/biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `.ai.biz/skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
 | session-biz | `.ai.biz/skills/session-biz/` | Session open/close; HANDOFF, NEXT |
+| biz-director | `.ai.biz/skills/biz-director/` | Universal orchestrator; free-text → skill routing |
 
 **Usage:** When a task matches a skill's purpose, read `skill.md` and follow the workflow.
 

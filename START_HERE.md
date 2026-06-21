@@ -41,7 +41,9 @@
        │
        ├── "I'm closing for the day"             ──► §6 Close
        │
-       └── "I want to understand the system"     ──► §7 Reading order
+       ├── "I don't know which skill to use"     ──► `@biz-director <describe what you want>`
+│
+└── "I want to understand the system"     ──► §7 Reading order
 ```
 
 ---

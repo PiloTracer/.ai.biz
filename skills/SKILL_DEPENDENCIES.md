@@ -36,6 +36,12 @@ biz-market-validate test ← can run at any time (recommended before strategy)
 biz-pipeline-diagnosis run ← requires pipeline tracker with data
 ```
 
+## biz-director (meta-skill)
+
+`biz-director` is the universal orchestrator. It has no gate itself — it can be invoked at any time. It reads project state and routes to the appropriate skill, checking that skill's prerequisites before executing.
+
+---
+
 ## Gate Descriptions
 
 | Gate | State | Check | Unlocked by |

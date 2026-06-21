@@ -41,6 +41,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-market-validate | `biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
 | session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
+| biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
 
 **Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand overhaul` → `@biz-pricing set` → `@biz-content publish` → ...
 

@@ -2,6 +2,8 @@
 
 **Purpose:** Read-only signpost that answers: *"Which skill should I run for this business question?"*
 
+> Don't know which skill? **`@biz-director <describe what you want>`** — it routes for you.
+
 ## How to invoke
 
 ```text
