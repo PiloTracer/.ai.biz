@@ -1,0 +1,144 @@
+---
+name: biz-content
+description: >-
+  Write and publish content that demonstrates expertise and attracts inbound
+  leads. Supports LinkedIn posts, articles, and repurposing across formats.
+  biz-content publish, biz-content plan, biz-content status.
+---
+
+# Skill: biz-content
+
+## Purpose
+Write and publish one piece of content (LinkedIn post or article) that demonstrates your expertise and attracts inbound leads. No pitching. No "DM me."
+
+## Process
+
+### 1. Choose Topic
+Pick from one of the 4 topic buckets:
+
+| Topic Bucket | Description | Hook Examples |
+|--------------|-------------|--------------|
+| **Architecture lesson** | Technical depth — a design decision, a tradeoff, a mistake | "I chose PostgreSQL over MongoDB for a financial platform. Here's why — and what I almost got wrong." / "The architecture decision that saved my client $40k in infra costs." |
+| **AI in practice** | Real experience with AI/ML — not hype, not theory | "I built an AI Persona Clone with RAG + voice. Here's what actually worked and what didn't." / "RAG is not magic — here's the exact retrieval pipeline I use in production." |
+| **Experience-based insight** | Judgment that only comes from years of doing this | "I've seen 4 technology hype cycles. Here's what survives and what doesn't." / "The #1 thing junior engineers get wrong about scalability." |
+| **Project behind-the-scenes** | Specific, credible, ships — show the work | "I built a financial tax tracking and reporting platform solo in 7 months. Here's the architecture." / "The hardest bug I fixed — and what it taught me about real-time sync." |
+
+**Rule of thumb for hooks:** If you can replace your company name with anyone else's and the hook still works, it's too generic. Your hook should be specific enough that only YOU could have written it.
+
+### 2. A/B/C Hook Testing
+For the same story idea, draft 3 different hooks and pick the strongest:
+
+| Style | Example |
+|-------|---------|
+| **Hook A: Question-based** | "What's the #1 mistake founders make when choosing a tech stack?" |
+| **Hook B: Result-first** | "How I built a financial platform in 7 months — solo" |
+| **Hook C: Controversy-light** | "I don't use serverless for production platforms. Here's why." |
+
+Test across posts: track which style gets the most engagement in your content tracker. After 8 posts, double down on what works.
+
+### 3. Structure the Post
+- **Hook** (1 line): Makes them want to read. Specific > general.
+- **Story** (3-5 lines): What happened. Specific details (tech, timeline, problem).
+- **Lesson** (1-2 lines): What you learned or what matters.
+- **No pitch.** No CTA. Just value.
+
+**Visual specs (if adding an image):**
+- LinkedIn post image: 1200×628px, PNG or JPG, <5MB
+- Carousel: 4-8 slides, 1080×1080px per slide, left-aligned text
+- Use brand colors, no stock photos
+
+### 4. Write First Draft
+- Write like you talk. No jargon where plain English works.
+- Use line breaks. Walls of text don't get read.
+- Keep it under 300 words for posts, 1500 for articles.
+
+### 5. Review Against Rules
+- Does it demonstrate expertise? ✅
+- Does it include specific details? ✅
+- Is there zero pitching? ✅
+- Would you want to hire the person who wrote this? ✅
+
+### 6. Publish + Engage
+- Post it
+- Within 30 min of posting, comment on 5-10 relevant posts from your target audience
+- Reply to every comment on your post within 24 hours
+
+### 7. Repurpose (Get 4 Assets From 1 Effort)
+
+After publishing, repurpose the same content into different formats:
+
+| Format | When | Where |
+|--------|------|-------|
+| Original LinkedIn post | Day 1 | LinkedIn |
+| Expanded LinkedIn article (1500 words) | Day 3 | LinkedIn Articles |
+| Short Loom/video (3 min, same story) | Day 5 | LinkedIn video post |
+| PDF version (case study or guide) | Day 7 | Website lead magnet |
+
+**Why repurpose:** Each format reaches a different audience segment. The video watchers may not read the post. The article readers want depth. One core insight = 4 assets.
+
+## Mode: plan — Content Calendar
+
+### Seasonal Content Calendar (Q1-Q4)
+
+| Quarter | Theme | Focus |
+|---------|-------|-------|
+| **Q1 (Jan-Mar)** | "New year, new platform" | Planning, architecture foundations, choosing the right stack |
+| **Q2 (Apr-Jun)** | "Building in public" | Behind-the-scenes of current projects, lessons learned mid-build |
+| **Q3 (Jul-Sep)** | "Deep dives" | Technical architecture deep-dives, AI integration patterns, scaling lessons |
+| **Q4 (Oct-Dec)** | "Reflections" | Yearly lessons, what you'd do differently, planning for next year |
+
+Align your posts to the current quarter's theme. It makes your content feel timely and deliberate.
+
+### Batch Scheduling
+Block 2-3 hours to write 4 posts at once. Follow the 45-60 min per post time budget, but save setup/context-switching time by doing all topic selection and hook drafting in one pass.
+
+## Mode: status — Content Performance Tracking
+
+### Content Tracker Template
+
+| Post | Topic Bucket | Hook Style | Impressions | Engagement | Inbounds | Notes |
+|------|-------------|------------|-------------|------------|----------|-------|
+| | | A/B/C | | | | |
+
+After 8 posts, look for patterns:
+- Which hook style gets the most engagement? → Use that more.
+- Which topic bucket gets the most inbounds? → Double down.
+- What got zero engagement? → Stop doing that topic.
+
+### Content Benchmarks
+- B2B LinkedIn posts average **1,688–1,877 impressions** per post (Oktopost, 9,346 posts analyzed)
+- Individual profiles typically get less reach than company pages
+- **500+ impressions** is a fair starting threshold
+
+## Time Budget
+
+| Step | Time | Notes |
+|------|------|-------|
+| Choose topic | 5 min | Pick from the 4 buckets |
+| Write hook | 5 min | Must be specific enough that only you could write it |
+| Write body | 15-20 min | Keep under 300 words |
+| Review against rules | 5 min | Checklist above |
+| Publish + engage | 15 min | Post + 5-10 comments on others' posts |
+| **Total per post** | **45-60 min** | Can batch 4 posts in 2-3 hours |
+
+## Success Criteria
+
+A post is successful when:
+- It passes the "would I hire the person who wrote this?" test
+- It has **zero pitching**, zero "DM me", zero self-promotion
+- It contains at least one specific detail that only someone with real experience would know
+- **500+ impressions** within 48 hours with comments that are not from bots
+
+## Failure Mode: "I posted and got zero engagement"
+
+This is normal for the first 3-5 posts. LinkedIn's algorithm needs to learn who your audience is.
+
+If after 6 posts you're still getting <200 impressions:
+
+1. **Change your hook style** — if you used questions, try controversy-light. If you used results, try questions.
+2. **Change your posting time** — try 7-8am or 12-1pm in your target timezone (US Eastern)
+3. **Engage more** — LinkedIn amplifies people who give engagement. Spend 10 min/day commenting on others' posts before publishing your own
+4. **Check your network size** — <500 connections limits your reach. Add 10 relevant connections/week
+5. **Consider the content itself** — are you sharing a lesson or stating an opinion? Opinion + evidence outperforms pure lessons
+
+If you reach 10 posts with consistent <200 impressions despite trying all of the above, the channel may not work for your niche. Test on a different platform — if you get the same result, the problem is the offer, not the channel.

@@ -1,0 +1,49 @@
+## Business OS gitignore
+
+# Local / runtime scratch
+tmp/
+temp/
+uploads/*
+*.zip
+
+# Credentials and secrets
+**/credentials/
+**/credential/
+**/credenciales/
+**/secrets/
+**/private/
+**/.private/
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+
+# Build output
+node_modules/
+dist/
+build/
+.next/
+venv/
+__pycache__/
+*.pyc
+
+# Working drafts (not tracked)
+.work.biz/local/
+**/drafts/*.docx
+**/drafts/*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Cursor/AI local config
+.cursor/mcp.json
+AI_RULES.md
+
+# Agent workspace
+**/tmp/
+**/temp/
