@@ -2,7 +2,7 @@
 
 **Purpose:** Read-only signpost that answers: *"Which skill should I run for this business question?"*
 
-> Don't know which skill? **`@biz-director <describe what you want>`** — it routes for you.
+> **Don't know which skill?** Use `@biz-director - <describe what you want>` and let it route for you. If the work spans `.ai` + `.ai.ui` + `.ai.biz`, use `@x-director - <describe what you want>`.
 
 ## How to invoke
 
@@ -33,6 +33,7 @@
 | Review weekly progress | `@biz-review weekly` |
 | Close your session | `@session-biz close` |
 | Open a session | `@session-biz start` |
+| Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
 | Deploy `.ai.biz/` to another project | `@deploy-files copy - <path>` |
 
 ## Readiness states

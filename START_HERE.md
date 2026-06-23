@@ -54,6 +54,7 @@
 |------|---------|
 | **Where am I / what's next?** | `@session-biz status` + `.work.biz/context/HANDOFF.md` + `.work.biz/plans/NEXT.md` |
 | One-paragraph status (no writes) | `@session-biz status` |
+| Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
 | Are we still in strategy or executing? | `@biz-strategy status` **or** `@biz-review status` |
 
 ---
@@ -109,16 +110,24 @@
 | Step | File | Why |
 |------|------|-----|
 | 1 | `.cursorrules` | Identity, core principles, protected items |
-| 2 | `.ai.biz/README.md` | Canonical map |
+| 2 | `README.md` | Canonical map |
 | 3 | `.work.biz/context/HANDOFF.md` | Last session state |
 | 4 | `.work.biz/plans/NEXT.md` | Tactical next action |
-| 5 | `.ai.biz/skills/README.md` | Registered skills |
+| 5 | `skills/README.md` | Registered skills |
 | 6 | The specific `skill.md` you're invoking | Verbs and gates |
 | 7 | The specific standard | Binding rules |
 
 ---
 
-## 8. Anti-patterns to refuse
+## 8. FAQ
+
+| Question | Answer |
+|----------|--------|
+| Free-text business request / don't know the skill? | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
+
+---
+
+## 9. Anti-patterns to refuse
 
 - Claiming PASS when analysis shows gaps
 - Modifying protected files without explicit approval

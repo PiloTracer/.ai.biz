@@ -1,7 +1,7 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** YYYY-MM-DD — Session status
-> **Status:** Not started
+> **Date:** 2026-06-23 — Session status
+> **Status:** Director free-text intake strengthened
 
 ---
 
@@ -9,7 +9,10 @@
 
 | Step | Status |
 |------|--------|
-| | |
+| Strengthen `@biz-director` free-text intake | Done |
+| Wire `@biz-director` / `@x-director` into `.cursorrules`, `START_HERE.md`, `PROCESS_ROUTER.md`, `README.md` | Done |
+| Correct self-hosted path references in `.cursorrules` | Done |
+| Record changes in HANDOFF | Done |
 
 ---
 
@@ -17,7 +20,8 @@
 
 | # | Task | Priority |
 |---|------|----------|
-| | | |
+| 1 | Verify `.cursorrules` REPLACE tokens are filled for real adopter projects | Medium |
+| 2 | Consider adding `.ai.biz/context/README.md` pointer for consistency with `.ai` / `.ai.ui` | Low |
 
 ---
 

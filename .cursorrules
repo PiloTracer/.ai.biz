@@ -8,7 +8,7 @@ You are not a yes-machine. You are a trusted advisor whose sole objective is the
 
 # AI Agent Rules — REPLACE:PROJECT_NAME
 
-> **Bootstrap:** Copy this file from `.ai.biz/templates/cursorrules.template` to the **project root** as `.cursorrules`, then replace every `REPLACE:` token below.
+> **Bootstrap:** Copy this file from `templates/cursorrules.template` to the **project root** as `.cursorrules`, then replace every `REPLACE:` token below.
 
 ## Core Principles (ALWAYS APPLY)
 
@@ -56,14 +56,16 @@ These principles override all other instructions. They are non-negotiable.
 
 ## Required Context Files
 
-**Lost or unsure what to do? Read [`.ai.biz/START_HERE.md`](.ai.biz/START_HERE.md) first.**
+**Lost or unsure what to do? Read [`START_HERE.md`](START_HERE.md) first.**
+
+**Free-text entry point:** If you don't know which `biz-*` skill to run, invoke `@biz-director - <describe what you want>`. For work that spans `.ai` + `.ai.ui` + `.ai.biz`, use `@x-director - <describe what you want>`.
 
 Read these at the start of every conversation:
 
 | File | Purpose |
 |------|---------|
-| **`.ai.biz/START_HERE.md`** | What to invoke right now; decision tree |
-| **`.ai.biz/CONVENTIONS.md`** | Business framework conventions |
+| **`START_HERE.md`** | What to invoke right now; decision tree |
+| **`CONVENTIONS.md`** | Business framework conventions |
 | **`.work.biz/context/HANDOFF.md`** | Session handoff (session-biz read/write) |
 | **`.work.biz/plans/NEXT.md`** | Tactical next action + active phase |
 | **`.work.biz/plans/UNKNOWNS.md`** | Open unknowns and blocked decisions |
@@ -77,8 +79,8 @@ Read these at the start of every conversation:
 | `{HANDOFF}` | `.work.biz/context/HANDOFF.md` |
 | `{NEXT}` | `.work.biz/plans/NEXT.md` |
 | `{PIPELINE_TRACKER}` | `.work.biz/pipeline/pipeline_tracker.md` |
-| `{SKILLS_ROOT}` | `.ai.biz/skills/` |
-| `{CONCEPTS_ROOT}` | `.ai.biz/concepts/` |
+| `{SKILLS_ROOT}` | `skills/` |
+| `{CONCEPTS_ROOT}` | `concepts/` |
 | `{AGENT_RULES_FILE}` | **`.cursorrules` (this file)** |
 | `REPLACE:PROJECT_NAME` | Your business / project name |
 | `REPLACE:UNIFIED_OFFER` | Your one-line offer (e.g. "Custom AI-powered platform development") |
@@ -89,29 +91,29 @@ Read these at the start of every conversation:
 
 ## Skills
 
-Reusable agent skills live under `.ai.biz/skills/`. Each skill is a subfolder containing a `skill.md` file.
+Reusable agent skills live under `skills/`. Each skill is a subfolder containing a `skill.md` file.
 
 **Available skills:**
 
 | Skill | Folder | Purpose |
 |-------|--------|---------|
-| deploy-files | `.ai.biz/skills/deploy-files/` | Deploy `.ai.biz/` into target project |
-| deploy-repo | `.ai.biz/skills/deploy-repo/` | Full repo deploy (clone or archive) |
-| biz-bootstrap | `.ai.biz/skills/biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
-| biz-strategy | `.ai.biz/skills/biz-strategy/` | Niche, offer, positioning, target buyer |
-| biz-brand | `.ai.biz/skills/biz-brand/` | LinkedIn, website, brand presence |
-| biz-pricing | `.ai.biz/skills/biz-pricing/` | Value-based pricing framework |
-| biz-content | `.ai.biz/skills/biz-content/` | Content publishing and strategy |
-| biz-community | `.ai.biz/skills/biz-community/` | Community engagement playbook |
-| biz-referrals | `.ai.biz/skills/biz-referrals/` | Systematic referral generation |
-| biz-discovery | `.ai.biz/skills/biz-discovery/` | Sales discovery calls |
-| biz-proposal | `.ai.biz/skills/biz-proposal/` | Proposal writing and scoping |
-| biz-objections | `.ai.biz/skills/biz-objections/` | Handle sales objections |
-| biz-review | `.ai.biz/skills/biz-review/` | Weekly/quarterly business review |
-| biz-market-validate | `.ai.biz/skills/biz-market-validate/` | Test offers before committing |
-| biz-pipeline-diagnosis | `.ai.biz/skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| session-biz | `.ai.biz/skills/session-biz/` | Session open/close; HANDOFF, NEXT |
-| biz-director | `.ai.biz/skills/biz-director/` | Universal orchestrator; free-text → skill routing |
+| deploy-files | `skills/deploy-files/` | Deploy Business OS files into target project |
+| deploy-repo | `skills/deploy-repo/` | Full repo deploy (clone or archive) |
+| biz-bootstrap | `skills/biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
+| biz-strategy | `skills/biz-strategy/` | Niche, offer, positioning, target buyer |
+| biz-brand | `skills/biz-brand/` | LinkedIn, website, brand presence |
+| biz-pricing | `skills/biz-pricing/` | Value-based pricing framework |
+| biz-content | `skills/biz-content/` | Content publishing and strategy |
+| biz-community | `skills/biz-community/` | Community engagement playbook |
+| biz-referrals | `skills/biz-referrals/` | Systematic referral generation |
+| biz-discovery | `skills/biz-discovery/` | Sales discovery calls |
+| biz-proposal | `skills/biz-proposal/` | Proposal writing and scoping |
+| biz-objections | `skills/biz-objections/` | Handle sales objections |
+| biz-review | `skills/biz-review/` | Weekly/quarterly business review |
+| biz-market-validate | `skills/biz-market-validate/` | Test offers before committing |
+| biz-pipeline-diagnosis | `skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
+| session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT |
+| biz-director | `skills/biz-director/` | Universal orchestrator; free-text → skill routing |
 
 **Usage:** When a task matches a skill's purpose, read `skill.md` and follow the workflow.
 
@@ -194,7 +196,9 @@ Reusable agent skills live under `.ai.biz/skills/`. Each skill is a subfolder co
 ```
 /
 ├── .cursorrules              (this file — AI agent rules)
-├── .ai.biz/             (Business OS framework — skills, standards, templates)
+├── skills/              (Business OS framework — skills, standards, templates)
+├── standards/           (Binding business standards)
+├── templates/           (Bootstrap templates)
 ├── .work.biz/           (Project memory — plans, pipeline, HANDOFF)
 ```
 

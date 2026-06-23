@@ -207,6 +207,8 @@ Then:
 4. `.work.biz/plans/NEXT.md`
 5. `.work.biz/plans/strategy_*.md` when present
 
+**Free-text entry point:** Don't know which skill to run? → `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework).
+
 ---
 
 ## License

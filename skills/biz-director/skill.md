@@ -16,6 +16,46 @@ description: >-
 
 ---
 
+## Free-text intake contract
+
+When the user invokes `@biz-director` with natural language, follow this write/structure/format/channel discipline so the request becomes the correct `biz-*` skill invocation and is recorded in `.work.biz/` memory.
+
+### 1. Capture
+- Preserve the user's exact wording (quote it in `{HANDOFF}`).
+- Do not silently rewrite a business request into engineering/UI work.
+
+### 2. Load context
+- Read `{HANDOFF}`, `{NEXT}`, `{PIPELINE_TRACKER}`, and `skills/README.md` + `skills/SKILL_DEPENDENCIES.md` before classifying.
+- If `.work.biz/` is missing, route to `@biz-bootstrap init` first.
+
+### 3. Classify (intent → skill)
+- Match by intent, not keyword. Use the intent mapping table in § I1.
+- If the intent is engineering/backend/DB/API, redirect to `@ai-director` or `@x-director`.
+- If the intent is UI/design, redirect to `@ui-director` or `@x-director`.
+- If the intent spans business + engineering/UI, route to `@x-director`.
+- If unclear, run a short probe (max 3 questions) or route to `@process-router`.
+
+### 4. Channel (intent → skill chain)
+- Map the intent to the exact skill chain from § I1 and check `SKILL_DEPENDENCIES.md` gates per § I2.
+- Use canonical invocation syntax: `@<skill-id> <mode>` or `@<skill-id> <mode> - <argument>` with ASCII hyphen `-`.
+
+### 5. Structure/format the record
+After the workflow completes or changes state, update `{HANDOFF}`, `{NEXT}`, and `{UNKNOWNS}` using this shape:
+
+```markdown
+## Latest action (@biz-director)
+**Date:** YYYY-MM-DD
+**Request:** "<user's original request>"
+**Classified intent:** <intent-cluster>
+**Executed:**
+1. @<skill> <mode> - <arg> → <result>
+2. ...
+**Blockers:** <any unresolved items | none>
+**Next recommended:** @<skill> <mode> - <arg>
+```
+
+---
+
 ## Parse invocation
 
 Free-text match — no fixed verb. Capture the user's natural language request in full.
