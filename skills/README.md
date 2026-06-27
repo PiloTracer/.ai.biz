@@ -17,6 +17,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | **Shape** | `{prefix}-{role}` in **kebab-case** |
 | **Business prefix** | `biz-` (e.g., `biz-strategy`, `biz-content`) |
 | **System prefix** | `deploy-`, `session-` for infrastructure skills |
+| **Generative prefix** | plain descriptive name (`content-writing`, `business-ideas`, `product-service-ideas`) for project-aware generative skills with no hard gate |
 | **Stable id** | Folder name = `name:` in frontmatter = `@` handle |
 
 ---
@@ -42,6 +43,9 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-pipeline-diagnosis | `biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
 | session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
+| content-writing | `content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
+| business-ideas | `business-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
+| product-service-ideas | `product-service-ideas/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
 
 **Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand overhaul` → `@biz-pricing set` → `@biz-content publish` → ...
 
@@ -78,3 +82,10 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `close` / `start` | Session bookends |
 | `clone` / `archive` | Deploy modes |
 | `copy` | Deploy files mode |
+| `write` | Author content (content-writing) |
+| `repurpose` | Spin one asset into multiple formats (content-writing) |
+| `generate` | Produce a set of structured concepts/ideas (business-ideas, product-service-ideas) |
+| `stress` | Stress-test/kill one idea (business-ideas) |
+| `pivot` | Generate pivot directions from an existing business (business-ideas) |
+| `extend` | Extension concepts for an existing product (product-service-ideas) |
+| `scope` | Produce a ruthlessly minimal MVP definition (product-service-ideas) |

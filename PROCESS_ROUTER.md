@@ -35,6 +35,17 @@
 | Open a session | `@session-biz start` |
 | Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
 | Deploy `.ai.biz/` to another project | `@deploy-files copy - <path>` |
+| Write a post / article / case study / landing page / email / thread | `@content-writing write - <topic>` |
+| Build a content calendar / topic plan | `@content-writing plan - <horizon>` |
+| Repurpose one piece into multiple formats | `@content-writing repurpose - <source>` |
+| Critique an existing draft | `@content-writing audit - <draft or path>` |
+| Generate business / venture / pivot ideas | `@business-ideas generate - <domain>` |
+| Stress-test one business idea | `@business-ideas stress - <idea>` |
+| Pivot directions from current business | `@business-ideas pivot - <situation>` |
+| Generate product / service / SaaS / add-on concepts | `@product-service-ideas generate - <space>` |
+| Extension concepts for an existing product | `@product-service-ideas extend - <product>` |
+| Scope a minimal MVP for one concept | `@product-service-ideas scope - <concept>` |
+| Evaluate one product concept (Go/Refine/Kill) | `@product-service-ideas audit - <concept>` |
 
 ## Readiness states
 

@@ -114,6 +114,9 @@ Reusable agent skills live under `skills/`. Each skill is a subfolder containing
 | biz-pipeline-diagnosis | `skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
 | session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT |
 | biz-director | `skills/biz-director/` | Universal orchestrator; free-text → skill routing |
+| content-writing | `skills/content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails (project-aware) |
+| business-ideas | `skills/business-ideas/` | Structured, stress-tested business/venture idea generation |
+| product-service-ideas | `skills/product-service-ideas/` | Buildable, stack-fit product/service concept generation + MVP scoping |
 
 **Usage:** When a task matches a skill's purpose, read `skill.md` and follow the workflow.
 

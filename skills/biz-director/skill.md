@@ -98,7 +98,7 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Market validation** | "test if my idea works", "validate my niche", "run an experiment", "design a validation test", "design an experiment" | `@biz-market-validate` (test, design, or status per parse invocation) | — (can run any time) |
 | **Brand / LinkedIn / website** | "fix my LinkedIn", "rewrite my profile", "update my website", "make me look professional", "check my brand presence", "how's my LinkedIn doing" | `@biz-brand` (audit, overhaul, or status per parse invocation) | strategy-ready |
 | **Pricing** | "how much should I charge", "set my prices", "price this project", "revise my pricing", "is my pricing right", "what's my current price" | `@biz-pricing` (set, revise, or status per parse invocation) | strategy-ready |
-| **Content / LinkedIn posts** | "write a LinkedIn post", "publish an article", "create content", "content calendar" | `@biz-content publish` or `plan` | brand-ready |
+| **Content publishing ops** | "publish this", "post this to LinkedIn", "repurpose into 4 formats", "set up my content tracker", "content calendar", "engagement cadence" | `@biz-content publish` or `plan` | brand-ready |
 | **Community** | "join communities", "engage on Reddit", "find my audience", "find communities to join", "where should I participate" | `@biz-community` (engage, find, or status per parse invocation) | brand-ready |
 | **Referrals** | "ask for referrals", "get introduced" | `@biz-referrals ask` | — |
 | **Discovery / sales calls** | "prepare for a call", "run a discovery call", "I have a prospect meeting" | `@biz-discovery prepare` or `run` | pipeline-ready |
@@ -109,6 +109,11 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Session management** | "start the day", "close the session", "what was I doing" | `@session-biz start` or `close` or `status` | scaffold |
 | **Project orientation** | "where am I", "what should I do next", "I'm lost" | `@session-biz status` + `@biz-review status` | — |
 | **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@deploy-files copy - <path>` or `@deploy-repo` (clone, archive, or status per parse invocation) | — |
+| **Content writing (craft)** | "write me a post about X", "draft an article on Y", "help me write something for LinkedIn", "write a LinkedIn post", "publish an article" (when no integration/ops needed), "case study", "landing page copy", "email sequence", "repurpose this draft", "audit my draft" | `@content-writing` (write, plan, repurpose, audit, or status per parse invocation) | — (no hard gate; improves with strategy/brand-ready) |
+
+> **Content route disambiguation:** Pure drafting / writing requests (no channel integration, tracker, or engagement cadence involved) go to `@content-writing` (no gate). Requests to actually *publish/distribute*, set up a content calendar/tracker, or run the engagement/repurpose cadence go to `@biz-content` (brand-ready gate). They compose: `@content-writing write` produces the draft, `@biz-content publish` ships and tracks it.
+| **Business ideas** | "give me business ideas for...", "what businesses could benefit from...", "how could I monetize...", "I want to start something in...", "pivot my business", "stress-test this idea", "new venture directions" | `@business-ideas` (generate, stress, pivot, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
+| **Product / service ideas** | "what product could I build for...", "give me SaaS product ideas in...", "what features should I add", "I want a tool that...", "service package ideas", "scope an MVP for", "evaluate this product concept", "extend my platform" | `@product-service-ideas` (generate, extend, scope, audit, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 
 If the request spans multiple intents (e.g., "I want to fix my LinkedIn and start posting content"), route through all matching skills in gate order.
 
@@ -125,6 +130,17 @@ Before invoking any skill, verify its prerequisites against `SKILL_DEPENDENCIES.
 ```
 scaffold → strategy-ready → brand-ready → pipeline-ready → sales-ready → active deal
 ```
+
+### Gate-exempt skills (skip the gate check entirely)
+
+These **project-aware generative skills** have **no prerequisite gate** and may be invoked at any time — even before `@biz-bootstrap init` or on an entirely unbootstrapped project. Do **not** redirect to `@biz-bootstrap init` for them, and do **not** emit a `BLOCKED` gate report. They load the host project's own context dynamically and fall back to a bundled example profile when none exists (output improves once strategy/brand are defined).
+
+| Skill | Verb | Note |
+|------|------|------|
+| `@content-writing` | `write` · `plan` · `repurpose` · `audit` · `status` | Craft of content; no gate |
+| `@business-ideas` | `generate` · `stress` · `pivot` · `status` | Ideation; no gate |
+| `@product-service-ideas` | `generate` · `extend` · `scope` · `audit` · `status` | Concepts + MVP scoping; no gate |
+| `@biz-market-validate` | `test` · `design` · `status` | (pre-existing) Validation; no gate |
 
 ### Check each gate:
 

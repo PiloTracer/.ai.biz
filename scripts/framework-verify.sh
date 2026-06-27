@@ -37,7 +37,7 @@ done
 echo "  Skills: $skill_count"
 
 # Check that all skills are registered in README
-readme_count=$(grep -c '^| deploy-\|^| biz-\|^| session-' "$AI_ROOT/skills/README.md" 2>/dev/null || echo 0)
+readme_count=$(grep -cE '^\| (deploy-|biz-|session-|content-writing|business-ideas|product-service-ideas)' "$AI_ROOT/skills/README.md" 2>/dev/null || echo 0)
 echo "  Skills registered in README: $readme_count"
 
 # Check .work.biz skeleton exists

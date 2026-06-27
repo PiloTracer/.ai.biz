@@ -47,3 +47,5 @@ AI_RULES.md
 # Agent workspace
 **/tmp/
 **/temp/
+**/.tmp/
+**/.temp/

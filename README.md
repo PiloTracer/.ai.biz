@@ -25,7 +25,7 @@ Then in chat:
 
 ## What you get
 
-- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-discovery`, `@biz-proposal`, … run the playbook (16 skills in total).
+- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-discovery`, `@biz-proposal`, … run the playbook (20 skills in total).
 - **Standards** — binding contracts (business conventions, pricing standard, brand guide, content standard) keep agent output honest.
 - **`.work.biz/`** — the project's memory: strategy docs, plans, pipeline tracker, `HANDOFF.md`, `NEXT.md`. Survives session boundaries.
 - **Gates** — strategy-ready, brand-ready, pipeline-ready, sales-ready; skip a step and the agent **stops** with a redirect.
@@ -127,7 +127,7 @@ Business OS is a **gated pipeline**: each stage unlocks the next. Skills enforce
 
 ### Skills at a glance
 
-All **16** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
+All **20** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
 
 | Skill | One line | Typical invoke |
 |-------|----------|----------------|
@@ -148,6 +148,9 @@ All **16** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **deploy-files** | Deploy `.ai.biz/` into target project (clean rsync) | `copy - <path>` · `status` |
 | **deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
 | **biz-director** | Universal orchestrator; accepts free-text, routes to correct skills | `<free-text request>` |
+| **content-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
+| **business-ideas** | Structured, stress-tested business/venture/pivot idea generation | `generate - <domain>` · `stress - <idea>` · `pivot - <situation>` |
+| **product-service-ideas** | Buildable, stack-fit product/service concepts + MVP scoping | `generate - <space>` · `extend - <product>` · `scope - <concept>` · `audit - <concept>` |
 
 Gates between skills: [`skills/SKILL_DEPENDENCIES.md`](skills/SKILL_DEPENDENCIES.md).
 

@@ -96,6 +96,9 @@ Available skills (`.ai.biz/skills/`):
 | biz-pipeline-diagnosis | Find funnel bottlenecks |
 | session-biz | Session open/close |
 | biz-director | Universal orchestrator; free-text → skill routing |
+| content-writing | Write articles, posts, case studies, landing pages, emails (project-aware) |
+| business-ideas | Structured, stress-tested business/venture idea generation |
+| product-service-ideas | Buildable, stack-fit product/service concepts + MVP scoping |
 
 ---
 

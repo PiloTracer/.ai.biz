@@ -35,6 +35,12 @@
        │
        ├── "I want to publish content"           ──► `@biz-content publish`
        │
+       ├── "I want to write an article / post / case study / email"  ──► `@content-writing write - <topic>`
+       │
+       ├── "I want business / venture / pivot ideas"  ──► `@business-ideas generate - <domain>`
+       │
+       ├── "I want product / service / SaaS concepts"  ──► `@product-service-ideas generate - <space>`
+       │
        ├── "I have a sales conversation"         ──► §5 Sales
        │
        ├── "I need to review my progress"        ──► `@biz-review weekly`
@@ -79,6 +85,26 @@
 | Overhaul LinkedIn profile | `@biz-brand overhaul` |
 | Publish a LinkedIn post or article | `@biz-content publish` |
 | Engage in communities | `@biz-community engage` |
+
+---
+
+## 4b. Generate & write (no gate required)
+
+These project-aware generative skills run any time — even before bootstrap. They load the host project's own context automatically; output improves once strategy/brand are defined.
+
+| You need… | Run |
+|-----------|-----|
+| Write an article, post, case study, landing page, email, thread | `@content-writing write - <topic>` |
+| Build a content calendar / topic plan | `@content-writing plan - <30 days>` |
+| Repurpose one piece into multiple formats | `@content-writing repurpose - <source>` |
+| Critique a draft | `@content-writing audit - <draft or path>` |
+| Business / venture / pivot ideas | `@business-ideas generate - <domain>` |
+| Stress-test one idea (try to kill it) | `@business-ideas stress - <idea>` |
+| Pivot directions from current business | `@business-ideas pivot - <situation>` |
+| Product / service / SaaS / add-on concepts | `@product-service-ideas generate - <space>` |
+| Extension concepts for an existing product | `@product-service-ideas extend - <product>` |
+| Scope a minimal MVP for one concept | `@product-service-ideas scope - <concept>` |
+| Evaluate one concept (Go/Refine/Kill) | `@product-service-ideas audit - <concept>` |
 
 ---
 
