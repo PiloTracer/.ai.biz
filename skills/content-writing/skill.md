@@ -362,7 +362,10 @@ When Business OS is present and the user is publishing to attract leads, the com
 
 | Skill | When |
 |-------|------|
-| `@biz-content publish` | Publishing workflow, engagement, repurpose cadence — ops layer |
+| `@content-social write` | Platform-adapt the draft for Reddit, Instagram, LinkedIn, or Facebook |
+| `@content-social repurpose` | Spin the long-form piece into platform-native social posts |
+| `@biz-content publish` | LinkedIn publishing workflow, engagement, repurpose cadence — ops layer |
 | `@biz-brand overhaul` | When brand voice / profile is not yet defined |
+| `@biz-community find` | Find communities to post the content in |
 | `@business-ideas` | Ideation that content can later amplify |
 | `@product-service-ideas` | Product concepts to write case studies about |

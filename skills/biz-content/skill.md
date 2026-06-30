@@ -11,6 +11,8 @@ description: >-
 ## Purpose
 Write and publish one piece of content (LinkedIn post or article) that demonstrates your expertise and attracts inbound leads. No pitching. No "DM me."
 
+> **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@content-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@content-writing`.
+
 ## Process
 
 ### 1. Choose Topic

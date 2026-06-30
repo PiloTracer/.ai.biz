@@ -44,10 +44,11 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
 | content-writing | `content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
+| content-social | `content-social/` | Platform-specialized social media content: Reddit, Instagram, LinkedIn, Facebook. Write, research trends, repurpose across platforms, cross-platform strategy. |
 | business-ideas | `business-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
 | product-service-ideas | `product-service-ideas/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
 
-**Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand overhaul` → `@biz-pricing set` → `@biz-content publish` → ...
+**Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand audit` → `@biz-pricing set` → `@biz-community find` → `@content-social strategy` → `@content-social write` → ...
 
 ---
 
@@ -82,10 +83,12 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `close` / `start` | Session bookends |
 | `clone` / `archive` | Deploy modes |
 | `copy` | Deploy files mode |
-| `write` | Author content (content-writing) |
-| `repurpose` | Spin one asset into multiple formats (content-writing) |
+| `write` | Author content (content-writing, content-social) |
+| `repurpose` | Spin one asset into multiple formats (content-writing, content-social) |
+| `research` | Discover trending topics, active discussions, content gaps on a platform (content-social) |
 | `generate` | Produce a set of structured concepts/ideas (business-ideas, product-service-ideas) |
 | `stress` | Stress-test/kill one idea (business-ideas) |
 | `pivot` | Generate pivot directions from an existing business (business-ideas) |
 | `extend` | Extension concepts for an existing product (product-service-ideas) |
 | `scope` | Produce a ruthlessly minimal MVP definition (product-service-ideas) |
+| `find` | Discover communities/subreddits/accounts/groups on a platform (biz-community) |

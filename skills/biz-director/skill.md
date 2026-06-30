@@ -98,8 +98,9 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Market validation** | "test if my idea works", "validate my niche", "run an experiment", "design a validation test", "design an experiment" | `@biz-market-validate` (test, design, or status per parse invocation) | — (can run any time) |
 | **Brand / LinkedIn / website** | "fix my LinkedIn", "rewrite my profile", "update my website", "make me look professional", "check my brand presence", "how's my LinkedIn doing" | `@biz-brand` (audit, overhaul, or status per parse invocation) | strategy-ready |
 | **Pricing** | "how much should I charge", "set my prices", "price this project", "revise my pricing", "is my pricing right", "what's my current price" | `@biz-pricing` (set, revise, or status per parse invocation) | strategy-ready |
-| **Content publishing ops** | "publish this", "post this to LinkedIn", "repurpose into 4 formats", "set up my content tracker", "content calendar", "engagement cadence" | `@biz-content publish` or `plan` | brand-ready |
-| **Community** | "join communities", "engage on Reddit", "find my audience", "find communities to join", "where should I participate" | `@biz-community` (engage, find, or status per parse invocation) | brand-ready |
+| **Content publishing ops (LinkedIn)** | "publish this on LinkedIn", "set up my LinkedIn content tracker", "LinkedIn content calendar", "LinkedIn engagement cadence" | `@biz-content publish` or `plan` | brand-ready |
+| **Social media content (platform-specific)** | "write a reddit post about X", "create an instagram post for...", "draft a facebook post", "write something for LinkedIn and Reddit", "make a post for instagram about...", "linkedin post idea", "generate social media content" | `@content-social` (write, repurpose, research, strategy, plan, or status per parse invocation) | — (no hard gate for write/research/repurpose; strategy-ready for strategy/plan modes) |
+| **Community find & engage** | "join communities", "engage on Reddit", "find my audience", "find communities to join", "where should I participate", "find subreddits for...", "find instagram accounts in...", "find facebook groups for..." | `@biz-community` (find, engage, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 | **Referrals** | "ask for referrals", "get introduced" | `@biz-referrals ask` | — |
 | **Discovery / sales calls** | "prepare for a call", "run a discovery call", "I have a prospect meeting" | `@biz-discovery prepare` or `run` | pipeline-ready |
 | **Proposals** | "write a proposal", "scope this project", "review my proposal before sending", "check proposal pipeline" | `@biz-proposal` (write, review, or status per parse invocation) | pipeline-ready |
@@ -111,7 +112,15 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@deploy-files copy - <path>` or `@deploy-repo` (clone, archive, or status per parse invocation) | — |
 | **Content writing (craft)** | "write me a post about X", "draft an article on Y", "help me write something for LinkedIn", "write a LinkedIn post", "publish an article" (when no integration/ops needed), "case study", "landing page copy", "email sequence", "repurpose this draft", "audit my draft" | `@content-writing` (write, plan, repurpose, audit, or status per parse invocation) | — (no hard gate; improves with strategy/brand-ready) |
 
-> **Content route disambiguation:** Pure drafting / writing requests (no channel integration, tracker, or engagement cadence involved) go to `@content-writing` (no gate). Requests to actually *publish/distribute*, set up a content calendar/tracker, or run the engagement/repurpose cadence go to `@biz-content` (brand-ready gate). They compose: `@content-writing write` produces the draft, `@biz-content publish` ships and tracks it.
+> **Content route disambiguation (three-tier):**
+> 
+> 1. **Pure writing craft** (blog articles, case studies, landing pages, emails, newsletters, technical deep dives) → `@content-writing` (no gate). Platform-agnostic, quality-gated writing.
+> 
+> 2. **Platform-specialized social content** (Reddit posts, Instagram captions + visual briefs, LinkedIn posts, Facebook Group posts, cross-platform repurposing, trending topic research, platform strategy) → `@content-social` (no gate for write/research/repurpose). Each piece calibrated to platform culture, audience, and format norms.
+> 
+> 3. **LinkedIn publishing ops** (content tracker, posting calendar, engagement cadence tracking, A/B hook testing across posts) → `@biz-content` (brand-ready gate). Ops layer for LinkedIn specifically.
+> 
+> **How they compose:** `@content-writing write` produces a long-form piece. `@content-social repurpose` spins it into platform-native posts for Reddit, Instagram, LinkedIn, Facebook. `@biz-content publish` tracks LinkedIn performance. `@biz-community find` discovers where to post. `@biz-community engage` handles daily comment participation.
 | **Business ideas** | "give me business ideas for...", "what businesses could benefit from...", "how could I monetize...", "I want to start something in...", "pivot my business", "stress-test this idea", "new venture directions" | `@business-ideas` (generate, stress, pivot, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 | **Product / service ideas** | "what product could I build for...", "give me SaaS product ideas in...", "what features should I add", "I want a tool that...", "service package ideas", "scope an MVP for", "evaluate this product concept", "extend my platform" | `@product-service-ideas` (generate, extend, scope, audit, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 
@@ -138,9 +147,11 @@ These **project-aware generative skills** have **no prerequisite gate** and may 
 | Skill | Verb | Note |
 |------|------|------|
 | `@content-writing` | `write` · `plan` · `repurpose` · `audit` · `status` | Craft of content; no gate |
+| `@content-social` | `write` · `research` · `repurpose` · `status` | Platform-specialized social content; no gate (strategy/plan modes require strategy-ready) |
 | `@business-ideas` | `generate` · `stress` · `pivot` · `status` | Ideation; no gate |
 | `@product-service-ideas` | `generate` · `extend` · `scope` · `audit` · `status` | Concepts + MVP scoping; no gate |
 | `@biz-market-validate` | `test` · `design` · `status` | (pre-existing) Validation; no gate |
+| `@biz-community` | `find` · `engage` · `status` | Community discovery + engagement; no gate |
 
 ### Check each gate:
 

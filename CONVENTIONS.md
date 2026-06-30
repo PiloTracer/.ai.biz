@@ -4,8 +4,9 @@
 
 ### Skills
 - Format: `{prefix}-{role}` in **kebab-case** (lowercase ASCII, hyphens)
-- Business OS prefix: `biz-` (e.g., `biz-strategy`, `biz-content`)
+- Business OS prefix: `biz-` (e.g., `biz-strategy`, `biz-content`, `biz-community`)
 - System skills: `deploy-files`, `deploy-repo`, `session-biz`, `biz-director` (meta-orchestrator)
+- Generative/entry-level skills: plain descriptive name without prefix (e.g., `content-writing`, `content-social`, `business-ideas`, `product-service-ideas`). These have no hard prerequisite gate and load project context dynamically.
 
 ### Documents
 - Strategy documents: `strategy_<topic>.md`

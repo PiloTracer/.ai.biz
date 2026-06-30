@@ -1,7 +1,7 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** 2026-06-26 — Session status
-> **Status:** Added 3 project-aware generative skills; integrated across framework
+> **Date:** 2026-06-30 — Session closed
+> **Status:** Built content-social skill; enhanced biz-community with platform discovery; full framework integration
 
 ---
 
@@ -9,15 +9,15 @@
 
 | Step | Status |
 |------|--------|
-| Create `@content-writing` skill (craft of writing; project-aware, technology-tilted) | Done |
-| Create `@business-ideas` skill (structured ideation; archetypes + assumption ledger) | Done |
-| Create `@product-service-ideas` skill (buildable concepts + MVP scoping) | Done |
-| Bundle `references/project-context.example.md` fallback profile in each | Done |
-| Register skills in `.cursorrules`, `templates/cursorrules.template`, `README.md`, `skills/README.md`, `SKILL_DEPENDENCIES.md`, `PROCESS_ROUTER.md`, `START_HERE.md`, `CHANGELOG.md` | Done |
-| Make `@biz-director` fully aware: intent rows + gate-exempt table + content route de-ambiguation | Done |
-| Regenerate `.tmp/*.skill` archives to match shipped skills | Done |
-| Fix `scripts/framework-verify.sh` to count generative skills; correct README count (20) | Done |
-| Verify `framework-verify.sh` passes (Skills 20 / registered 20) | Done |
+| Analyse gaps: platform-specific content (Reddit, Instagram, LinkedIn, Facebook) vs existing skills | Done |
+| Create `@content-social` skill (write, research, repurpose, strategy, plan, status across 4 platforms) | Done |
+| Add `research` mode: trending topics, content gaps, competitor analysis per platform | Done |
+| Rewrite `@biz-community` with deep platform discovery (Reddit, Instagram, LinkedIn, Facebook, additional platforms) | Done |
+| Register `content-social` in skills/README.md, SKILL_DEPENDENCIES.md | Done |
+| Update `@biz-director` intent mapping with social media content cluster + 3-tier content route disambiguation | Done |
+| Cross-reference all content skills (content-writing, content-social, biz-content, biz-community) | Done |
+| Update CONVENTIONS.md for generative skill naming with new skill | Done |
+| Enhance biz-content with platform scope note + content-social pointer | Done |
 
 ---
 
@@ -25,10 +25,12 @@
 
 | # | Task | Priority |
 |---|------|----------|
-| 1 | Verify `.cursorrules` REPLACE tokens are filled for real adopter projects | Medium |
-| 2 | Consider adding `.ai.biz/context/README.md` pointer for consistency with `.ai` / `.ai.ui` | Low |
-| 3 | Populate `.work.biz/strategy/*` for LogicBison so the new skills load real context instead of the example fallback | Medium |
-| 4 | Optional: add a `concepts/` entry for "generative ideation" to mirror the new skills | Low |
+| 1 | Regenerate `.tmp/*.skill` archives to include new `content-social` skill | Medium |
+| 2 | Update `.cursorrules` Skills table to include `content-social` (currently auto-reads from skills/README.md but the static table is for human reference) | Low |
+| 3 | Verify `scripts/framework-verify.sh` count matches (now 21 skills) | Medium |
+| 4 | Update `CHANGELOG.md` and `START_HERE.md` to reflect new content-social entry point | Low |
+| 5 | Populate `.work.biz/strategy/*` for host project so platform skills load real context | Medium |
+| 6 | Create Reddit-specific content examples or test posts for validation | Low |
 
 ---
 
@@ -36,10 +38,11 @@
 
 | # | Decision |
 |---|----------|
-| 1 | Generative skills (`content-writing`, `business-ideas`, `product-service-ideas`) are **gate-exempt** — run any time, even pre-bootstrap; load host project context dynamically, fall back to bundled example. |
-| 2 | `content-writing` owns the *craft* of writing; `biz-content` owns *publishing ops*. They compose: draft → publish/track. biz-director disambiguation note added. |
-| 3 | Every generative skill enforces a "technology tilt" gate so output is always tech-grounded, not generic filler. |
-| 4 | Portable archives live in `.tmp/` (gitignored scratch); canonical source is `skills/`. |
+| 1 | `content-social` is a **single unified skill** (not 4 separate skills) — shared context loading, cross-platform strategy, follows `content-writing` pattern. |
+| 2 | Community/group finding stays in `biz-community` (enhanced with deep platform discovery). Content generation is in `content-social`. |
+| 3 | `content-social` is **gate-exempt** for write/research/repurpose modes (like content-writing, business-ideas). Strategy/plan modes require strategy-ready. |
+| 4 | **Three-tier content architecture:** `content-writing` (craft) → `content-social` (platform-adapt) → `biz-content` (LinkedIn ops). `biz-community` handles discovery + engagement across all tiers. |
+| 5 | `research` mode added as a first-class operation — surfaces trending topics, content gaps, competitor patterns per platform before writing. |
 
 ---
 
@@ -51,4 +54,5 @@
 | Active iteration | `.work.biz/plans/NEXT.md` |
 | Open questions | `.work.biz/plans/UNKNOWNS.md` |
 | Pipeline status | `.work.biz/pipeline/pipeline_tracker.md` |
-| New skills | `skills/{content-writing,business-ideas,product-service-ideas}/skill.md` |
+| New skills | `skills/content-social/skill.md` |
+| Enhanced skills | `skills/biz-community/skill.md` |

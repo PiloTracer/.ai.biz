@@ -23,8 +23,13 @@ biz-pricing set  ← requires strategy-ready
        │
 biz-content publish  ← requires brand-ready (brand assets exist)
 biz-community engage ← requires brand-ready
-       │
-       ▼
+content-social write ← no hard gate (improves with strategy-ready; best after @biz-community find)
+content-social research ← no hard gate (improves with strategy-ready)
+content-social repurpose ← no hard gate
+content-social strategy ← requires strategy-ready
+content-social plan ← requires strategy-ready
+        │
+        ▼
 biz-discovery run  ← requires pipeline-ready (pipeline tracker set up)
 biz-proposal write ← requires pricing set
 biz-objections handle ← requires active deal
@@ -35,15 +40,16 @@ biz-referrals ask  ← no strict gate (can start anytime)
         ├── biz-market-validate test ← can run at any time (recommended before committing to a strategy)
         ├── biz-pipeline-diagnosis run ← requires pipeline tracker with data
         │
-        │  ── Generative skills (no hard gate; run any time) ──
-        ├── content-writing write/plan/repurpose/audit ← run any time (improves with strategy-ready + brand-ready)
-        ├── business-ideas generate/stress/pivot ← run any time (improves with strategy-ready)
-        └── product-service-ideas generate/extend/scope/audit ← run any time (improves with strategy-ready)
+         │  ── Generative skills (no hard gate; run any time) ──
+         ├── content-writing write/plan/repurpose/audit ← run any time (improves with strategy-ready + brand-ready)
+         ├── content-social write/research/repurpose ← run any time (improves with strategy-ready; best after @biz-community find)
+         ├── business-ideas generate/stress/pivot ← run any time (improves with strategy-ready)
+         └── product-service-ideas generate/extend/scope/audit ← run any time (improves with strategy-ready)
 ```
 
 ### Generative skills (no gate)
 
-`content-writing`, `business-ideas`, and `product-service-ideas` are **project-aware generative skills**: they have **no prerequisite gate** and can be invoked at any time, even before `biz-bootstrap init`. They load the host project's own context dynamically (`.cursorrules`, `.work.biz/strategy/*`, `README.md`, stack manifests) and fall back to a bundled example profile when none exists. They produce dramatically better output when the host project is bootstrapped and strategy-certified, because audience, offer, stack, and channel are then loaded from project memory rather than guessed.
+`content-writing`, `content-social`, `business-ideas`, and `product-service-ideas` are **project-aware generative skills**: they have **no prerequisite gate** for `write`, `research`, `repurpose`, and `audit` modes and can be invoked at any time, even before `biz-bootstrap init`. They load the host project's own context dynamically (`.cursorrules`, `.work.biz/strategy/*`, `README.md`, stack manifests) and fall back to a bundled example profile when none exists. They produce dramatically better output when the host project is bootstrapped and strategy-certified, because audience, offer, stack, and channel are then loaded from project memory rather than guessed.
 
 ## biz-director (meta-skill)
 
