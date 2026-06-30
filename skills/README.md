@@ -44,7 +44,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
 | content-writing | `content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
-| content-social | `content-social/` | Platform-specialized social media content: Reddit, Instagram, LinkedIn, Facebook. Write, research trends, repurpose across platforms, cross-platform strategy. |
+| content-social | `content-social/` | Platform-specialized social media content: Reddit, Instagram, LinkedIn, Facebook, X (Twitter). Write, research trends, repurpose across platforms, cross-platform strategy. |
 | business-ideas | `business-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
 | product-service-ideas | `product-service-ideas/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
 

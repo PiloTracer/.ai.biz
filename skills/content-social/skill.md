@@ -2,12 +2,13 @@
 name: content-social
 description: >-
   Platform-specialized social media content generation across Reddit, Instagram,
-  LinkedIn, and Facebook. Produces content calibrated to each platform's unique
-  audience, culture, formatting norms, and engagement mechanics — always grounded
-  in the host project's strategy, brand voice, and target buyer. For community
-  discovery (finding subreddits, Instagram accounts, Facebook groups), use
-  @biz-community find. For pure writing craft and long-form content (blog
-  articles, case studies, landing pages, email sequences), use @content-writing.
+  LinkedIn, Facebook, and X (Twitter). Produces content calibrated to each
+  platform's unique audience, culture, formatting norms, and engagement
+  mechanics — always grounded in the host project's strategy, brand voice, and
+  target buyer. For community discovery (finding subreddits, Instagram accounts,
+  Facebook groups), use @biz-community find. For pure writing craft and long-form
+  content (blog articles, case studies, landing pages, email sequences), use
+  @content-writing.
   content-social write, content-social research, content-social repurpose,
   content-social strategy, content-social plan, content-social status.
 ---
@@ -30,13 +31,15 @@ Generate platform-native social media content. Every platform has a different cu
 | `@content-social write instagram - <topic>` | Generate Instagram content (caption + visual brief, carousel script, story) |
 | `@content-social write linkedin - <topic>` | Generate a LinkedIn post calibrated to professional audience |
 | `@content-social write facebook - <topic>` | Generate Facebook content (group post, page update, community post) |
+| `@content-social write x - <topic>` | Generate an X (Twitter) post (tweet, thread, reply) calibrated to real-time, concise format |
 | `@content-social research reddit - <topic/keyword>` | Find trending discussions, active threads, and content gaps on Reddit |
 | `@content-social research instagram - <topic/keyword>` | Find trending formats, audio, hashtags, and competitor content on Instagram |
 | `@content-social research linkedin - <topic/keyword>` | Find active conversations, trending posts, and content white space on LinkedIn |
 | `@content-social research facebook - <topic/keyword>` | Find active group discussions, trending topics, and content opportunities on Facebook |
+| `@content-social research x - <topic/keyword>` | Find trending topics, active conversations, hashtag movements, and content gaps on X/Twitter |
 | `@content-social research <platform>` | General topic/trend research for a platform (without a specific keyword) |
 | `@content-social repurpose - <source> to <platform>` | Adapt existing content for a different platform |
-| `@content-social repurpose - <source>` | Repurpose one piece into formats for all 4 platforms |
+| `@content-social repurpose - <source>` | Repurpose one piece into formats for all 5 platforms |
 | `@content-social strategy` | Assess which platforms fit the project's target buyer; recommend platform mix |
 | `@content-social plan <platform> - <horizon>` | Platform-specific content calendar (e.g., `30 days`, `Q3`) |
 | `@content-social status` | Read-only: report loaded project context and platform readiness |
@@ -100,6 +103,7 @@ Before writing for any platform, understand who you're writing for and the cultu
 | **Instagram** | Visual-first, younger skew (18-34 dominant), discovery-driven | Rapid scroll; 1-3 second attention grab; Reels dominate reach | Aesthetic consistency; authenticity; social proof (follower count, engagement) | Moderate. Acceptable if value-first. "Link in bio" model. |
 | **LinkedIn** | Professional, career-motivated, B2B decision-makers | Feed scroll; article reading; industry-aware but busy | Credentials, track record, mutual connections, specificity | **Higher than others.** Thought leadership is the format. Pitch tolerated after value delivery. |
 | **Facebook** | Groups are hyper-engaged communities; Pages are broadcast | Groups: threaded, conversational. Pages: feed scroll. | Community membership; consistent helpful presence; local relevance | Varies wildly. Groups: low tolerance, moderator-enforced. Pages: moderate. |
+| **X (Twitter)** | Real-time, news-driven, tech/VC/journalist-heavy, high velocity | Rapid-fire feed; 280-char limit shapes consumption; threads for depth | Wit, speed, insider knowledge, being first to insight. Followers/lists = credibility. | Moderate-low. Self-promotion is common but must be wrapped in value. Quote-tweet culture rewards sharp takes. |
 
 ---
 
@@ -109,13 +113,13 @@ The same person behaves differently on each platform. Content must account for t
 
 ### How the same target buyer shows up per platform
 
-| Element | Reddit | Instagram | LinkedIn | Facebook |
-|---------|--------|-----------|----------|----------|
-| **Identity** | Pseudonymous, interest-based | Curated, visual identity | Real name, professional identity | Real name, personal + community identity |
-| **Mindset** | Learning, debating, problem-solving | Discovery, inspiration, entertainment | Career growth, industry awareness, hiring | Community belonging, local connection, peer support |
-| **Attention span** | Willing to read long-form if valuable | Seconds. Visual hook or scroll past. | Moderate. Will read 200-300 words if relevant. | Variable. Groups: moderate. Feed: short. |
-| **Trust trigger** | Specific, verifiable claims. No marketing language. | Visual authenticity, social proof, consistency. | Deep expertise demonstrated. Specific results. Named clients. | Peer validation. Group membership. Mutual friends. |
-| **Rejection trigger** | Self-promotion, vagueness, link-dropping | Overt selling, inauthentic polish, stock imagery | Thought leadership without proof. Buzzword bingo. | Spammy posts. Breaking group rules. Uninvited pitching. |
+| Element | Reddit | Instagram | LinkedIn | Facebook | X (Twitter) |
+|---------|--------|-----------|----------|----------|-------------|
+| **Identity** | Pseudonymous, interest-based | Curated, visual identity | Real name, professional identity | Real name, personal + community identity | Real name or pseudonymous; persona-based |
+| **Mindset** | Learning, debating, problem-solving | Discovery, inspiration, entertainment | Career growth, industry awareness, hiring | Community belonging, local connection, peer support | Real-time awareness, breaking news, hot takes, networking |
+| **Attention span** | Willing to read long-form if valuable | Seconds. Visual hook or scroll past. | Moderate. Will read 200-300 words if relevant. | Variable. Groups: moderate. Feed: short. | Seconds per tweet. Threads earn sustained reading if hook is strong. |
+| **Trust trigger** | Specific, verifiable claims. No marketing language. | Visual authenticity, social proof, consistency. | Deep expertise demonstrated. Specific results. Named clients. | Peer validation. Group membership. Mutual friends. | Insider knowledge, speed, contrarian-but-correct takes, consistency over time. |
+| **Rejection trigger** | Self-promotion, vagueness, link-dropping | Overt selling, inauthentic polish, stock imagery | Thought leadership without proof. Buzzword bingo. | Spammy posts. Breaking group rules. Uninvited pitching. | Over-polished corporate voice, threadbois, engagement farming, stale takes. |
 
 **Rule:** Never use a LinkedIn post as a Reddit post. Never use an Instagram caption as a Facebook group post. Each platform gets purpose-built content.
 
@@ -127,14 +131,14 @@ The same person behaves differently on each platform. Content must account for t
 
 Resolve from the request:
 
-1. **Platform** — reddit, instagram, linkedin, facebook (required)
+1. **Platform** — reddit, instagram, linkedin, facebook, x (required)
 2. **Content type** — depends on platform (see each platform section below)
 3. **Goal** — educate, build trust, demonstrate expertise, start conversation, attract leads
 4. **CTA** — what action should the reader take (if any)? Platform-appropriate CTA only.
 
 ### Step 2 — Load platform-specific rules
 
-Jump to the platform's section below (R1–R4) for formatting, structure, and anti-patterns.
+Jump to the platform's section below (R1–R5) for formatting, structure, and anti-patterns.
 
 ### Step 3 — Draft with quality rules
 
@@ -482,6 +486,102 @@ CTA
 
 ---
 
+## R5 — X (Twitter) Content
+
+### X/Twitter culture fundamentals
+
+X is a real-time, high-velocity platform where brevity, timing, and sharpness are rewarded. The 280-character limit (4,000 for X Premium) forces concise thinking. The platform is dominated by tech, media, VC, journalism, and political discourse — but niche communities (via Lists and Communities) are deeply engaged.
+
+**The X content reality in 2026:** The platform rewards engagement velocity. The first 30 minutes after posting are critical. Quote-tweets amplify reach dramatically. Threads (tweetstorms) are the primary format for long-form thought. Visual content (images, video) significantly boosts engagement. The audience is skeptical of marketing and rewards genuine insight delivered with personality.
+
+### X/Twitter content types
+
+| Type | Best for | Structure |
+|------|----------|-----------|
+| **Single tweet** | Quick insight, observation, hot take, announcement | 1-2 sentences. Standalone value. Can include one image or link. |
+| **Thread** | Deep dives, stories, technical breakdowns, lessons learned | 5-20 tweets threaded. Hook tweet first. Number tweets for readability. |
+| **Quote tweet** | Adding insight to someone else's post, building on a conversation | Quote + your take. Adds value to the original, doesn't just amplify. |
+| **Reply** | Engaging in conversations, building relationships, visibility | Direct, valuable, specific. Avoid "great thread!" without substance. |
+| **Image/video tweet** | Visual proof, demos, data viz, behind-the-scenes | Image: 16:9 or 1:1. Video: under 2:20, captioned. Must work without sound. |
+| **Poll** | Audience engagement, market research, conversation starter | 2-4 options. Duration: 1 day typical. Reply to voters to build engagement. |
+
+### Single tweet structure
+
+```
+BODY (max 280 characters)
+  — Lead with the insight. No warm-up.
+  — One clear idea. If it needs two, make it a thread.
+  — Specific > clever. Numbers and names earn trust.
+  — Good: "I chose Postgres over Mongo for a 4,900-rule tax engine. The normalization alone saved 6 weeks of debugging."
+  — Bad: "Excited to announce our new platform! Check it out at [link]"
+
+MEDIA (optional but recommended)
+  — One image or short video. Dramatically increases engagement.
+  — Image: 1600x900px (16:9) or 1080x1080px (1:1). No heavy text overlay.
+  — Video: Under 2:20. Square or 16:9. Captioned.
+
+HASHTAGS (1-2 max)
+  — Use sparingly. 1-2 relevant hashtags. Overuse signals desperation.
+```
+
+### Thread structure
+
+```
+TWEET 1 (HOOK — the one that determines whether the thread is read)
+  — Counterintuitive claim, specific result, or compelling question.
+  — Must contain enough value to stand alone (it will be screenshot and shared independently).
+  — Under 280 characters. Include "🧵" or "A thread:" at the end.
+  — Good: "I spent 6 months rebuilding a RAG pipeline from scratch. Here are the 7 decisions I'd make differently: 🧵"
+
+TWEETS 2–N (BODY)
+  — One idea per tweet. Number them (2/12, 3/12) for readability.
+  — Mix lengths for rhythm. Short punchy tweets between longer explanatory ones.
+  — Include specific data, examples, tradeoffs, and hard-won lessons.
+  — Each tweet should deliver value on its own (in case someone only sees one via retweet).
+
+FINAL TWEET (CONCLUSION + CTA)
+  — Restate the core insight. Invite discussion.
+  — "What's the most surprising lesson you've learned from [domain]?"
+  — Optionally link to a longer resource: "I wrote a deeper breakdown here: [link]"
+
+NOTE: Post the full thread within 2-3 minutes. Do not leave gaps between tweets.
+```
+
+### X/Twitter-specific quality rules
+
+1. **First tweet is everything.** If the first tweet doesn't earn engagement, the thread dies. Lead with the strongest, most counterintuitive statement.
+2. **Write for the algorithm.** Early engagement (likes, retweets, replies in first 30 min) determines reach. Post when your audience is active.
+3. **One idea per tweet.** Even in threads. If you need two tweets to make one point, rewrite it.
+4. **Delete the first sentence.** It's almost always a warm-up. The real opener is sentence two.
+5. **Visuals are not optional.** Tweets with images or video get 3-5x more engagement. Every thread should have at least one visual.
+6. **Quote-tweet with value.** Only QRT if you're adding genuine insight. "This" + link is spam.
+7. **Engagement timing matters.** Reply to comments within the first hour. QRTs of your content are signals — engage with them.
+8. **Lists > timeline.** Build private Lists of target buyers, peers, and industry voices. Engage with their content daily.
+9. **Community Notes awareness.** X's Community Notes feature can add context to misleading posts. Ensure claims are specific and verifiable. Vague boasts can get noted.
+10. **No threadboi energy.** Don't start threads with "Most people don't know..." or "The truth about X nobody talks about..." unless you have genuinely novel insight. The audience has pattern-matched these openers.
+
+### X/Twitter anti-patterns (DO NOT)
+
+- "Please retweet" or "RT for reach" (engagement farming, penalized)
+- Threads that start with "1/20" without a strong hook (nobody cares how long it is until they care about the topic)
+- Corporate-speak or overly polished language (X rewards authentic voice)
+- Posting links without commentary (link-dropping)
+- Ratio-baiting (deliberately posting controversial takes for engagement without substance)
+- Tagging influencers unnecessarily for visibility
+- Using engagement pods or buying followers (Community Notes + algorithmic detection)
+- Repeating the same tweet format every day (the algorithm rewards variety)
+
+### X/Twitter posting time
+
+- Best: Tuesday-Thursday, 8-10 AM or 12-1 PM US Eastern
+- Tech/VC audience: Tuesday-Wednesday, 9-11 AM US Eastern
+- European audience: 2-4 PM CET
+- Avoid: weekends (lower professional engagement), Friday afternoons
+- Threads: post mid-morning on Tuesday/Wednesday for maximum pickup
+- Test: X analytics will tell you when YOUR followers are most active
+
+---
+
 ## I2 — `research` mode
 
 Discover trending topics, active discussions, and content gaps on a specific platform — grounded in the project's target buyer and niche. Use this mode before writing to ensure relevance, or when looking for content ideas.
@@ -563,6 +663,18 @@ Discover trending topics, active discussions, and content gaps on a specific pla
 | **Competitor presence audit** | Check if competitors or peers are active in the Groups. What are they posting? How is the community responding? |
 | **Local relevance check** | If the project has a geographic component, search local Groups and community pages for relevant discussions. |
 
+### X (Twitter) research methods
+
+| Method | How to execute |
+|--------|---------------|
+| **Trending / For You tab** | Browse X's trending topics and "For You" feed. Filter by topic relevance. Note which conversations are taking off in the project's niche. |
+| **Hashtag search** | Search niche hashtags. Sort by "Top" and "Latest." What content formats get the most engagement (threads, single tweets, images)? |
+| **Competitor audit** | Review the last 30 tweets from 5-10 accounts in the project's space. Note tweet format mix, thread frequency, engagement patterns, reply behavior. |
+| **List monitoring** | Build or join Lists of target buyers, industry voices, and competitors. Monitor daily for conversation patterns and content gaps. |
+| **Quote-tweet analysis** | For popular tweets in the niche, check the Quote Tweets. What are people adding? What are they disagreeing with? This reveals content white space. |
+| **Space listening** | Join X Spaces (live audio) in the niche. Listen for recurring questions, debates, and pain points. These are high-value thread topics. |
+| **Advanced search** | Use X's advanced search: `"how do I" OR "anyone know" OR "struggling with" from:accounts_in_niche`. Find unfiltered questions to answer. |
+
 ### Research quality rules
 
 1. **Research must be grounded in the project's target buyer.** Don't report trending topics that are irrelevant to the project's niche, even if they're popular.
@@ -591,17 +703,24 @@ Take one piece of content and produce platform-adapted versions. Each must stand
 | Blog article | **Instagram** | Distill to one visual concept. Carousel or reel script. Short caption with hook + key point + CTA. |
 | Blog article | **LinkedIn** | Extract the single strongest insight. Personal framing. Story-led structure. 200-300 words. |
 | Blog article | **Facebook Group** | Frame as a lesson learned. Community-oriented language. Discussion prompt at end. |
+| Blog article | **X (Twitter)** | Extract 5-7 key points. Lead with the most counterintuitive. Build a thread. One insight per tweet. |
 | LinkedIn post | **Reddit** | Strip professional framing. Add technical detail. More detached, analytical tone. |
 | LinkedIn post | **Instagram** | Convert the insight into a carousel narrative. Add visual brief. Shorten caption by 60%. |
+| LinkedIn post | **X (Twitter)** | Condense to 280 characters or a 5-8 tweet thread. Sharpen the hook. Add speed. |
 | Reddit post | **LinkedIn** | Add professional context. Soften blunt/technical language. Add career/business implications. |
 | Reddit post | **Instagram** | Extract the most visual/counterintuitive element. Build a reel script around one "aha" moment. |
+| Reddit post | **X (Twitter)** | Extract the strongest claim. Build a thread around it. Speed up the pacing. |
 | Instagram content | **Reddit** | Strip visual references. Add technical depth and written explanation. Longer form. |
 | Instagram content | **LinkedIn** | Add business context. Connect insight to professional outcomes. |
+| Instagram content | **X (Twitter)** | Convert visual concept to text thread. Describe what the visual shows. Distill to key takeaway. |
+| X (Twitter) thread | **Reddit** | Expand into self-post. Add context, deeper analysis, discussion prompts. |
+| X (Twitter) thread | **LinkedIn** | Convert to 200-300 word post. Add professional framing. Slightly softer tone. |
+| X (Twitter) tweet | **Instagram** | Visualize the takeaway. Carousel or quote card. Short caption. |
 | Video/podcast transcript | **All platforms** | Extract 3-5 quotable insights. Each becomes one platform-adapted post. |
 
 ### Multi-platform repurpose output
 
-When repurposing to all 4 platforms, produce:
+When repurposing to all 5 platforms, produce:
 
 ```
 CORE INSIGHT: [one sentence — the DNA of all versions]
@@ -619,6 +738,12 @@ INSTAGRAM VERSION
 LINKEDIN VERSION
   Hook: [first line]
   Body: [full post]
+
+X (TWITTER) VERSION
+  Format: [single tweet / thread]
+  Hook tweet: [first tweet — the thread anchor]
+  Body: [remaining tweets or full tweet]
+  Media suggestion: [image/video if applicable]
 
 FACEBOOK VERSION
   Context: [Group or Page? Which group?]
@@ -670,6 +795,12 @@ Assess which platforms fit the project's target buyer profile. Output a platform
   Approach: {Groups first / Pages / Skip}
   Group suggestions: {if applicable}
 
+### X (Twitter)
+  Fit: {EXCELLENT / GOOD / POOR}
+  Tweet frequency: {recommendation}
+  Thread cadence: {1-2x/week recommended for deep content}
+  Content pillars: {2-3 themes}
+
 ### 30-day action plan
   Week 1: {action}
   Week 2: {action}
@@ -696,6 +827,7 @@ Build a platform-specific content calendar. Output a Markdown table.
 - For Reddit: plan 1-2 posts per week max. Focus on comment engagement daily.
 - For Instagram: 3-5 feed posts + 5-7 stories per week
 - For LinkedIn: 2-4 posts per week
+- For X (Twitter): 3-5 tweets + replies daily. 1-2 threads per week.
 - For Facebook Groups: 2-3 posts + daily comment engagement
 
 ---
@@ -708,6 +840,7 @@ Build a platform-specific content calendar. Output a Markdown table.
 | **Instagram** | 1080x1080px (1:1) | 1080x1350px (4:5) | 1080x1920px (9:16) | 320x320px | N/A |
 | **LinkedIn** | 1080x1080px | 1080x1350px (4:5) | N/A | 400x400px | 1584x396px (personal) |
 | **Facebook** | 1080x1080px | 1080x1350px (4:5) | 1080x1920px | 320x320px | 851x315px (page) |
+| **X (Twitter)** | 1080x1080px (1:1) | 1080x1350px (4:5) | N/A | 400x400px | 1500x500px (banner) |
 
 ---
 
@@ -724,7 +857,7 @@ Different platforms support different levels of depth. Structure your content py
    /   EXPAND    \     LinkedIn carousel, Reddit self-post, newsletter
   /    2-4x/mo    \    → One insight, structured explanation
  /─────────────────\
-/    SOCIAL LAYER    \ Instagram reel, LinkedIn post, Facebook Group, tweet
+/    SOCIAL LAYER    \ Instagram reel, LinkedIn post, X tweet/thread, Facebook Group
       3-5x/week       → One insight, one takeaway, platform-native format
 ```
 
@@ -769,7 +902,7 @@ You may only claim the task complete when all are true:
 | `research` (single platform, focused topic) | 15-25 min |
 | `research` (single platform, broad scan) | 25-40 min |
 | `repurpose` (one source → one platform) | 15-20 min |
-| `repurpose` (one source → all 4 platforms) | 30-50 min |
+| `repurpose` (one source → all 5 platforms) | 40-60 min |
 | `strategy` | 10-15 min |
 | `plan` | 20-30 min |
 | `status` | < 2 min |

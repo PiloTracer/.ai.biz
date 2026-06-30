@@ -162,6 +162,40 @@ For each candidate subreddit, evaluate:
 
 ---
 
+### I0-X — X (Twitter): Account & Conversation Discovery
+
+#### X discovery methods
+
+| Method | How to execute | What you learn |
+|--------|---------------|----------------|
+| **Hashtag search** | Search `#<industry>` or `#<niche>`. Filter by "Top" and "Latest." | Active voices in the space. Content formats that get traction. |
+| **Advanced search** | Use `from:<known_account> min_faves:50` to surface high-engagement content. | What resonates with the niche's audience. |
+| **List discovery** | Find existing Lists curated by industry insiders. Search for "List: <topic>" or check bios of key accounts. | Pre-curated feeds of relevant voices. |
+| **"Who to follow" engine** | Follow 5-10 key accounts. X will suggest similar accounts in the "Who to follow" sidebar. | Adjacent voices. Algorithmic discovery. |
+| **Quote tweet mapping** | On popular tweets, check who quote-tweeted with value-added commentary. | People worth following. People worth engaging. |
+| **Space attendance** | Join X Spaces in the niche. Note who speaks, who asks good questions, who the host is. | Active community members. Rising voices. |
+| **Competitor follower analysis** | Review the followers of key competitor or peer accounts. Note bios that match target buyer profile. | Direct target buyer discovery. Engagement targets. |
+
+#### X account evaluation criteria
+
+| Criteria | Green flag | Red flag |
+|----------|------------|----------|
+| **Follower quality** | Followers include target buyers, industry figures, real engaged accounts | High follower count with low engagement; bot/spam followers |
+| **Engagement rate** | 1-3% engagement on tweets from real accounts | < 0.3% (dead audience) or engagement dominated by bots |
+| **Content quality** | Original insight, specific claims, authentic voice | Aggregation-only account; repost bot; engagement farming |
+| **Reply quality** | Thoughtful replies to their tweets from credible accounts | Only "great thread!" replies or radio silence |
+| **Posting consistency** | 1-5 tweets/day consistently | Dormant account (last tweet > 2 weeks) or spam-level volume (20+/day) |
+
+#### X engagement strategy
+
+| Priority | Action | Frequency |
+|----------|--------|-----------|
+| **1** | Reply to tweets from 5-10 target buyers or industry voices daily | Daily, 10-15 min |
+| **2** | Quote-tweet with genuine value-add (not just "this") | 1-2x/week |
+| **3** | Build and maintain private Lists of target buyers, peers, industry voices | One-time setup; review monthly |
+| **4** | Join 1-2 X Spaces per week. Listen more than speak initially | Weekly |
+| **5** | Post original content (tweets + threads) via `@content-social write x` | 3-5 tweets + 1-2 threads/week |
+
 ### I0-A — Additional platforms
 
 | Platform | Where to go | Best for | Discovery approach |
@@ -170,7 +204,6 @@ For each candidate subreddit, evaluate:
 | **MicroConf** | `microconf.com` community / Slack | B2B SaaS founders, $10k+ MRR, high-signal | Join Slack. Participate before posting. |
 | **Discord** | Niche Discord servers via Disboard.org or industry blogs | Developer tools, gaming-adjacent tech, younger demographics | Lurking first is mandatory. Server culture varies wildly. |
 | **Slack communities** | Industry Slack workspaces (e.g., ProductLed, RevGenius, design communities) | B2B professionals, SaaS operators | Intro channel first. Follow workspace rules strictly. |
-| **X (Twitter)** | Follow relevant accounts, engage in replies, build lists | Tech, media, VC-adjacent, real-time conversation | Lists > timeline for signal. Reply value > tweet volume. |
 
 ---
 
@@ -247,6 +280,13 @@ Before committing to any community, verify:
 - Don't post in more Groups than you can sustain quality engagement in. 2-3 Groups deeply > 10 Groups shallowly.
 - Watch for "looking for recommendations" posts — these are highest-intent and lowest-competition.
 - Respond to comments on your Group posts within 1-2 hours to keep the thread active.
+
+### X (Twitter) engagement
+- Reply to target-audience tweets within the first 15 minutes. Early replies get visibility before the tweet takes off.
+- Quote-tweet sparingly and only when you have genuine insight to add. "This." is worse than no engagement.
+- Engage with people who reply to your tweets. A thoughtful reply to a reply builds relationship faster than a new tweet.
+- Lists are your superpower. Build private Lists and review them daily instead of scrolling the main timeline.
+- X Spaces: attend 1-2/week in your niche. Listen. Ask thoughtful questions. Don't pitch. Stay after to DM new connections.
 
 ---
 

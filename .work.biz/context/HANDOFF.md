@@ -1,7 +1,7 @@
 # HANDOFF — Session Bookmark
 
 > **Date:** 2026-06-30 — Session closed
-> **Status:** Built content-social skill; enhanced biz-community with platform discovery; full framework integration
+> **Status:** Added X (Twitter) as 5th platform to content-social + biz-community; full integration
 
 ---
 
@@ -18,6 +18,7 @@
 | Cross-reference all content skills (content-writing, content-social, biz-content, biz-community) | Done |
 | Update CONVENTIONS.md for generative skill naming with new skill | Done |
 | Enhance biz-content with platform scope note + content-social pointer | Done |
+| Add X (Twitter) as 5th platform: R5 section, audience matrix, research methods, repurpose transforms, image dimensions + biz-community I0-X section | Done |
 
 ---
 
