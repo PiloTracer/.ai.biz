@@ -8,7 +8,8 @@ You are not a yes-machine. You are a trusted advisor whose sole objective is the
 
 # AI Agent Rules — REPLACE:PROJECT_NAME
 
-> **Bootstrap:** Copy this file from `templates/cursorrules.template` to the **project root** as `.cursorrules`, then replace every `REPLACE:` token below.
+> **Bootstrap (fat-client):** Copy this file from `.ai.biz/templates/cursorrules.template` to the **project root** as `.cursorrules`, then replace every `REPLACE:` token below.
+> **Bootstrap (thin-client):** Run `@deploy-basic` from the source `.ai.biz` — copies `.cursorrules` (with `AGENT_OS_SOURCE` pointer) + `.work.biz/` skeleton. Skills stay in the source and load at runtime. See § Source resolution below.
 
 ## Core Principles (ALWAYS APPLY)
 
@@ -89,16 +90,44 @@ Read these at the start of every conversation:
 
 ---
 
+## Source resolution — fat-client vs thin-client (MANDATORY before reading any `.ai.biz/...` path)
+
+This repo was bootstrapped in one of two modes. The agent MUST apply the matching resolution rule before reading any framework path. Read this section at the start of every conversation.
+
+**Agent OS source (thin-client only — set by `@deploy-basic`):**
+
+AGENT_OS_SOURCE=REPLACE_BASICSOURCE
+
+*(If the line above still shows `REPLACE_BASICSOURCE`, the repo is **fat-client** — see below.)*
+
+| Mode | Bootstrapped via | Where framework assets live | `AGENT_OS_SOURCE` |
+|------|------------------|----------------------------|-------------------|
+| **Fat-client** (vendored) | `@deploy-files` or `biz-bootstrap init` | this repo's `.ai.biz/` | unset (token left as `REPLACE_BASICSOURCE`) |
+| **Thin-client** (remote) | `@deploy-basic` | the **source** Business OS; this repo holds only `.cursorrules` + `.work.biz/` | set to an absolute path (e.g. `/mnt/work/Projects/.ai.biz`) |
+
+**Resolution rule (agents MUST apply before reading any `.ai.biz/...` reference):**
+
+1. `.cursorrules` (this file) and `.work.biz/**` — read from the **local** project (this repo), always, in both modes.
+2. **Thin-client** (`AGENT_OS_SOURCE` is set and readable as a directory): read every other `.ai.biz/<path>` reference from `$AGENT_OS_SOURCE/<path>` — i.e. `skills/<id>/skill.md`, `skills/SKILL_DEPENDENCIES.md`, `standards/**`, `concepts/**`, `docs/**`, `scripts/**`, `templates/**`. **Never** assume a local `.ai.biz/` exists. When you invoke `@<skill>`, read `$AGENT_OS_SOURCE/skills/<id>/skill.md`; inside it, any `.ai.biz/<x>` reference resolves to `$AGENT_OS_SOURCE/<x>`.
+3. **Fat-client** (`AGENT_OS_SOURCE` is unset or still `REPLACE_BASICSOURCE`): read `.ai.biz/<path>` locally in this repo.
+4. `.work.biz/...` references and project app code resolve locally in this repo in both modes.
+5. **Thin-client + unreachable source:** if `$AGENT_OS_SOURCE` is set but the directory does not exist or `skills/README.md` is unreadable, **stop** and report `business-os source unreachable: $AGENT_OS_SOURCE` — do **not** silently fall back to a local `.ai.biz/` (there isn't one) and do **not** guess a different path.
+
+**First bootstrap in thin-client mode** is a chicken-and-egg escape: before `@deploy-basic` runs, the target has no local skill to invoke. Bootstrap is initiated either (a) from the **source** repo — `@deploy-basic - /abs/path/to/target` — or (b) by invoking the shell directly from the target: `bash /abs/path/to/source/.ai.biz/scripts/deploy-basic.sh .` After that, the source pointer in `.cursorrules` lets the local agent load `@deploy-basic update` and every other skill from source.
+
+---
+
 ## Skills
 
-Reusable agent skills live under `skills/`. Each skill is a subfolder containing a `skill.md` file.
+Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thin-client mode). Each skill is a subfolder containing a `skill.md` file.
 
 **Available skills:**
 
 | Skill | Folder | Purpose |
 |-------|--------|---------|
-| deploy-files | `skills/deploy-files/` | Deploy Business OS files into target project |
+| deploy-files | `skills/deploy-files/` | Deploy Business OS files into target project (fat-client) |
 | deploy-repo | `skills/deploy-repo/` | Full repo deploy (clone or archive) |
+| deploy-basic | `skills/deploy-basic/` | Thin-client bootstrap — copies `.cursorrules` (with `AGENT_OS_SOURCE` pointer) + `.work.biz/` skeleton; skills resolve from source at runtime. `@deploy-basic`, `@deploy-basic update`, `@deploy-basic status` |
 | biz-bootstrap | `skills/biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
 | biz-strategy | `skills/biz-strategy/` | Niche, offer, positioning, target buyer |
 | biz-brand | `skills/biz-brand/` | LinkedIn, website, brand presence |
@@ -112,7 +141,7 @@ Reusable agent skills live under `skills/`. Each skill is a subfolder containing
 | biz-review | `skills/biz-review/` | Weekly/quarterly business review |
 | biz-market-validate | `skills/biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT |
+| session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT; `context` read-only load + uncommitted-aware |
 | biz-director | `skills/biz-director/` | Universal orchestrator; free-text → skill routing |
 | content-writing | `skills/content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails (project-aware) |
 | business-ideas | `skills/business-ideas/` | Structured, stress-tested business/venture idea generation |
