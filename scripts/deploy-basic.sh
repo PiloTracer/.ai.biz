@@ -49,11 +49,7 @@ else
 fi
 
 # Target = repo root of the consumer (the dir that will hold .cursorrules + .work.biz/).
-if [[ "$RAW_TARGET" == "." || "$RAW_TARGET" == "$PWD" ]]; then
-  DEST_ROOT="$(cd "$RAW_TARGET" && pwd)"
-else
-  DEST_ROOT="$(cd "$RAW_TARGET" && pwd)"
-fi
+DEST_ROOT="$(cd "$RAW_TARGET" && pwd)"
 
 if [[ ! -d "$DEST_ROOT" ]]; then
   echo "ERROR: target directory does not exist: $DEST_ROOT" >&2

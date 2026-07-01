@@ -141,7 +141,7 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | biz-review | `skills/biz-review/` | Weekly/quarterly business review |
 | biz-market-validate | `skills/biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT; `context` read-only load + uncommitted-aware |
+| session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT; `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
 | biz-director | `skills/biz-director/` | Universal orchestrator; free-text → skill routing |
 | content-writing | `skills/content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails (project-aware) |
 | business-ideas | `skills/business-ideas/` | Structured, stress-tested business/venture idea generation |

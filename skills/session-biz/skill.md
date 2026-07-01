@@ -6,6 +6,8 @@ description: >-
   mandatory context read-only and is uncommitted-aware (surfaces dirty-tree
   status without writing HANDOFF). Optional git commit.
   session-biz start, session-biz close, session-biz context, session-biz status.
+  Also accepts session-control as an alias (session-control start, close,
+  context, status) — maps to the same operations.
 ---
 
 # session-biz
@@ -18,11 +20,11 @@ description: >-
 
 | File | Purpose |
 |------|---------|
-| `HANDOFF.md` | Current session context, what was done, what's next |
-| `NEXT.md` | Ordered list of next tasks / priorities |
-| `UNKNOWNS.md` | Open questions that need research or decisions |
+| `.work.biz/context/HANDOFF.md` | Current session context, what was done, what's next |
+| `.work.biz/plans/NEXT.md` | Ordered list of next tasks / priorities |
+| `.work.biz/plans/UNKNOWNS.md` | Open questions that need research or decisions |
 
-**Location:** Project root or `.ai/` if the project uses one. Defined at session level.
+**Location:** Project root under `.work.biz/`. Defined per Business OS conventions.
 
 ---
 

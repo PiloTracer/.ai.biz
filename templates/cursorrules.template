@@ -123,7 +123,7 @@ Available skills (`.ai.biz/skills/` or `$AGENT_OS_SOURCE/skills/` depending on m
 | biz-review | Weekly/quarterly business review |
 | biz-market-validate | Test offers before committing |
 | biz-pipeline-diagnosis | Find funnel bottlenecks |
-| session-biz | Session open/close; `context` read-only load + uncommitted-aware |
+| session-biz | Session open/close; `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
 | biz-director | Universal orchestrator; free-text → skill routing |
 | content-writing | Write articles, posts, case studies, landing pages, emails (project-aware) |
 | business-ideas | Structured, stress-tested business/venture idea generation |
