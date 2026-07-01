@@ -68,7 +68,7 @@ These skills exist to produce **technology-related** results. Establish the oper
 
 ### Priority 4 — Brand standard
 
-Read `standards/*BRAND-GUIDE*` and `standards/*CONTENT-STANDARD*` if present. These are binding; do not violate them.
+Read `standards/*BRAND-GUIDE*`, `standards/*CONTENT-STANDARD*`, and `standards/*PLATFORM-ALGORITHM-STANDARD*` if present. These are binding; do not violate them. Pay particular attention to platform-specific link rules (LinkedIn, Facebook, Instagram).
 
 ### Priority 5 — Fallback example
 

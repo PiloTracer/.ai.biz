@@ -75,7 +75,7 @@ Read `.cursorrules` — its `REPLACE:` tokens resolve to `PROJECT_NAME`, `UNIFIE
 
 ### Priority 4 — Brand standard
 
-Read `standards/*BRAND-GUIDE*` and `standards/*CONTENT-STANDARD*` if present. These are binding.
+Read `standards/*BRAND-GUIDE*`, `standards/*CONTENT-STANDARD*`, and `standards/*PLATFORM-ALGORITHM-STANDARD*` if present. These are binding.
 
 ### Context summary (emit briefly before drafting)
 
