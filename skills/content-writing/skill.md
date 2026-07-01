@@ -168,6 +168,16 @@ For pieces over ~600 words, emit a 3–5 bullet outline and confirm direction be
 [Hashtags]    — 3–5 max. Relevant, not desperate.
 ```
 
+**CRITICAL — LinkedIn external-link rule:** Do **NOT** include external links (GitHub, websites, articles, etc.) in the post body. LinkedIn's algorithm demotes posts containing links and will show them to far fewer people. If the post needs to reference a URL, provide it separately as a first-comment suggestion:
+
+```
+First comment: "Links to the open-source Agent OSs: github.com/PiloTracer/.ai · .ai.ui · .ai.biz · .ai.soc"
+```
+
+Or adapt the comment text to the links relevant to the post. The operator should post the body first, then immediately add the link comment. This keeps reach high while the resources remain one tap away.
+
+**Remind the operator** of this rule each time LinkedIn content is delivered — do not assume they remember.
+
 #### Case study
 
 ```
@@ -321,6 +331,7 @@ Report:
 - [ ] Is the length appropriate for the channel?
 - [ ] Technology tilt: is there at least one concrete technical detail per major section?
 - [ ] Are unproven claims either backed by a cited source or marked **Unverified**?
+- [ ] **LinkedIn only:** Are all external links stripped from the post body and placed as a first-comment suggestion? Remind operator about this.
 
 If any box is unchecked, fix it before delivering.
 

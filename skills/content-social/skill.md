@@ -872,7 +872,9 @@ Different platforms support different levels of depth. Structure your content py
 - [ ] Is there at least one specific number, name, or proof point?
 - [ ] Have I removed all hollow adjectives and marketing language?
 - [ ] Is the length appropriate for this platform?
-- [ ] Is the CTA platform-appropriate (no "DM me" on Reddit, no external links on Instagram)?
+- [ ] Is the CTA platform-appropriate (no "DM me" on Reddit, no external links in body on Instagram)?
+- [ ] **LinkedIn:** Are all external links stripped from the post body and placed as a first-comment suggestion?
+- [ ] **LinkedIn:** Has the operator been reminded to post the link as the first comment?
 - [ ] Would this post be upvoted/liked/shared by the target audience, not just the author?
 - [ ] Is the technology tilt present (for tech-positioned projects)?
 - [ ] Are self-references earned and disclosed, not promotional?
