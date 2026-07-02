@@ -47,6 +47,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | content-social | `content-social/` | Platform-specialized social media content: Reddit, Instagram, LinkedIn, Facebook, X (Twitter). Write, research trends, repurpose across platforms, cross-platform strategy. |
 | business-ideas | `business-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
 | product-service-ideas | `product-service-ideas/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
+| project-query-setup | `project-query-setup/` | **Optional integration:** guide through tools-project API key, MCP registration, connectivity test. OS-aware (tailors guidance per framework). |
 
 **Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand audit` → `@biz-pricing set` → `@biz-community find` → `@content-social strategy` → `@content-social write` → ...
 
