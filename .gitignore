@@ -3,6 +3,7 @@
 # Local / runtime scratch
 tmp/
 temp/
+tmp-*.out
 uploads/*
 *.zip
 
