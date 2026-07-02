@@ -31,8 +31,9 @@
 
 | # | What was done | Date |
 |---|---------------|------|
-| 1 | Built `content-social` skill — platform-specialized content for Reddit, Instagram, LinkedIn, Facebook + research mode | 2026-06-30 |
-| 2 | Rewrote `biz-community` with deep platform-specific community discovery | 2026-06-30 |
-| 3 | Full framework integration: README, SKILL_DEPENDENCIES, biz-director intent mapping, cross-references | 2026-06-30 |
-| 4 | Added 3 project-aware generative skills (content-writing, business-ideas, product-service-ideas) + framework integration | 2026-06-26 |
-| 5 | Made @biz-director fully aware of generative skills + content route de-ambiguation | 2026-06-26 |
+| 1 | Removed tools-project integration — deleted `biz-project-query-setup` skill, cleaned `.cursorrules` + `skills/README.md`; `.ai` parent now owns all integration | 2026-07-02 |
+| 2 | Built `content-social` skill — platform-specialized content for Reddit, Instagram, LinkedIn, Facebook + research mode | 2026-06-30 |
+| 3 | Rewrote `biz-community` with deep platform-specific community discovery | 2026-06-30 |
+| 4 | Full framework integration: README, SKILL_DEPENDENCIES, biz-director intent mapping, cross-references | 2026-06-30 |
+| 5 | Added 3 project-aware generative skills (content-writing, business-ideas, product-service-ideas) + framework integration | 2026-06-26 |
+| 6 | Made @biz-director fully aware of generative skills + content route de-ambiguation | 2026-06-26 |

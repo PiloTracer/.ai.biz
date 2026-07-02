@@ -146,7 +146,6 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | content-writing | `skills/content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails (project-aware) |
 | business-ideas | `skills/business-ideas/` | Structured, stress-tested business/venture idea generation |
 | product-service-ideas | `skills/product-service-ideas/` | Buildable, stack-fit product/service concept generation + MVP scoping |
-| biz-project-query-setup | `skills/biz-project-query-setup/` | Optional. Guide through tools-project API key, MCP registration, connectivity test. OS-aware (tailors guidance per framework). |
 
 **Usage:** When a task matches a skill's purpose, read `skill.md` and follow the workflow.
 

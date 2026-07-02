@@ -1,7 +1,7 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** 2026-06-30 — Session closed
-> **Status:** Added X (Twitter) as 5th platform to content-social + biz-community; full integration
+> **Date:** 2026-07-02 — Session closed
+> **Status:** Removed tools-project integration from `.ai.biz`; `.ai` parent project now owns all integration
 
 ---
 
@@ -9,16 +9,10 @@
 
 | Step | Status |
 |------|--------|
-| Analyse gaps: platform-specific content (Reddit, Instagram, LinkedIn, Facebook) vs existing skills | Done |
-| Create `@content-social` skill (write, research, repurpose, strategy, plan, status across 4 platforms) | Done |
-| Add `research` mode: trending topics, content gaps, competitor analysis per platform | Done |
-| Rewrite `@biz-community` with deep platform discovery (Reddit, Instagram, LinkedIn, Facebook, additional platforms) | Done |
-| Register `content-social` in skills/README.md, SKILL_DEPENDENCIES.md | Done |
-| Update `@biz-director` intent mapping with social media content cluster + 3-tier content route disambiguation | Done |
-| Cross-reference all content skills (content-writing, content-social, biz-content, biz-community) | Done |
-| Update CONVENTIONS.md for generative skill naming with new skill | Done |
-| Enhance biz-content with platform scope note + content-social pointer | Done |
-| Add X (Twitter) as 5th platform: R5 section, audience matrix, research methods, repurpose transforms, image dimensions + biz-community I0-X section | Done |
+| Delete `skills/biz-project-query-setup/` (skill.md + reference.md, 481 lines) | Done |
+| Remove `biz-project-query-setup` row from `.cursorrules` skills table | Done |
+| Remove `biz-project-query-setup` row from `skills/README.md` registered skills table | Done |
+| Verify zero remaining references across the project | Done |
 
 ---
 
@@ -44,6 +38,7 @@
 | 3 | `content-social` is **gate-exempt** for write/research/repurpose modes (like content-writing, business-ideas). Strategy/plan modes require strategy-ready. |
 | 4 | **Three-tier content architecture:** `content-writing` (craft) → `content-social` (platform-adapt) → `biz-content` (LinkedIn ops). `biz-community` handles discovery + engagement across all tiers. |
 | 5 | `research` mode added as a first-class operation — surfaces trending topics, content gaps, competitor patterns per platform before writing. |
+| 6 | **tools-project integration moves to `.ai` parent.** `.ai.biz` no longer carries `biz-project-query-setup` — the sister `.ai` project handles all tools-project MCP registration, key setup, and connectivity from now on. |
 
 ---
 
