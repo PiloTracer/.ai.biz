@@ -33,7 +33,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-strategy | `biz-strategy/` | Define niche, offer, positioning; certifies **strategy-ready** |
 | biz-brand | `biz-brand/` | Audit/overhaul LinkedIn, website, brand presence |
 | biz-pricing | `biz-pricing/` | Value-based pricing for any engagement |
-| biz-content | `biz-content/` | Write/publish content that attracts leads |
+| biz-content | `biz-content/` | LinkedIn publishing ops: publish, plan, 30-day challenge (#CreateImpact), tracker |
 | biz-community | `biz-community/` | Community engagement without selling |
 | biz-referrals | `biz-referrals/` | Systematic referral generation |
 | biz-discovery | `biz-discovery/` | Sales discovery calls |
@@ -45,7 +45,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
 | content-writing | `content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
-| content-social | `content-social/` | Platform-specialized social media content: Reddit, Instagram, LinkedIn, Facebook, X (Twitter). Write, research trends, repurpose across platforms, cross-platform strategy. |
+| content-social | `content-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel, Facebook, X). Write, research, repurpose, plan. |
 | business-ideas | `business-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
 | product-service-ideas | `product-service-ideas/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
 
@@ -76,6 +76,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `design` | Plan an experiment |
 | `review` | Assess a proposal before sending (biz-proposal) or assess business performance (biz-review) |
 | `plan` | Create a content/publishing plan |
+| `challenge` | 30-day LinkedIn consistency program (biz-content) |
 | `revise` | Update an existing decision |
 | `find` | Find communities to join (biz-community) |
 | `weekly` | Weekly business review (biz-review) |

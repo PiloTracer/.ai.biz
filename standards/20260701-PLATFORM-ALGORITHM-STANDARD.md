@@ -30,6 +30,17 @@ Additional rules:
 - Best time: Tue-Thu 8-10 AM or 12-1 PM local audience time
 - Anti-patterns: "Agree?" posts (now penalized), "copy-paste this", same hashtags on every post
 
+### LinkedIn creator challenges (#CreateImpact and similar)
+
+Official LinkedIn consistency programs reward **expertise sharing**, not volume spam.
+
+1. **Cadence:** 2–4 posts/week beats daily low-quality posts
+2. **Format mix:** ≥1 carousel/week; text for stories; video optional
+3. **Challenge hashtags:** Use program hashtag (e.g. `#CreateImpact`) on **one post per week**, not every post
+4. **Feedback loop:** Log format + hook + impressions in `@biz-content status` after each post; adjust from data
+5. **ICP alignment:** Run BIZ-08 LinkedIn ICP before starting; save to `.work.biz/strategy/linkedin-icp.md`
+6. **Ops skill:** `@biz-content challenge` for 30-day plan; `@content-social write linkedin carousel` for highest-reach drafts
+
 ## Reddit
 
 Rule: Each subreddit has its own culture and rules. Research before posting.
@@ -79,4 +90,5 @@ Rule: **External links are penalized.** Prefer native content. Links go in first
 ## Reference
 
 - Concept: BIZ-07 Content Platform Algorithms (`concepts/content-platform-algorithms/prompt.md`)
-- Skills: `content-writing/skill.md` § LinkedIn post, `content-social/skill.md` § LinkedIn quality rules
+- Concept: BIZ-08 LinkedIn ICP (`concepts/linkedin-icp/prompt.md`)
+- Skills: `content-writing/skill.md` § LinkedIn post, `content-social/skill.md` § LinkedIn, `biz-content/skill.md` § challenge

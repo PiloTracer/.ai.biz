@@ -13,6 +13,7 @@ Business concept prompts that guide strategic thinking and decision-making. Each
 | BIZ-05 | Sales Process | Designing or improving sales |
 | BIZ-06 | Operations | Scaling delivery and operations |
 | BIZ-07 | Content Platform Algorithms | Maximizing organic reach per platform; content type, link strategy, timing, anti-patterns |
+| BIZ-08 | LinkedIn ICP | Calibrating LinkedIn content to the buyer who engages on-platform (titles, hooks, formats) |
 
 ### Trigger Table
 
@@ -22,7 +23,7 @@ Business concept prompts that guide strategic thinking and decision-making. Each
 | Client pushes back on price | BIZ-02 Pricing Model |
 | Content isn't generating leads | BIZ-03 Channel Strategy |
 | Publishing content but getting low reach | BIZ-07 Content Platform Algorithms |
-| Positioning feels unclear | BIZ-04 Brand Positioning |
+| LinkedIn reach is fine but wrong audience engages | BIZ-08 LinkedIn ICP |
 | Positioning feels unclear | BIZ-04 Brand Positioning |
 | Deals aren't closing | BIZ-05 Sales Process |
 | Delivery is bottleneck | BIZ-06 Operations |

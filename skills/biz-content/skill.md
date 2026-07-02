@@ -2,8 +2,8 @@
 name: biz-content
 description: >-
   Write and publish content that demonstrates expertise and attracts inbound
-  leads. Supports LinkedIn posts, articles, and repurposing across formats.
-  biz-content publish, biz-content plan, biz-content status.
+  leads. Supports LinkedIn posts, articles, 30-day challenges, and repurposing.
+  biz-content publish, biz-content plan, biz-content challenge, biz-content status.
 ---
 
 # Skill: biz-content
@@ -11,9 +11,24 @@ description: >-
 ## Purpose
 Write and publish one piece of content (LinkedIn post or article) that demonstrates your expertise and attracts inbound leads. No pitching. No "DM me."
 
-> **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@content-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@content-writing`.
+> **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing, consistency challenges). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@content-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@content-writing`. For drafts, invoke `@content-social write linkedin` or `write linkedin carousel` after planning.
 
-## Process
+## Parse invocation
+
+| User says | Mode |
+|-----------|------|
+| `@biz-content publish` | Run the publish workflow (topic → draft → review → post → engage) |
+| `@biz-content plan` | Seasonal calendar + batch scheduling |
+| `@biz-content challenge` | 30-day LinkedIn consistency plan (default) |
+| `@biz-content challenge - createimpact` | Same plan framed for LinkedIn #CreateImpact |
+| `@biz-content challenge - 30d linkedin` | Explicit 30-day LinkedIn challenge |
+| `@biz-content status` | Content performance tracker review |
+
+**Default:** `publish` if no verb matches and the user wants to create/post content now.
+
+---
+
+## Mode: publish — Write and post one piece
 
 ### 1. Choose Topic
 Pick from one of the 4 topic buckets:
@@ -94,13 +109,66 @@ Align your posts to the current quarter's theme. It makes your content feel time
 ### Batch Scheduling
 Block 2-3 hours to write 4 posts at once. Follow the 45-60 min per post time budget, but save setup/context-switching time by doing all topic selection and hook drafting in one pass.
 
+## Mode: challenge — 30-day LinkedIn consistency
+
+Time-boxed posting program for **share expertise, grow impact, post consistently**. Use for LinkedIn official programs (e.g. #CreateImpact) or any 30-day cadence.
+
+### Before you start
+
+1. **`@biz-brand audit`** — profile communicates one expertise area in 5 seconds
+2. **LinkedIn ICP** — if `.work.biz/strategy/linkedin-icp.md` is missing, run BIZ-08 (`concepts/linkedin-icp/prompt.md`) first
+3. Read `standards/*PLATFORM-ALGORITHM-STANDARD*` — binding link and format rules
+
+### Format mix (non-negotiable)
+
+| Format | Frequency | Why |
+|--------|-----------|-----|
+| **Text post** | 2–3× / week | Stories, lessons, hot takes |
+| **Carousel (document)** | ≥1× / week | Highest organic reach on LinkedIn (3–5× text) |
+| **Video** | Optional 1× / 2 weeks | Behind-the-scenes, quick tips |
+
+Draft carousels with `@content-social write linkedin carousel - <topic>`. Draft text with `@content-social write linkedin - <topic>`.
+
+### 30-day plan table
+
+Output this table. Rotate topic buckets; no same bucket 3 days in a row.
+
+| Day | Format | Topic bucket | Hook seed | Challenge tag | Draft command |
+|-----|--------|--------------|-----------|---------------|---------------|
+| 1 | text | Architecture lesson | Opening expertise statement | #CreateImpact if createimpact mode | `@content-social write linkedin - …` |
+| 2 | — | — | Rest / engage only | — | Comment on 5 ICP posts |
+| … | … | … | … | … | … |
+
+**Cadence:** 3 posts per week (e.g. Tue / Thu / Sat or Mon / Wed / Fri). Non-post days = comment engagement on target buyer posts (10 min).
+
+**#CreateImpact mode:** Add `#CreateImpact` on **one post per week** (days 1, 8, 15, 22, 29). Do not tag every post.
+
+### Posting ritual (every publish day)
+
+1. Post body — **no external links**
+2. First comment within 60 seconds — links if needed
+3. First 60 minutes — reply to every comment; comment on 5–10 ICP posts
+4. Log in tracker (`status` mode): format, hook style, impressions at 48h
+
+### Weekly review (end of weeks 1–4)
+
+| Question | Action if no |
+|----------|--------------|
+| Carousel outperformed text? | Increase carousel ratio next week |
+| Comments from target titles? | Revisit `linkedin-icp.md` hooks |
+| <200 impressions after 6 posts? | Change hook style or posting time (see Failure Mode below) |
+
+### Challenge completion
+
+After 30 days: run `@biz-content status`, identify best hook × format combo, continue at 2–4 posts/week using `@biz-content plan`.
+
 ## Mode: status — Content Performance Tracking
 
 ### Content Tracker Template
 
-| Post | Topic Bucket | Hook Style | Impressions | Engagement | Inbounds | Notes |
-|------|-------------|------------|-------------|------------|----------|-------|
-| | | A/B/C | | | | |
+| Post | Topic Bucket | Format | Hook Style | Impressions | Engagement | Inbounds | Notes |
+|------|-------------|--------|------------|-------------|------------|----------|-------|
+| | | text / carousel / video | A/B/C | | | | |
 
 After 8 posts, look for patterns:
 - Which hook style gets the most engagement? → Use that more.

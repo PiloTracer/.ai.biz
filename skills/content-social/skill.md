@@ -11,6 +11,7 @@ description: >-
   @content-writing.
   content-social write, content-social research, content-social repurpose,
   content-social strategy, content-social plan, content-social status.
+  LinkedIn: write linkedin, write linkedin carousel.
 ---
 
 # content-social
@@ -29,7 +30,8 @@ Generate platform-native social media content. Every platform has a different cu
 |-----------|------|
 | `@content-social write reddit - <topic>` | Generate a Reddit post (self-post, comment, AMA thread) |
 | `@content-social write instagram - <topic>` | Generate Instagram content (caption + visual brief, carousel script, story) |
-| `@content-social write linkedin - <topic>` | Generate a LinkedIn post calibrated to professional audience |
+| `@content-social write linkedin - <topic>` | Generate a LinkedIn text post calibrated to professional audience |
+| `@content-social write linkedin carousel - <topic>` | Generate a LinkedIn document/carousel (slide copy + caption + first comment) |
 | `@content-social write facebook - <topic>` | Generate Facebook content (group post, page update, community post) |
 | `@content-social write x - <topic>` | Generate an X (Twitter) post (tweet, thread, reply) calibrated to real-time, concise format |
 | `@content-social research reddit - <topic/keyword>` | Find trending discussions, active threads, and content gaps on Reddit |
@@ -59,6 +61,7 @@ Read, if they exist:
 | File | What it gives you |
 |------|-------------------|
 | `.work.biz/strategy/target-buyer-profile.md` | Who consumes this content, their fears, values, vocabulary |
+| `.work.biz/strategy/linkedin-icp.md` | How the buyer shows up on LinkedIn — titles, hook language, format preference |
 | `.work.biz/strategy/one-pager.md` | Niche, unified offer, price range, geography |
 | `.work.biz/strategy/channel-plan.md` | Primary channel — determines which platforms are primary vs secondary |
 | `.work.biz/context/HANDOFF.md` | Recent decisions; avoid contradicting them |
@@ -86,10 +89,13 @@ LOADED CONTEXT
   Audience:     <buyer persona or "general tech-aware readers">
   Stack:        <concrete tech or "unspecified">
   Primary channel: <from channel-plan or "unspecified">
+  LinkedIn ICP:   <titles + hook vocabulary or "unspecified — using BIZ-08 defaults">
   Gaps:         <what's missing that the user should supply for better output>
 ```
 
 If critical gaps exist (no audience, no offer), name them and ask **one** consolidated question only if they would materially change platform selection or content direction. Otherwise proceed with profession-quality defaults.
+
+**LinkedIn only:** If `linkedin-icp.md` is missing but LinkedIn is the platform, note the gap and apply BIZ-08 defaults (specific hooks, carousel for save-worthy frameworks, no buzzwords). Suggest `@biz-content challenge` or running BIZ-08 after delivery if the user is building a cadence.
 
 ---
 
@@ -394,6 +400,43 @@ COMMENT WITH LINK (if applicable)
 - Second-best: Monday and Friday, same windows
 - Avoid: weekends, late nights
 - Test and verify for your specific audience
+
+### LinkedIn carousel (document post)
+
+Use when the topic is a **framework, checklist, or step-by-step** — content the ICP would save. Invoke via `write linkedin carousel - <topic>`.
+
+**Specs:** 6–12 slides · 1080×1350px (4:5) or 1080×1080px · PDF upload · ≤40 words per slide
+
+**Deliverable structure:**
+
+```
+SLIDE 1 — HOOK
+  Title only. The reason to swipe. Specificity > mystery.
+
+SLIDES 2–N — ONE IDEA PER SLIDE
+  Headline (≤8 words) + 1–2 supporting lines max.
+  Progressive logic: problem → insight → steps → outcome.
+
+FINAL SLIDE — INSIGHT + CTA
+  The screenshot-worthy line + conversation prompt (not "DM me").
+
+COMPANION CAPTION (for the post above the document)
+  2–4 lines max. Restates hook. No external links.
+
+FIRST COMMENT (if links needed)
+  "Links to [resource]: [URLs]"
+
+DESIGN NOTES
+  Left-aligned text, high contrast, one visual concept per slide.
+  No stock photos. Brand colors if loaded from brand guide.
+```
+
+**Carousel quality rules:**
+
+1. Slide 1 must work without context — it's the thumbnail in feed.
+2. Each slide must be satisfying alone (partial swipes happen).
+3. Prefer numbered frameworks ("3 mistakes…", "5-step…") when the topic allows.
+4. Same external-link rule: URLs in first comment only, never on slides or caption.
 
 ---
 
@@ -875,6 +918,7 @@ Different platforms support different levels of depth. Structure your content py
 - [ ] Is the CTA platform-appropriate (no "DM me" on Reddit, no external links in body on Instagram)?
 - [ ] **LinkedIn:** Are all external links stripped from the post body and placed as a first-comment suggestion?
 - [ ] **LinkedIn:** Has the operator been reminded to post the link as the first comment?
+- [ ] **LinkedIn carousel:** One idea per slide, ≤40 words/slide, hook on slide 1, no links on slides?
 - [ ] Would this post be upvoted/liked/shared by the target audience, not just the author?
 - [ ] Is the technology tilt present (for tech-positioned projects)?
 - [ ] Are self-references earned and disclosed, not promotional?
@@ -900,6 +944,7 @@ You may only claim the task complete when all are true:
 | Mode | Time |
 |------|------|
 | `write` (single platform, short-form) | 15-25 min |
+| `write linkedin carousel` | 25-35 min |
 | `write` (single platform, long-form, e.g. Reddit self-post) | 30-45 min |
 | `research` (single platform, focused topic) | 15-25 min |
 | `research` (single platform, broad scan) | 25-40 min |
@@ -922,7 +967,8 @@ This skill has **no hard prerequisite gate** — it can run at any time, like `c
 | `@content-writing write` | Draft the core long-form content first, then use `@content-social repurpose` to platform-adapt it |
 | `@biz-community find` | Find communities (subreddits, groups, accounts) to post in. Run before `@content-social write reddit` or `write facebook` |
 | `@biz-community engage` | Day-to-day comment engagement — complements platform-specific posts |
-| `@biz-content publish` | LinkedIn publishing ops (calendar, tracker, engagement cadence) — ops layer |
+| `@biz-content publish` | LinkedIn publishing ops (calendar, tracker, challenge, engagement cadence) |
+| `@biz-content challenge` | 30-day LinkedIn plan — run before a batch of `write linkedin` drafts |
 | `@biz-strategy certify` | Ensure target buyer and channel plan are defined before committing to a platform strategy |
 | `@content-writing audit` | Audit a draft before platform-adapting it |
 | `@content-social research` | Research trending topics and content gaps before writing |

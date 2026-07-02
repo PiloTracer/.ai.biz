@@ -35,6 +35,8 @@ Every social platform uses a distinct algorithm to determine which content reach
 - **Reply to every comment within 2 hours** to signal engagement
 - **Best posting time:** Tue-Thu, 8-10 AM or 12-1 PM local audience time
 - **Anti-patterns:** "Agree?" (engagement bait, now penalized), "Copy-paste this", personal stories with no professional payoff, same hashtags on every post
+- **Creator challenges:** `#CreateImpact` and similar — 2–4 posts/week, ≥1 carousel/week, challenge hashtag on one post/week; use `@biz-content challenge`
+- **LinkedIn ICP:** BIZ-08 (`concepts/linkedin-icp/prompt.md`) — calibrate hooks and formats to titles that comment, not lurk
 
 ### Reddit
 - **Upvote/downvote ratio** is the core ranking signal — net sentiment matters

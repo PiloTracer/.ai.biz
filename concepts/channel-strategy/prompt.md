@@ -14,3 +14,4 @@
 - Secondary channel list
 - Weekly time allocation per channel
 - 30-day channel experiment plan
+- If LinkedIn is primary: run BIZ-08 LinkedIn ICP (`concepts/linkedin-icp/prompt.md`) and save to `.work.biz/strategy/linkedin-icp.md`
