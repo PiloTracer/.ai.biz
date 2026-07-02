@@ -7,6 +7,24 @@ All notable changes to Business OS are documented here.
 ### Added
 - (future)
 
+## [v0.4.3] - 2026-07-02
+
+### Added
+- **`content-social` skill** — platform-native content for Reddit, Instagram, LinkedIn, Facebook, X
+- **Content platform algorithm** concept and binding standard
+- **GitHub Actions CI** — `framework-verify.yml` runs on push/PR to main and on version tags
+- **Deploy safety modes** — no-overwrite default on deploy scripts; `--update` and `--force` flags
+
+### Changed
+- **`deploy-files` / `deploy-basic` / `deploy-repo`** — aligned no-overwrite/update/force behavior across scripts and skills
+- **`framework-verify.sh`** and **`bootstrap.sh`** — updated verification and bootstrap flow
+- **`README.md`** — Linux platform note, customization guidance, 22 skills, deploy-basic in skills table
+- **LinkedIn external-link rule** enforced across content skills
+- **`session-control`** alias for `session-biz`
+
+### Removed
+- **tools-project integration** from Business OS — parent Agent OS (`.ai/`) now owns MCP/host config
+
 ## [v0.4.2] - 2026-07-01
 
 ### Added

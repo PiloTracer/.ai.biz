@@ -6,70 +6,66 @@ AI_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$AI_ROOT"
 
 errors=0
+note() { echo ""; echo "==> $1"; }
+ok() { echo "    OK: $1"; }
+die() { echo "    FAIL: $1"; errors=$((errors + 1)); }
 
 echo "=== Business OS Framework Verify ==="
 
-# Check required tools
-for cmd in git rsync sed grep find; do
-  if ! command -v "$cmd" &>/dev/null; then
-    echo "FAIL: missing required tool: $cmd"
-    errors=$((errors + 1))
-  fi
+note "Required tools"
+for cmd in git rsync bash grep find; do
+  if command -v "$cmd" &>/dev/null; then ok "$cmd"; else die "missing $cmd"; fi
 done
 
-# Check that we're in a git repo
-if ! git rev-parse --is-inside-work-tree &>/dev/null; then
-  echo "FAIL: not a git repository"
-  errors=$((errors + 1))
-fi
+note "Git repo"
+git rev-parse --is-inside-work-tree &>/dev/null && ok "inside git work tree" || die "not a git repository"
 
-# Check all skills exist and have skill.md
-skills_dir="$AI_ROOT/skills"
+note "Core files"
+for f in README.md START_HERE.md LICENSE templates/bootstrap.sh \
+  scripts/deploy-basic.sh scripts/deploy-files.sh scripts/deploy-repo.sh; do
+  [[ -f "$AI_ROOT/$f" ]] && ok "$f" || die "missing $f"
+done
+
+note "Skills registered"
 skill_count=0
-for skill_dir in "$skills_dir"/*/; do
-  name="$(basename "$skill_dir")"
-  if [[ -f "$skill_dir/skill.md" ]]; then
-    skill_count=$((skill_count + 1))
-  else
-    echo "WARN: skill $name missing skill.md"
-  fi
-done
-echo "  Skills: $skill_count"
+while IFS= read -r d; do
+  id="$(basename "$d")"
+  skill_count=$((skill_count + 1))
+  [[ -f "$d/skill.md" ]] || die "skills/${id}/skill.md missing"
+  grep -qE "^\| ${id} " "$AI_ROOT/skills/README.md" || die "skills/${id} not in skills/README.md"
+done < <(find "$AI_ROOT/skills" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | sort)
+ok "${skill_count} skills registered"
 
-# Check that all skills are registered in README
-readme_count=$(grep -cE '^\| (deploy-|biz-|session-|content-writing|business-ideas|product-service-ideas)' "$AI_ROOT/skills/README.md" 2>/dev/null || echo 0)
-echo "  Skills registered in README: $readme_count"
+note "deploy-files in-place scaffold"
+DF_SMOKE="$(mktemp -d)"
+pushd "$DF_SMOKE" >/dev/null
+bash "$AI_ROOT/scripts/deploy-files.sh" . >/dev/null
+[[ -f .cursorrules ]] || die "deploy-files in-place missing .cursorrules"
+[[ -f .work.biz/context/HANDOFF.md ]] || die "deploy-files in-place missing .work.biz/context/HANDOFF.md"
+[[ -d .ai.biz/skills ]] || die "deploy-files in-place missing .ai.biz/skills"
+popd >/dev/null
+ok "deploy-files in-place creates .ai.biz/ + .work.biz/ + .cursorrules"
 
-# Check .work.biz skeleton exists
-for f in context/HANDOFF.md plans/NEXT.md plans/UNKNOWNS.md; do
-  if [[ ! -f "$AI_ROOT/.work.biz/$f" ]]; then
-    echo "WARN: missing .work.biz/$f"
-  fi
-done
+note "deploy-repo --status"
+bash "$AI_ROOT/scripts/deploy-repo.sh" --status >/dev/null
+bash "$AI_ROOT/scripts/deploy-repo.sh" --status "$DF_SMOKE" >/dev/null
+ok "deploy-repo --status reports source + target"
+rm -rf "$DF_SMOKE"
 
-# Check core files exist
-for f in README.md START_HERE.md CONVENTIONS.md PROCESS_ROUTER.md LICENSE .gitignore CHANGELOG.md; do
-  if [[ -f "$AI_ROOT/$f" ]]; then
-    echo "  OK: $f"
-  else
-    echo "FAIL: missing $f"
-    errors=$((errors + 1))
-  fi
-done
-
-# Check deploy scripts exist and are executable
-for f in scripts/deploy-files.sh scripts/deploy-repo.sh; do
-  if [[ -x "$AI_ROOT/$f" ]]; then
-    echo "  OK: $f (executable)"
-  else
-    echo "WARN: $f missing or not executable"
-  fi
-done
+note "deploy-basic thin-client scaffold"
+DB_SMOKE="$(mktemp -d)"
+bash "$AI_ROOT/scripts/deploy-basic.sh" "$DB_SMOKE" >/dev/null
+if [[ -f "${DB_SMOKE}/.cursorrules" ]] && grep -q 'AGENT_OS_SOURCE=' "${DB_SMOKE}/.cursorrules"; then
+  ok "deploy-basic creates thin-client .cursorrules + .work.biz/"
+else
+  die "deploy-basic thin-client scaffold failed"
+fi
+rm -rf "$DB_SMOKE"
 
 echo ""
 if [[ "$errors" -eq 0 ]]; then
-  echo "=== All checks passed ==="
+  echo "framework-verify: all checks passed"
 else
-  echo "=== $errors error(s) found ==="
+  echo "framework-verify: $errors error(s)"
 fi
 exit "$errors"

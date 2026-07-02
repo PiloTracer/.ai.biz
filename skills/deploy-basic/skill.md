@@ -62,7 +62,7 @@ Thin-client deploy of the `.ai.biz` (Business OS) framework. The target project 
 | Source `templates/cursorrules.template` missing | **Block**: source is not a valid `.ai.biz` framework root |
 | Source `skills/` directory missing | **Block**: source is not a valid `.ai.biz` framework root |
 | Target dir does not exist | **Block**: report missing path |
-| Target already has local `.ai.biz/skills/` | **Warn** fat-client leak: target was previously bootstrapped fat; thin-client would duplicate. Ask user to confirm intent (proceed leaves the local `.ai.biz/` in place — deploy-basic does not delete it). |
+| Target already has local `.ai.biz/skills/` | **Block** fat-client leak (use `--force` to override, or remove local `.ai.biz/` first) |
 | Target `.cursorrules` exists + lacks `AGENT_OS_SOURCE=` line | In `update` mode → flag as **MERGE CANDIDATE** (the Source-resolution section is missing); in default mode → skip (preserve) and report that source-resolution is not wired. |
 
 ---
@@ -74,6 +74,8 @@ Thin-client deploy of the `.ai.biz` (Business OS) framework. The target project 
 3. Write `.cursorrules` into the target from the template, substituting `AGENT_OS_SOURCE=REPLACE_BASICSOURCE` → `AGENT_OS_SOURCE=<absolute BIZ_ROOT>`. **No-overwrite** if `.cursorrules` exists; `--force` overwrites.
 4. Create `.work.biz/` skeleton by copying template files and creating directory structure. `copy_if_missing` enforces no-overwrite.
 5. Report: source pointer value, `.work.biz/` presence, fat-client leak check, next steps.
+
+**No local `opencode.json`.** When co-installed with Agent OS, register skills via parent `.ai/opencode.json`.
 
 **Idempotent re-run.** Safe to re-run; no-overwrite preserves target customizations. The source pointer is re-synced only in `update` mode (or `--force`).
 

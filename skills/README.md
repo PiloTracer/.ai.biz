@@ -26,6 +26,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 
 | Skill id | Folder | Role |
 |----------|--------|------|
+| deploy-basic | `deploy-basic/` | Thin-client bootstrap (`.cursorrules` + `.work.biz/`); skills load via `AGENT_OS_SOURCE` |
 | deploy-files | `deploy-files/` | Deploy `.ai.biz/` files into target project |
 | deploy-repo | `deploy-repo/` | Full git-based deploy (clone or archive) |
 | biz-bootstrap | `biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |

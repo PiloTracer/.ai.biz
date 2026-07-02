@@ -23,13 +23,42 @@
 #
 # Usage:
 #   bash scripts/deploy-basic.sh <target-path>              # no-overwrite (skip existing)
+#   bash scripts/deploy-basic.sh --status [target-path]   # read-only report
 #   bash scripts/deploy-basic.sh <target-path> --update    # no-overwrite + merge candidate list
 #   bash scripts/deploy-basic.sh <target-path> --force     # overwrite local scaffold (legacy)
 #   BIZ_SOURCE=/path/.ai.biz bash scripts/deploy-basic.sh <target-path>
 #
 set -euo pipefail
 
-RAW_TARGET="${1:?Usage: $0 <target-path> [--force|--update]}"
+if [[ "${1:-}" == "--status" ]]; then
+  shift
+  RAW_TARGET="${1:-.}"
+  if [[ "$RAW_TARGET" == "." || "$RAW_TARGET" == "$PWD" ]]; then
+    DEST_ROOT="$(pwd)"
+  else
+    DEST_ROOT="$(cd "$RAW_TARGET" && pwd)"
+  fi
+  CURS_DEST="${DEST_ROOT}/.cursorrules"
+  echo "=== deploy-basic status → $DEST_ROOT ==="
+  if [[ -f "$CURS_DEST" ]]; then
+    echo "  .cursorrules: present"
+    src="$(grep -oE 'AGENT_OS_SOURCE=[^ ]*' "$CURS_DEST" 2>/dev/null | head -1 | cut -d= -f2- || true)"
+    if [[ -n "$src" && "$src" != "REPLACE_BASICSOURCE" ]]; then
+      if [[ -d "$src" ]]; then echo "  AGENT_OS_SOURCE: $src (reachable)"; else echo "  AGENT_OS_SOURCE: $src (UNREACHABLE)"; fi
+    elif grep -q 'AGENT_OS_SOURCE=' "$CURS_DEST"; then
+      echo "  AGENT_OS_SOURCE: <unset token>"
+    else
+      echo "  AGENT_OS_SOURCE: missing (fat-client template?)"
+    fi
+  else
+    echo "  .cursorrules: MISSING"
+  fi
+  [[ -d "${DEST_ROOT}/.work.biz/context" ]] && echo "  .work.biz/: present" || echo "  .work.biz/: missing"
+  [[ -d "${DEST_ROOT}/.ai.biz/skills" ]] && echo "  local .ai.biz/skills/: present (WARN — fat-client leak)" || echo "  local .ai.biz/skills/: absent (thin-client ok)"
+  exit 0
+fi
+
+RAW_TARGET="${1:?Usage: $0 [--status] <target-path> [--force|--update]}"
 shift || true
 MODE="skip"
 while [[ $# -gt 0 ]]; do
@@ -49,7 +78,11 @@ else
 fi
 
 # Target = repo root of the consumer (the dir that will hold .cursorrules + .work.biz/).
-DEST_ROOT="$(cd "$RAW_TARGET" && pwd)"
+if [[ "$RAW_TARGET" == "." || "$RAW_TARGET" == "$PWD" ]]; then
+  DEST_ROOT="$(pwd)"
+else
+  DEST_ROOT="$(cd "$RAW_TARGET" && pwd)"
+fi
 
 if [[ ! -d "$DEST_ROOT" ]]; then
   echo "ERROR: target directory does not exist: $DEST_ROOT" >&2
@@ -80,6 +113,16 @@ WORK_DIRS=(
 echo "=== deploy-basic (Business OS) → $DEST_ROOT (thin-client bootstrap) ==="
 echo "  source: $BIZ_ROOT"
 echo "  mode:   $MODE (no-overwrite by default)"
+
+if [[ -d "${DEST_ROOT}/.ai.biz/skills" ]]; then
+  echo "  WARN: target has local .ai.biz/skills/ directory (fat-client leak)"
+  if [[ "$MODE" != "force" ]]; then
+    echo "  BLOCKED: use --force to confirm thin-client on a fat-client target,"
+    echo "    or remove the local .ai.biz/ directory first."
+    exit 1
+  fi
+  echo "  --force: proceeding (mixed state accepted by operator)"
+fi
 
 # Build the substituted .cursorrules content.
 subst_cursorules() {
@@ -130,34 +173,12 @@ if [[ "$MODE" == "update" ]] && [[ -f "$CURS_DEST" ]] && ! grep -q 'AGENT_OS_SOU
   echo "    (agent merges the section from the current template; preserves target REPLACE tokens)"
 fi
 
-# Step 2: .work.biz/ skeleton (no-overwrite by default).
-WORK_DEST="${DEST_ROOT}/.work.biz"
-TPL_WORK="${BIZ_ROOT}/templates/work"
-
-mkdir -p "$WORK_DEST"
-
-copy_if_missing() {
-  local src="$1" dest="$2"
-  if [[ -e "$dest" ]]; then
-    echo "  work: skip (exists): ${dest#${DEST_ROOT}/}"
-  else
-    mkdir -p "$(dirname "$dest")"
-    cp "$src" "$dest"
-    echo "  work: created: ${dest#${DEST_ROOT}/}"
-  fi
-}
-
-copy_if_missing "${TPL_WORK}/README.md.template" "${WORK_DEST}/README.md"
-copy_if_missing "${TPL_WORK}/context/HANDOFF.md.template" "${WORK_DEST}/context/HANDOFF.md"
-copy_if_missing "${TPL_WORK}/plans/NEXT.md.template" "${WORK_DEST}/plans/NEXT.md"
-copy_if_missing "${TPL_WORK}/plans/UNKNOWNS.md.template" "${WORK_DEST}/plans/UNKNOWNS.md"
-copy_if_missing "${TPL_WORK}/pipeline/pipeline_tracker.md.template" "${WORK_DEST}/pipeline/pipeline_tracker.md"
-copy_if_missing "${TPL_WORK}/research/research_index.md.template" "${WORK_DEST}/research/research_index.md"
-
-# Create sub-directories for organization.
-for dir in "${WORK_DIRS[@]}"; do
-  mkdir -p "${WORK_DEST}/${dir}" 2>/dev/null || true
-done
+# Step 2: .work.biz/ skeleton via bootstrap.sh (no-overwrite).
+BOOTSTRAP_SKIP_CURSERRULES=1 REPO_ROOT="$DEST_ROOT" BIZ_SOURCE="$BIZ_ROOT" \
+  bash "$BIZ_ROOT/templates/bootstrap.sh" \
+  > /tmp/deploy-basic-biz-bootstrap.$$.log 2>&1 || { cat /tmp/deploy-basic-biz-bootstrap.$$.log; rm -f /tmp/deploy-basic-biz-bootstrap.$$.log; exit 1; }
+grep -E '(created:|skip )' /tmp/deploy-basic-biz-bootstrap.$$.log | sed 's/^/  work: /' || true
+rm -f /tmp/deploy-basic-biz-bootstrap.$$.log
 
 # Step 3: --update — list existing-but-differing files as merge candidates.
 if [[ "$MODE" == "update" ]]; then
@@ -173,6 +194,7 @@ if [[ "$MODE" == "update" ]]; then
     rm -f "$tmp_cur"
   fi
   # .work.biz/ skeleton files vs source templates
+  TPL_WORK="${BIZ_ROOT}/templates/work"
   for f in "${WORK_FILES[@]}"; do
     src="${TPL_WORK}/${f}.template"
     dest="${DEST_ROOT}/.work.biz/${f}"
@@ -189,7 +211,7 @@ echo ""
 echo "=== Done: thin-client bootstrap (Business OS) → $DEST_ROOT ==="
 echo "  .cursorrules: $([ -f "$CURS_DEST" ] && echo present || echo MISSING)"
 echo "  AGENT_OS_SOURCE: $(grep -oE 'AGENT_OS_SOURCE=[^ ]*' "$CURS_DEST" 2>/dev/null | head -1 | cut -d= -f2- || echo '<unset — fat-client>')"
-echo "  .work.biz/: $([ -d "${WORK_DEST}" ] && echo present || echo MISSING)"
+echo "  .work.biz/: $([ -d "${DEST_ROOT}/.work.biz" ] && echo present || echo MISSING)"
 echo "  skills (local): $([ -d "${DEST_ROOT}/.ai.biz/skills" ] && echo "present — fat-client (unexpected for basic)" || echo 'absent — thin-client (skills load from source)')"
 echo ""
 echo "Next steps in target project:"

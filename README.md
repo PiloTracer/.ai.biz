@@ -4,7 +4,11 @@
 
 > Your freelance/consulting business has no CRM, no sales playbook, no repeatable pipeline — just you guessing what to do next. **Business OS fixes that** with a complete set of repeatable **skills**, binding **standards**, and a tiny **project-memory** folder.
 
-**Works with:** Cursor, Claude Code, Codex, opencode, and any agent that reads project files.
+**Platform:** Developed and verified on **Linux** (bash, git, rsync). Shell scripts and docs assume a POSIX environment. macOS, Windows (WSL2), and other OSes work when you adapt paths, line endings, and local tooling in your consumer repo — run `bash scripts/framework-verify.sh` to confirm the baseline toolchain on your host.
+
+**Customization:** Business OS is a starting point, not a fixed contract. You are already working with a coding agent — use the same workflow to tailor skills, standards, `.cursorrules`, and `.work.biz/` to your repository and preferences. Fork, trim, or extend the framework in your consumer project (or in this repo when self-hosting) as your process evolves; after substantive changes to shared scripts, re-run `bash scripts/framework-verify.sh` to confirm the baseline still holds.
+
+**Works with:** Cursor, Claude Code, Codex, and any agent that reads project files. OpenCode and other host configs are owned by your primary Agent OS (`.ai/`) when co-installed — this framework does not ship a local `opencode.json`.
 
 ```bash
 bash .ai.biz/templates/bootstrap.sh    # 30-second setup, any project
@@ -25,7 +29,7 @@ Then in chat:
 
 ## What you get
 
-- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-discovery`, `@biz-proposal`, … run the playbook (20 skills in total).
+- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-discovery`, `@biz-proposal`, … run the playbook (22 skills in total).
 - **Standards** — binding contracts (business conventions, pricing standard, brand guide, content standard) keep agent output honest.
 - **`.work.biz/`** — the project's memory: strategy docs, plans, pipeline tracker, `HANDOFF.md`, `NEXT.md`. Survives session boundaries.
 - **Gates** — strategy-ready, brand-ready, pipeline-ready, sales-ready; skip a step and the agent **stops** with a redirect.
@@ -145,7 +149,8 @@ All **20** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-market-validate** | Test offers, niches, and channels with low-cost experiments | `test` · `design` · `status` |
 | **biz-pipeline-diagnosis** | Identify which funnel stage is the bottleneck | `run` · `status` |
 | **session-biz** | Session bookends; updates HANDOFF + NEXT | `start` · `close` · `status` |
-| **deploy-files** | Deploy `.ai.biz/` into target project (clean rsync) | `copy - <path>` · `status` |
+| **deploy-files** | Deploy `.ai.biz/` into target project (no-overwrite default; `--update`/`--force`) | in-place · `copy - <path>` · `status` |
+| **deploy-basic** | Thin-client bootstrap (`.cursorrules` + `.work.biz/` only) | `update` · `status` · `- <path>` |
 | **deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
 | **biz-director** | Universal orchestrator; accepts free-text, routes to correct skills | `<free-text request>` |
 | **content-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
