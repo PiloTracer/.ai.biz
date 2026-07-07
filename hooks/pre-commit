@@ -1,0 +1,30 @@
+#!/bin/sh
+# pre-commit — change-safety gate (warn-only by default).
+
+WARN_ONLY="${WARN_ONLY:-1}"
+REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+
+SCRIPTS=""
+if [ -d "${REPO_ROOT}/scripts" ]; then
+  SCRIPTS="${REPO_ROOT}/scripts"
+elif [ -d "${REPO_ROOT}/.ai.biz/scripts" ]; then
+  SCRIPTS="${REPO_ROOT}/.ai.biz/scripts"
+else
+  exit 0
+fi
+
+for check in touch-scope-verify blast-radius-check; do
+  if [ -f "${SCRIPTS}/${check}.sh" ]; then
+    if ! bash "${SCRIPTS}/${check}.sh" 2>/dev/null; then
+      MSG="  CHECK: ${SCRIPTS}/${check}.sh"
+      if [ "$WARN_ONLY" = "1" ]; then
+        echo "WARN: ${MSG}"
+      else
+        echo "FAIL: ${MSG}" >&2
+        exit 1
+      fi
+    fi
+  fi
+done
+
+exit 0

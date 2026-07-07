@@ -61,7 +61,7 @@ Track objection patterns. Summarize recent objections encountered, categorize by
 **Response:**
 
 1. **Yes, always.** "Absolutely. I have several. Let me share the most relevant one."
-2. **Reference the most relevant project from `.work/reference/PROJECTS.md`** that matches their industry or problem type.
+2. **Reference the most relevant project from `.work.biz/reference/PROJECTS.md`** that matches their industry or problem type.
 3. **Tell the story, don't just send a link:** "One client needed [problem]. I built [solution] using [tech]. It took [timeframe]. The result was [outcome]. Here's the case study."
 4. **If you don't have an exact match:** "I haven't built exactly that, but here's something similar: [related project]. The architecture pattern is the same — the domain logic changes."
 
@@ -169,14 +169,14 @@ An objection is handled well when:
 
 ## Related Files
 
-- `.work/plans/strategy_niche_decision.md` (unified offer — ground responses in the real offer)
-- `.work/reference/PROJECTS.md` (case study references for the "similar work" objection)
+- `.work.biz/plans/strategy_niche_decision.md` (unified offer — ground responses in the real offer)
+- `.work.biz/reference/PROJECTS.md` (case study references for the "similar work" objection)
 - `skills/discovery-call.md` (precedes objections — better discovery means fewer objections)
 - `skills/pricing-decision.md` (for the pricing objection specifically)
 
 ## Status Tracking
 
-> Current status recorded in `.work/plans/progress_tracker.md`.
+> Current status recorded in `.work.biz/plans/progress_tracker.md`.
 
 | Field | Status |
 |-------|--------|

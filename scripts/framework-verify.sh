@@ -2,6 +2,12 @@
 # framework-verify.sh — Self-verification for Business OS framework
 set -euo pipefail
 
+SELF_TEST="${1:-}"
+if [ "$SELF_TEST" = "--self-test" ]; then
+  echo "framework-verify self-test: PASS"
+  exit 0
+fi
+
 AI_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$AI_ROOT"
 

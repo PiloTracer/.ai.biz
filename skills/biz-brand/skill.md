@@ -329,11 +329,11 @@ The overhaul is complete when:
 
 ## 8. Files Referenced
 
-- `.work/plans/strategy_outreach_scripts.md` §1 (headline + about templates)
-- `.work/plans/strategy_website_positioning.md` (website positioning brief)
-- `.work/plans/strategy_niche_decision.md` (unified offer language)
-- `.work/reference/PROJECTS.md` (project descriptions for proof points)
-- `.work/reference/VISUAL_GUIDE.md` (banner specs, color palette, typography)
+- `.work.biz/plans/strategy_outreach_scripts.md` §1 (headline + about templates)
+- `.work.biz/plans/strategy_website_positioning.md` (website positioning brief)
+- `.work.biz/plans/strategy_niche_decision.md` (unified offer language)
+- `.work.biz/reference/PROJECTS.md` (project descriptions for proof points)
+- `.work.biz/reference/VISUAL_GUIDE.md` (banner specs, color palette, typography)
 - `.ai.promote/skills/linkedin-overhaul.md` (LinkedIn overhaul process)
 - `.ai.promote/skills/content-publish.md` (posts for activity section)
 

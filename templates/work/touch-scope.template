@@ -1,0 +1,24 @@
+# Touch Scope — declare your change boundary before a work session
+#
+# List the top-level directories or specific files you plan to modify.
+# The pre-commit hook (if installed) warns when changed files fall
+# outside the declared scope.
+#
+# Usage: copy this file to `.work.biz/touch-scope` and edit the list
+# below. Remove or comment out entries you don't plan to touch.
+#
+# Example scope entries (uncomment + edit as needed):
+#
+# .cursorrules
+# .work.biz/
+# .work.biz/plans/
+# .work.biz/context/
+# skills/
+# skills/<skill-name>/
+# scripts/
+# hooks/
+# templates/
+# standards/
+# concepts/
+# docs/
+# examples/

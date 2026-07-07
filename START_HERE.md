@@ -33,9 +33,11 @@
        │
        ├── "I want to fix my brand / online presence"  ──► §4 Brand
        │
-       ├── "I want to publish content"           ──► `@biz-content publish`
-       │
-       ├── "I want to write an article / post / case study / email"  ──► `@content-writing write - <topic>`
+        ├── "I want to publish content"           ──► `@biz-content publish`
+        │
+        ├── "I want social content for Reddit, LinkedIn, Instagram, X, Facebook"  ──► `@content-social write - <platform>`
+        │
+        ├── "I want to write an article / post / case study / email"  ──► `@content-writing write - <topic>`
        │
        ├── "I want business / venture / pivot ideas"  ──► `@business-ideas generate - <domain>`
        │
@@ -98,6 +100,10 @@ These project-aware generative skills run any time — even before bootstrap. Th
 | Build a content calendar / topic plan | `@content-writing plan - <30 days>` |
 | Repurpose one piece into multiple formats | `@content-writing repurpose - <source>` |
 | Critique a draft | `@content-writing audit - <draft or path>` |
+| Research trending topics/gaps on a social platform | `@content-social research - <platform>` |
+| Write platform-native social content | `@content-social write - <platform>` |
+| Repurpose one asset into multiple platform formats | `@content-social repurpose - <source>` |
+| Plan a cross-platform social content calendar | `@content-social plan - <30 days>` |
 | Business / venture / pivot ideas | `@business-ideas generate - <domain>` |
 | Stress-test one idea (try to kill it) | `@business-ideas stress - <idea>` |
 | Pivot directions from current business | `@business-ideas pivot - <situation>` |

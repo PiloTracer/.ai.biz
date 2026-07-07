@@ -5,7 +5,20 @@ All notable changes to Business OS are documented here.
 ## [Unreleased]
 
 ### Added
-- (future)
+- **Change-safety gates** — `scripts/touch-scope-verify.sh`, `scripts/blast-radius-check.sh`, `scripts/gate-verify.sh` with `--self-test` support; documented in `.cursorrules` § Change safety
+- **Git hooks hygiene layer** — `hooks/prepare-commit-msg`, `hooks/commit-msg`, `hooks/pre-commit`, `hooks/post-commit` with `scripts/install-git-hooks.sh` backup mechanism; enforce `Co-authored-by` removal and `BIZ-`/type-prefixed commit subjects
+- **`templates/work/touch-scope.template`** — declare change scope before work sessions
+- **`content-social` added to `.cursorrules` skills table and `templates/cursorrules.template`** — kept in sync with `skills/README.md`
+- **System skills section in `skills/SKILL_DEPENDENCIES.md`** — documents deploy-* and session-biz gate status
+
+### Changed
+- **Fixed legacy `.work/` paths** in `skills/biz-brand`, `skills/biz-discovery`, `skills/biz-objections`, `skills/biz-strategy` → `.work.biz/`
+- **`README.md`** skill count corrected to 22; added `content-social` to skills at a glance
+- **`START_HERE.md`** decision tree and generative-skills table now reference `content-social`
+- **`HANDOFF.md`** and **`NEXT.md`** skill count corrected to 22
+- **`templates/cursorrules.template`** synchronized with `.cursorrules` (change safety, commit format, co-authored-by, source resolution, content-social)
+- **`scripts/framework-verify.sh`** and **`scripts/gate-verify.sh`** — added `--self-test` flags
+- **`scripts/install-git-hooks.sh`** — backs up existing hooks before overwriting
 
 ## [v0.4.3] - 2026-07-02
 

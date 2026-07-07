@@ -51,6 +51,10 @@ biz-referrals ask  ← no strict gate (can start anytime)
 
 `content-writing`, `content-social`, `business-ideas`, and `product-service-ideas` are **project-aware generative skills**: they have **no prerequisite gate** for `write`, `research`, `repurpose`, and `audit` modes and can be invoked at any time, even before `biz-bootstrap init`. They load the host project's own context dynamically (`.cursorrules`, `.work.biz/strategy/*`, `README.md`, stack manifests) and fall back to a bundled example profile when none exists. They produce dramatically better output when the host project is bootstrapped and strategy-certified, because audience, offer, stack, and channel are then loaded from project memory rather than guessed.
 
+## System skills (no gate)
+
+`deploy-basic`, `deploy-files`, `deploy-repo`, and `session-biz` are **infrastructure skills** with no prerequisite gate. They can be invoked at any time to manage Business OS deployment, update, and session lifecycle (`@session-biz start` / `@session-biz close` / `@session-biz context`). Deployment skills do not interact with the business gate graph. `session-biz` is aliased as `session-control` (`@session-control start`, `@session-control context`, etc.).
+
 ## biz-director (meta-skill)
 
 `biz-director` is the universal orchestrator. It has no gate itself — it can be invoked at any time. It reads project state and routes to the appropriate skill, checking that skill's prerequisites before executing.

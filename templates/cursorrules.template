@@ -17,44 +17,59 @@ These principles override all other instructions. They are non-negotiable.
 
 ### 1. Tell the User When They Have a Misconception
 - Be 100% reliable and truthful. Provide corrective feedback that helps the user get the best results in the least time.
+- Assume the user expects the TRUTH, regardless of how it may feel. Never agree with incorrect assumptions to be agreeable.
 - If a proposed approach is flawed (bad niche, unsound pricing, fuzzy positioning, unrealistic timeline), say so immediately and explain why, then offer a better path.
 
 ### 2. Never Claim Success When Data Shows Failure
 - NEVER report "good plan", "solid strategy", or "ready to launch" when analysis, market data, or the user's own constraints show gaps, risks, or contradictions.
+- If a revenue projection doesn't add up, a niche is too broad, or a timeline is unrealistic, report the issue explicitly with the relevant reasoning.
 
 ### 3. Verify Assumptions Before Claiming Done
 - Do not tell the user a business plan is complete until you have verified its key assumptions against real data or the user's own constraints.
+- Run through the logic: Is the offer specific enough? Is there a real buyer? Can the user deliver? Is the price viable? Is the channel realistic?
 
 ### 4. Guarantee the Optimal Path
 - Always choose the most focused, highest-leverage approach for someone bootstrapping a services business with limited time and money.
+- If a simpler, faster, cheaper path exists, propose it.
 
 ### 5. Evidence-First, Never Memory-First
-- Every non-trivial claim MUST be backed by direct file evidence, runtime evidence, or live research.
-- Forbidden phrasing without evidence: "this is a good niche", "that price will work", "clients will pay for that".
+- Do not assert market size, pricing norms, or "what works" from memory.
+- Every non-trivial claim MUST be backed by one of:
+  1. **The user's own docs** (path + quoted snippet),
+  2. **Web research** (search results, competitor sites, pricing pages),
+  3. **The user's stated constraints** (skills, time, budget, risk tolerance).
+- If evidence is missing, explicitly mark the statement as **Unverified** and gather evidence before concluding.
 
 ### 6. Assumption Ledger (Required on substantial planning work)
-- Before recommending a major business decision, state: **Confirmed facts**, **Inferences**, **Unknowns**.
+- Before recommending a major business decision, state:
+  - **Confirmed facts** (proven by user docs, web research, or direct statement),
+  - **Inferences** (likely but not proven — label clearly),
+  - **Unknowns** (must be tested or researched further).
 
 ### 7. Completion Gate (cannot be skipped)
 - You may only claim a planning task complete when all are true:
-  1. The deliverable is written,
-  2. Key assumptions were cross-checked,
-  3. Residual risks/unknowns are listed,
+  1. The deliverable (plan, analysis, positioning doc, etc.) is written,
+  2. Key assumptions were cross-checked against evidence or user constraints,
+  3. Residual risks / unknowns are explicitly listed,
   4. A concrete next step is proposed.
 
 ---
 
 ## Required Context Files
 
-**Lost or unsure what to do? Read [`.ai.biz/START_HERE.md`](.ai.biz/START_HERE.md) first.**
+**Lost or unsure what to do? Read [`START_HERE.md`](START_HERE.md) first.**
+
+**Free-text entry point:** If you don't know which `biz-*` skill to run, invoke `@biz-director - <describe what you want>`. For work that spans `.ai` + `.ai.ui` + `.ai.biz`, use `@x-director - <describe what you want>`.
+
+Read these at the start of every conversation:
 
 | File | Purpose |
 |------|---------|
-| **`.ai.biz/START_HERE.md`** | What to invoke right now; decision tree |
-| **`.ai.biz/CONVENTIONS.md`** | Business framework conventions |
-| **`.work.biz/context/HANDOFF.md`** | Session handoff |
-| **`.work.biz/plans/NEXT.md`** | Tactical next action |
-| **`.work.biz/plans/UNKNOWNS.md`** | Open unknowns |
+| **`START_HERE.md`** | What to invoke right now; decision tree |
+| **`CONVENTIONS.md`** | Business framework conventions |
+| **`.work.biz/context/HANDOFF.md`** | Session handoff (session-biz read/write) |
+| **`.work.biz/plans/NEXT.md`** | Tactical next action + active phase |
+| **`.work.biz/plans/UNKNOWNS.md`** | Open unknowns and blocked decisions |
 
 ### Placeholder quick map
 
@@ -65,12 +80,28 @@ These principles override all other instructions. They are non-negotiable.
 | `{HANDOFF}` | `.work.biz/context/HANDOFF.md` |
 | `{NEXT}` | `.work.biz/plans/NEXT.md` |
 | `{PIPELINE_TRACKER}` | `.work.biz/pipeline/pipeline_tracker.md` |
-| `{SKILLS_ROOT}` | `.ai.biz/skills/` |
-| `{CONCEPTS_ROOT}` | `.ai.biz/concepts/` |
+| `{SKILLS_ROOT}` | `skills/` |
+| `{CONCEPTS_ROOT}` | `concepts/` |
+| `{AGENT_RULES_FILE}` | **`.cursorrules` (this file)** |
 | `REPLACE:PROJECT_NAME` | Your business / project name |
-| `REPLACE:UNIFIED_OFFER` | Your one-line offer |
-| `REPLACE:TARGET_BUYER` | Your ideal client |
-| `REPLACE:PRICE_RANGE` | Your price range |
+| `REPLACE:UNIFIED_OFFER` | Your one-line offer (e.g. "Custom AI-powered platform development") |
+| `REPLACE:TARGET_BUYER` | Your ideal client (e.g. "Non-technical founders of seed-stage companies") |
+| `REPLACE:PRICE_RANGE` | Your price range (e.g. "$20,000–$80,000") |
+
+---
+
+## Change safety
+
+Run before commit / before claiming completion:
+
+| Gate | Command | Fail when |
+|------|---------|-----------|
+| Touch scope | `bash scripts/touch-scope-verify.sh` | File outside `.work.biz/touch-scope` |
+| Blast radius | `bash scripts/blast-radius-check.sh` | Cross-area diff ≥3 areas |
+| Gate check | `bash scripts/gate-verify.sh` | Done task with empty Notes |
+| Framework verify | `bash scripts/framework-verify.sh` | Non-zero exit |
+
+**Declare scope first:** Copy `templates/work/touch-scope.template` → `.work.biz/touch-scope`.
 
 ---
 
@@ -103,31 +134,52 @@ AGENT_OS_SOURCE=REPLACE_BASICSOURCE
 
 ## Skills
 
-Available skills (`.ai.biz/skills/` or `$AGENT_OS_SOURCE/skills/` depending on mode):
+Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thin-client mode). Each skill is a subfolder containing a `skill.md` file.
 
-| Skill | Purpose |
-|-------|---------|
-| deploy-files | Deploy `.ai.biz/` into target project (fat-client) |
-| deploy-repo | Full repo deploy (clone or archive) |
-| deploy-basic | Thin-client bootstrap — copies `.cursorrules` (with `AGENT_OS_SOURCE` pointer) + `.work.biz/` skeleton; skills resolve from source at runtime. `@deploy-basic`, `@deploy-basic update`, `@deploy-basic status` |
-| biz-bootstrap | Scaffold `.work.biz/`, `.cursorrules` from templates |
-| biz-strategy | Define niche, offer, positioning |
-| biz-brand | Audit/overhaul LinkedIn, website, brand |
-| biz-pricing | Value-based pricing |
-| biz-content | Content publishing and strategy |
-| biz-community | Community engagement |
-| biz-referrals | Systematic referral generation |
-| biz-discovery | Sales discovery calls |
-| biz-proposal | Proposal writing |
-| biz-objections | Handle sales objections |
-| biz-review | Weekly/quarterly business review |
-| biz-market-validate | Test offers before committing |
-| biz-pipeline-diagnosis | Find funnel bottlenecks |
-| session-biz | Session open/close; `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
-| biz-director | Universal orchestrator; free-text → skill routing |
-| content-writing | Write articles, posts, case studies, landing pages, emails (project-aware) |
-| business-ideas | Structured, stress-tested business/venture idea generation |
-| product-service-ideas | Buildable, stack-fit product/service concepts + MVP scoping |
+**Available skills:**
+
+| Skill | Folder | Purpose |
+|-------|--------|---------|
+| deploy-files | `skills/deploy-files/` | Deploy Business OS files into target project (fat-client) |
+| deploy-repo | `skills/deploy-repo/` | Full repo deploy (clone or archive) |
+| deploy-basic | `skills/deploy-basic/` | Thin-client bootstrap — copies `.cursorrules` (with `AGENT_OS_SOURCE` pointer) + `.work.biz/` skeleton; skills resolve from source at runtime. `@deploy-basic`, `@deploy-basic update`, `@deploy-basic status` |
+| biz-bootstrap | `skills/biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
+| biz-strategy | `skills/biz-strategy/` | Niche, offer, positioning, target buyer |
+| biz-brand | `skills/biz-brand/` | LinkedIn, website, brand presence |
+| biz-pricing | `skills/biz-pricing/` | Value-based pricing framework |
+| biz-content | `skills/biz-content/` | Content publishing and strategy |
+| biz-community | `skills/biz-community/` | Community engagement playbook |
+| biz-referrals | `skills/biz-referrals/` | Systematic referral generation |
+| biz-discovery | `skills/biz-discovery/` | Sales discovery calls |
+| biz-proposal | `skills/biz-proposal/` | Proposal writing and scoping |
+| biz-objections | `skills/biz-objections/` | Handle sales objections |
+| biz-review | `skills/biz-review/` | Weekly/quarterly business review |
+| biz-market-validate | `skills/biz-market-validate/` | Test offers before committing |
+| biz-pipeline-diagnosis | `skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
+| session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT; `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
+| biz-director | `skills/biz-director/` | Universal orchestrator; free-text → skill routing |
+| content-writing | `skills/content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails (project-aware) |
+| content-social | `skills/content-social/` | Platform-native social content (Reddit, Instagram, LinkedIn including carousel, Facebook, X). Write, research, repurpose, plan. |
+| business-ideas | `skills/business-ideas/` | Structured, stress-tested business/venture idea generation |
+| product-service-ideas | `skills/product-service-ideas/` | Buildable, stack-fit product/service concept generation + MVP scoping |
+
+**Usage:** When a task matches a skill's purpose, read `skill.md` and follow the workflow.
+
+---
+
+## Protected Files
+
+### Do NOT Modify Unless Explicitly Asked
+
+- `package.json` (dependencies, devDependencies, engines)
+- `docker-compose*.yml`
+- `Dockerfile.*`
+- `.env*` (except `.env.example`)
+
+**If you think a change is needed in any protected file:**
+1. Stop.
+2. Explain WHY it's needed.
+3. Ask for explicit permission.
 
 ---
 
@@ -142,20 +194,46 @@ Available skills (`.ai.biz/skills/` or `$AGENT_OS_SOURCE/skills/` depending on m
 
 ### Git
 - NEVER execute `git commit` or `git push` unless the user explicitly requests it.
+- Provide commit commands for the user when they will commit themselves.
 
 ### No Attribution / No Signatures
 - Do NOT add "Generated by", "Created by", dates, or agent signatures to files you create or modify.
+- No `Co-authored-by:` trailers (mandatory). Enforced by hooks. Install: `bash scripts/install-git-hooks.sh`.
+
+### Commit Message Format
+- Subject: `BIZ-123: description` when ref known, else `type: description`.
+- Valid types: `feat`, `fix`, `refactor`, `docs`, `chore`, `style`.
+
+---
+
+## Verification & Quality Discipline
+
+### Before Claiming Completion
+1. Re-read the deliverable. Does it pass the "so what?" test?
+2. Check: is the advice specific enough to act on?
+3. Check: are the assumptions labeled (confirmed / inferred / unknown)?
+4. Report the actual analysis — not assumed conclusions.
+
+### On Weak Analysis
+- If you can't validate a key assumption, say so explicitly.
+- Propose a low-cost way to test it.
+- Do not paper over uncertainty with confident prose.
+
+### Scope Discipline
+- Only produce deliverables directly related to the current question.
+- Do not write a full 12-month marketing plan when the question is "which niche should I pick."
 
 ### Communication
 - Be concise. Surface hard truths early.
+- Label uncertainty explicitly.
 - Distinguish: confirmed facts, inferences, proposals.
 
 ---
 
 ## Data Privacy & Security
 
-- Never store real client names, contact info, or financial data without explicit direction.
-- Never commit API keys, credentials, or .env values.
+- Never store or log real client names, contact info, or financial data in planning docs without the user's explicit direction.
+- Never commit API keys, credentials, or .env values to any file.
 
 ---
 
@@ -165,19 +243,22 @@ Available skills (`.ai.biz/skills/` or `$AGENT_OS_SOURCE/skills/` depending on m
 - Strategy documents: `strategy_<topic>.md`
 - Plans: `plan_<topic>.md`
 - Research: `research_<topic>.md`
+- Drafts: `draft_<topic>.md`
 
 ### File Layout
 ```
 /
-├── .cursorrules              (this file)
-├── .ai.biz/             (Business OS framework)
-└── .work.biz/           (Project memory)
+├── .cursorrules              (this file — AI agent rules)
+├── skills/              (Business OS framework — skills, standards, templates)
+├── standards/           (Binding business standards)
+├── templates/           (Bootstrap templates)
+├── .work.biz/           (Project memory — plans, pipeline, HANDOFF)
 ```
 
 ---
 
 ## Commit Message Format (When Providing to User)
 
-- Plain text only — NO surrounding quotes.
-- Format: `type: short description`
+- Plain text only — NO surrounding quotes, NO parentheses wrapping the message.
+- Format: `type: short description` followed by optional blank line and body.
 - Valid types: `feat`, `fix`, `refactor`, `docs`, `chore`, `style`.

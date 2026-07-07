@@ -462,4 +462,4 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 - `{WORK_BUSINESS_ROOT}/strategy/certification.md`
 - `{WORK_BUSINESS_ROOT}/gates.md`
 - `.ai.biz/skills/SKILL_DEPENDENCIES.md`
-- `.work/reference/RESEARCH_APPENDIX.md` (external references)
+- `.work.biz/reference/RESEARCH_APPENDIX.md` (external references)

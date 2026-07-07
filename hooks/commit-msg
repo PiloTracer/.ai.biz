@@ -1,0 +1,16 @@
+#!/bin/sh
+# commit-msg — reject Co-authored-by trailers; warn when task ref missing.
+
+if grep -qiE '^Co-authored-by:' "$1"; then
+  echo "ERROR: Co-authored-by trailers are not permitted. Remove them and try again." >&2
+  exit 1
+fi
+
+FIRST="$(head -1 "$1")"
+case "$FIRST" in
+  [A-Z]*-[0-9]*:*) ;;
+  fix:*|feat:*|docs:*|refactor:*|chore:*|style:*|test:*) ;;
+  *) echo "WARNING: commit subject has no task ref (e.g. BIZ-123: ...)" >&2 ;;
+esac
+
+exit 0
