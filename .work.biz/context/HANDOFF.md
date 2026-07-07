@@ -1,7 +1,7 @@
 # HANDOFF — Session Bookmark
 
 > **Date:** 2026-07-07 — Session closed
-> **Status:** Verified all uncommitted changes; applied fixes. Framework consistency confirmed: 22 skills registered, `.cursorrules` ↔ template in sync, all change-safety gates pass, no stray `.work/` paths. Updated CHANGELOG.md, README.md, START_HERE.md for content-social and change-safety. Committed and pushed.
+> **Status:** Verified all uncommitted changes; applied fixes. Framework consistency confirmed: 22 skills registered, `.cursorrules` ↔ template in sync, all change-safety gates pass, no stray `.work/` paths. Updated CHANGELOG.md, README.md, START_HERE.md for content-social and change-safety. Fixed prepare-commit-msg temp-file path bug discovered during commit. Committed and pushed.
 
 ---
 
