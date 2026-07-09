@@ -53,15 +53,17 @@ if [ -f "$NEXT" ]; then
 fi
 
 # Verify claimed readiness states have supporting evidence.
+# Only scan "Current Phase" and "Active tasks" — completed history may mention
+# gates without claiming them as current states.
 WORK="${REPO_ROOT}/.work.biz"
 if [ -f "$NEXT" ]; then
-  content="$(cat "$NEXT")"
-  if echo "$content" | grep -qE "strategy-ready|Strategy.*Ready"; then
+  active_content="$(awk '/^## Current Phase$|^## Active tasks$/{flag=1; next} flag && /^## /{flag=0} flag' "$NEXT" 2>/dev/null || true)"
+  if echo "$active_content" | grep -qE "strategy-ready|Strategy.*Ready"; then
     if [ ! -f "${WORK}/strategy/certification.md" ]; then
       gate_fail "NEXT.md references strategy-ready but .work.biz/strategy/certification.md is missing"
     fi
   fi
-  if echo "$content" | grep -qE "pipeline-ready|Pipeline.*Ready"; then
+  if echo "$active_content" | grep -qE "pipeline-ready|Pipeline.*Ready"; then
     if [ ! -f "${WORK}/pipeline/pipeline_tracker.md" ]; then
       gate_fail "NEXT.md references pipeline-ready but .work.biz/pipeline/pipeline_tracker.md is missing"
     fi

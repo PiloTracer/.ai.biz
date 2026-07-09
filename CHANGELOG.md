@@ -4,6 +4,8 @@ All notable changes to Business OS are documented here.
 
 ## [Unreleased]
 
+## [v0.5.3] - 2026-07-09
+
 ### Added
 - **`biz-youtube` skill** — YouTube publishing ops: `publish`, `plan`, `challenge`, `status`; includes production-capacity gating and CTR/AVD/retention analytics
 - **YouTube as a first-class platform** — `@content-social write youtube`, `write youtube shorts`, `research youtube`; YouTube sections in `biz-brand`, `biz-community`, `biz-strategy`, `content-writing`, and `standards/20260701-PLATFORM-ALGORITHM-STANDARD.md`
