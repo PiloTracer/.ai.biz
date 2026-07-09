@@ -29,7 +29,7 @@ Then in chat:
 
 ## What you get
 
-- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-discovery`, `@biz-proposal`, … run the playbook (22 skills in total).
+- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-youtube`, `@biz-discovery`, `@biz-proposal`, … run the playbook (23 skills in total).
 - **Standards** — binding contracts (business conventions, pricing standard, brand guide, content standard) keep agent output honest.
 - **`.work.biz/`** — the project's memory: strategy docs, plans, pipeline tracker, `HANDOFF.md`, `NEXT.md`. Survives session boundaries.
 - **Gates** — strategy-ready, brand-ready, pipeline-ready, sales-ready; skip a step and the agent **stops** with a redirect.
@@ -74,7 +74,7 @@ Business OS is a **gated pipeline**: each stage unlocks the next. Skills enforce
 | *(scaffold)* | `@biz-bootstrap init` | Foundation planning, session files |
 | **strategy-ready** | `@biz-strategy greenfield` → `@biz-strategy certify` | `@biz-brand`, `@biz-pricing` |
 | **brand-ready** | `@biz-brand audit` → `@biz-brand overhaul` | `@biz-content`, `@biz-community` |
-| **pipeline-ready** | `@biz-review status` | `@biz-discovery`, `@biz-proposal` |
+| **pipeline-ready** | `@biz-pricing set` + pipeline tracker configured + outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md`, confirmed by `@biz-review status` | `@biz-discovery`, `@biz-proposal` |
 | **sales-ready** | `@biz-discovery verified` | `@biz-objections`, `@biz-referrals` |
 
 ### Full flow (once per project → every day → per phase)
@@ -101,7 +101,7 @@ Business OS is a **gated pipeline**: each stage unlocks the next. Skills enforce
         ▼
   @biz-pricing set  │  @biz-strategy status
         │
-        │  State: pipeline-ready  (pipeline tracker set up)
+        │  State: pipeline-ready  (pricing set, tracker configured, outreach cadence defined, confirmed by @biz-review status)
         ▼
 
   ┌─ EVERY SESSION ──────────────────────────────────────────────┐
@@ -131,7 +131,7 @@ Business OS is a **gated pipeline**: each stage unlocks the next. Skills enforce
 
 ### Skills at a glance
 
-All **22** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
+All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
 
 | Skill | One line | Typical invoke |
 |-------|----------|----------------|
@@ -154,7 +154,7 @@ All **22** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
 | **biz-director** | Universal orchestrator; accepts free-text, routes to correct skills | `<free-text request>` |
 | **content-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
-| **content-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel, Facebook, X) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |
+| **content-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel, Facebook, X, YouTube incl. Shorts) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |
 | **business-ideas** | Structured, stress-tested business/venture/pivot idea generation | `generate - <domain>` · `stress - <idea>` · `pivot - <situation>` |
 | **product-service-ideas** | Buildable, stack-fit product/service concepts + MVP scoping | `generate - <space>` · `extend - <product>` · `scope - <concept>` · `audit - <concept>` |
 
@@ -214,7 +214,7 @@ Then:
 2. **`.cursorrules`** (project root — install via bootstrap)
 3. `.work.biz/context/HANDOFF.md`
 4. `.work.biz/plans/NEXT.md`
-5. `.work.biz/plans/strategy_*.md` when present
+5. `.work.biz/strategy/strategy_*.md` when present
 
 **Free-text entry point:** Don't know which skill to run? → `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework).
 

@@ -53,7 +53,9 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/plans/NEXT.md` | `templates/work/plans/NEXT.md.template` |
    | `.work.biz/plans/UNKNOWNS.md` | `templates/work/plans/UNKNOWNS.md.template` |
    | `.work.biz/pipeline/pipeline_tracker.md` | `templates/work/pipeline/pipeline_tracker.md.template` |
+   | `.work.biz/pipeline/outreach-cadence.md` | `templates/work/pipeline/outreach-cadence.md.template` |
    | `.work.biz/research/research_index.md` | `templates/work/research/research_index.md.template` |
+   | `.work.biz/strategy/README.md` | `templates/work/strategy/README.md.template` |
 
 4. **Complete** — report summary and next steps.
 
@@ -81,7 +83,9 @@ Read-only report of the current bootstrap state:
 | `.work.biz/plans/NEXT.md` exists | `ls "$WORK_DIR/plans/NEXT.md"` |
 | `.work.biz/plans/UNKNOWNS.md` exists | `ls "$WORK_DIR/plans/UNKNOWNS.md"` |
 | `.work.biz/pipeline/pipeline_tracker.md` exists | `ls "$WORK_DIR/pipeline/pipeline_tracker.md"` |
+| `.work.biz/pipeline/outreach-cadence.md` exists | `ls "$WORK_DIR/pipeline/outreach-cadence.md"` |
 | `.work.biz/research/research_index.md` exists | `ls "$WORK_DIR/research/research_index.md"` |
+| `.work.biz/strategy/README.md` exists | `ls "$WORK_DIR/strategy/README.md"` |
 | Any `REPLACE:` tokens remain in `.cursorrules` | `grep -c 'REPLACE:' "$PROJECT_ROOT/.cursorrules" \|\| echo 0` |
 
 Output a summary table. If the project is fully bootstrapped, recommend next skill: `@biz-strategy greenfield`. If not yet bootstrapped, recommend `@biz-bootstrap init`.
@@ -94,7 +98,7 @@ Output a summary table. If the project is fully bootstrapped, recommend next ski
 |---|-------|--------|
 | 1 | `.cursorrules` created from template (or skipped if existing) | pass |
 | 2 | `.work.biz/` skeleton created with all template files | pass |
-| 3 | All directories (`context/`, `plans/`, `pipeline/`, `research/`) exist | pass |
+| 3 | All directories (`context/`, `plans/`, `pipeline/`, `research/`, `drafts/`, `strategy/`, `reference/`) exist | pass |
 | 4 | User informed of `REPLACE:` token checklist | pass |
 | 5 | User informed of next steps | pass |
 

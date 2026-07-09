@@ -23,6 +23,10 @@
 | Test if your niche/offer works | `@biz-market-validate test` |
 | Fix your LinkedIn profile and brand | `@biz-brand overhaul` |
 | Publish LinkedIn content | `@biz-content publish` |
+| Create a YouTube video | `@content-social write youtube` · `@biz-youtube publish` |
+| Plan YouTube content strategy / calendar | `@biz-youtube plan` |
+| Audit / rebrand a YouTube channel | `@biz-brand audit` (YouTube section) |
+| Plan YouTube Shorts strategy | `@content-social write youtube shorts` |
 | Price an engagement | `@biz-pricing set` |
 | Run a discovery call | `@biz-discovery run` |
 | Write a proposal | `@biz-proposal write` |

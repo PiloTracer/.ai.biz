@@ -6,6 +6,8 @@
 
 Run when LinkedIn is a primary channel, before a content challenge, or when posts get reach but not from the right audience.
 
+**Invocation:** `@content-social icp` runs this analysis and saves the output.
+
 ## Questions to explore
 
 1. **Job titles** — Who comments on posts like yours? (Founder, CTO, VP Eng, solo consultant, recruiter — recruiters = wrong signal)

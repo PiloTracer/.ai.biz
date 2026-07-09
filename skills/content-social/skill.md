@@ -2,16 +2,18 @@
 name: content-social
 description: >-
   Platform-specialized social media content generation across Reddit, Instagram,
-  LinkedIn, Facebook, and X (Twitter). Produces content calibrated to each
-  platform's unique audience, culture, formatting norms, and engagement
-  mechanics — always grounded in the host project's strategy, brand voice, and
-  target buyer. For community discovery (finding subreddits, Instagram accounts,
-  Facebook groups), use @biz-community find. For pure writing craft and long-form
-  content (blog articles, case studies, landing pages, email sequences), use
-  @content-writing.
+  LinkedIn, Facebook, X (Twitter), and YouTube (long-form + Shorts). Produces
+  content calibrated to each platform's unique audience, culture, formatting
+  norms, and engagement mechanics — always grounded in the host project's
+  strategy, brand voice, and target buyer. For community discovery (finding
+  subreddits, Instagram accounts, Facebook groups), use @biz-community find. For
+  pure writing craft and long-form content (blog articles, case studies, landing
+  pages, email sequences), use @content-writing.
   content-social write, content-social research, content-social repurpose,
-  content-social strategy, content-social plan, content-social status.
+  content-social strategy, content-social plan, content-social icp,
+  content-social status.
   LinkedIn: write linkedin, write linkedin carousel.
+  YouTube: write youtube, write youtube shorts.
 ---
 
 # content-social
@@ -21,6 +23,8 @@ description: >-
 Generate platform-native social media content. Every platform has a different culture, audience expectation, and consumption pattern. A LinkedIn post pasted into a Reddit subreddit will be deleted — or worse, mocked. A Facebook group post formatted like an Instagram caption will be ignored. This skill produces content that belongs on each platform.
 
 **Core principle:** Every piece of content must deliver genuine value to the specific audience on that platform. No cross-posting identical content. No generic marketing language dressed up as a platform post.
+
+**Jump to section:** [Parse invocation](#parse-invocation) · [I0 Project context](#i0--project-context-contract-run-before-writing-anything) · [Platform matrix](#platform-culture--audience-matrix) · [Universal format](#universal-platform-format) · [R1 Reddit](#r1--reddit-content) · [R2 Instagram](#r2--instagram-content) · [R3 LinkedIn](#r3--linkedin-content) · [R4 Facebook](#r4--facebook-content) · [R5 X](#r5--x-twitter-content) · [R6 YouTube](#r6--youtube-content) · [I2 Research](#i2--research-mode) · [I3 Repurpose](#i3--repurpose-mode) · [I4 Strategy](#i4--strategy-mode) · [I5 Plan](#i5--plan-mode) · [ICP mode](#linkedin-icp-mode)
 
 ---
 
@@ -34,15 +38,19 @@ Generate platform-native social media content. Every platform has a different cu
 | `@content-social write linkedin carousel - <topic>` | Generate a LinkedIn document/carousel (slide copy + caption + first comment) |
 | `@content-social write facebook - <topic>` | Generate Facebook content (group post, page update, community post) |
 | `@content-social write x - <topic>` | Generate an X (Twitter) post (tweet, thread, reply) calibrated to real-time, concise format |
+| `@content-social write youtube - <topic>` | Generate a YouTube long-form script (8–15 min educational video) |
+| `@content-social write youtube shorts - <topic>` | Generate a YouTube Shorts script (15–60 sec, up to 3 min when justified) |
 | `@content-social research reddit - <topic/keyword>` | Find trending discussions, active threads, and content gaps on Reddit |
 | `@content-social research instagram - <topic/keyword>` | Find trending formats, audio, hashtags, and competitor content on Instagram |
 | `@content-social research linkedin - <topic/keyword>` | Find active conversations, trending posts, and content white space on LinkedIn |
 | `@content-social research facebook - <topic/keyword>` | Find active group discussions, trending topics, and content opportunities on Facebook |
 | `@content-social research x - <topic/keyword>` | Find trending topics, active conversations, hashtag movements, and content gaps on X/Twitter |
+| `@content-social research youtube - <topic/keyword>` | Find trending topics, title gaps, thumbnail gaps, and competitor content on YouTube |
 | `@content-social research <platform>` | General topic/trend research for a platform (without a specific keyword) |
 | `@content-social repurpose - <source> to <platform>` | Adapt existing content for a different platform |
-| `@content-social repurpose - <source>` | Repurpose one piece into formats for all 5 platforms |
+| `@content-social repurpose - <source>` | Repurpose one piece into formats for all 7 platforms |
 | `@content-social strategy` | Assess which platforms fit the project's target buyer; recommend platform mix |
+| `@content-social icp` | Run BIZ-08 LinkedIn ICP analysis and save to `.work.biz/strategy/linkedin-icp.md` |
 | `@content-social plan <platform> - <horizon>` | Platform-specific content calendar (e.g., `30 days`, `Q3`) |
 | `@content-social status` | Read-only: report loaded project context and platform readiness |
 
@@ -80,6 +88,10 @@ Read `.cursorrules` — its `REPLACE:` tokens resolve to `PROJECT_NAME`, `UNIFIE
 
 Read `standards/*BRAND-GUIDE*`, `standards/*CONTENT-STANDARD*`, and `standards/*PLATFORM-ALGORITHM-STANDARD*` if present. These are binding.
 
+### Priority 5 — Fallback example
+
+If none of the above yield a usable brand/audience, load `references/project-context.example.md` (a worked example showing the expected shape and depth) and state explicitly: **"No project context found; using generic professional defaults calibrated to the example profile."** Then proceed with professional-quality defaults and the structure rules below.
+
 ### Context summary (emit briefly before drafting)
 
 ```
@@ -110,6 +122,7 @@ Before writing for any platform, understand who you're writing for and the cultu
 | **LinkedIn** | Professional, career-motivated, B2B decision-makers | Feed scroll; article reading; industry-aware but busy | Credentials, track record, mutual connections, specificity | **Higher than others.** Thought leadership is the format. Pitch tolerated after value delivery. |
 | **Facebook** | Groups are hyper-engaged communities; Pages are broadcast | Groups: threaded, conversational. Pages: feed scroll. | Community membership; consistent helpful presence; local relevance | Varies wildly. Groups: low tolerance, moderator-enforced. Pages: moderate. |
 | **X (Twitter)** | Real-time, news-driven, tech/VC/journalist-heavy, high velocity | Rapid-fire feed; 280-char limit shapes consumption; threads for depth | Wit, speed, insider knowledge, being first to insight. Followers/lists = credibility. | Moderate-low. Self-promotion is common but must be wrapped in value. Quote-tweet culture rewards sharp takes. |
+| **YouTube** | Search-driven, education/entertainment hybrid, high intent | Long-form: intentional viewing. Shorts: rapid scroll in vertical feed. | Consistency, production value, proof of expertise, community interaction | Moderate. Pitch only after value delivery; CTAs must be earned. |
 
 ---
 
@@ -119,15 +132,60 @@ The same person behaves differently on each platform. Content must account for t
 
 ### How the same target buyer shows up per platform
 
-| Element | Reddit | Instagram | LinkedIn | Facebook | X (Twitter) |
-|---------|--------|-----------|----------|----------|-------------|
-| **Identity** | Pseudonymous, interest-based | Curated, visual identity | Real name, professional identity | Real name, personal + community identity | Real name or pseudonymous; persona-based |
-| **Mindset** | Learning, debating, problem-solving | Discovery, inspiration, entertainment | Career growth, industry awareness, hiring | Community belonging, local connection, peer support | Real-time awareness, breaking news, hot takes, networking |
-| **Attention span** | Willing to read long-form if valuable | Seconds. Visual hook or scroll past. | Moderate. Will read 200-300 words if relevant. | Variable. Groups: moderate. Feed: short. | Seconds per tweet. Threads earn sustained reading if hook is strong. |
-| **Trust trigger** | Specific, verifiable claims. No marketing language. | Visual authenticity, social proof, consistency. | Deep expertise demonstrated. Specific results. Named clients. | Peer validation. Group membership. Mutual friends. | Insider knowledge, speed, contrarian-but-correct takes, consistency over time. |
-| **Rejection trigger** | Self-promotion, vagueness, link-dropping | Overt selling, inauthentic polish, stock imagery | Thought leadership without proof. Buzzword bingo. | Spammy posts. Breaking group rules. Uninvited pitching. | Over-polished corporate voice, threadbois, engagement farming, stale takes. |
+| Element | Reddit | Instagram | LinkedIn | Facebook | X (Twitter) | YouTube |
+|---------|--------|-----------|----------|----------|-------------|---------|
+| **Identity** | Pseudonymous, interest-based | Curated, visual identity | Real name, professional identity | Real name, personal + community identity | Real name or pseudonymous; persona-based | Anonymous or persona-based; intent-driven |
+| **Mindset** | Learning, debating, problem-solving | Discovery, inspiration, entertainment | Career growth, industry awareness, hiring | Community belonging, local connection, peer support | Real-time awareness, breaking news, hot takes, networking | Learning, entertainment, research before purchase |
+| **Attention span** | Willing to read long-form if valuable | Seconds. Visual hook or scroll past. | Moderate. Will read 200-300 words if relevant. | Variable. Groups: moderate. Feed: short. | Seconds per tweet. Threads earn sustained reading if hook is strong. | Long-form: 8–15 min if value is sustained. Shorts: 0–3 sec hook. |
+| **Trust trigger** | Specific, verifiable claims. No marketing language. | Visual authenticity, social proof, consistency. | Deep expertise demonstrated. Specific results. Named clients. | Peer validation. Group membership. Mutual friends. | Insider knowledge, speed, contrarian-but-correct takes, consistency over time. | Demonstrated expertise, consistent uploads, transparent proof, community engagement. |
+| **Rejection trigger** | Self-promotion, vagueness, link-dropping | Overt selling, inauthentic polish, stock imagery | Thought leadership without proof. Buzzword bingo. | Spammy posts. Breaking group rules. Uninvited pitching. | Over-polished corporate voice, threadbois, engagement farming, stale takes. | Clickbait, wasted time, sales-first openings, low production value that undermines expertise. |
 
 **Rule:** Never use a LinkedIn post as a Reddit post. Never use an Instagram caption as a Facebook group post. Each platform gets purpose-built content.
+
+---
+
+## Universal Platform Format
+
+The seven platforms share a common anatomy. Start from this skeleton, then apply the platform-specific deltas in R1–R6.
+
+### Universal post structure
+
+```
+HOOK
+  — The first thing the audience sees. It must earn attention in under 3 seconds.
+  — Specificity > mystery. Lead with the reader's problem, a concrete result, or a tension.
+  — No clickbait, no ALL CAPS, no hollow intensifiers, no "you won't believe."
+
+BODY
+  — One idea per paragraph or segment. White space and rhythm matter.
+  — Show, don't tell: replace adjectives with data, examples, names, numbers.
+  — Include at least one specific proof point per post (a number, a tradeoff, a hard-won lesson).
+  — Technology tilt (mandatory for tech-positioned projects): cite concrete stack, failure mode, or metric.
+  — Remove marketing language: solution, platform, revolutionary, game-changing, cutting-edge, best-in-class, scalable, robust, seamless, innovative.
+
+CTA / ENGAGEMENT PROMPT
+  — One clear action, platform-appropriate. Earned, not tacked on.
+  — Invite conversation, save, share, or a channel-native next step. No "DM me" where it violates culture.
+```
+
+### Universal anti-patterns (DO NOT)
+
+- Cross-post identical content across platforms without rewriting structure, tone, and emphasis.
+- Use hollow intensifiers: very, really, truly, game-changing, revolutionary, cutting-edge, robust, scalable (unquantified).
+- Lead with credentials or product instead of the reader's problem.
+- Drop unearned self-promotion or external links where the platform penalizes them.
+- Use engagement bait ("Agree?", "Tag someone who...", "Share if you agree...", "Upvote if...").
+- Post low-resolution visuals, heavy text overlays, or stock imagery that signals inauthenticity.
+- Post and disappear. The first 30–120 minutes after publishing determine reach on most platforms.
+
+### Universal posting cadence principles
+
+- **Consistency > frequency.** A predictable rhythm outperforms sporadic bursts.
+- **The first hour is critical.** Reply to comments, engage with replies, and signal algorithmic momentum early.
+- **Batch creation, single-platform adaptation.** Create the core insight once; rewrite the packaging per platform.
+- **Leave reactive slots open.** 20–30% of calendar slots should be reserved for trending topics, comments, and community replies.
+
+Platform-specific posting windows and frequency live in each R-section below.
 
 ---
 
@@ -137,26 +195,18 @@ The same person behaves differently on each platform. Content must account for t
 
 Resolve from the request:
 
-1. **Platform** — reddit, instagram, linkedin, facebook, x (required)
+1. **Platform** — reddit, instagram, linkedin, facebook, x, youtube (required)
 2. **Content type** — depends on platform (see each platform section below)
 3. **Goal** — educate, build trust, demonstrate expertise, start conversation, attract leads
 4. **CTA** — what action should the reader take (if any)? Platform-appropriate CTA only.
 
 ### Step 2 — Load platform-specific rules
 
-Jump to the platform's section below (R1–R5) for formatting, structure, and anti-patterns.
+Jump to the platform's section below (R1–R6) for formatting, structure, and anti-patterns.
 
 ### Step 3 — Draft with quality rules
 
-Platform-agnostic quality rules that apply everywhere:
-
-1. **Show, don't tell.** Replace adjectives with data, examples, names, numbers.
-2. **Lead with the reader's problem, not credentials.** Make them feel seen first.
-3. **One idea per paragraph.** If a paragraph does two jobs, split it.
-4. **No hollow intensifiers.** Remove: very, really, truly, game-changing, revolutionary, cutting-edge, robust, scalable (unquantified).
-5. **Specificity beats generality.** "6–12 weeks to MVP" > "fast delivery." "4,900-line tax engine" > "complex backend."
-6. **Proof point per platform.** Each post must contain at least one concrete detail that only someone with real experience would know.
-7. **Technology tilt (mandatory for tech-positioned projects).** At least one concrete technical detail per post — a stack choice, a number, a tradeoff, a failure mode.
+Apply the [Universal Platform Format](#universal-platform-format), plus the platform-specific deltas in the relevant R-section.
 
 ### Step 4 — Deliver
 
@@ -188,6 +238,8 @@ Reddit is a collection of communities (subreddits), each with its own rules, cul
 
 ### Reddit post structure
 
+Apply the Universal Platform Format with these deltas:
+
 ```
 TITLE (max 300 characters)
   — Specific, benefit-driven, or tension-based.
@@ -199,7 +251,6 @@ BODY
   — Open with WHY this matters to the reader, not what you did.
   — Use short paragraphs. White space is critical for readability.
   — Formatting: **bold** for emphasis, *italics* for secondary, bullet points for lists.
-  — Include specific numbers, concrete examples, real tradeoffs.
   — Code snippets or technical details are welcomed in tech subreddits.
 
 DISCUSSION PROMPT (optional)
@@ -261,6 +312,8 @@ Instagram is a visual-first, mobile-first platform where content competes for at
 | **Note** | Driving traffic to new posts, quick announcements | 60 characters max. Appears at top of DM inbox. |
 
 ### Instagram caption structure
+
+Apply the Universal Platform Format with these deltas:
 
 ```
 HOOK (first line — the only line visible without "more")
@@ -348,6 +401,8 @@ LinkedIn is a professional network where content is consumed in the context of c
 
 ### LinkedIn post structure
 
+Apply the Universal Platform Format with these deltas:
+
 ```
 HOOK (first 1-2 lines — this is the only text visible before "see more")
   — Stop the scroll. Specificity > mystery.
@@ -355,7 +410,6 @@ HOOK (first 1-2 lines — this is the only text visible before "see more")
   — Good: "I chose PostgreSQL over MongoDB for a $40k financial platform. Here's why — and what I almost got wrong."
 
 BODY (3-6 short paragraphs)
-  — One idea per paragraph. White space is your friend.
   — Personal angle: "I" statements build trust faster than "we" or impersonal analysis.
   — Include specific numbers, named technologies, real timelines.
   — Conversational but substantive.
@@ -381,7 +435,7 @@ COMMENT WITH LINK (if applicable)
 2. **The first 60 minutes decide reach.** LinkedIn tests your post with a small audience. If it gets engagement, it expands. Post when your audience is active and engage with comments immediately.
 3. **No external links in post body.** LinkedIn deprioritizes posts that lead users off-platform. Put links in the first comment or use native features (articles, documents).
 4. **Reply to every comment within the first 2 hours.** This signals high engagement to the algorithm and builds relationship with commenters.
-5. **Carousels (document posts) are the highest-reach format.** LinkedIn's algorithm currently favors document uploads. A well-designed 6-12 slide carousel can outperform text-only posts 3-5x.
+5. **Carousels (document posts) are the highest-reach format.** LinkedIn's algorithm currently favors document uploads. A well-designed 6-12 slide carousel can outperform text-only posts 3-5x [Unverified — directional benchmark based on LinkedIn creator reports; test with your own analytics].
 6. **Tag strategically.** Tag relevant people only if they would genuinely want to see the post. Random tagging = spam.
 7. **Hashtags: 3-5 max.** LinkedIn recommends focusing on a few relevant hashtags rather than shotgun-blasting 20.
 
@@ -446,7 +500,7 @@ DESIGN NOTES
 
 Facebook content strategy is split into two distinct domains: **Groups** (community-first, high-engagement, threaded) and **Pages** (broadcast-first, lower organic reach, ad-amplified). The approach and rules differ significantly between them.
 
-**The Facebook reality in 2026:** Organic reach on Facebook Pages is extremely limited (1-5% of followers typically see posts). Groups, however, have high organic reach — members often see every post. For service businesses and B2B operators, Facebook Groups in your target niche are often the highest-ROI Facebook strategy.
+**The Facebook reality in 2026:** Organic reach on Facebook Pages is extremely limited (1-5% of followers typically see posts) [Unverified — widely reported industry rule of thumb; verify in your own Page insights]. Groups, however, have high organic reach — members often see every post. For service businesses and B2B operators, Facebook Groups in your target niche are often the highest-ROI Facebook strategy.
 
 ### Facebook content types
 
@@ -461,6 +515,8 @@ Facebook content strategy is split into two distinct domains: **Groups** (commun
 
 ### Facebook Group post structure
 
+Apply the Universal Platform Format with these deltas:
+
 ```
 INTRO (1-2 sentences)
   — Acknowledge the community. Show you understand the group's purpose.
@@ -469,7 +525,6 @@ INTRO (1-2 sentences)
 VALUE BODY
   — 3-5 paragraphs. Conversational, helpful, specific.
   — Use line breaks generously. Facebook mobile is merciless on long paragraphs.
-  — Include specific numbers, tools, timelines, tradeoffs.
   — If referencing externals: describe the concept fully in the post. Link only if rules allow and it's genuinely additive.
 
 DISCUSSION PROMPT
@@ -482,6 +537,8 @@ SELF-REFERENCE (only if genuinely relevant AND rules permit)
 ```
 
 ### Facebook Page post structure
+
+Apply the Universal Platform Format with these deltas:
 
 ```
 SHORT HOOK (1 line)
@@ -550,6 +607,8 @@ X is a real-time, high-velocity platform where brevity, timing, and sharpness ar
 
 ### Single tweet structure
 
+Apply the Universal Platform Format with these deltas:
+
 ```
 BODY (max 280 characters)
   — Lead with the insight. No warm-up.
@@ -568,6 +627,8 @@ HASHTAGS (1-2 max)
 ```
 
 ### Thread structure
+
+Apply the Universal Platform Format with these deltas:
 
 ```
 TWEET 1 (HOOK — the one that determines whether the thread is read)
@@ -596,7 +657,7 @@ NOTE: Post the full thread within 2-3 minutes. Do not leave gaps between tweets.
 2. **Write for the algorithm.** Early engagement (likes, retweets, replies in first 30 min) determines reach. Post when your audience is active.
 3. **One idea per tweet.** Even in threads. If you need two tweets to make one point, rewrite it.
 4. **Delete the first sentence.** It's almost always a warm-up. The real opener is sentence two.
-5. **Visuals are not optional.** Tweets with images or video get 3-5x more engagement. Every thread should have at least one visual.
+5. **Visuals are not optional.** Tweets with images or video get 3-5x more engagement [Unverified — directional benchmark; verify against X analytics]. Every thread should have at least one visual.
 6. **Quote-tweet with value.** Only QRT if you're adding genuine insight. "This" + link is spam.
 7. **Engagement timing matters.** Reply to comments within the first hour. QRTs of your content are signals — engage with them.
 8. **Lists > timeline.** Build private Lists of target buyers, peers, and industry voices. Engage with their content daily.
@@ -625,6 +686,169 @@ NOTE: Post the full thread within 2-3 minutes. Do not leave gaps between tweets.
 
 ---
 
+## R6 — YouTube Content
+
+### YouTube culture fundamentals
+
+YouTube is the world's second-largest search engine and the only major platform where content compounds for years. With 2.5–2.7 billion monthly active users and 500+ million daily search queries [Source: YouTube platform data — 2.5–2.7B MAU, 500M+ daily searches], it rewards intent-driven discovery: viewers search for answers, binge playlists, and subscribe when a channel reliably solves a problem or entertains.
+
+The platform has two distinct modes:
+
+- **Long-form:** Educational, search-rankable, trust-building. Long-form video ranks for 3.2x more keywords and generates 41% higher lead-generation rates than short-form [Source: video SEO / lead-gen benchmark data — long-form 3.2x keywords, 41% higher lead gen]. 68% of B2B buyers watch long-form videos before purchasing [Source: B2B buyer behavior data — 68% watch long-form before purchase].
+- **Shorts:** Discovery, reach, audience conversion to long-form and subscribers. Short-form video has been the #1 ROI format for three consecutive years and generates 2.5x more engagement per impression than long-form [Source: short-form video ROI data — #1 ROI 3 years running, 2.5x engagement per impression]. YouTube extended Shorts to 3 minutes in October 2024 [Source: YouTube product update — Shorts extended to 3 min, Oct 2024].
+
+**The YouTube promise:** Every video must deliver on the promise of the title and thumbnail. Clickbait destroys trust and retention; under-delivery kills channel growth.
+
+### YouTube content types
+
+| Type | Best for | Format specs |
+|------|----------|--------------|
+| **Long-form video** | Education, deep tutorials, case studies, thought leadership, search ranking | 8–15 min sweet spot. 16:9 (1920x1080px). Retention dips around 4, 9, and 18 minutes [Source: retention benchmark data — dips at 4, 9, 18 min]. |
+| **Shorts** | Discovery, quick wins, hooks, converting viewers to long-form/channel | 15–60 sec standard; up to 3 min when the idea genuinely justifies it. 9:16 vertical (1080x1920px). |
+| **Community post** | Polls, updates, behind-the-scenes, driving engagement between uploads | Text, image, poll, or video. Lightweight. |
+| **Live stream** | Q&A, launches, workshops, real-time community building | Long-form; can be repurposed into clips and Shorts. |
+| **Playlist** | Session duration, topic clustering, binge-watching | Curated grouping of long-form videos around a problem or learning path. |
+
+### `@content-social write youtube` — Long-form script (8–15 min)
+
+Apply the Universal Platform Format with these deltas:
+
+```
+TITLE + THUMBNAIL (evaluate as a pair)
+  — Title: front-load the keyword; promise a specific outcome or answer.
+  — Thumbnail: 3–5 words max, high contrast, one facial or visual focal point, readable at small size.
+  — CTR target: <3% = rewrite title/thumbnail; 3–6% = average; 6–12% = good (typical for small channels); >12% = excellent. Shorts: 8–15%.
+
+HOOK (0:00–0:30)
+  — Restate the title promise in spoken form. No preamble, no "welcome back."
+  — Show the outcome or stakes: "In the next 10 minutes I'll show you how we cut API latency from 1.2s to 90ms."
+  — Preview the structure so viewers know the video delivers.
+
+SEGMENTED BODY (8–15 min total; retention reset every 3–4 min)
+  — Break into 3–4 named segments. Each segment opens with a mini-hook.
+  — Insert a retention point every 3–4 minutes: "Stay for segment 3 — that's where most teams fail."
+  — Use proof points, screen recordings, code snippets, or real numbers every 60–90 seconds.
+  — Address retention dips around 4, 9, and 18 min with a pattern interrupt, visual change, or explicit value restatement.
+
+CTA (final 30–60 sec)
+  — One primary action: subscribe, watch the next video, or download a resource.
+  — Connect the CTA to the video's topic: "If you want the checklist I used, it's in the description."
+  — Keep it short. The value has already been delivered.
+
+END-SCREEN CUE
+  — Verbally cue the next logical video 10–15 sec before the end screen appears.
+  — "Next, watch this breakdown of how we load-tested the same API."
+```
+
+### `@content-social write youtube shorts` — Shorts script (15–60 sec, up to 3 min)
+
+Apply the Universal Platform Format with these deltas:
+
+```
+0–3 SECOND HOOK
+  — Start mid-sentence or with a strong visual. No intro logo, no "Hey guys."
+  — Hook must match the title/thumbnail promise instantly.
+  — Example: "This one Postgres setting cut our query time 40%."
+
+SINGLE TAKEAWAY BODY
+  — One idea only. Strip sub-points and nuance.
+  — Use text-on-screen to reinforce the spoken point.
+  — Show the proof: a screen recording, a number, a before/after.
+
+LOOP-FRIENDLY ENDING
+  — End on the same energy or visual beat you opened with so the loop feels natural.
+  — Avoid a hard stop; let the viewer want to re-watch or swipe to the next Short.
+
+CTA TO LONG-FORM / CHANNEL
+  — "Full 12-min breakdown is on the channel — link in description."
+  — "Subscribe for the longer tutorial tomorrow."
+  — Keep CTAs brief; the Short itself is the ad for the channel.
+```
+
+### Thumbnail + title strategy
+
+Treat the title and thumbnail as a single unit. They must answer one question: "Why should I click instead of the other 9 results?"
+
+**Title rules:**
+
+1. Front-load the keyword or the curiosity driver.
+2. Use specific numbers or timeframes: "8 minutes," "3 mistakes," "$40k."
+3. Avoid question-bait titles that the video doesn't fully answer.
+
+**Thumbnail rules:**
+
+1. **3–5 words maximum.** Thumbnails are not paragraphs.
+2. **High contrast.** Test readability on a phone screen in bright light.
+3. **One focal point.** Face, product, or diagram — not a collage.
+4. **Evaluated as a pair.** If you change the title, re-check the thumbnail and vice versa.
+5. **CTR optimization.** Test variations when possible. Benchmarks: <3% rewrite title/thumbnail, 3–6% average, 6–12% good (typical for small channels), >12% excellent. Shorts: 8–15%.
+
+### Description + timestamps + pinned comment template
+
+```
+DESCRIPTION
+  — First 2 lines: hook restatement + value promise (visible before "Show more").
+  — Include target keyword naturally in the first 2 lines.
+  — Links: resources, related video, lead magnet, social/channel subscribe.
+  — Hashtags: 2–3 max, relevant.
+
+TIMESTAMPS
+  0:00 Hook / what you'll learn
+  0:45 Segment 1: [topic]
+  3:20 Segment 2: [topic]
+  6:45 Segment 3: [topic]
+  10:10 Key mistake to avoid
+  12:30 CTA and next steps
+
+PINNED COMMENT
+  — Restate the core insight in one sentence.
+  — Ask one question to drive comments.
+  — Link to the most relevant resource or next video.
+  — Example: "The biggest surprise in this build was the indexing choice. What's the most counterintuitive optimization you've found? [link to checklist]"
+```
+
+### `@content-social research youtube` — Research methods
+
+| Method | How to execute |
+|--------|---------------|
+| **Trending topic scan** | Search the project's niche keywords on YouTube. Filter by "This month" and "This year." Note which topics are getting consistent new uploads and high view velocity. |
+| **Title gap analysis** | For target keywords, compare the top 10 video titles. Look for outdated angles, missing sub-topics, or titles that promise more than they deliver. |
+| **Thumbnail gap analysis** | Screenshot the top 10 thumbnails for a target keyword. Identify visual patterns to avoid and whitespace to own (e.g., all blue → use orange; all faces → use a clean UI shot). |
+| **Competitor analysis** | Audit 5–10 channels in the niche. Note upload frequency, most-viewed videos, comment questions that go unanswered, and playlist structure. |
+| **Comment desire mapping** | Read comments on popular videos in the niche. What do viewers ask for next? What do they say was missing? These are the highest-value content gaps. |
+| **Search suggest mining** | Type the niche keyword into YouTube search and note autocomplete suggestions. These are real user queries with search intent. |
+
+### YouTube-specific quality rules
+
+1. **Title + thumbnail > everything else.** A great video with a weak title/thumbnail dies. A good video with a strong title/thumbnail grows.
+2. **Retention is the algorithm.** YouTube promotes videos that keep viewers on the platform. Structure every video to earn watch time and session time.
+3. **Front-load value.** The first 30 seconds must deliver the promise of the title. No long intros, no channel housekeeping.
+4. **One video, one promise.** Don't pack three topics into one video. One clear outcome per video.
+5. **Use chapters/timestamps.** They improve UX and help YouTube understand topic relevance.
+6. **Pinned comment drives engagement.** Ask a specific question in the first comment and reply to early commenters.
+7. **Shorts feed the long-form.** Shorts should convert viewers to subscribers and long-form videos, not exist in isolation.
+8. **Accessibility matters.** Add captions, clear audio, and readable on-screen text.
+
+### YouTube anti-patterns (DO NOT)
+
+- Clickbait titles/thumbnails that the video under-delivers on
+- Long intro sequences, animated logos, or "sorry I haven't posted"
+- Asking for likes/subscribes before delivering value
+- Packing multiple unrelated topics into one video
+- Ignoring retention analytics and continuing to make videos with the same weak pattern
+- Treating Shorts as miniature long-form videos instead of standalone hooks
+- Publishing without timestamps for educational content
+- Neglecting the description and pinned comment
+
+### YouTube posting cadence
+
+- **Long-form:** 1 high-quality video per week minimum; 2 per week if production capacity allows.
+- **Shorts:** 3–7 per week for discovery and subscriber growth.
+- **Best upload windows:** Thursday-Sunday, 2–4 PM US Eastern for general audiences; B2B/tech audiences often perform well Tuesday-Thursday mornings. Test with your own analytics.
+- **Consistency signal:** Same day/time each week trains subscribers and the algorithm.
+
+---
+
 ## I2 — `research` mode
 
 Discover trending topics, active discussions, and content gaps on a specific platform — grounded in the project's target buyer and niche. Use this mode before writing to ensure relevance, or when looking for content ideas.
@@ -649,12 +873,12 @@ Discover trending topics, active discussions, and content gaps on a specific pla
 ### Content gaps (questions people are asking with no good answers)
 | Question / Pain point | Where found | Content opportunity |
 |----------------------|-------------|---------------------|
-| [specific question] | [subreddit / hashtag / group] | [what a good answer would cover] |
+| [specific question] | [subreddit / hashtag / group / search query] | [what a good answer would cover] |
 
 ### What competitors/peers are posting
 | Source | What they posted | What's missing | Our angle |
 |--------|-----------------|----------------|-----------|
-| [account / subreddit / group] | [summary] | [gap or weakness] | [how we'd do it better] |
+| [account / subreddit / group / channel] | [summary] | [gap or weakness] | [how we'd do it better] |
 
 ### Recommended content for this platform
 1. **[Hook seed]** — [why it would work]
@@ -718,6 +942,10 @@ Discover trending topics, active discussions, and content gaps on a specific pla
 | **Space listening** | Join X Spaces (live audio) in the niche. Listen for recurring questions, debates, and pain points. These are high-value thread topics. |
 | **Advanced search** | Use X's advanced search: `"how do I" OR "anyone know" OR "struggling with" from:accounts_in_niche`. Find unfiltered questions to answer. |
 
+### YouTube research methods
+
+See [R6 — YouTube research methods](#content-social-research-youtube--research-methods).
+
 ### Research quality rules
 
 1. **Research must be grounded in the project's target buyer.** Don't report trending topics that are irrelevant to the project's niche, even if they're popular.
@@ -747,23 +975,37 @@ Take one piece of content and produce platform-adapted versions. Each must stand
 | Blog article | **LinkedIn** | Extract the single strongest insight. Personal framing. Story-led structure. 200-300 words. |
 | Blog article | **Facebook Group** | Frame as a lesson learned. Community-oriented language. Discussion prompt at end. |
 | Blog article | **X (Twitter)** | Extract 5-7 key points. Lead with the most counterintuitive. Build a thread. One insight per tweet. |
+| Blog article | **YouTube long-form** | Build a scripted 8–15 min video with segmented body, retention resets, and search-optimized title. |
+| Blog article | **YouTube Shorts** | Extract the single most visual or counterintuitive takeaway. 15–60 sec hook → proof → loop-friendly CTA to long-form. |
 | LinkedIn post | **Reddit** | Strip professional framing. Add technical detail. More detached, analytical tone. |
 | LinkedIn post | **Instagram** | Convert the insight into a carousel narrative. Add visual brief. Shorten caption by 60%. |
 | LinkedIn post | **X (Twitter)** | Condense to 280 characters or a 5-8 tweet thread. Sharpen the hook. Add speed. |
+| LinkedIn post | **YouTube Shorts** | Turn the insight into a 30–60 sec talking-head or screen-recording hook with one proof point. |
 | Reddit post | **LinkedIn** | Add professional context. Soften blunt/technical language. Add career/business implications. |
 | Reddit post | **Instagram** | Extract the most visual/counterintuitive element. Build a reel script around one "aha" moment. |
 | Reddit post | **X (Twitter)** | Extract the strongest claim. Build a thread around it. Speed up the pacing. |
+| Reddit post | **YouTube long-form** | Expand the thread into a structured tutorial with timestamps and screen proof. |
 | Instagram content | **Reddit** | Strip visual references. Add technical depth and written explanation. Longer form. |
 | Instagram content | **LinkedIn** | Add business context. Connect insight to professional outcomes. |
 | Instagram content | **X (Twitter)** | Convert visual concept to text thread. Describe what the visual shows. Distill to key takeaway. |
+| Instagram content | **YouTube Shorts** | Reuse the Reel as a Short directly if vertical + under 3 min; otherwise re-cut the core hook. |
 | X (Twitter) thread | **Reddit** | Expand into self-post. Add context, deeper analysis, discussion prompts. |
 | X (Twitter) thread | **LinkedIn** | Convert to 200-300 word post. Add professional framing. Slightly softer tone. |
 | X (Twitter) tweet | **Instagram** | Visualize the takeaway. Carousel or quote card. Short caption. |
-| Video/podcast transcript | **All platforms** | Extract 3-5 quotable insights. Each becomes one platform-adapted post. |
+| X (Twitter) thread | **YouTube long-form** | Turn the thread into a scripted video, one tweet ≈ one segment, with title from the hook tweet. |
+| Video/podcast transcript | **All platforms** | Extract 3-5 quotable insights. Each becomes one platform-adapted post. Long-form video → blog/LinkedIn; Shorts clips → Instagram/YouTube Shorts/X. |
+| YouTube long-form | **Reddit** | Extract one technical lesson. Lead with problem, include code/screenshots, end with discussion prompt. |
+| YouTube long-form | **LinkedIn** | Summarize the core insight in 200–300 words with professional framing. |
+| YouTube long-form | **X (Twitter)** | Turn each segment into a tweet; hook tweet = title promise; thread builds the case. |
+| YouTube long-form | **Instagram** | Carousel from segments or Reel from the strongest 60-sec clip. |
+| YouTube long-form | **YouTube Shorts** | Cut one counterintuitive moment or quick win per Short; CTA back to the full video. |
+| YouTube Shorts | **Instagram Reel** | Repost directly if under 90 sec and vertical; trim to Instagram's strongest 30–60 sec otherwise. |
+| YouTube Shorts | **X (Twitter)** | Extract the spoken hook as a tweet; attach the video or a GIF. |
+| YouTube Shorts | **LinkedIn** | Add business context to the takeaway; keep under 150 words. |
 
 ### Multi-platform repurpose output
 
-When repurposing to all 5 platforms, produce:
+When repurposing to all 7 platforms, produce:
 
 ```
 CORE INSIGHT: [one sentence — the DNA of all versions]
@@ -791,6 +1033,13 @@ X (TWITTER) VERSION
 FACEBOOK VERSION
   Context: [Group or Page? Which group?]
   Body: [full post]
+
+YOUTUBE VERSION
+  Format: [long-form / Shorts / both]
+  Long-form title: [title]
+  Long-form segment outline: [3–4 segments with retention points]
+  Shorts hook: [0–3 sec hook]
+  Thumbnail concept: [3–5 words + visual focal point]
 ```
 
 ---
@@ -844,6 +1093,13 @@ Assess which platforms fit the project's target buyer profile. Output a platform
   Thread cadence: {1-2x/week recommended for deep content}
   Content pillars: {2-3 themes}
 
+### YouTube
+  Fit: {EXCELLENT / GOOD / POOR}
+  Format mix: {long-form / Shorts / both}
+  Upload cadence: {capacity-dependent: e.g., 1 long-form + 3–5 Shorts/week at medium-high capacity; 1 long-form/2 weeks + 2 Shorts/week at low-medium capacity}
+  Content pillars: {2-3 themes}
+  Search vs. discovery emphasis: {one sentence}
+
 ### 30-day action plan
   Week 1: {action}
   Week 2: {action}
@@ -866,12 +1122,13 @@ Build a platform-specific content calendar. Output a Markdown table.
 
 - Every topic must trace to a loaded audience pain or the operator's proven work
 - Vary content types — don't post the same format 5 days in a row
-- Leave 2-3 slots per week for reactive/trending content (especially Instagram)
+- Leave 2-3 slots per week for reactive/trending content (especially Instagram and YouTube Shorts)
 - For Reddit: plan 1-2 posts per week max. Focus on comment engagement daily.
 - For Instagram: 3-5 feed posts + 5-7 stories per week
 - For LinkedIn: 2-4 posts per week
 - For X (Twitter): 3-5 tweets + replies daily. 1-2 threads per week.
 - For Facebook Groups: 2-3 posts + daily comment engagement
+- For YouTube: 1 long-form video per week + 3–7 Shorts; schedule Shorts on non-upload days to maintain consistency signal
 
 ---
 
@@ -884,6 +1141,7 @@ Build a platform-specific content calendar. Output a Markdown table.
 | **LinkedIn** | 1080x1080px | 1080x1350px (4:5) | N/A | 400x400px | 1584x396px (personal) |
 | **Facebook** | 1080x1080px | 1080x1350px (4:5) | 1080x1920px | 320x320px | 851x315px (page) |
 | **X (Twitter)** | 1080x1080px (1:1) | 1080x1350px (4:5) | N/A | 400x400px | 1500x500px (banner) |
+| **YouTube** | 1280x720px thumbnail (16:9 preview) | N/A | N/A | 800x800px | 2560x423px (desktop safe: 1546x423px) |
 
 ---
 
@@ -894,13 +1152,13 @@ Different platforms support different levels of depth. Structure your content py
 ```
         ▲
        /  \
-      / DEEP \         Blog article, case study, technical paper
+      / DEEP \         Blog article, case study, technical paper, YouTube long-form
      /  1x/mo  \       → One insight, fully explored
     /───────────\
-   /   EXPAND    \     LinkedIn carousel, Reddit self-post, newsletter
+   /   EXPAND    \     LinkedIn carousel, Reddit self-post, newsletter, YouTube playlist
   /    2-4x/mo    \    → One insight, structured explanation
  /─────────────────\
-/    SOCIAL LAYER    \ Instagram reel, LinkedIn post, X tweet/thread, Facebook Group
+/    SOCIAL LAYER    \ Instagram reel, LinkedIn post, X tweet/thread, Facebook Group, YouTube Shorts
       3-5x/week       → One insight, one takeaway, platform-native format
 ```
 
@@ -919,6 +1177,9 @@ Different platforms support different levels of depth. Structure your content py
 - [ ] **LinkedIn:** Are all external links stripped from the post body and placed as a first-comment suggestion?
 - [ ] **LinkedIn:** Has the operator been reminded to post the link as the first comment?
 - [ ] **LinkedIn carousel:** One idea per slide, ≤40 words/slide, hook on slide 1, no links on slides?
+- [ ] **YouTube:** Are title + thumbnail evaluated as a pair and CTR-optimized?
+- [ ] **YouTube long-form:** Are retention resets planned every 3–4 minutes?
+- [ ] **YouTube Shorts:** Is the 0–3 second hook present and is there a clear CTA to long-form/channel?
 - [ ] Would this post be upvoted/liked/shared by the target audience, not just the author?
 - [ ] Is the technology tilt present (for tech-positioned projects)?
 - [ ] Are self-references earned and disclosed, not promotional?
@@ -935,7 +1196,7 @@ You may only claim the task complete when all are true:
 2. Project context was loaded per I0; any critical gaps were surfaced.
 3. The quality check above passes.
 4. Platform-specific anti-patterns were avoided.
-5. A concrete next step is proposed (e.g., "post to r/subredditname on Tuesday AM," "design the carousel slides in Canva," "run @content-social repurpose on this for Instagram").
+5. A concrete next step is proposed (e.g., "post to r/subredditname on Tuesday AM," "design the carousel slides in Canva," "run @content-social repurpose on this for Instagram," "create the thumbnail in 1280x720px before upload").
 
 ---
 
@@ -945,20 +1206,86 @@ You may only claim the task complete when all are true:
 |------|------|
 | `write` (single platform, short-form) | 15-25 min |
 | `write linkedin carousel` | 25-35 min |
+| `write youtube` (long-form script + title/thumbnail/description) | 35-50 min |
+| `write youtube shorts` | 15-25 min |
 | `write` (single platform, long-form, e.g. Reddit self-post) | 30-45 min |
 | `research` (single platform, focused topic) | 15-25 min |
 | `research` (single platform, broad scan) | 25-40 min |
 | `repurpose` (one source → one platform) | 15-20 min |
-| `repurpose` (one source → all 5 platforms) | 40-60 min |
+| `repurpose` (one source → all 7 platforms) | 60-80 min |
 | `strategy` | 10-15 min |
 | `plan` | 20-30 min |
+| `icp` | 15-25 min |
 | `status` | < 2 min |
+
+---
+
+## LinkedIn ICP mode
+
+`@content-social icp` runs the BIZ-08 LinkedIn Ideal Customer Profile analysis and saves the output to `.work.biz/strategy/linkedin-icp.md`.
+
+This is **not** a content-writing mode. It produces the targeting brief that makes LinkedIn content and outreach precise.
+
+### Workflow
+
+1. Read `.work.biz/strategy/one-pager.md` and `.work.biz/strategy/target-buyer-profile.md`.
+2. If they are missing, run a short probe (≤5 questions) to capture:
+   - The niche / target buyer
+   - The unified offer
+   - The buyer's job titles, seniority, and company stage
+   - The buyer's LinkedIn behavior (what they post, comment on, save, share)
+   - The pain points and trigger events that make them buy
+3. Draft the ICP document following `concepts/linkedin-icp/prompt.md`.
+4. Save to `.work.biz/strategy/linkedin-icp.md`.
+5. Report: ICP saved; next steps (`@biz-content challenge`, `@content-social write linkedin`).
+
+### Output format
+
+```markdown
+# LinkedIn ICP — {PROJECT_NAME}
+
+## Profile signal
+- Titles: [list]
+- Seniority: [e.g., VP / Director / Founder]
+- Company stage: [seed / Series A / established]
+- Geography: [if relevant]
+
+## Behavioral signal
+- Posts about: [topics]
+- Comments on: [topics]
+- Saves/shares: [content types]
+- Active times: [days / times]
+
+## Pain & trigger
+- Top 3 pains: [list]
+- Buying triggers: [events that make them look for help]
+
+## Hook language
+- Words they use: [list]
+- Words that repel them: [list]
+
+## Content fit
+- Best formats: [text / carousel / video / newsletter]
+- Proof they need: [case studies, metrics, credentials]
+```
+
+---
+
+## Sources and caveats
+
+Benchmarks in this skill are a mix of platform-reported data, widely cited industry studies, and directional rules of thumb observed across creators. Because social-platform algorithms and audience behavior change frequently:
+
+- Treat percentages, multipliers, and reach estimates as **hypotheses to validate**, not guarantees.
+- Always cross-check claims against your own analytics, niche data, and primary sources where a business decision depends on them.
+- Marks like `[Source: ...]` point to the origin of a specific claim; marks like `[Unverified — directional benchmark]` are heuristics that should be tested in your own account before scaling.
 
 ---
 
 ## Gates & dependencies
 
-This skill has **no hard prerequisite gate** — it can run at any time, like `content-writing`. It improves dramatically when the host project is bootstrapped (`@biz-bootstrap init`) and strategy-certified (`@biz-strategy certify`), because target buyer, offer, and channel plan determine platform fit and audience calibration.
+**No hard gate:** `write`, `research`, `repurpose`, `icp`, and `status` modes can run at any time, like `content-writing`. Output improves dramatically when the host project is bootstrapped (`@biz-bootstrap init`) and strategy-certified (`@biz-strategy certify`).
+
+**Requires `strategy-ready`:** `strategy` and `plan` modes need a certified strategy (`@biz-strategy certify`) because they commit to a platform mix and publishing calendar.
 
 ### Composing with other skills
 
@@ -969,6 +1296,8 @@ This skill has **no hard prerequisite gate** — it can run at any time, like `c
 | `@biz-community engage` | Day-to-day comment engagement — complements platform-specific posts |
 | `@biz-content publish` | LinkedIn publishing ops (calendar, tracker, challenge, engagement cadence) |
 | `@biz-content challenge` | 30-day LinkedIn plan — run before a batch of `write linkedin` drafts |
+| `@biz-youtube publish` | YouTube publishing ops (tracker, calendar, challenge, status) |
+| `@biz-youtube plan` | Capacity-appropriate YouTube cadence and series planning |
 | `@biz-strategy certify` | Ensure target buyer and channel plan are defined before committing to a platform strategy |
 | `@content-writing audit` | Audit a draft before platform-adapting it |
 | `@content-social research` | Research trending topics and content gaps before writing |
@@ -982,5 +1311,6 @@ This skill has **no hard prerequisite gate** — it can run at any time, like `c
 | `@biz-community` | Find and engage with communities across all platforms |
 | `@content-writing` | Draft core content (articles, case studies, long-form) to repurpose |
 | `@biz-content` | LinkedIn-specific publishing ops and tracking |
+| `@biz-youtube` | YouTube-specific publishing ops, tracker, and 30-day challenge |
 | `@biz-brand` | Brand voice, visual identity, and presence audit |
 | `@biz-strategy` | Target buyer definition, channel plan |

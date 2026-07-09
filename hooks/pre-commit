@@ -1,8 +1,14 @@
 #!/bin/sh
-# pre-commit — change-safety gate (warn-only by default).
+# pre-commit — change-safety gate (enforcing by default).
+# Set WARN_ONLY=1 to downgrade failures to warnings.
 
-WARN_ONLY="${WARN_ONLY:-1}"
+WARN_ONLY="${WARN_ONLY:-0}"
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+
+EXTRA_ARGS=""
+if [ "$WARN_ONLY" = "1" ]; then
+  EXTRA_ARGS="--warn-only"
+fi
 
 SCRIPTS=""
 if [ -d "${REPO_ROOT}/scripts" ]; then
@@ -15,7 +21,7 @@ fi
 
 for check in touch-scope-verify blast-radius-check; do
   if [ -f "${SCRIPTS}/${check}.sh" ]; then
-    if ! bash "${SCRIPTS}/${check}.sh" 2>/dev/null; then
+    if ! bash "${SCRIPTS}/${check}.sh" $EXTRA_ARGS; then
       MSG="  CHECK: ${SCRIPTS}/${check}.sh"
       if [ "$WARN_ONLY" = "1" ]; then
         echo "WARN: ${MSG}"

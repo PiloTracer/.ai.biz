@@ -26,6 +26,7 @@ description: >-
 | `@biz-community find instagram - <topic/keyword>` | Find Instagram accounts, hashtags, and communities to follow/engage |
 | `@biz-community find linkedin - <topic/keyword>` | Find LinkedIn creators, groups, and hashtags in the space |
 | `@biz-community find facebook - <topic/keyword>` | Find Facebook Groups and pages relevant to the niche |
+| `@biz-community find youtube - <topic/keyword>` | Find relevant YouTube creators/channels in the niche |
 | `@biz-community find` | Find communities across all platforms based on project strategy |
 | `@biz-community engage` | Guide for daily engagement — what to do, where, how to track |
 | `@biz-community status` | Read-only: report which communities are being engaged and pipeline status |
@@ -196,6 +197,36 @@ For each candidate subreddit, evaluate:
 | **4** | Join 1-2 X Spaces per week. Listen more than speak initially | Weekly |
 | **5** | Post original content (tweets + threads) via `@content-social write x` | 3-5 tweets + 1-2 threads/week |
 
+### I0-Y — YouTube: Creator & Channel Discovery
+
+#### YouTube discovery methods
+
+| Method | How to execute | What you learn |
+|--------|---------------|----------------|
+| **Search** | Search the niche keyword on YouTube and sort by "View count" and "This month" | Which creators own the search real estate; what thumbnails/titles work |
+| **Suggested videos** | Click a top video and note the right-rail / end-screen suggestions | Algorithmic clusters of related creators and topics |
+| **Comments mapping** | Read comments on popular videos; note who asks follow-up questions | Active, engaged viewers who may also be buyers |
+| **Shorts feed** | Search Shorts for the niche keyword | Emerging creators and fast-growing formats |
+| **Channel about section** | Check creator links and pinned comments for cross-platform presence | Whether the creator is building a business audience or a pure audience play |
+
+#### YouTube channel evaluation criteria
+
+| Criteria | Green flag | Red flag |
+|----------|------------|----------|
+| **Audience fit** | Comments and video topics reflect the target buyer's language and pain points | Audience is too broad, entertainment-only, or clearly mismatched |
+| **Engagement quality** | Comments include questions, timestamps, and detailed replies | View count is high but comments are shallow or spammy |
+| **Post consistency** | 1–3 long-form videos/week or 3–7 Shorts/week with stable style | Long gaps, sporadic uploads, or abandoned channel |
+| **CTA hygiene** | Creator links to website, free resource, or community in description/pinned comment | No links, no clear next step, or purely platform-locked audience |
+| **Comment responsiveness** | Creator replies to thoughtful comments | Creator never engages in comments |
+
+#### YouTube creator hierarchy
+
+| Priority | Account type | Action |
+|----------|-------------|--------|
+| **1 (highest)** | Niche creators whose audience matches your buyer | Thoughtful comments on new videos; build recognition |
+| **2** | Larger educational channels in adjacent spaces | Add value in comments; aim for visibility, not reciprocation |
+| **3** | Peer operators with smaller but engaged audiences | Reciprocal comment engagement; potential collaboration |
+
 ### I0-A — Additional platforms
 
 | Platform | Where to go | Best for | Discovery approach |
@@ -228,7 +259,7 @@ Before committing to any community, verify:
 4. **Never DM out of the blue.** Only DM after a thread interaction where the person invites deeper conversation.
 5. **Track every engagement** in your pipeline tracker: platform, thread link, response, outcome.
 6. **Platform-native voice.** Your Reddit comments should sound like a Redditor, not a LinkedIn thought leader cross-posting. Read the room before writing.
-7. **Post before you engage (on content-heavy platforms).** On Instagram and LinkedIn, have 5-10 posts on your profile before heavy engagement — people check who's talking.
+7. **Post before you engage (on content-heavy platforms).** On Instagram, LinkedIn, and YouTube, have 5-10 posts on your profile/channel before heavy engagement — people check who's talking.
 
 ---
 
@@ -287,6 +318,14 @@ Before committing to any community, verify:
 - Engage with people who reply to your tweets. A thoughtful reply to a reply builds relationship faster than a new tweet.
 - Lists are your superpower. Build private Lists and review them daily instead of scrolling the main timeline.
 - X Spaces: attend 1-2/week in your niche. Listen. Ask thoughtful questions. Don't pitch. Stay after to DM new connections.
+
+### YouTube engagement
+- Comment within the first 60 minutes of a target video publishing. Early comments get surfaced to subscribers and drive profile visits.
+- Leave timestamped, specific comments — not generic praise. "At 04:22, the caching tradeoff you described is exactly why we moved from Redis to SQLite for offline-first" earns replies.
+- Use the Community Tab (if available) to reply to polls/posts from target creators — replies show up in subscribers' feeds.
+- Reply to replies on your own comments. A short back-and-forth under a popular video can generate multiple profile clicks.
+- Convert commenters to pipeline: when someone replies "great breakdown — how do you apply this in X?", answer publicly, then offer a direct link to a deeper resource or Calendly in the next reply.
+- Track: video URL, comment timestamp, reply thread outcome. After 3+ exchanges with the same person across 2+ weeks, DM or email is appropriate if their profile/contact is public.
 
 ---
 

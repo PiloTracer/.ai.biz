@@ -11,7 +11,22 @@ description: >-
 
 ---
 
-## I0 — Weekly review (30 min)
+## I0 — Status mode (read-only)
+
+`@biz-review status` confirms the current Business OS readiness state.
+
+| State | Evidence to check |
+|-------|-------------------|
+| strategy-ready | `.work.biz/strategy/certification.md` exists and passes internal gate |
+| brand-ready | LinkedIn/website audit shows offer + proof + CTA are clear |
+| pipeline-ready | Pricing documented in `.work.biz/strategy/pricing.md`, pipeline tracker configured, outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md` |
+| sales-ready | Discovery process verified, proposal template ready |
+
+Output: a short report of which states are met and what is missing.
+
+---
+
+## I1 — Weekly review (30 min)
 
 ### Pull numbers
 
@@ -45,7 +60,7 @@ Score each stage 0 (blocked) → 5 (healthy):
 
 ---
 
-## I1 — Quarterly review (2 hrs)
+## I2 — Quarterly review (2 hrs)
 
 ### Retrospective questions
 
@@ -79,7 +94,7 @@ Score each stage 0 (blocked) → 5 (healthy):
 
 ---
 
-## I2 — Data source
+## I3 — Data source
 
 All numbers come from your **pipeline tracker** (a spreadsheet, CRM, or `.ai.biz/` tracker file). If data isn't tracked, the first action is: *set up tracking for next week.*
 

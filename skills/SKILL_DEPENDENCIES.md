@@ -22,10 +22,12 @@ biz-brand audit / overhaul
 biz-pricing set  ← requires strategy-ready
        │
 biz-content publish  ← requires brand-ready (brand assets exist)
+biz-youtube publish/plan/challenge ← no hard gate; benefits from brand-ready + strategy-ready
 biz-community engage ← requires brand-ready
 content-social write ← no hard gate (improves with strategy-ready; best after @biz-community find)
 content-social research ← no hard gate (improves with strategy-ready)
 content-social repurpose ← no hard gate
+content-social icp ← no hard gate (improves with strategy-ready; produces linkedin-icp.md)
 content-social strategy ← requires strategy-ready
 content-social plan ← requires strategy-ready
         │
@@ -42,7 +44,7 @@ biz-referrals ask  ← no strict gate (can start anytime)
         │
          │  ── Generative skills (no hard gate; run any time) ──
          ├── content-writing write/plan/repurpose/audit ← run any time (improves with strategy-ready + brand-ready)
-         ├── content-social write/research/repurpose ← run any time (improves with strategy-ready; best after @biz-community find)
+         ├── content-social write/research/repurpose/icp ← run any time (improves with strategy-ready; best after @biz-community find)
          ├── business-ideas generate/stress/pivot ← run any time (improves with strategy-ready)
          └── product-service-ideas generate/extend/scope/audit ← run any time (improves with strategy-ready)
 ```
@@ -68,7 +70,7 @@ biz-referrals ask  ← no strict gate (can start anytime)
 | — | scaffold | `.work.biz/` exists | `@biz-bootstrap init` |
 | 1 | strategy-ready | Niche + offer + buyer defined and certified | `@biz-strategy greenfield` + `@biz-strategy certify` |
 | 2 | brand-ready | LinkedIn/website aligned to offer | `@biz-brand audit` + `@biz-brand overhaul` |
-| 3 | pipeline-ready | Pipeline tracker configured, pricing set | `@biz-pricing set` + `@biz-review status` |
+| 3 | pipeline-ready | Pipeline tracker configured, pricing set, outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md` | `@biz-pricing set` + `@biz-review status` |
 | 4 | sales-ready | Discovery call run, process verified | `@biz-discovery run` |
 | 5 | active deal | At least one deal in pipeline tracker at Conversation stage or later | `@biz-discovery run` or `@biz-proposal write` |
 

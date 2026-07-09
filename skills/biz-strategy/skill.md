@@ -160,17 +160,31 @@ Walk through:
 
 **Output:** Write `strategy/channel-plan.md`.
 
+**Channel fit criteria:**
+
+| Channel | Minimum production capacity required |
+|---------|--------------------------------------|
+| LinkedIn | 3–4 posts/week, 10–15 min/day engagement |
+| Communities | 10+ meaningful comments/week across 2–3 communities |
+| Content marketing (blog/newsletter) | 1 long-form piece/week or 1 newsletter/week |
+| Cold outreach | 20–50 personalized touches/day with follow-up system |
+| **YouTube (as primary channel)** | **1 long-form video/week OR 4–7 Shorts/week; thumbnail/title system; 6-month commitment** |
+
+If the operator cannot meet the minimum production capacity for a channel, that channel is not a viable **primary** channel. It can still be a secondary or experiment channel at a lower cadence (see `@biz-youtube plan` for capacity-appropriate schedules).
+
 **Channel credibility (source: validated research):**
 
-| Channel | Best for | Trust path |
-|---------|----------|------------|
-| LinkedIn + warm referrals | High-ticket B2B ($20k+) | Warm introduction → case study → call |
-| Community engagement | Mid-ticket expertise plays | Helpful answers → profile → DM |
-| Content marketing | Inbound positioning | Post → profile view → website → call |
-| Cold outreach | Volume plays under $5k | Message → call (low conversion) |
-| YouTube / podcast | Long-term brand building | Content → subscribe → wait (6-18 months) |
+| Channel | Best for | Trust path | Notes |
+|---------|----------|------------|-------|
+| LinkedIn + warm referrals | High-ticket B2B ($20k+) | Warm introduction → case study → call | Fastest trust path for high-ticket services |
+| Community engagement | Mid-ticket expertise plays | Helpful answers → profile → DM | Requires consistent presence |
+| Content marketing | Inbound positioning | Post → profile view → website → call | Blog + newsletter play |
+| Cold outreach | Volume plays under $5k | Message → call (low conversion) | Low trust, high volume |
+| YouTube / podcast | Long-term brand building + search discovery | Video → subscribe → deeper video → lead → call | YouTube is the second-largest search engine (~2.5–2.7B MAU); 68% of B2B buyers watch long-form video before purchasing ([Digital Applied 2026](https://www.digitalapplied.com/blog/video-marketing-statistics-2026-data-points)) |
 
 **Rule:** Pick ONE primary channel. Everything else is secondary. Split channel focus kills momentum.
+
+**YouTube as primary channel:** Only choose YouTube as primary if the operator can sustain 1 long-form video/week or 4–7 Shorts/week for at least 6 months. YouTube rewards consistency and multi-format creators (long-form + Shorts + Community Tab). The typical B2B trust path is: viewer → subscriber → lead magnet → email nurture → call. Expect 6–18 months before meaningful inbound. If capacity is lower, make YouTube secondary and run `@biz-youtube plan` for a sustainable cadence.
 
 ### Element 5: Price Range
 
@@ -182,7 +196,7 @@ Walk through:
 4. **Research benchmarks:** For custom platform development, solo operators charge $20k-$80k per engagement. Senior developer hourly: $100-$180/hr. SaaS MVP: $25k-$80k. Enterprise web apps: $50k-$250k+.
 5. **Range shape** — Fixed-price, milestone-gated. 50% upfront standard.
 
-**Output:** Append price range to `strategy/one-pager.md`.
+**Output:** Append price range to `strategy/one-pager.md` and write the distilled price range to `strategy/pricing.md`.
 
 **Rule:** Price range should be a 2-4x spread, not 10x. "$20k-$80k" is good. "$5k-$200k" means you don't know who you serve.
 
@@ -231,6 +245,7 @@ When all 6 elements + ledger are written:
 ✓ Target buyer profile:  {WORK_BUSINESS_ROOT}/strategy/target-buyer-profile.md
 ✓ Offer scope:           {WORK_BUSINESS_ROOT}/strategy/offer-scope.md
 ✓ Channel plan:          {WORK_BUSINESS_ROOT}/strategy/channel-plan.md
+✓ Pricing:               {WORK_BUSINESS_ROOT}/strategy/pricing.md
 ✓ Assumption ledger:     {WORK_BUSINESS_ROOT}/strategy/assumption-ledger.md
 
 Next: @biz-strategy certify  (validate consistency and promote gate)
@@ -256,11 +271,26 @@ Adaptive questioning to fill gaps. When assumptions are "inferred" or "unknown",
 | **Person** | "Who specifically has this problem and the budget to solve it?" "Have you talked to 3 of them?" "What title do they have on LinkedIn?" "What did they try before finding you?" "What would make them say 'not now'?" |
 | **Problem** | "What happens if they do nothing for 6 months?" "Is the problem painful enough to pay $X for?" "Who else is solving this, and why isn't it working?" "Is this the real problem or a symptom?" |
 | **Offer** | "If you could only offer ONE thing, what would it be?" "What adjacent offers are you willing to walk away from?" "Does the offer fit a fixed-price milestone model?" "What does success look like for the buyer after delivery?" |
-| **Channel** | "Where does your buyer currently get advice?" "Which platform have you been most active on historically?" "What content format does your buyer consume?" "If you could only do ONE channel for 90 days, which?" |
+| **Channel** | "Where does your buyer currently get advice?" "Which platform have you been most active on historically?" "What content format does your buyer consume?" "If you could only do ONE channel for 90 days, which?" "If YouTube is primary, can you produce 1 long-form video/week (or 4–7 Shorts/week) for 6 months?" |
 | **Price** | "What number would make you excited to take the project?" "What number would make them say yes without negotiation?" "What does the alternative (agency / hire / build in-house) cost?" |
 | **Geography** | "Where are your last 5 clients or employers based?" "Can you legally invoice a client in that country?" "What timezone overlap do you need for the work style you prefer?" |
 
 **Probe completion:** When all assumption-ledger gaps tagged "unknown" are resolved to at least "inferred", or when remaining unknowns are explicitly flagged as acceptable risk.
+
+### YouTube channel probe (additional)
+
+If YouTube is primary or secondary, verify:
+
+| Question | Why it matters |
+|----------|----------------|
+| "What is the one video topic you could make 20 versions of without repeating yourself?" | Tests niche depth and long-term content supply |
+| "What proof do you have on camera?" (demos, screen shares, case studies, client results) | YouTube B2B audiences trust show-don't-tell proof |
+| "Can you commit to one publish slot weekly for 6 months?" | Consistency is a ranking signal; sporadic uploads kill momentum |
+| "What is the lead magnet that moves a subscriber off-platform?" | YouTube alone is rarely the converter; email/resource bridge is required |
+| "Are your target buyers on YouTube to learn or to be entertained?" | Determines format (tutorial vs. story) and tone |
+| "What is your repeatable thumbnail/title system?" | CTR is the primary discovery gate; ad-hoc thumbnails fail |
+
+**YouTube viewer persona note:** The B2B YouTube viewer is typically in "research mode" — they searched for a specific problem or clicked from a related technical video. They are patient with depth (8–15 minutes) if the first 30 seconds prove relevance. They subscribe only after 2–3 videos that consistently deliver. The conversion path is slower than LinkedIn but compounds.
 
 ---
 
@@ -458,6 +488,7 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 - `{WORK_BUSINESS_ROOT}/strategy/target-buyer-profile.md`
 - `{WORK_BUSINESS_ROOT}/strategy/offer-scope.md`
 - `{WORK_BUSINESS_ROOT}/strategy/channel-plan.md`
+- `{WORK_BUSINESS_ROOT}/strategy/pricing.md`
 - `{WORK_BUSINESS_ROOT}/strategy/assumption-ledger.md`
 - `{WORK_BUSINESS_ROOT}/strategy/certification.md`
 - `{WORK_BUSINESS_ROOT}/gates.md`

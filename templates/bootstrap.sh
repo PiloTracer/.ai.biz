@@ -49,9 +49,11 @@ copy_if_missing "${TPL}/context/HANDOFF.md.template" "${WORK}/context/HANDOFF.md
 copy_if_missing "${TPL}/plans/NEXT.md.template" "${WORK}/plans/NEXT.md"
 copy_if_missing "${TPL}/plans/UNKNOWNS.md.template" "${WORK}/plans/UNKNOWNS.md"
 copy_if_missing "${TPL}/pipeline/pipeline_tracker.md.template" "${WORK}/pipeline/pipeline_tracker.md"
+copy_if_missing "${TPL}/pipeline/outreach-cadence.md.template" "${WORK}/pipeline/outreach-cadence.md"
 copy_if_missing "${TPL}/research/research_index.md.template" "${WORK}/research/research_index.md"
+copy_if_missing "${TPL}/strategy/README.md.template" "${WORK}/strategy/README.md"
 
-for dir in context plans pipeline research drafts; do
+for dir in context plans pipeline research drafts strategy reference; do
   mkdir -p "${WORK}/${dir}"
 done
 

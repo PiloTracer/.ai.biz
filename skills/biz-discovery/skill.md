@@ -209,7 +209,7 @@ If discovery calls feel good in the moment but never convert to a proposal stage
 
 ## Related Files
 
-- `.work.biz/reference/PROJECTS.md` — case studies for credibility
-- `.work.biz/plans/strategy_pipeline_tracker.md` — update pipeline stage
-- `skills/handle-objections.md` — for when objections come up
-- `skills/proposal-scope.md` — for writing the proposal after the call
+- `.work.biz/reference/PROJECTS.md` — case studies for credibility (create if missing)
+- `.work.biz/pipeline/pipeline_tracker.md` — update pipeline stage
+- `skills/biz-objections/skill.md` — for when objections come up
+- `skills/biz-proposal/skill.md` — for writing the proposal after the call

@@ -39,8 +39,41 @@ while IFS= read -r d; do
   skill_count=$((skill_count + 1))
   [[ -f "$d/skill.md" ]] || die "skills/${id}/skill.md missing"
   grep -qE "^\| ${id} " "$AI_ROOT/skills/README.md" || die "skills/${id} not in skills/README.md"
+  # Frontmatter name must match folder name.
+  fm_name="$(grep -m1 '^name:' "$d/skill.md" | sed 's/^name:[[:space:]]*//' | tr -d '[:space:]')"
+  [[ "$fm_name" == "$id" ]] || die "skills/${id}/skill.md frontmatter name '${fm_name}' does not match folder"
 done < <(find "$AI_ROOT/skills" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | sort)
 ok "${skill_count} skills registered"
+
+# README skill count must match folder count.
+readme_count="$(grep -oE '[0-9]+ skills in total' "$AI_ROOT/README.md" | grep -oE '[0-9]+' | head -1 || true)"
+if [[ -n "$readme_count" ]] && [[ "$readme_count" -eq "$skill_count" ]]; then
+  ok "README.md skill count (${readme_count}) matches folder count"
+else
+  die "README.md skill count (${readme_count:-missing}) does not match folder count (${skill_count})"
+fi
+
+# .cursorrules skills table must include every skill listed in skills/README.md.
+while IFS= read -r skill_id; do
+  [[ -z "$skill_id" ]] && continue
+  grep -qE "^\\| ${skill_id} " "$AI_ROOT/.cursorrules" || die "skills/README.md lists '${skill_id}' but it is missing from .cursorrules skills table"
+done < <(awk '/^## Registered skills$/{flag=1; next} flag && /^## /{flag=0} flag && /^[|]/{print $2}' "$AI_ROOT/skills/README.md" | grep -E '^[a-z0-9_-]+$' | sort -u)
+ok ".cursorrules skills table covers skills/README.md entries"
+
+# Every skill.md must be tracked by git (catches new-but-unstaged skills).
+while IFS= read -r skill_md; do
+  git ls-files --error-unmatch "$skill_md" >/dev/null 2>&1 || die "${skill_md} is not tracked by git — stage before commit"
+done < <(find "$AI_ROOT/skills" -mindepth 2 -maxdepth 2 -type f -name 'skill.md' | sort)
+ok "all skill.md files are tracked by git"
+
+note "Standards non-empty"
+std_count=0
+while IFS= read -r f; do
+  std_count=$((std_count + 1))
+  lines="$(wc -l < "$f")"
+  [[ "$lines" -gt 5 ]] || die "standard $(basename "$f") is empty or a stub (${lines} lines)"
+done < <(find "$AI_ROOT/standards" -maxdepth 1 -type f -name '*.md' | sort)
+ok "${std_count} standards non-empty"
 
 note "deploy-files in-place scaffold"
 DF_SMOKE="$(mktemp -d)"

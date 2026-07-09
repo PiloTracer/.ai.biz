@@ -33,9 +33,9 @@
        │
        ├── "I want to fix my brand / online presence"  ──► §4 Brand
        │
-        ├── "I want to publish content"           ──► `@biz-content publish`
+        ├── "I want to publish content"           ──► `@biz-content publish` · `@biz-youtube publish`
         │
-        ├── "I want social content for Reddit, LinkedIn, Instagram, X, Facebook"  ──► `@content-social write - <platform>`
+        ├── "I want social content for Reddit, LinkedIn, Instagram, X, Facebook, YouTube"  ──► `@content-social write - <platform>`
         │
         ├── "I want to write an article / post / case study / email"  ──► `@content-writing write - <topic>`
        │
@@ -86,6 +86,8 @@
 | Audit current LinkedIn, website, brand | `@biz-brand audit` |
 | Overhaul LinkedIn profile | `@biz-brand overhaul` |
 | Publish a LinkedIn post or article | `@biz-content publish` |
+| Publish / plan YouTube videos | `@biz-youtube publish` · `@biz-youtube plan` |
+| Audit YouTube channel branding | `@biz-brand audit` (YouTube section) |
 | Engage in communities | `@biz-community engage` |
 
 ---
@@ -101,9 +103,10 @@ These project-aware generative skills run any time — even before bootstrap. Th
 | Repurpose one piece into multiple formats | `@content-writing repurpose - <source>` |
 | Critique a draft | `@content-writing audit - <draft or path>` |
 | Research trending topics/gaps on a social platform | `@content-social research - <platform>` |
-| Write platform-native social content | `@content-social write - <platform>` |
+| Write platform-native social content (incl. YouTube scripts / Shorts) | `@content-social write - <platform>` |
 | Repurpose one asset into multiple platform formats | `@content-social repurpose - <source>` |
 | Plan a cross-platform social content calendar | `@content-social plan - <30 days>` |
+| Build a YouTube publishing calendar / 30-day challenge | `@biz-youtube plan` · `@biz-youtube challenge` |
 | Business / venture / pivot ideas | `@business-ideas generate - <domain>` |
 | Stress-test one idea (try to kill it) | `@business-ideas stress - <idea>` |
 | Pivot directions from current business | `@business-ideas pivot - <situation>` |

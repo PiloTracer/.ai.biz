@@ -5,6 +5,10 @@ All notable changes to Business OS are documented here.
 ## [Unreleased]
 
 ### Added
+- **`biz-youtube` skill** — YouTube publishing ops: `publish`, `plan`, `challenge`, `status`; includes production-capacity gating and CTR/AVD/retention analytics
+- **YouTube as a first-class platform** — `@content-social write youtube`, `write youtube shorts`, `research youtube`; YouTube sections in `biz-brand`, `biz-community`, `biz-strategy`, `content-writing`, and `standards/20260701-PLATFORM-ALGORITHM-STANDARD.md`
+- **LinkedIn ICP mode** — `@content-social icp` runs BIZ-08 and saves to `.work.biz/strategy/linkedin-icp.md`
+- **`templates/work/strategy/README.md.template`** — strategy directory scaffolded on bootstrap
 - **Change-safety gates** — `scripts/touch-scope-verify.sh`, `scripts/blast-radius-check.sh`, `scripts/gate-verify.sh` with `--self-test` support; documented in `.cursorrules` § Change safety
 - **Git hooks hygiene layer** — `hooks/prepare-commit-msg`, `hooks/commit-msg`, `hooks/pre-commit`, `hooks/post-commit` with `scripts/install-git-hooks.sh` backup mechanism; enforce `Co-authored-by` removal and `BIZ-`/type-prefixed commit subjects
 - **`templates/work/touch-scope.template`** — declare change scope before work sessions
@@ -13,12 +17,15 @@ All notable changes to Business OS are documented here.
 
 ### Changed
 - **Fixed legacy `.work/` paths** in `skills/biz-brand`, `skills/biz-discovery`, `skills/biz-objections`, `skills/biz-strategy` → `.work.biz/`
-- **`README.md`** skill count corrected to 22; added `content-social` to skills at a glance
-- **`START_HERE.md`** decision tree and generative-skills table now reference `content-social`
-- **`HANDOFF.md`** and **`NEXT.md`** skill count corrected to 22
-- **`templates/cursorrules.template`** synchronized with `.cursorrules` (change safety, commit format, co-authored-by, source resolution, content-social)
-- **`scripts/framework-verify.sh`** and **`scripts/gate-verify.sh`** — added `--self-test` flags
+- **Canonical strategy path** — all skills now read/write `.work.biz/strategy/`; `CONVENTIONS.md` and `standards/20260621-DIRECTORY_MAP.md` updated
+- **`pipeline-ready` gate** — now requires pricing set + pipeline tracker configured + outreach cadence defined, confirmed by `@biz-review status`
+- **`README.md`** skill count corrected to 23; added `biz-youtube` and `content-social` YouTube to skills at a glance
+- **`START_HERE.md`** decision tree and generative-skills table now reference YouTube and `biz-youtube`
+- **`HANDOFF.md`** skill count corrected to 23
+- **`templates/cursorrules.template`** synchronized with `.cursorrules` (change safety, commit format, co-authored-by, source resolution, content-social, biz-youtube)
+- **`scripts/framework-verify.sh`** and **`scripts/gate-verify.sh`** — added `--self-test` flags; framework-verify now checks skill frontmatter name ↔ folder match and non-empty standards
 - **`scripts/install-git-hooks.sh`** — backs up existing hooks before overwriting
+- **`scripts/blast-radius-check.sh`** and **`scripts/touch-scope-verify.sh`** — now enforce by default; `--warn-only` available
 
 ## [v0.4.3] - 2026-07-02
 

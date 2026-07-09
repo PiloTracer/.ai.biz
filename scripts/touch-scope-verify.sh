@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
 # touch-scope-verify.sh — Check changed files are within declared scope.
+#
+# Default: fail if any changed file falls outside the declared scope.
+# Use --warn-only to print a warning and exit 0.
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SCOPE_FILE="${REPO_ROOT}/.work.biz/touch-scope"
 
-SELF_TEST="${1:-}"
-if [ "$SELF_TEST" = "--self-test" ]; then
+WARN_ONLY=0
+SELF_TEST=0
+
+for arg in "$@"; do
+  case "$arg" in
+    --warn-only) WARN_ONLY=1 ;;
+    --self-test) SELF_TEST=1 ;;
+  esac
+done
+
+if [ "$SELF_TEST" -eq 1 ]; then
   echo "touch-scope-verify self-test: PASS"
   exit 0
 fi
@@ -16,5 +28,62 @@ if [ ! -f "$SCOPE_FILE" ]; then
   exit 0
 fi
 
-echo "touch-scope-verify: PASS (scope declared)"
-exit 0
+# Load scope entries: non-empty, non-comment lines.
+mapfile -t SCOPE_ENTRIES < <(grep -v '^#' "$SCOPE_FILE" | grep -v '^$' || true)
+
+if [ "${#SCOPE_ENTRIES[@]}" -eq 0 ]; then
+  echo "skip: .work.biz/touch-scope exists but contains no scope entries"
+  exit 0
+fi
+
+CHANGED="$(git diff --name-only HEAD 2>/dev/null || true)"
+STAGED="$(git diff --cached --name-only HEAD 2>/dev/null || true)"
+ALL_FILES="$(echo -e "${CHANGED}\n${STAGED}" | sort -u | grep -v '^$' || true)"
+
+if [ -z "$ALL_FILES" ]; then
+  echo "touch-scope-verify: PASS (no changed files)"
+  exit 0
+fi
+
+OUT_OF_SCOPE=()
+for f in $ALL_FILES; do
+  in_scope=0
+  for entry in "${SCOPE_ENTRIES[@]}"; do
+    # Normalize: ensure entry ends with / when it is a directory prefix match.
+    case "$f" in
+      "$entry"|"$entry"/*)
+        in_scope=1
+        break
+        ;;
+    esac
+    # Also match if entry is a directory and file is under it.
+    if [[ "$entry" == */ ]]; then
+      case "$f" in
+        "${entry}"*)
+          in_scope=1
+          break
+          ;;
+      esac
+    fi
+  done
+  if [ "$in_scope" -eq 0 ]; then
+    OUT_OF_SCOPE+=("$f")
+  fi
+done
+
+if [ "${#OUT_OF_SCOPE[@]}" -eq 0 ]; then
+  echo "touch-scope-verify: PASS (all ${#ALL_FILES[@]} changed files within scope)"
+  exit 0
+fi
+
+for f in "${OUT_OF_SCOPE[@]}"; do
+  echo "OUT-OF-SCOPE: $f"
+done
+
+if [ "$WARN_ONLY" -eq 1 ]; then
+  echo "touch-scope-verify: WARN (${#OUT_OF_SCOPE[@]} file(s) outside declared scope)"
+  exit 0
+else
+  echo "touch-scope-verify: FAIL (${#OUT_OF_SCOPE[@]} file(s) outside declared scope; use --warn-only to override)"
+  exit 1
+fi

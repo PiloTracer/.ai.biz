@@ -34,6 +34,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-brand | `biz-brand/` | Audit/overhaul LinkedIn, website, brand presence |
 | biz-pricing | `biz-pricing/` | Value-based pricing for any engagement |
 | biz-content | `biz-content/` | LinkedIn publishing ops: publish, plan, 30-day challenge (#CreateImpact), tracker |
+| biz-youtube | `biz-youtube/` | YouTube publishing ops: publish, plan, 30-day challenge, analytics status |
 | biz-community | `biz-community/` | Community engagement without selling |
 | biz-referrals | `biz-referrals/` | Systematic referral generation |
 | biz-discovery | `biz-discovery/` | Sales discovery calls |
@@ -45,11 +46,11 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
 | content-writing | `content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
-| content-social | `content-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel, Facebook, X). Write, research, repurpose, plan. |
+| content-social | `content-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel, Facebook, X, YouTube incl. Shorts). Write, research, repurpose, plan. |
 | business-ideas | `business-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
 | product-service-ideas | `product-service-ideas/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
 
-**Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand audit` → `@biz-pricing set` → `@biz-community find` → `@content-social strategy` → `@content-social write` → ...
+**Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand audit` → `@biz-pricing set` → `@biz-community find` → `@content-social strategy` → `@content-social write` → `@biz-youtube plan` → ...
 
 ---
 

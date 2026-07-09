@@ -59,7 +59,23 @@ Check each of these and report pass/fail:
 | Logo/avatar is the same or visually consistent | | |
 | Tone of voice is consistent (not formal on website, casual on LinkedIn) | | |
 
-### 1.4 Audit Output
+### 1.4 YouTube Channel Audit
+
+Run only if the project has an active or planned YouTube presence.
+
+| Check | Pass | Fail |
+|-------|------|------|
+| Channel name / handle is clear, searchable, and matches the brand | | |
+| Banner image states the one offer (not just a name or tagline) | | |
+| Channel trailer hooks a first-time visitor in the first 15 seconds | | |
+| About section states who the channel helps and links to website / Calendly | | |
+| Playlists are organized by topic (not a chronological dump) | | |
+| Thumbnails follow a consistent style guide (fonts, colors, face/hook layout) | | |
+| Video intro/outro reinforce the same brand promise as LinkedIn/website | | |
+
+**Evidence to reference:** YouTube is the world's second-largest search engine with ~2.5–2.7 billion monthly active users and 500M+ daily searches ([GlobalMediaInsight 2026](https://www.globalmediainsight.com/blog/youtube-users-statistics/), [Digital Applied 2026](https://www.digitalapplied.com/blog/video-marketing-statistics-2026-data-points)). B2B buyers increasingly research long-form video before purchasing — 68% watch video before a buying decision ([Digital Applied 2026](https://www.digitalapplied.com/blog/video-marketing-statistics-2026-data-points)).
+
+### 1.5 Audit Output
 
 After checks are run, produce a summary:
 
@@ -224,6 +240,74 @@ After LinkedIn and website are rewritten, verify:
 | Calendly link | Same link on both platforms |
 | Avatar/logo | Same or visually consistent |
 | Color palette | Hex codes identical across platforms |
+| YouTube banner text | Same one offer as LinkedIn/website |
+| YouTube thumbnails | Same colors, fonts, and avatar as other brand assets |
+| YouTube About links | Same website/Calendly as LinkedIn and website |
+
+### 2.4 YouTube Channel Overhaul
+
+Use this only when YouTube is a chosen primary or secondary channel. Reference `standards/20260701-PLATFORM-ALGORITHM-STANDARD.md` § YouTube for distribution rules.
+
+#### 2.4.1 Channel name / handle
+
+- Match the brand name if available; otherwise choose a searchable phrase that signals the niche.
+- Keep it under 30 characters if possible. Avoid numbers/special characters unless they're part of the brand.
+
+#### 2.4.2 Channel banner
+
+- Dimensions: 2560 × 1440 pixels (safe area 1546 × 423 px on desktop, 423 px height on mobile).
+- Text overlay: one-line offer or promise, not just the brand name.
+- Use the same color palette and typography as the website and LinkedIn banner.
+- Update the banner at least quarterly to reflect current offers or campaigns.
+
+#### 2.4.3 Channel trailer
+
+- Target length: 60–90 seconds.
+- First 15 seconds: state who the channel is for and what they learn.
+- Include a verbal CTA to subscribe and a link to the website / Calendly in the description.
+- Show a real face or voice — this is a trust channel, not a slide deck.
+
+#### 2.4.4 About section + links
+
+Structure:
+
+```
+[One sentence: who this channel helps and the transformation it delivers]
+
+[One sentence: what makes the host credible — specific outcomes or years]
+
+[Links]
+• Website / free resource: [URL]
+• Book a call: [Calendly link]
+• LinkedIn: [profile URL]
+```
+
+#### 2.4.5 Playlist organization
+
+- Group videos into 4–6 thematic playlists, each with a clear title and 3+ videos.
+- Create a "Start here" playlist for first-time visitors.
+- Order playlist videos by value, not chronology.
+- Use consistent thumbnail style across every video in a playlist.
+
+#### 2.4.6 Thumbnail style guide
+
+Lock in a repeatable system:
+
+| Element | Rule |
+|---------|------|
+| **Layout** | One focal point (face or product), large readable text (≤5 words), solid background |
+| **Colors** | Same 2–3 brand colors on every thumbnail |
+| **Fonts** | One display font, one secondary font — same as website/LinkedIn |
+| **Hook text** | Promise a specific outcome or pose a question |
+| **Branding** | Small logo or avatar in a consistent corner |
+| **Contrast** | Passes mobile readability test at 200 px wide |
+
+#### 2.4.7 Video intro/outro branding
+
+- **Intro:** 5–8 seconds max. Logo + sound mark + one-line promise. Never a long animated logo.
+- **Outro:** One clear CTA (subscribe, visit link, watch next playlist). Show the next video or playlist end-screen.
+- **Verbal sign-off:** Same closing phrase on every video to build familiarity.
+- **Lower thirds / on-screen text:** Use brand fonts and colors; keep consistent placement.
 
 ---
 
@@ -301,7 +385,9 @@ How to test:
 | Rewrite LinkedIn About section | 30-45 min |
 | Select + pin Featured items | 15 min |
 | Update LinkedIn banner | 30 min |
+| YouTube channel audit (if applicable) | 20 min |
 | Rewrite website homepage | 2 hr |
+| YouTube channel overhaul (if applicable) | 2–3 hr |
 | Replace service pages with case studies | 2 hr |
 | Add/verify Calendly + analytics + schema | 30 min |
 | Brand consistency pass | 30 min |
@@ -324,18 +410,18 @@ The overhaul is complete when:
 - Website has Calendly link prominently placed
 - Website analytics is installed and tracking
 - Brand assets (colors, typography, tone) are consistent across LinkedIn and website
+- YouTube channel (if applicable) reinforces the same offer with consistent thumbnails, banner, and About links
 
 ---
 
 ## 8. Files Referenced
 
-- `.work.biz/plans/strategy_outreach_scripts.md` §1 (headline + about templates)
-- `.work.biz/plans/strategy_website_positioning.md` (website positioning brief)
-- `.work.biz/plans/strategy_niche_decision.md` (unified offer language)
-- `.work.biz/reference/PROJECTS.md` (project descriptions for proof points)
-- `.work.biz/reference/VISUAL_GUIDE.md` (banner specs, color palette, typography)
-- `.ai.promote/skills/linkedin-overhaul.md` (LinkedIn overhaul process)
-- `.ai.promote/skills/content-publish.md` (posts for activity section)
+- `.work.biz/strategy/one-pager.md` (niche, unified offer, target buyer, price range)
+- `.work.biz/strategy/offer-scope.md` (what the offer IS and IS NOT)
+- `.work.biz/strategy/channel-plan.md` (primary channel + messaging angles)
+- `.work.biz/reference/PROJECTS.md` (project descriptions for proof points; create if missing)
+- `.work.biz/reference/VISUAL_GUIDE.md` (banner specs, color palette, typography; create if missing)
+- `skills/biz-content/skill.md` (posts for activity section)
 
 ---
 

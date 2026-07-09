@@ -169,10 +169,11 @@ An objection is handled well when:
 
 ## Related Files
 
-- `.work.biz/plans/strategy_niche_decision.md` (unified offer — ground responses in the real offer)
-- `.work.biz/reference/PROJECTS.md` (case study references for the "similar work" objection)
-- `skills/discovery-call.md` (precedes objections — better discovery means fewer objections)
-- `skills/pricing-decision.md` (for the pricing objection specifically)
+- `.work.biz/strategy/one-pager.md` (unified offer — ground responses in the real offer)
+- `.work.biz/strategy/offer-scope.md` (what the offer IS / IS NOT)
+- `.work.biz/reference/PROJECTS.md` (case study references for the "similar work" objection; create if missing)
+- `skills/biz-discovery/skill.md` (precedes objections — better discovery means fewer objections)
+- `skills/biz-pricing/skill.md` (for the pricing objection specifically)
 
 ## Status Tracking
 

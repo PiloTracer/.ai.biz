@@ -3,14 +3,13 @@ name: content-writing
 description: >-
   Write, plan, or improve any piece of content — articles, blog posts, LinkedIn
   posts, case studies, landing-page copy, email sequences, social threads,
-  newsletters, thought-leadership pieces, technical deep dives, or any other
-  written content. Produces publication-ready, professional-quality output
-  calibrated to the host project's brand voice, audience, tech stack, and
-  channel — not generic filler. Always use this skill for content creation
-  tasks, even simple ones, because the project-context loading and structure
-  guidance dramatically improve output quality regardless of the model used.
-  content-writing write, content-writing plan, content-writing repurpose,
-  content-writing audit, content-writing status.
+  newsletters, thought-leadership pieces, technical deep dives, or any other written content. Produces publication-ready,
+  professional-quality output calibrated to the host project's brand voice,
+  audience, tech stack, and channel — not generic filler. Always use this skill
+  for content creation tasks, even simple ones, because the project-context
+  loading and structure guidance dramatically improve output quality regardless
+  of the model used. content-writing write, content-writing plan,
+  content-writing repurpose, content-writing audit, content-writing status.
 ---
 
 # content-writing
@@ -98,7 +97,7 @@ Resolve these from the conversation; ask only if genuinely unclear:
 
 | Question | Why it matters |
 |---|---|
-| **Content type** | Article, post, case study, landing page, email, thread, newsletter? |
+| **Content type** | Article, post, case study, landing page, email, thread, newsletter, YouTube source outline (for `@content-social write youtube`)? |
 | **Primary audience** | Who reads this, what do they already know? |
 | **Goal** | Inform, attract leads, build trust, convert, entertain? |
 | **Channel** | Blog, LinkedIn, Twitter/X, newsletter, website? |
@@ -225,6 +224,50 @@ Use when the topic is genuinely technical and the reader wants depth:
 - Show the architecture decision and the alternatives rejected, with reasons.
 - Include a concrete code/config snippet only if it earns its place (real, not illustrative filler).
 - Close with the tradeoff: what this choice costs you.
+
+#### YouTube source outline
+
+`content-writing` produces the **source outline** for a YouTube video. The actual script, title/thumbnail pair, and platform packaging are owned by `@content-social write youtube` / `@content-social write youtube shorts`, which apply platform-specific CTR, retention, and formatting rules.
+
+Use this when the starting point is a blog post, case study, or long-form article that will later become a video. Calibrate to `standards/20260701-PLATFORM-ALGORITHM-STANDARD.md` § YouTube.
+
+```
+[Working title + angle]
+  Specific, searchable, emotionally concrete. One clear promise.
+
+[Hook — 0:00–0:30]
+  State the problem or promise. No setup, no biography.
+
+[3–5 takeaways]
+  Bullet what the viewer will know or be able to do by the end.
+
+[Body outline]
+  One idea per segment. Note where proof, examples, or screen shares go.
+  Include at least one concrete example or number per major point.
+
+[CTA]
+  One action: subscribe, visit link, watch next video.
+
+[Source material]
+  Link to the article/case study this outline is derived from.
+```
+
+**Next step:** hand the completed outline to `@content-social write youtube - <title>` for the full script, title/thumbnail, description, and pinned comment.
+
+### YouTube packaging (reference only)
+
+Final title, thumbnail, description, and pinned comment are owned by `@content-social write youtube`. Use this table only as a cross-check when producing a source outline:
+
+| Element | Rule |
+|---------|------|
+| **Title** | Front-load the keyword; promise a transformation or resolve a tension; keep under 60 characters if possible |
+| **Thumbnail** | One focal point, ≤5 words, brand colors/fonts, readable at 200 px wide |
+| **Description** | Keyword-rich first 2 lines; timestamps; links allowed (unlike LinkedIn body links); include website + Calendly |
+| **Pinned comment** | Restate the strongest insight + CTA + one link. Reply to early comments here |
+| **Tags** | Use 5–10 specific tags; first 2–3 should match the title keyword |
+| **End screen** | Point to next best video or playlist, not just a generic subscribe button |
+
+**Evidence to reference:** Long-form sweet spot is 8–15 minutes for retention. YouTube Shorts were extended to 3 minutes in October 2024.
 
 ### Step 5 — SEO (for web content only)
 

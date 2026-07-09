@@ -147,7 +147,8 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | biz-strategy | `skills/biz-strategy/` | Niche, offer, positioning, target buyer |
 | biz-brand | `skills/biz-brand/` | LinkedIn, website, brand presence |
 | biz-pricing | `skills/biz-pricing/` | Value-based pricing framework |
-| biz-content | `skills/biz-content/` | Content publishing and strategy |
+| biz-content | `skills/biz-content/` | LinkedIn content publishing and strategy |
+| biz-youtube | `skills/biz-youtube/` | YouTube publishing ops: publish, plan, challenge, status |
 | biz-community | `skills/biz-community/` | Community engagement playbook |
 | biz-referrals | `skills/biz-referrals/` | Systematic referral generation |
 | biz-discovery | `skills/biz-discovery/` | Sales discovery calls |
@@ -159,7 +160,7 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | session-biz | `skills/session-biz/` | Session open/close; HANDOFF, NEXT; `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
 | biz-director | `skills/biz-director/` | Universal orchestrator; free-text → skill routing |
 | content-writing | `skills/content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails (project-aware) |
-| content-social | `skills/content-social/` | Platform-native social content (Reddit, Instagram, LinkedIn including carousel, Facebook, X). Write, research, repurpose, plan. |
+| content-social | `skills/content-social/` | Platform-native social content (Reddit, Instagram, LinkedIn including carousel, Facebook, X, YouTube including Shorts). Write, research, repurpose, plan, icp. |
 | business-ideas | `skills/business-ideas/` | Structured, stress-tested business/venture idea generation |
 | product-service-ideas | `skills/product-service-ideas/` | Buildable, stack-fit product/service concept generation + MVP scoping |
 
