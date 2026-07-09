@@ -6,11 +6,18 @@ All notable changes to Business OS are documented here.
 
 ### Added
 - **`concepts/content-topic-buckets/prompt.md` (BIZ-09)** — canonical four-bucket framework for content topic rotation
-- **`skills/content-social/platforms/{reddit,instagram,linkedin,facebook,x,youtube}.md`** — platform-specific content guides loaded on demand
+- **`skills/content-social/platforms/{reddit,instagram,linkedin,linkedin-video,facebook,x,youtube}.md`** — platform-specific content guides loaded on demand
+- **`skills/content-social/platforms/linkedin-video.md`** — complete LinkedIn native video mentor guide: scripting, shooting, editing, captions, first-frame optimization, analytics, 30-day challenge
+- **`@content-social write linkedin video`** — generates a full LinkedIn native video production package (script, shot list, captions, post copy, posting ritual)
+- **`@biz-content challenge - video`** — 30-day LinkedIn native video challenge with production coaching and video-specific metrics
 - **Anti-AI-artifact rules** in `standards/20260621-CONTENT-STANDARD.md` — guidance on em-dash overuse, hedging words, generic transitions, passive voice, empty intensifiers, and platform-specific tics
 
 ### Changed
-- **`skills/content-social/skill.md`** — reduced from 1,316 to ~670 lines by extracting R1–R6 platform bodies into `platforms/*.md`; write/research modes now instruct agents to load the relevant platform guide
+- **`skills/content-social/skill.md`** — reduced from 1,316 to ~670 lines by extracting R1–R6 platform bodies into `platforms/*.md`; write/research modes now instruct agents to load the relevant platform guide; added R3V LinkedIn native video section, `write linkedin video` parse invocation, video entries in repurpose tables, and video-specific quality checks
+- **`skills/content-social/platforms/linkedin.md`** — added LinkedIn native video quick-reference and link to full mentor guide
+- **`skills/biz-content/skill.md`** — added LinkedIn native video to challenge format mix, repurposing workflow, content tracker, success criteria, failure mode, and new `challenge - video` mode
+- **`skills/biz-director/skill.md`** — added LinkedIn video intent routing and LinkedIn video challenge flow
+- **`skills/README.md`**, **`.cursorrules`**, **`templates/cursorrules.template`**, **`START_HERE.md`** — updated `content-social` descriptions to include LinkedIn native video
 - **`skills/content-writing/skill.md`**, **`skills/biz-content/skill.md`**, **`skills/biz-youtube/skill.md`** — topic bucket tables replaced with references to `concepts/content-topic-buckets/prompt.md`
 - **`skills/content-writing/skill.md`**, **`skills/content-social/skill.md`**, **`skills/biz-content/skill.md`**, **`skills/biz-youtube/skill.md`** — quality checklists now include an AI-artifact scan against the Content Standard
 

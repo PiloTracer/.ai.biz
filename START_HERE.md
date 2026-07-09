@@ -35,7 +35,7 @@
        │
         ├── "I want to publish content"           ──► `@biz-content publish` · `@biz-youtube publish`
         │
-        ├── "I want social content for Reddit, LinkedIn, Instagram, X, Facebook, YouTube"  ──► `@content-social write - <platform>`
+        ├── "I want social content for Reddit, LinkedIn (posts / carousels / native video), Instagram, X, Facebook, YouTube"  ──► `@content-social write - <platform>`
         │
         ├── "I want to write an article / post / case study / email"  ──► `@content-writing write - <topic>`
        │
@@ -103,7 +103,7 @@ These project-aware generative skills run any time — even before bootstrap. Th
 | Repurpose one piece into multiple formats | `@content-writing repurpose - <source>` |
 | Critique a draft | `@content-writing audit - <draft or path>` |
 | Research trending topics/gaps on a social platform | `@content-social research - <platform>` |
-| Write platform-native social content (incl. YouTube scripts / Shorts) | `@content-social write - <platform>` |
+| Write platform-native social content (incl. LinkedIn video / YouTube scripts / Shorts) | `@content-social write - <platform>` |
 | Repurpose one asset into multiple platform formats | `@content-social repurpose - <source>` |
 | Plan a cross-platform social content calendar | `@content-social plan - <30 days>` |
 | Build a YouTube publishing calendar / 30-day challenge | `@biz-youtube plan` · `@biz-youtube challenge` |

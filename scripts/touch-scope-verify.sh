@@ -38,15 +38,15 @@ fi
 
 CHANGED="$(git diff --name-only HEAD 2>/dev/null || true)"
 STAGED="$(git diff --cached --name-only HEAD 2>/dev/null || true)"
-ALL_FILES="$(echo -e "${CHANGED}\n${STAGED}" | sort -u | grep -v '^$' || true)"
+mapfile -t ALL_FILES < <(echo -e "${CHANGED}\n${STAGED}" | sort -u | grep -v '^$' || true)
 
-if [ -z "$ALL_FILES" ]; then
+if [ "${#ALL_FILES[@]}" -eq 0 ]; then
   echo "touch-scope-verify: PASS (no changed files)"
   exit 0
 fi
 
 OUT_OF_SCOPE=()
-for f in $ALL_FILES; do
+for f in "${ALL_FILES[@]}"; do
   in_scope=0
   for entry in "${SCOPE_ENTRIES[@]}"; do
     # Normalize: ensure entry ends with / when it is a directory prefix match.

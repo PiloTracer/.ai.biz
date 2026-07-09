@@ -2,16 +2,17 @@
 name: biz-content
 description: >-
   Write and publish content that demonstrates expertise and attracts inbound
-  leads. Supports LinkedIn posts, articles, 30-day challenges, and repurposing.
+  leads. Supports LinkedIn posts, articles, native video, 30-day challenges,
+  and repurposing.
   biz-content publish, biz-content plan, biz-content challenge, biz-content status.
 ---
 
 # Skill: biz-content
 
 ## Purpose
-Write and publish one piece of content (LinkedIn post or article) that demonstrates your expertise and attracts inbound leads. No pitching. No "DM me."
+Write and publish one piece of content (LinkedIn post, article, or native video) that demonstrates your expertise and attracts inbound leads. No pitching. No "DM me."
 
-> **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing, consistency challenges). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@content-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@content-writing`. For drafts, invoke `@content-social write linkedin` or `write linkedin carousel` after planning.
+> **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing, consistency challenges, native video workflows). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@content-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@content-writing`. For drafts, invoke `@content-social write linkedin`, `write linkedin carousel`, or `write linkedin video` after planning.
 
 ## Parse invocation
 
@@ -22,6 +23,7 @@ Write and publish one piece of content (LinkedIn post or article) that demonstra
 | `@biz-content challenge` | 30-day LinkedIn consistency plan (default) |
 | `@biz-content challenge - createimpact` | Same plan framed for LinkedIn #CreateImpact |
 | `@biz-content challenge - 30d linkedin` | Explicit 30-day LinkedIn challenge |
+| `@biz-content challenge - video` | 30-day LinkedIn native video challenge |
 | `@biz-content status` | Content performance tracker review |
 
 **Default:** `publish` if no verb matches and the user wants to create/post content now.
@@ -90,7 +92,7 @@ After publishing, repurpose the same content into different formats:
 |--------|------|-------|
 | Original LinkedIn post | Day 1 | LinkedIn |
 | Expanded LinkedIn article (1500 words) | Day 3 | LinkedIn Articles |
-| Short Loom/video (3 min, same story) | Day 5 | LinkedIn video post |
+| LinkedIn native video (60–90 sec, same story) | Day 5 | LinkedIn video post — use `@content-social write linkedin video - <topic>` |
 | PDF version (case study or guide) | Day 7 | Website lead magnet |
 
 **Why repurpose:** Each format reaches a different audience segment. The video watchers may not read the post. The article readers want depth. One core insight = 4 assets.
@@ -127,9 +129,9 @@ Time-boxed posting program for **share expertise, grow impact, post consistently
 |--------|-----------|-----|
 | **Text post** | 2–3× / week | Stories, lessons, hot takes |
 | **Carousel (document)** | ≥1× / week | Highest organic reach on LinkedIn (3–5× text) |
-| **Video** | Optional 1× / 2 weeks | Behind-the-scenes, quick tips |
+| **Video** | 1× / 1–2 weeks once minimum setup is available | Trust-building, demos, behind-the-scenes, quick tips |
 
-Draft carousels with `@content-social write linkedin carousel - <topic>`. Draft text with `@content-social write linkedin - <topic>`.
+Draft carousels with `@content-social write linkedin carousel - <topic>`. Draft text with `@content-social write linkedin - <topic>`. Draft video with `@content-social write linkedin video - <topic>`.
 
 ### 30-day plan table
 
@@ -138,6 +140,7 @@ Output this table. Rotate topic buckets; no same bucket 3 days in a row.
 | Day | Format | Topic bucket | Hook seed | Challenge tag | Draft command |
 |-----|--------|--------------|-----------|---------------|---------------|
 | 1 | text | Architecture lesson | Opening expertise statement | #CreateImpact if createimpact mode | `@content-social write linkedin - …` |
+| 3 | video | Architecture lesson / AI in practice | Mistake or number hook | — | `@content-social write linkedin video - …` |
 | 2 | — | — | Rest / engage only | — | Comment on 5 ICP posts |
 | … | … | … | … | … | … |
 
@@ -162,7 +165,29 @@ Output this table. Rotate topic buckets; no same bucket 3 days in a row.
 
 ### Challenge completion
 
-After 30 days: run `@biz-content status`, identify best hook × format combo, continue at 2–4 posts/week using `@biz-content plan`.
+After 30 days: run `@biz-content status`, identify best hook × format combo (including video vs. text vs. carousel if video was used), continue at 2–4 posts/week using `@biz-content plan`.
+
+### Video-specific challenge (`@biz-content challenge - video`)
+
+Use this when the operator wants to make LinkedIn native video a primary trust-building habit. It follows the same discipline as the default challenge but adds production coaching and video-specific metrics.
+
+| Week | Frequency | Focus |
+|------|-----------|-------|
+| **Week 1** | 2 videos | Talking-head tips using mistake/number/controversy hooks. |
+| **Week 2** | 2 videos + 1 screen/voice demo | Test which format gets better 3-second view rate and watch time. |
+| **Week 3** | 3 videos | Add BTS or story format; test emotional vs. tactical hooks. |
+| **Week 4** | 3 videos | Double down on the best-performing format from weeks 1–3. |
+
+**Daily non-post ritual:** 10 minutes of genuine comments on target buyer posts before publishing.
+
+**Weekly review questions:**
+
+- Which hook formula kept the highest 3-second view rate?
+- Which video type (talking head / screen + voice / BTS) had the best average % watched?
+- Did any video generate comments from target titles? If not, revisit `linkedin-icp.md` hooks.
+- Is the operator hitting the minimum setup (phone + window light + lapel mic)? If not, block setup time before week 2.
+
+**Completion:** After 30 days, run `@biz-content status`, identify the winning hook × video-type combination, and commit to a sustainable LinkedIn video cadence (e.g., 1 video/week + 2 text/carousel posts/week).
 
 ## Mode: status — Content Performance Tracking
 
@@ -170,7 +195,7 @@ After 30 days: run `@biz-content status`, identify best hook × format combo, co
 
 | Post | Topic Bucket | Format | Hook Style | Impressions | Engagement | Inbounds | Notes |
 |------|-------------|--------|------------|-------------|------------|----------|-------|
-| | | text / carousel / video | A/B/C | | | | |
+| | | text / carousel / video | A/B/C / video hook formula | | | | |
 
 After 8 posts, look for patterns:
 - Which hook style gets the most engagement? → Use that more.
@@ -200,6 +225,7 @@ A post is successful when:
 - It has **zero pitching**, zero "DM me", zero self-promotion
 - It contains at least one specific detail that only someone with real experience would know
 - **500+ impressions** within 48 hours with comments that are not from bots
+- **For video:** 3-second view rate >30% and average % watched >40% (directional; validate against your own analytics)
 
 ## Failure Mode: "I posted and got zero engagement"
 
@@ -212,5 +238,13 @@ If after 6 posts you're still getting <200 impressions:
 3. **Engage more** — LinkedIn amplifies people who give engagement. Spend 10 min/day commenting on others' posts before publishing your own
 4. **Check your network size** — <500 connections limits your reach. Add 10 relevant connections/week
 5. **Consider the content itself** — are you sharing a lesson or stating an opinion? Opinion + evidence outperforms pure lessons
+
+**If the underperformer is a video:**
+
+1. **Diagnose the first frame** — most viewers decide without sound. Does the first frame + overlay text communicate the hook in under 1 second?
+2. **Check the 0–3 second spoken hook** — no preamble, no music, no "Hey everyone." Start mid-sentence with the promise.
+3. **Check captions** — burned-in captions are mandatory; if they are missing or too small, silent viewers scroll past.
+4. **Check the lesson specificity** — a generic tip in video form fails faster than in text because the camera exposes uncertainty. Add one number, name, or screenshot.
+5. **Check energy and eye line** — low-energy delivery or eyes drifting off-lens kills trust. Re-record the hook until it feels direct.
 
 If you reach 10 posts with consistent <200 impressions despite trying all of the above, the channel may not work for your niche. Test on a different platform — if you get the same result, the problem is the offer, not the channel.

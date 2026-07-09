@@ -14,7 +14,7 @@ LinkedIn is a professional network where content is consumed in the context of c
 | **Carousel / Document post** | Educational deep-dives, frameworks, guides | PDF upload. 4:5 (1080x1350px) or square. Up to 300 pages, but 6-12 is optimal. |
 | **Image post** | Data visualization, quote card, announcement | 1.91:1 to 4:5. 1080px minimum width. |
 | **Article** | Long-form thought leadership | Native LinkedIn articles. 800-2,000 words. |
-| **Video** | Behind-the-scenes, quick tips, personal stories | 30s-5min. Square or vertical. Captions mandatory (most watch without sound). |
+| **Video** | Behind-the-scenes, quick tips, personal stories, demos | 30s-90s sweet spot for feed; up to 5 min when depth is justified. Square (1:1) or vertical (9:16). Captions mandatory. See `linkedin-video.md` for full mentor guide. |
 | **Poll** | Engagement bait, audience research | 4 options max. 1-2 week duration. |
 
 ### LinkedIn post structure
@@ -54,7 +54,8 @@ COMMENT WITH LINK (if applicable)
 3. **No external links in post body.** LinkedIn deprioritizes posts that lead users off-platform. Put links in the first comment or use native features (articles, documents).
 4. **Reply to every comment within the first 2 hours.** This signals high engagement to the algorithm and builds relationship with commenters.
 5. **Carousels (document posts) are the highest-reach format.** LinkedIn's algorithm currently favors document uploads. A well-designed 6-12 slide carousel can outperform text-only posts 3-5x [Unverified — directional benchmark based on LinkedIn creator reports; test with your own analytics].
-6. **Tag strategically.** Tag relevant people only if they would genuinely want to see the post. Random tagging = spam.
+6. **Video builds the deepest trust.** Native video lets the audience hear your voice and decide if you are the person they want to hire. Use `@content-social write linkedin video` for full scripting, shooting, editing, and analytics guidance.
+7. **Tag strategically.** Tag relevant people only if they would genuinely want to see the post. Random tagging = spam.
 7. **Hashtags: 3-5 max.** LinkedIn recommends focusing on a few relevant hashtags rather than shotgun-blasting 20.
 
 ### LinkedIn anti-patterns (DO NOT)
@@ -110,6 +111,23 @@ DESIGN NOTES
 3. Prefer numbered frameworks ("3 mistakes…", "5-step…") when the topic allows.
 4. Same external-link rule: URLs in first comment only, never on slides or caption.
 
+### LinkedIn native video
+
+Use when you want to **build trust faster than text or carousel can**. Video lets the audience hear your voice, see your work, and decide whether you are the expert they want to hire. Invoke via `@content-social write linkedin video - <topic>`.
+
+**Quick reference:**
+
+| Element | Rule |
+|---------|------|
+| Length | 30–90 seconds for feed; 3–5 minutes only when depth is justified |
+| Aspect ratio | 1:1 (square) or 9:16 (vertical); native upload only — no external links |
+| Captions | Mandatory and burned-in; most viewers watch without sound |
+| First frame | Treat as the thumbnail: face or clear visual + hook text overlay |
+| Structure | 0–3 sec hook → one idea with proof → screenshot-worthy lesson → conversation CTA |
+| CTA | Ask a professional question; never "DM me" or external link in post copy |
+| Posting ritual | First comment within 60 seconds; engage heavily in first 60 minutes |
+
+For the complete production mentor guide — scripting, shooting, editing, captions, equipment, analytics, 30-day challenge, and repurposing — see `skills/content-social/platforms/linkedin-video.md`.
 
 ---
 
