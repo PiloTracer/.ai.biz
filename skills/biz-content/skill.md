@@ -75,6 +75,7 @@ Test across posts: track which style gets the most engagement in your content tr
 - Does it include specific details? ✅
 - Is there zero pitching? ✅
 - Would you want to hire the person who wrote this? ✅
+- AI-artifact scan passed? ✅ — check `standards/20260621-CONTENT-STANDARD.md` § Anti-AI-artifact rules (em-dashes, hedging, generic transitions, passive voice, empty intensifiers).
 
 ### 6. Publish + Engage
 - Post it

@@ -364,6 +364,7 @@ Report:
 - [ ] Does the first sentence earn its place, or is it a warm-up?
 - [ ] Is there at least one specific number, example, or proof point per major section?
 - [ ] Have I cut all hollow adjectives (amazing, cutting-edge, world-class, robust, seamless, scalable unquantified)?
+- [ ] **AI-artifact scan:** No em-dash overuse, no hedging fillers ("it's important to note"), no generic transitions ("furthermore", "in today's world"), no passive-voice default, no empty intensifiers.
 - [ ] Does the CTA ask for one clear thing?
 - [ ] Is the brand voice consistent throughout?
 - [ ] Would the target reader find this genuinely useful, not just promotional?

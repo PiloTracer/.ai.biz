@@ -131,6 +131,7 @@ subscription feed.
 - [ ] Subtitles/captions added (algorithm and accessibility boost)
 - [ ] Playlist assigned
 - [ ] Premiere or scheduled publish time set
+- [ ] AI-artifact scan: script avoids over-smooth transitions, "In this video we will…" intros, passive-voice defaults, and empty intensifiers (see `standards/20260621-CONTENT-STANDARD.md` § Anti-AI-artifact rules)
 
 ### 6. Engage in the first 60 minutes
 

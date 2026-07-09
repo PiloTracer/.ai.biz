@@ -210,6 +210,8 @@ Load the platform guide from `skills/content-social/platforms/<platform>.md` for
 
 Apply the [Universal Platform Format](#universal-platform-format), plus the platform-specific deltas from the loaded platform guide.
 
+Before finalizing, run an **AI-artifact scan**: check for em-dash overuse, hedging fillers, generic transitions, passive-voice defaults, empty intensifiers, and other tics listed in `standards/20260621-CONTENT-STANDARD.md` § Anti-AI-artifact rules. Rewrite any flagged sentence into plain, specific language.
+
 ### Step 4 — Deliver
 
 Provide the complete, ready-to-post content. Below a divider, offer:
