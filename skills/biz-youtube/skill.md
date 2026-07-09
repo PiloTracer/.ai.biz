@@ -76,14 +76,14 @@ but time and on-camera consistency remain the binding constraints. Pick a cadenc
 
 ### 1. Choose topic
 
-Pick from one of the 4 topic buckets:
+Pick from one of the four canonical topic buckets in `concepts/content-topic-buckets/prompt.md` (BIZ-09):
 
-| Topic bucket | Description | Title / hook examples |
-|--------------|-------------|-----------------------|
-| **Architecture lesson** | Technical depth — a design decision, tradeoff, or mistake | "Why I chose Postgres over Mongo for a finance platform" / "The $40k infra mistake that almost killed our launch" |
-| **AI in practice** | Real AI/ML experience, not hype | "I built a voice clone with RAG. Here's what actually worked" / "RAG retrieval pipeline I run in production" |
-| **Experience-based insight** | Judgment earned over years | "4 hype cycles later, here's what tech actually survives" / "The #1 scalability mistake junior engineers make" |
-| **Project behind-the-scenes** | Specific, credible, ships | "Solo-built a tax platform in 7 months: architecture tour" / "The hardest real-time sync bug I fixed" |
+| Bucket | YouTube title / hook angle |
+|--------|----------------------------|
+| **Architecture lesson** | A design decision, tradeoff, or mistake — with the specifics. |
+| **AI in practice** | Real AI/ML experience — not hype, not theory. |
+| **Experience-based insight** | Judgment that only comes from years of doing this. |
+| **Project behind-the-scenes** | Specific, credible, ships — show the work with numbers. |
 
 **Title rule:** If another expert could swap their name into the title and it
 still works, it's too generic. Make the angle specific to you.

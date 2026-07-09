@@ -308,12 +308,8 @@ Rules:
 
 **Topic buckets (technology tilt):**
 
-| Bucket | Description |
-|--------|-------------|
-| **Architecture lesson** | A design decision, a tradeoff, a mistake — with the specifics. |
-| **AI in practice** | Real experience with AI/ML — not hype, not theory. |
-| **Experience-based insight** | Judgment that only comes from years of doing this. |
-| **Project behind-the-scenes** | Specific, credible, ships — show the work with numbers. |
+Use the canonical four buckets from `concepts/content-topic-buckets/prompt.md` (BIZ-09):
+Architecture lesson · AI in practice · Experience-based insight · Project behind-the-scenes.
 
 For seasonal anchoring (optional, helpful for solo operators):
 

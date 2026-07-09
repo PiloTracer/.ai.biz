@@ -31,14 +31,15 @@ Write and publish one piece of content (LinkedIn post or article) that demonstra
 ## Mode: publish — Write and post one piece
 
 ### 1. Choose Topic
-Pick from one of the 4 topic buckets:
 
-| Topic Bucket | Description | Hook Examples |
-|--------------|-------------|--------------|
-| **Architecture lesson** | Technical depth — a design decision, a tradeoff, a mistake | "I chose PostgreSQL over MongoDB for a financial platform. Here's why — and what I almost got wrong." / "The architecture decision that saved my client $40k in infra costs." |
-| **AI in practice** | Real experience with AI/ML — not hype, not theory | "I built an AI Persona Clone with RAG + voice. Here's what actually worked and what didn't." / "RAG is not magic — here's the exact retrieval pipeline I use in production." |
-| **Experience-based insight** | Judgment that only comes from years of doing this | "I've seen 4 technology hype cycles. Here's what survives and what doesn't." / "The #1 thing junior engineers get wrong about scalability." |
-| **Project behind-the-scenes** | Specific, credible, ships — show the work | "I built a financial tax tracking and reporting platform solo in 7 months. Here's the architecture." / "The hardest bug I fixed — and what it taught me about real-time sync." |
+Pick from one of the four canonical topic buckets in `concepts/content-topic-buckets/prompt.md` (BIZ-09):
+
+| Bucket | LinkedIn hook angle |
+|--------|---------------------|
+| **Architecture lesson** | A design decision, tradeoff, or mistake — with the specifics. |
+| **AI in practice** | Real AI/ML experience — not hype, not theory. |
+| **Experience-based insight** | Judgment that only comes from years of doing this. |
+| **Project behind-the-scenes** | Specific, credible, ships — show the work with numbers. |
 
 **Rule of thumb for hooks:** If you can replace your company name with anyone else's and the hook still works, it's too generic. Your hook should be specific enough that only YOU could have written it.
 

@@ -4,6 +4,14 @@ All notable changes to Business OS are documented here.
 
 ## [Unreleased]
 
+### Added
+- **`concepts/content-topic-buckets/prompt.md` (BIZ-09)** — canonical four-bucket framework for content topic rotation
+- **`skills/content-social/platforms/{reddit,instagram,linkedin,facebook,x,youtube}.md`** — platform-specific content guides loaded on demand
+
+### Changed
+- **`skills/content-social/skill.md`** — reduced from 1,316 to ~670 lines by extracting R1–R6 platform bodies into `platforms/*.md`; write/research modes now instruct agents to load the relevant platform guide
+- **`skills/content-writing/skill.md`**, **`skills/biz-content/skill.md`**, **`skills/biz-youtube/skill.md`** — topic bucket tables replaced with references to `concepts/content-topic-buckets/prompt.md`
+
 ## [v0.5.3] - 2026-07-09
 
 ### Added
