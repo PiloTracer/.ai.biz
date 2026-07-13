@@ -131,6 +131,20 @@ For pieces over ~600 words, emit a 3–5 bullet outline and confirm direction be
 
 **Technology tilt (mandatory).** At least one concrete technical detail per major section — a stack choice, a number, a tradeoff, a failure mode. If you cannot produce one, the piece is too vague; revise.
 
+### Step 3.5 — Pre-delivery self-criticism (mandatory)
+
+Before delivering any draft, run a self-criticism pass. Do not skip this. Ask:
+
+1. **Hook test:** If the first line appeared alone in a busy LinkedIn feed, would I stop scrolling? Is it a scene, number, or sharp claim — not a generic concept?
+2. **Stakes test:** Can the reader name what broke, for how long, and what it cost? If not, the body is too safe.
+3. **Credibility test:** Does the reader know why the narrator is qualified to say this? Credentials must appear early, not buried in a comment.
+4. **Action test:** Is the actionable framework/checklist in the post body or a carousel? If it only exists in a "first comment" suggestion, the post has no value in the feed.
+5. **AI-cadence test:** Read the draft aloud. If it sounds like a repetitive list of short clauses ("The one that…", "It's about…", "This is why…"), rewrite it as natural prose.
+6. **CTA test:** Is the closing prompt specific and professional, or is it generic engagement bait?
+7. **So-what test:** Would a skeptical reader in the target audience share or save this? If the answer is no, sharpen the insight.
+
+If any test fails, revise the draft before moving to Step 4.
+
 ### Step 4 — Format by content type
 
 #### Blog article / thought leadership
@@ -154,18 +168,37 @@ For pieces over ~600 words, emit a 3–5 bullet outline and confirm direction be
 #### LinkedIn post
 
 ```
-[Hook line]   — First line stops the scroll. Question, counterintuitive
-  claim, or specific number. Under 12 words.
+[Hook line]   — First line stops the scroll. Must be a specific scene,
+  concrete number, or counterintuitive claim — not a generic concept.
+  Under 12 words.
+  Bad: "The most dangerous spreadsheet..."
+  Good: "A 200-person manufacturer almost missed payroll because one Excel
+  file lived on a desktop."
 
 [3–6 short paragraphs] — One idea each. White space is your friend.
   Conversational but substantive. Personal angle beats generic advice.
+  Paragraph 1 establishes the narrator's credibility (role, context).
+  Paragraphs 2-3 show the stakes: what broke, for how long, what it cost.
 
-[Insight]     — The sentence people screenshot.
+[Insight]     — The sentence people screenshot. Must be specific enough
+  to feel earned, not a platitude. Place it where it can stand alone.
 
-[CTA / question] — Invite engagement with a specific prompt.
+[CTA / question] — Invite engagement with a specific, professional
+  prompt tied to the topic. Avoid broad self-help questions like
+  "What do you think?" or "What's the one X in your org?"
 
-[Hashtags]    — 3–5 max. Relevant, not desperate.
+[Hashtags]    — 3-5 max. Niche conversation tags, not broad categories.
 ```
+
+**LinkedIn post anti-patterns:**
+
+- Abstract conceptual hooks ("The most dangerous X is the one nobody owns").
+- Repetitive triplet cadence ("The one that… / The one that… / The one that…").
+- Short-paragraph overload without a concrete payoff.
+- Hiding the actionable framework in the first comment. The first comment is for links, not for the lesson. If the post contains a checklist or audit, put it in the body or make it a carousel.
+- Generic engagement questions as the only CTA.
+
+**LinkedIn format selection:** Before writing, decide whether the topic is a framework/checklist. If yes, strongly consider a **carousel** (6–12 slides, PDF upload) — it is currently LinkedIn's highest-reach format for save-worthy frameworks. Use a text post only when the value is a single story, hot take, or lesson.
 
 **CRITICAL — LinkedIn external-link rule:** Do **NOT** include external links (GitHub, websites, articles, etc.) in the post body. LinkedIn's algorithm demotes posts containing links and will show them to far fewer people. If the post needs to reference a URL, provide it separately as a first-comment suggestion:
 
@@ -362,16 +395,22 @@ Report:
 ## Quality check before delivering (run internally; do not output the checkboxes)
 
 - [ ] Does the first sentence earn its place, or is it a warm-up?
+- [ ] Is the hook a specific scene, number, or sharp claim — not an abstract concept?
+- [ ] Are the stakes visible: what broke, for how long, and what it cost (time, money, risk)?
+- [ ] Is the narrator's credibility established early, not buried in a comment?
 - [ ] Is there at least one specific number, example, or proof point per major section?
 - [ ] Have I cut all hollow adjectives (amazing, cutting-edge, world-class, robust, seamless, scalable unquantified)?
-- [ ] **AI-artifact scan:** No em-dash overuse, no hedging fillers ("it's important to note"), no generic transitions ("furthermore", "in today's world"), no passive-voice default, no empty intensifiers.
+- [ ] **AI-artifact scan:** No em-dash overuse, no hedging fillers ("it's important to note"), no generic transitions ("furthermore", "in today's world"), no passive-voice default, no empty intensifiers, no repetitive triplet cadence ("The one that… / The one that… / The one that…").
 - [ ] Does the CTA ask for one clear thing?
+- [ ] Is the CTA specific and professional, not generic engagement bait?
 - [ ] Is the brand voice consistent throughout?
 - [ ] Would the target reader find this genuinely useful, not just promotional?
 - [ ] Is the length appropriate for the channel?
 - [ ] Technology tilt: is there at least one concrete technical detail per major section?
 - [ ] Are unproven claims either backed by a cited source or marked **Unverified**?
 - [ ] **LinkedIn only:** Are all external links stripped from the post body and placed as a first-comment suggestion? Remind operator about this.
+- [ ] **LinkedIn only:** If the post contains a checklist/framework, is it in the body or a carousel rather than hidden in the first comment?
+- [ ] **LinkedIn only:** Would this survive 30 seconds of scrutiny by a skeptical operator in the ICP's industry?
 
 If any box is unchecked, fix it before delivering.
 
