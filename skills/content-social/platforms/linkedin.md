@@ -50,18 +50,22 @@ COMMENT WITH LINK (if applicable)
 ### LinkedIn-specific quality rules
 
 1. **Personal > corporate.** Posts from individual profiles consistently outperform company page posts. Write as a person, not a brand.
-2. **The first 60 minutes decide reach.** LinkedIn tests your post with a small audience. If it gets engagement, it expands. Post when your audience is active and engage with comments immediately.
-3. **No external links in post body.** LinkedIn deprioritizes posts that lead users off-platform. Put links in the first comment or use native features (articles, documents).
-4. **Reply to every comment within the first 2 hours.** This signals high engagement to the algorithm and builds relationship with commenters.
-5. **Carousels (document posts) are the highest-reach format.** LinkedIn's algorithm currently favors document uploads. A well-designed 6-12 slide carousel can outperform text-only posts 3-5x [Unverified — directional benchmark based on LinkedIn creator reports; test with your own analytics].
-6. **Video builds the deepest trust.** Native video lets the audience hear your voice and decide if you are the person they want to hire. Use `@content-social write linkedin video` for full scripting, shooting, editing, and analytics guidance.
-7. **Tag strategically.** Tag relevant people only if they would genuinely want to see the post. Random tagging = spam.
-7. **Hashtags: 3-5 max.** LinkedIn recommends focusing on a few relevant hashtags rather than shotgun-blasting 20.
+2. **Human voice, not literary voice.** No em-dashes, no en-dashes, no flourishes. Short sentences are fine. Contractions are fine. It should sound like you talking to a colleague, not a report.
+3. **The first 60 minutes decide reach.** LinkedIn tests your post with a small audience. If it gets engagement, it expands. Post when your audience is active and engage with comments immediately.
+4. **No external links in post body.** LinkedIn deprioritizes posts that lead users off-platform. Put links in the first comment or use native features (articles, documents).
+5. **Reply to every comment within the first 2 hours.** This signals high engagement to the algorithm and builds relationship with commenters.
+6. **Carousels (document posts) are the highest-reach format.** LinkedIn's algorithm currently favors document uploads. A well-designed 6-12 slide carousel can outperform text-only posts 3-5x [Unverified — directional benchmark based on LinkedIn creator reports; test with your own analytics].
+7. **Video builds the deepest trust.** Native video lets the audience hear your voice and decide if you are the person they want to hire. Use `@content-social write linkedin video` for full scripting, shooting, editing, and analytics guidance.
+8. **Tag strategically.** Tag relevant people only if they would genuinely want to see the post. Random tagging = spam.
+9. **Hashtags: 3-5 max.** LinkedIn recommends focusing on a few relevant hashtags rather than shotgun-blasting 20.
 
 ### LinkedIn anti-patterns (DO NOT)
 
 - "Agree?" posts (engagement bait, algorithm now penalizes)
 - "Copy-paste this if you agree" (spam, penalized)
+- Em-dashes (—) or en-dashes (–) in post copy
+- Literary flourishes: "tapestry", "journey", "symphony", "landscape", "ecosystem"
+- "Most people… but the top 1%…" template posts
 - Personal stories with no professional insight payoff
 - Political/religious content unless directly relevant to your professional niche
 - Posting more than 2x/day (diminishing returns, audience fatigue)

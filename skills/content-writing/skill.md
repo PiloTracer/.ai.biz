@@ -131,17 +131,25 @@ For pieces over ~600 words, emit a 3–5 bullet outline and confirm direction be
 
 **Technology tilt (mandatory).** At least one concrete technical detail per major section — a stack choice, a number, a tradeoff, a failure mode. If you cannot produce one, the piece is too vague; revise.
 
+**Human voice (mandatory).** Content must sound like a credible human talking to a peer, not a polished report or chatbot.
+- No em-dashes (—) or en-dashes (–). Zero. Use periods, commas, colons, or parentheses.
+- Use contractions where natural.
+- Vary sentence length. Mix short punches with longer explanations.
+- Allow minor roughness. A sentence fragment or informal opener is better than a perfectly balanced but lifeless paragraph.
+- Read the draft aloud. If it sounds literary, robotic, or like a pitch deck, rewrite it in plain speech.
+
 ### Step 3.5 — Pre-delivery self-criticism (mandatory)
 
 Before delivering any draft, run a self-criticism pass. Do not skip this. Ask:
 
-1. **Hook test:** If the first line appeared alone in a busy LinkedIn feed, would I stop scrolling? Is it a scene, number, or sharp claim — not a generic concept?
+1. **Hook test:** If the first line appeared alone in a busy LinkedIn feed, would I stop scrolling? Is it a scene, number, or sharp claim, not a generic concept?
 2. **Stakes test:** Can the reader name what broke, for how long, and what it cost? If not, the body is too safe.
 3. **Credibility test:** Does the reader know why the narrator is qualified to say this? Credentials must appear early, not buried in a comment.
 4. **Action test:** Is the actionable framework/checklist in the post body or a carousel? If it only exists in a "first comment" suggestion, the post has no value in the feed.
 5. **AI-cadence test:** Read the draft aloud. If it sounds like a repetitive list of short clauses ("The one that…", "It's about…", "This is why…"), rewrite it as natural prose.
-6. **CTA test:** Is the closing prompt specific and professional, or is it generic engagement bait?
-7. **So-what test:** Would a skeptical reader in the target audience share or save this? If the answer is no, sharpen the insight.
+6. **Human-voice test:** Does it contain any em-dashes, en-dashes, literary flourishes, or polished-report language? If yes, remove or rewrite.
+7. **CTA test:** Is the closing prompt specific and professional, or is it generic engagement bait?
+8. **So-what test:** Would a skeptical reader in the target audience share or save this? If the answer is no, sharpen the insight.
 
 If any test fails, revise the draft before moving to Step 4.
 
@@ -169,7 +177,7 @@ If any test fails, revise the draft before moving to Step 4.
 
 ```
 [Hook line]   — First line stops the scroll. Must be a specific scene,
-  concrete number, or counterintuitive claim — not a generic concept.
+  concrete number, or counterintuitive claim, not a generic concept.
   Under 12 words.
   Bad: "The most dangerous spreadsheet..."
   Good: "A 200-person manufacturer almost missed payroll because one Excel
@@ -395,16 +403,19 @@ Report:
 ## Quality check before delivering (run internally; do not output the checkboxes)
 
 - [ ] Does the first sentence earn its place, or is it a warm-up?
-- [ ] Is the hook a specific scene, number, or sharp claim — not an abstract concept?
+- [ ] Is the hook a specific scene, number, or sharp claim, not an abstract concept?
 - [ ] Are the stakes visible: what broke, for how long, and what it cost (time, money, risk)?
 - [ ] Is the narrator's credibility established early, not buried in a comment?
 - [ ] Is there at least one specific number, example, or proof point per major section?
 - [ ] Have I cut all hollow adjectives (amazing, cutting-edge, world-class, robust, seamless, scalable unquantified)?
-- [ ] **AI-artifact scan:** No em-dash overuse, no hedging fillers ("it's important to note"), no generic transitions ("furthermore", "in today's world"), no passive-voice default, no empty intensifiers, no repetitive triplet cadence ("The one that… / The one that… / The one that…").
+- [ ] **AI-artifact scan:** Zero em-dashes (—) or en-dashes (–). No hedging fillers ("it's important to note"), no generic transitions ("furthermore", "in today's world"), no passive-voice default, no empty intensifiers, no repetitive triplet cadence ("The one that… / The one that… / The one that…"), no literary flourishes.
 - [ ] Does the CTA ask for one clear thing?
 - [ ] Is the CTA specific and professional, not generic engagement bait?
 - [ ] Is the brand voice consistent throughout?
 - [ ] Would the target reader find this genuinely useful, not just promotional?
+- [ ] Does it sound like a human talking, not a report or chatbot?
+- [ ] Are contractions used where natural?
+- [ ] Is sentence length varied, or does it fall into a mechanical rhythm?
 - [ ] Is the length appropriate for the channel?
 - [ ] Technology tilt: is there at least one concrete technical detail per major section?
 - [ ] Are unproven claims either backed by a cited source or marked **Unverified**?

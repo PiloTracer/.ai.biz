@@ -62,10 +62,13 @@ Readers and viewers increasingly associate certain stylistic tics with low-effor
 
 ### Mechanical tics
 
-- **Em-dashes (—) and en-dashes.** Use them rarely — no more than one per 150 words. If every sentence contains a dash, rewrite. Prefer a period, comma, or parentheses.
+- **Em-dashes (—) and en-dashes (–).** Do not use them. Zero. Rewrite every sentence that wants a dash. Use a period, comma, colon, semicolon, or parentheses instead.
+  - Bad: "The real problem — the one nobody talks about — is ownership."
+  - Good: "The real problem is ownership. Nobody talks about it."
 - **Bullet-point overload.** Lists are scannable, but a post that is 80% bullets reads like a prompt output. Use narrative paragraphs between lists.
 - **Numbered frameworks that don't need numbers.** "3 ways to…" only when the structure genuinely helps the reader. Don't force a count.
 - **Excessive subheadings.** In long-form, one subheading every 200–300 words is enough. More frequent subheadings feel like an outline, not an article.
+- **Overly tidy paragraph symmetry.** Human writing has ragged edges. Not every paragraph needs to be the same length or follow the same shape.
 
 ### Vocabulary red flags
 
@@ -75,14 +78,23 @@ Replace these with plain, specific language:
 |-------|-------------|
 | delve, explore (as in "let's delve into") | dig into, look at, break down |
 | leverage | use, exploit, build on |
+| utilize | use |
 | robust, resilient, scalable (alone) | say what specifically makes it so |
 | foster, cultivate | build, create, grow |
-| tapestry, landscape, paradigm | plain description of the actual situation |
+| tapestry, landscape, paradigm, ecosystem | plain description of the actual situation |
 | it's important to note / it's worth noting | just say the thing |
-| in today's world / in an era of | delete or be specific about time/place |
-| furthermore, moreover, additionally | use line breaks, so, also, or delete |
-| ultimately, in conclusion | end with the point, not a signpost |
+| in today's world / in an era of / in today's fast-paced world | delete or be specific about time/place |
+| furthermore, moreover, additionally, consequently | use line breaks, so, also, or delete |
+| ultimately, in conclusion, in summary | end with the point, not a signpost |
 | underscores, serves as a testament, sheds light on | show the evidence directly |
+| embark on a journey | start, begin |
+| unlock / unlock potential | enable, make possible, or say what actually happens |
+| supercharge / turbocharge | accelerate, speed up, or give the real number |
+| game-changing, revolutionary, cutting-edge, world-class, best-in-class | delete or quantify |
+| holistic, seamless, frictionless, end-to-end | say what you actually mean |
+| actionable insights | useful findings, what we learned |
+| strategic imperative | something we have to do |
+| digital transformation | be specific: what changed, what system, what result |
 
 ### Structural red flags
 
@@ -91,11 +103,28 @@ Replace these with plain, specific language:
 - **Abstract nominalizations.** "The optimization of the process" → "I optimized the process."
 - **Generic openings.** "In the fast-paced world of…", "As we all know…", "In recent years…" — start with the reader's problem or a specific scene.
 - **Recycled transitions.** Every paragraph starting with "This means…", "That's why…", "This is because…" — vary sentence rhythm.
+- **Signpost overload.** "First… second… third… finally" and "Let's start with…" in short posts feel robotic.
+- **AI endings.** "In conclusion…", "To sum up…", "At the end of the day…" — just end with the point.
+- **Over-apologizing.** "I might be wrong, but…", "This is just my opinion, but…" — state the claim and own it.
+- **Fake specificity.** "Many companies", "most teams", "a lot of founders" — name a number or a type.
 - **Empty intensifiers.** "Very", "really", "incredibly", "extremely" — cut or replace with a concrete detail.
+
+### Human voice rules
+
+The goal is not polished prose. The goal is a credible human talking to a peer.
+
+- **Read the draft aloud.** If it sounds like a report, a pitch deck, or a chatbot, rewrite it.
+- **Use contractions where natural.** "It's", "don't", "can't", "you're" are fine unless the brand voice forbids them.
+- **Vary sentence length.** Mix short punches with longer explanations. Avoid chains of same-length sentences.
+- **Allow minor roughness.** A slightly informal opener or a sentence fragment is better than a perfectly balanced but lifeless paragraph.
+- **Write to one person, not an audience.** Use "you" and "I". Avoid "one", "organizations", and "professionals" when you mean the reader.
+- **Prefer plain verbs.** "Use" beats "utilize". "Start" beats "commence". "Fix" beats "remediate".
+- **Kill the literary flourish.** No "tapestry", "symphony", "journey", "dance", "rich tapestry", "ever-evolving landscape".
+- **No perfect parallelism for its own sake.** "Fast, reliable, and scalable" is a tagline, not a sentence.
 
 ### Platform-specific tics
 
-- **LinkedIn:** Avoid the "Most people… But the top 1%…" template. Avoid "Agree?" or "Thoughts?" as the only CTA.
+- **LinkedIn:** Avoid the "Most people… But the top 1%…" template. Avoid "Agree?", "Thoughts?", or "What do you think?" as the only CTA. Avoid em-dashes entirely in post copy.
 - **X/Twitter:** Avoid thread starters like "Most people don't know…" unless you genuinely have a non-obvious insight. Avoid ending every tweet with a takeaway sentence.
 - **YouTube:** Avoid "In this video, we will…" intros. Avoid over-smooth transitions ("With that said…", "That being said…") every 30 seconds.
 - **Reddit:** Avoid numbered lists when a paragraph answer is more natural. Avoid signposting ("TL;DR at the bottom" can be fine, but don't over-format).
