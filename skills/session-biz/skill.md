@@ -1,10 +1,11 @@
 ---
 name: session-biz
 description: >-
-  Session open, close, context, and status. Loads HANDOFF, NEXT, UNKNOWNS.
-  Updates HANDOFF with session artifacts and state. `context` loads all
-  mandatory context read-only and is uncommitted-aware (surfaces dirty-tree
-  status without writing HANDOFF). Optional git commit.
+  Session open, close, context, and status. Loads HANDOFF, NEXT, UNKNOWNS,
+  and optional CONTENT_STATUS. Updates HANDOFF with session artifacts and
+  state. `context` loads all mandatory context read-only and is
+  uncommitted-aware (surfaces dirty-tree status without writing HANDOFF).
+  Optional git commit.
   session-biz start, session-biz close, session-biz context, session-biz status.
   Also accepts session-control as an alias (session-control start, close,
   context, status) — maps to the same operations.
@@ -23,6 +24,7 @@ description: >-
 | `.work.biz/context/HANDOFF.md` | Current session context, what was done, what's next |
 | `.work.biz/plans/NEXT.md` | Ordered list of next tasks / priorities |
 | `.work.biz/plans/UNKNOWNS.md` | Open questions that need research or decisions |
+| `.work.biz/reference/CONTENT_STATUS.md` | **Optional.** Canonical publish/status tracker across all content types. Read if present. |
 
 **Location:** Project root under `.work.biz/`. Defined per Business OS conventions.
 
@@ -37,7 +39,8 @@ description: >-
 1. Read `HANDOFF.md` into context.
 2. Read `NEXT.md` into context.
 3. Read `UNKNOWNS.md` into context.
-4. Confirm: *"Session started with [N] next items and [M] unknowns."*
+4. If `.work.biz/reference/CONTENT_STATUS.md` exists, read it into context.
+5. Confirm: *"Session started with [N] next items and [M] unknowns."*
 
 **If HANDOFF.md doesn't exist:** Prompt to run `@biz-bootstrap init` or create minimal HANDOFF manually.
 
@@ -98,6 +101,7 @@ Use when: you want full session context for ad-hoc reasoning without opening/clo
 | 2 | `.work.biz/context/HANDOFF.md` | Session status, repository state, open owner actions |
 | 3 | `.work.biz/plans/NEXT.md` | Recommended next + owner blockers |
 | 4 | `.work.biz/plans/UNKNOWNS.md` | Every open unknown + owner |
+| 5 | `.work.biz/reference/CONTENT_STATUS.md` (if present) | Canonical publish status; prevents recommending already-published content |
 
 ### C2 — Uncommitted-aware snapshot
 
@@ -130,6 +134,7 @@ Classify the working tree:
 | 2 | .work.biz/context/HANDOFF.md | pass (or missing) | §Session status: … |
 | 3 | .work.biz/plans/NEXT.md | pass (or missing) | |
 | 4 | .work.biz/plans/UNKNOWNS.md | pass (or missing) | |
+| 5 | .work.biz/reference/CONTENT_STATUS.md | pass (or missing) | |
 
 ### Uncommitted status (read-only)
 - Staged: <N files> · Unstaged: <N files> · Untracked: <N files>
@@ -152,6 +157,7 @@ To open a session, run `@session-biz start`.
 - Pasting raw `git diff` output (use per-area counts).
 - Skipping the git snapshot before claiming "context loaded".
 - Claiming "context loaded" without reading all of C1 set.
+- Recommending a publish without checking `CONTENT_STATUS.md` when it exists.
 
 ---
 
@@ -162,8 +168,9 @@ To open a session, run `@session-biz start`.
 | 1 | HANDOFF.md exists and is current | |
 | 2 | NEXT.md has ordered priorities | |
 | 3 | UNKNOWNS.md tracks open questions | |
-| 4 | Session start was acknowledged | |
-| 5 | Session close wrote state + optional commit | |
+| 4 | CONTENT_STATUS.md is loaded if present | |
+| 5 | Session start was acknowledged | |
+| 6 | Session close wrote state + optional commit | |
 
 **Next:** `@biz-review weekly` or `@biz-community engage` — whatever NEXT.md says first.
 
