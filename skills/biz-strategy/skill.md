@@ -4,7 +4,7 @@ description: >-
   Define your niche, unified offer, target buyer, and channel strategy.
   Produces strategy docs that guide all other business development.
   Certifies strategy-ready gate. biz-strategy greenfield, biz-strategy probe,
-  biz-strategy certify, biz-strategy status.
+  biz-strategy amend, biz-strategy certify, biz-strategy status.
 ---
 
 # biz-strategy
@@ -63,6 +63,7 @@ Choice constrains channel, price, and offer structure.
 | `@biz-strategy greenfield - from <file>` | Generate strategy using an existing document as seed. |
 | `@biz-strategy probe` | Adaptive gap-filling questioning. Targets unknown/inferred assumptions. |
 | `@biz-strategy probe - <element>` | Probe a specific element (person, problem, offer, channel, price, geography). |
+| `@biz-strategy amend - <what changed>` | Record a strategy change made outside greenfield, fold out-of-tree strategy docs back in, and flag dependent artifacts stale. Requires re-certify afterward. |
 | `@biz-strategy certify` | Deep consistency check. Promotes strategy-ready gate on pass. |
 | `@biz-strategy certify - why` | Explain why current strategy would fail certification (without attempting it). |
 | `@biz-strategy status` | Read-only state report. What's defined, what's missing, gate status. |
@@ -83,6 +84,7 @@ All strategy files live under `{WORK_BUSINESS_ROOT}` (`.work.biz/`):
 | `strategy/target-buyer-profile.md` | Detailed buyer persona |
 | `strategy/channel-plan.md` | Primary channel + supporting channels |
 | `strategy/certification.md` | Gate certification record (certify mode writes here) |
+| `strategy/changelog.md` | Append-only record of strategy changes (amend mode writes here) |
 
 ---
 
@@ -109,6 +111,13 @@ Walk the user through:
 3. **What they already tried** — Before coming to you. What alternatives have they explored?
 4. **What they value most** — Speed? Quality? Trust? Cost? Expertise?
 5. **What they fear most** — What goes wrong if they pick the wrong person?
+
+**Audience hierarchy (required):** One primary buyer is not always the whole picture. Record three tiers:
+1. **Primary buyer** - singular; the sharpness test below applies to this tier.
+2. **Secondary buyer** - served by the same offer, lower priority (e.g. non-technical founders when the primary is ops leaders).
+3. **Opportunistic audiences** - never targeted, but the door stays open (e.g. employers/recruiters for a solo operator open to a great job).
+Then answer the fork question: "Given these audiences, what must your static profile (headline, About, website hero) never say?" Example: slot-scarcity ("I take 2 clients") closes the employment door - keep it out of permanent fields; time-boxed posts only.
+Include the hierarchy and the fork answer in `strategy/target-buyer-profile.md`.
 
 **Output:** Write `strategy/target-buyer-profile.md` with the detailed persona.
 
@@ -268,7 +277,7 @@ Adaptive questioning to fill gaps. When assumptions are "inferred" or "unknown",
 
 | Element | Probe questions |
 |---------|----------------|
-| **Person** | "Who specifically has this problem and the budget to solve it?" "Have you talked to 3 of them?" "What title do they have on LinkedIn?" "What did they try before finding you?" "What would make them say 'not now'?" |
+| **Person** | "Who specifically has this problem and the budget to solve it?" "Have you talked to 3 of them?" "What title do they have on LinkedIn?" "What did they try before finding you?" "What would make them say 'not now'?" "Is employment a target, a fallback, or excluded for you personally?" "What must your static profile never say because of that?" |
 | **Problem** | "What happens if they do nothing for 6 months?" "Is the problem painful enough to pay $X for?" "Who else is solving this, and why isn't it working?" "Is this the real problem or a symptom?" |
 | **Offer** | "If you could only offer ONE thing, what would it be?" "What adjacent offers are you willing to walk away from?" "Does the offer fit a fixed-price milestone model?" "What does success look like for the buyer after delivery?" |
 | **Channel** | "Where does your buyer currently get advice?" "Which platform have you been most active on historically?" "What content format does your buyer consume?" "If you could only do ONE channel for 90 days, which?" "If YouTube is primary, can you produce 1 long-form video/week (or 4–7 Shorts/week) for 6 months?" |
@@ -294,6 +303,18 @@ If YouTube is primary or secondary, verify:
 
 ---
 
+## I2b - Amend mode
+
+Strategy changes between certifications: an owner grill locks new positioning, a new offer shape appears, an audience fork is resolved. Amend records the change properly instead of letting it scatter across non-canonical docs.
+
+1. **Apply the change** to the canonical files under `{WORK_BUSINESS_ROOT}/strategy/`. Do not leave the new positioning only in `ideas/`, `plans/`, or session notes.
+2. **Log it** in `strategy/changelog.md` (create if missing): date, what changed, why, source (session/skill).
+3. **Detect out-of-tree strategy docs.** Glob for `ideas/positioning_*.md`, `plans/strategy_*.md`, and any file asserting positioning authority (buyer, offer, pricing claims). For each: fold its content into `strategy/` and mark the original with an amendment banner pointing at `strategy/` as canonical, or delete the stale claims.
+4. **Flag dependent artifacts stale.** List what must be reviewed against the new strategy: LinkedIn headline/About, website copy, pricing, queued-content buyers and CTAs, `plans/strategy_*.md`. Record the stale list in `{WORK_BUSINESS_ROOT}/plans/NEXT.md`.
+5. **Require re-certification.** Amend never certifies. Downstream gated work (brand, pricing, content publish) pauses until `@biz-strategy certify` passes again.
+
+---
+
 ## I3 — Certify mode
 
 Deep consistency check. Produces a pass/fail verdict and promotes the **strategy-ready** gate on pass.
@@ -308,7 +329,7 @@ Each check must pass. First failure stops the check.
 | 2 | **Ledger complete** | All elements have at least one assumption recorded | An element has zero entries |
 | 3 | **Unknown tolerance** | Unknown assumptions ≤ 30% of total | More than 30% unknown (run probe first) |
 | 4 | **Internal consistency** | Each element constrains and is constrained by the others | Person can't afford price. Channel doesn't reach person. Problem doesn't match offer. Geography blocks channel. |
-| 5 | **Person specificity** | Buyer is a specific person, not a demographic | "Small business owners" (too vague) vs "Seed-stage SaaS founders who raised $500k and need their MVP built" (specific) |
+| 5 | **Person specificity** | Primary buyer is a specific person, not a demographic. Secondary/opportunistic audiences are allowed only if the primary stays singular and the rules for them are explicit. | "Small business owners" (too vague) vs "Seed-stage SaaS founders who raised $500k and need their MVP built" (specific). Multiple co-equal buyers with no primary. |
 | 6 | **Problem sharpness** | Problem is the root cause, stated in under 14 words | Problem is vague ("they need help with technology") or stated as a solution ("they need a website") |
 | 7 | **Offer focus** | Offer is ONE thing with explicit IS / IS NOT | Offer lists 3+ services. No "what this is NOT" section. |
 | 8 | **Channel primary** | One primary channel identified. Others are secondary. | 3+ channels listed as equal priority. No primary channel named. |
@@ -416,6 +437,8 @@ Strategy status — {WORK_BUSINESS_ROOT}/strategy/
 
   Gate: strategy-ready  {PASS / FAIL / NOT ATTEMPTED}
 
+  Out-of-tree strategy docs: {none / list of ideas/positioning_*.md and plans/strategy_*.md found - run @biz-strategy amend to fold in}
+
   Assumption summary:
     Confirmed: {n}   Inferred: {n}   Unknown: {n}   ({pct}% unknown — {'pass' if ≤30% else 'over threshold'})
 
@@ -466,6 +489,7 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 | First 90 days are up and no traction | `@biz-strategy probe - person` (is the buyer real?) then `@biz-strategy probe - problem` (is the problem painful enough?) |
 | First client signed but market feels different from strategy | `@biz-strategy probe` (scan for new assumptions from real market feedback) |
 | Buyer conversations consistently confuse the offer | `@biz-strategy probe - offer` then `@biz-strategy certify` |
+| A positioning decision was made in another skill or session (owner grill, brand session, pricing change) | `@biz-strategy amend` then `@biz-strategy certify` |
 | 6+ months since last certification | `@biz-strategy probe` then `@biz-strategy certify` (re-certify quarterly) |
 
 ---

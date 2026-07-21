@@ -9,13 +9,14 @@
 - Generative/entry-level skills: plain descriptive name without prefix (e.g., `content-writing`, `content-social`, `business-ideas`, `product-service-ideas`). These have no hard prerequisite gate and load project context dynamically.
 
 ### Documents
-- Strategy documents: `strategy_<topic>.md` under `.work.biz/strategy/`
+- Canonical strategy files use flat names under `.work.biz/strategy/`: `one-pager.md`, `target-buyer-profile.md`, `offer-scope.md`, `channel-plan.md`, `pricing.md`, `assumption-ledger.md`, `certification.md`, `changelog.md`
+- Historical/ad-hoc strategy documents: `strategy_<topic>.md` under `.work.biz/plans/` - these must defer to `strategy/` on any conflict
 - Plans: `plan_<topic>.md` under `.work.biz/plans/`
 - Drafts: `draft_<topic>.md` under `.work.biz/drafts/`
 - Research: `research_<topic>.md` under `.work.biz/research/`
 - Use `YYYYMMDD-` prefix for dated documents
 
-**Path rule:** `biz-strategy` writes strategy artifacts to `.work.biz/strategy/`. All other skills read strategy artifacts from `.work.biz/strategy/`. No skill should look for `strategy_*.md` under `.work.biz/plans/`.
+**Path rule:** `biz-strategy` writes strategy artifacts to `.work.biz/strategy/`. All other skills read strategy artifacts from `.work.biz/strategy/`. `strategy_*.md` files under `.work.biz/plans/` are historical/ad-hoc only; on any conflict, `strategy/` is canonical.
 
 ### Project Memory (`.work.biz/`)
 - `context/HANDOFF.md` — session handoff

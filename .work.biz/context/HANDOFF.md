@@ -1,20 +1,22 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** 2026-07-13 — Session closed
-> **Status:** Content quality rules hardened after underperforming LinkedIn post. Two commits pushed: LinkedIn anti-generic gates + em-dash/AI-artifact ban across content skills.
+> **Date:** 2026-07-21 — Session closed
+> **Status:** Strategy lifecycle + content status tracking hardened. Gate self-checks on branded/pricing/content skills; `biz-strategy amend`; `CONTENT_STATUS` bootstrap template. Committed and pushed.
 
 ---
 
-## Session summary (2026-07-13, close)
+## Session summary (2026-07-21, close)
 
 | Step | Status |
 |------|--------|
-| Analyze underperforming LinkedIn post `post_01_the_spreadsheet_nobody_owns` | Done |
-| Identify skill-rule gaps (generic hook, hidden framework, AI cadence, weak CTA) | Done |
-| Patch `skills/content-writing/skill.md` — stricter LinkedIn quality gates, pre-delivery self-criticism | Done |
-| Harden `standards/20260621-CONTENT-STANDARD.md` — zero em-dashes/en-dashes, human-voice rules, expanded red flags | Done |
-| Patch `skills/content-social/skill.md` + `platforms/linkedin.md` — enforce same human-voice bar | Done |
-| Commit and push both rule updates | Done |
+| Canonical strategy path conventions clarified (`strategy/` flat names; `plans/strategy_*.md` historical only) | Done |
+| Add `biz-strategy amend` + `strategy/changelog.md` + audience hierarchy + out-of-tree fold-in | Done |
+| Gate pre-check (strategy-ready via `gates.md`) on biz-brand, biz-pricing, biz-content | Done |
+| biz-review weekly drift check (stale cert, out-of-tree strategy, CONTENT_STATUS) | Done |
+| content-social quality gates: buyer/offer/freshness vs strategy | Done |
+| `CONTENT_STATUS.md` template + bootstrap wiring (biz-bootstrap + bootstrap.sh) | Done |
+| Document gated-skill self-verify in SKILL_DEPENDENCIES; list `amend` in skills/README | Done |
+| Commit and push | Done |
 
 ---
 
@@ -22,11 +24,12 @@
 
 | # | Task | Priority |
 |---|------|----------|
-| 1 | Regenerate `.tmp/*.skill` archives — include platform split + `biz-youtube` + new content rules | Medium |
+| 1 | Regenerate `.tmp/*.skill` archives — include amend, gate pre-checks, CONTENT_STATUS, quality rules | Medium |
 | 2 | Populate `.work.biz/strategy/*` for host project | Medium |
 | 3 | Test revised `content-writing` skill against a new LinkedIn draft and measure engagement | Medium |
-| 4 | Cite or label Unverified market stats in biz-brand/biz-youtube | Low |
-| 5 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
+| 4 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
+| 5 | Cite or label Unverified market stats in biz-brand/biz-youtube | Low |
+| 6 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
 
 ---
 
@@ -42,8 +45,12 @@
 | 6 | **Human voice over literary voice** — contractions allowed, sentence length varied, minor roughness preferred to polished perfection. |
 | 7 | **Actionable frameworks belong in the post body or a carousel**, not hidden in the first comment. |
 | 8 | Four-tier content: `content-writing` → `content-social` → `biz-content` / `biz-youtube`. |
-| 9 | Strategy artifacts in `.work.biz/strategy/` only. |
+| 9 | Strategy artifacts in `.work.biz/strategy/` only. `plans/strategy_*.md` are historical/ad-hoc; on conflict, `strategy/` wins. |
 | 10 | `.work.biz/touch-scope` is session-local — declare before scoped edits; not required in git. |
+| 11 | **`biz-strategy amend`** records mid-cycle strategy changes + changelog; never certifies — re-certify required before gated work. |
+| 12 | **Audience hierarchy** — primary (sharpness-tested) + secondary + opportunistic; static profile must respect the fork. |
+| 13 | Gated skills (brand, pricing, content publish/plan/challenge) **self-check** `gates.md` strategy-ready; director gate is second layer. |
+| 14 | **`CONTENT_STATUS.md`** is the canonical publish/status tracker; bootstrap creates it; publish flows update it. |
 
 ---
 
@@ -56,3 +63,5 @@
 | Platform guides | `skills/content-social/platforms/` |
 | Content quality bar | `standards/20260621-CONTENT-STANDARD.md` |
 | LinkedIn text/carousel rules | `skills/content-writing/skill.md` § LinkedIn post |
+| Strategy change mid-cycle | `@biz-strategy amend` then `@biz-strategy certify` |
+| Publish status tracker | `.work.biz/reference/CONTENT_STATUS.md` |

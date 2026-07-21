@@ -1,0 +1,22 @@
+# Content Status
+
+**Purpose:** Single source of truth for what content is published, ready, blocked, or held. Read at session start. Do not recommend publishing anything marked `published`.
+
+**Last updated:** <date>
+
+## Summary
+
+| Content type | Total | Published | Ready | Blocked | Hold |
+|--------------|-------|-----------|-------|---------|------|
+
+## Items
+
+| # | Piece | Status | Published | Platform / URL | Note |
+|---|-------|--------|-----------|----------------|------|
+
+## What to do after a publish
+
+1. Update this file with the publish date and platform.
+2. Update `plans/NEXT.md` - remove the completed item, reorder what is left.
+3. Update `context/HANDOFF.md` - log the publish.
+4. Update `pipeline/pipeline_tracker.md` weekly metrics if it is the same week.

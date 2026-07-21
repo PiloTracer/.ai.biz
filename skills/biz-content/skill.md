@@ -14,6 +14,23 @@ Write and publish one piece of content (LinkedIn post, article, or native video)
 
 > **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing, consistency challenges, native video workflows). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@content-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@content-writing`. For drafts, invoke `@content-social write linkedin`, `write linkedin carousel`, or `write linkedin video` after planning.
 
+## I0 - Gate pre-check
+
+Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+
+- If the file does not exist, or `strategy-ready` is not PASS, stop and emit:
+
+```text
+BLOCKED (prerequisite): strategy-ready not certified
+  Required state: {WORK_BUSINESS_ROOT}/gates.md with strategy-ready PASS
+  Current state: <what was found>
+  To proceed: run `@biz-strategy greenfield` then `@biz-strategy certify`
+```
+
+- Exception: `status` mode is read-only and runs without the gate.
+
+This check applies to `publish`, `plan`, and `challenge` modes (`status` exempt).
+
 ## Parse invocation
 
 | User says | Mode |
@@ -153,7 +170,8 @@ Output this table. Rotate topic buckets; no same bucket 3 days in a row.
 1. Post body — **no external links**
 2. First comment within 60 seconds — links if needed
 3. First 60 minutes — reply to every comment; comment on 5–10 ICP posts
-4. Log in tracker (`status` mode): format, hook style, impressions at 48h
+4. Update `.work.biz/reference/CONTENT_STATUS.md` — mark the piece published with date and platform
+5. Log in tracker (`status` mode): format, hook style, impressions at 48h
 
 ### Weekly review (end of weeks 1–4)
 

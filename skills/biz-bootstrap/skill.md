@@ -56,6 +56,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/pipeline/outreach-cadence.md` | `templates/work/pipeline/outreach-cadence.md.template` |
    | `.work.biz/research/research_index.md` | `templates/work/research/research_index.md.template` |
    | `.work.biz/strategy/README.md` | `templates/work/strategy/README.md.template` |
+   | `.work.biz/reference/CONTENT_STATUS.md` | `templates/work/reference/CONTENT_STATUS.md.template` — canonical publish/status tracker across all content types; prevents recommending already-published content |
 
 4. **Complete** — report summary and next steps.
 
@@ -86,6 +87,7 @@ Read-only report of the current bootstrap state:
 | `.work.biz/pipeline/outreach-cadence.md` exists | `ls "$WORK_DIR/pipeline/outreach-cadence.md"` |
 | `.work.biz/research/research_index.md` exists | `ls "$WORK_DIR/research/research_index.md"` |
 | `.work.biz/strategy/README.md` exists | `ls "$WORK_DIR/strategy/README.md"` |
+| `.work.biz/reference/CONTENT_STATUS.md` exists | `ls "$WORK_DIR/reference/CONTENT_STATUS.md"` |
 | Any `REPLACE:` tokens remain in `.cursorrules` | `grep -c 'REPLACE:' "$PROJECT_ROOT/.cursorrules" \|\| echo 0` |
 
 Output a summary table. If the project is fully bootstrapped, recommend next skill: `@biz-strategy greenfield`. If not yet bootstrapped, recommend `@biz-bootstrap init`.

@@ -63,6 +63,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `greenfield` | Generate full output from scratch |
 | `probe` | Adaptive gap-driven questioning |
 | `certify` | Gate check + state promotion |
+| `amend` | Record a strategy change made outside greenfield; fold out-of-tree strategy docs back in (biz-strategy) |
 | `audit` | Read-only assessment |
 | `overhaul` | Full rewrite/restructure |
 | `publish` | Create and distribute content |

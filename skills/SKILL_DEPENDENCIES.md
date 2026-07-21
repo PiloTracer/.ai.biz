@@ -74,6 +74,8 @@ biz-referrals ask  ← no strict gate (can start anytime)
 | 4 | sales-ready | Discovery call run, process verified | `@biz-discovery run` |
 | 5 | active deal | At least one deal in pipeline tracker at Conversation stage or later | `@biz-discovery run` or `@biz-proposal write` |
 
+Gated skills (biz-brand, biz-pricing, biz-content publish/plan/challenge) self-verify the strategy-ready gate via `{WORK_BUSINESS_ROOT}/gates.md` in their own I0 pre-check; biz-director's gate check is the second layer, not the only one.
+
 ## Blocked Report Shape
 
 When a skill stops because a prerequisite gate is not met:

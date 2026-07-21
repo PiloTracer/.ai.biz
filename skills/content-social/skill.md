@@ -554,6 +554,9 @@ Different platforms support different levels of depth. Structure your content py
 ## Quality check before delivering (run internally)
 
 - [ ] Is the content calibrated to this specific platform's culture and audience?
+- [ ] Does the piece's implied buyer match `strategy/target-buyer-profile.md` (primary or a named secondary)? If it addresses a different audience than the strategy serves, revise or flag before delivering.
+- [ ] Does the CTA / first comment point to a current offer in `strategy/offer-scope.md`? No bare calendar links without a one-line offer bridge; no framings from superseded positioning.
+- [ ] Freshness: if anything under `strategy/` is newer than the last certification (or `gates.md` lacks strategy-ready PASS), surface that before delivering publish-ready copy.
 - [ ] Does the first line/frame/hook earn its place?
 - [ ] Is there at least one specific number, name, or proof point?
 - [ ] Have I removed all hollow adjectives and marketing language?

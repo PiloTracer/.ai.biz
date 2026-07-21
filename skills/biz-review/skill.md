@@ -58,6 +58,14 @@ Score each stage 0 (blocked) → 5 (healthy):
 2. Trace cause: too few posts? Weak CTA? No follow-up?
 3. **Decide ONE change** for next week. Only ONE.
 
+### Drift check (2 min)
+
+1. Compare dates: any file under `.work.biz/strategy/` newer than `strategy/certification.md` -> flag "strategy changed since certification; run @biz-strategy certify".
+2. Glob for strategy-bearing files outside `strategy/` (`ideas/positioning_*.md`, `plans/strategy_*.md`) -> flag "out-of-tree strategy docs; run @biz-strategy amend".
+3. If anything was published this week, confirm `.work.biz/reference/CONTENT_STATUS.md` was updated.
+
+Render findings as a short "Drift check" block in the review output (or "clean" if nothing found).
+
 ---
 
 ## I2 — Quarterly review (2 hrs)

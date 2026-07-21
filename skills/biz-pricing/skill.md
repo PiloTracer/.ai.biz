@@ -30,6 +30,23 @@ If you only consider effort, you'll underprice. If you only consider value, you'
 
 ---
 
+## I0 - Gate pre-check
+
+Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+
+- If the file does not exist, or `strategy-ready` is not PASS, stop and emit:
+
+```text
+BLOCKED (prerequisite): strategy-ready not certified
+  Required state: {WORK_BUSINESS_ROOT}/gates.md with strategy-ready PASS
+  Current state: <what was found>
+  To proceed: run `@biz-strategy greenfield` then `@biz-strategy certify`
+```
+
+- Exception: `status` mode is read-only and runs without the gate.
+
+---
+
 ## Modes
 
 ### biz-pricing set — Three-Angle Framework

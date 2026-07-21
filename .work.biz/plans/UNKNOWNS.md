@@ -7,3 +7,4 @@
 | 3 | Should `content-writing` carry its own SEO keyword research mode, or always source keywords from `.work.biz/strategy/*`? | Low | framework | Open |
 | 4 | Should `content-social` platform research require live web fetch capability (Reddit API, Instagram), or is pattern-based research sufficient? | Medium | framework | Open — currently uses pattern-based research with explicit "unable to perform live research" fallback |
 | 5 | Should `biz-community` split into platform-specific sub-skills if it keeps growing (currently ~280 lines covering 6+ platforms)? | Low | framework | Open — monitor as platform-specific engagement rules grow |
+| 6 | Should existing thin/fat adopters get an `@deploy-basic update` / bootstrap migration that creates `reference/CONTENT_STATUS.md` if missing, or only new bootstraps? | Low | framework | Open — template ships with bootstrap; migration path unset |
