@@ -39,7 +39,7 @@ description: >-
 
 `find` and `status` are ungated: researching where your buyer gathers is safe at any stage and improves with `strategy-ready`.
 
-`engage` requires **brand-ready**. Engagement sends people to your profile, so the profile has to say the right thing first. Before `engage` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+`engage` requires **brand-ready**. Engagement sends people to your profile, so the profile has to say the right thing first. Before `engage` executes, read `{WORK_BUSINESS_ROOT}/gates.md`. A gate is met only when its `**Status:**` starts with the word `PASS`; trailing commentary after `PASS` is fine and does not change the verdict.
 
 - If the file does not exist, or `brand-ready` is not PASS, stop and emit:
 

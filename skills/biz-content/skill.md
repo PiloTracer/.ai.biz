@@ -16,7 +16,7 @@ Write and publish one piece of content (LinkedIn post, article, or native video)
 
 ## I0 - Gate pre-check
 
-Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`. This skill's gate is **brand-ready**: publishing drives traffic to a profile and website, so those surfaces must already match the offer or the content converts into a dead end.
+Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`. This skill's gate is **brand-ready**: publishing drives traffic to a profile and website, so those surfaces must already match the offer or the content converts into a dead end. A gate is met only when its `**Status:**` starts with the word `PASS`; trailing commentary after `PASS` is fine and does not change the verdict.
 
 - If the file does not exist, or `strategy-ready` is not PASS, stop and emit:
 

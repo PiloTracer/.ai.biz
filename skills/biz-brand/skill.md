@@ -21,7 +21,7 @@ This skill covers three modes:
 
 ## I0 - Gate pre-check
 
-Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`. A gate is met only when its `**Status:**` starts with the word `PASS`; trailing commentary after `PASS` is fine and does not change the verdict.
 
 - If the file does not exist, or `strategy-ready` is not PASS, stop and emit:
 

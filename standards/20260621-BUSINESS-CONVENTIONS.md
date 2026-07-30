@@ -10,7 +10,7 @@ Every business moves through five readiness states:
 strategy-ready → brand-ready → pipeline-ready → sales-ready → active-deal
 ```
 
-State is recorded in one place: `.work.biz/gates.md`. A state counts as reached only when its section reads `**Status:** PASS`. Skills must read the ledger before running gated operations, and must not infer a state from the presence of files.
+State is recorded in one place: `.work.biz/gates.md`. A state counts as reached only when its `**Status:**` value starts with the word `PASS`; trailing commentary such as `PASS 2026-07-25 - verified live` still counts, while `NOT MET`, `NOT ATTEMPTED`, `ACTIVATED`, `NONE`, and a missing section do not. Gate ids match on a normalized form, so `## active deal` resolves to `active-deal`. Skills must read the ledger before running gated operations, and must not infer a state from the presence of files.
 
 **One writer per gate.** Exactly one skill may promote each state. This is binding: a second writer makes the ledger unverifiable, because no skill can be held responsible for a wrong PASS.
 

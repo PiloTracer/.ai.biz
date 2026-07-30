@@ -5,8 +5,19 @@ Gated skills read this file in their I0 pre-check before doing any work.
 
 ## Schema
 
-One `## <gate-id>` section per gate, each with the five fields below. A gate counts as met
-**only** when `**Status:** PASS`. Any other value, or a missing section, means not met.
+One `## <gate-id>` section per gate, each with the five fields below.
+
+**Reading rule (tolerant on purpose, because real ledgers get annotated by hand):**
+
+- A gate counts as met **only** when its `**Status:**` value *starts with* the word `PASS`.
+  Trailing commentary is fine and encouraged: `**Status:** PASS 2026-07-25 - verified live
+  (screenshots: dir/)` counts as met.
+- Anything else means not met: `NOT MET`, `NOT ATTEMPTED`, `ACTIVATED`, `NONE`, `FAIL`,
+  `BLOCKED`, a missing `Status` line, or a missing section.
+- Gate ids match on a normalized form. `## active deal`, `## Active-Deal`, and
+  `## active_deal` all resolve to `active-deal`. Prefer the hyphenated form in new files.
+- Extra sections beyond the five gates are allowed. Projects often add their own, for
+  example a proof-asset table. Nothing reads them as gates.
 
 | Field | Meaning |
 |-------|---------|

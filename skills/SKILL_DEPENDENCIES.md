@@ -66,7 +66,9 @@ biz-referrals ask  ← no strict gate (can start anytime)
 
 ## Gate Descriptions
 
-`{WORK_BUSINESS_ROOT}/gates.md` is the single authoritative ledger of which gates are met. It is created by `@biz-bootstrap init` from `templates/work/gates.md.template` with every gate at `NOT MET`. A gate counts as met only when its section reads `**Status:** PASS`.
+`{WORK_BUSINESS_ROOT}/gates.md` is the single authoritative ledger of which gates are met. It is created by `@biz-bootstrap init` from `templates/work/gates.md.template` with every gate at `NOT MET`.
+
+**Reading rule.** A gate counts as met only when its `**Status:**` value *starts with* the word `PASS`. Trailing commentary is expected in real ledgers and does not change the verdict, so `**Status:** PASS 2026-07-25 - verified live` is met. `NOT MET`, `NOT ATTEMPTED`, `ACTIVATED`, `NONE`, `FAIL`, `BLOCKED`, a missing `Status` line, and a missing section are all not met. Gate ids match on a normalized form, so `## active deal` resolves to `active-deal`. Projects may add their own extra sections; nothing reads those as gates.
 
 | Gate | State (ledger id) | Evidence | Promoted by (only writer) |
 |------|-------------------|----------|---------------------------|

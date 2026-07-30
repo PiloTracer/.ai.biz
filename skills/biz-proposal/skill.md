@@ -25,7 +25,7 @@ Report the current pipeline of sent/pending/closed proposals.
 
 ## I0 — Gate pre-check
 
-Before `write` or `review` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+Before `write` or `review` executes, read `{WORK_BUSINESS_ROOT}/gates.md`. A gate is met only when its `**Status:**` starts with the word `PASS`; trailing commentary after `PASS` is fine and does not change the verdict.
 
 - If the file does not exist, or `pipeline-ready` is not PASS, stop and emit:
 

@@ -28,19 +28,42 @@ done
 
 gate_fail() { echo "FAIL: $*" >&2; fail=1; }
 
-# Print the Status value of a "## <gate>" section in a gates ledger, or nothing.
+# Print the raw Status value of a "## <gate>" section in a gates ledger, or nothing.
+#
+# Tolerant by design, because real ledgers are hand-annotated:
+#   - heading ids match on a normalized form, so "## active deal", "## Active-Deal",
+#     and "## active_deal" all resolve to active-deal
+#   - the Status value is returned verbatim, including trailing commentary such as
+#     "PASS 2026-07-25 - deployed and verified live", so callers can report it
+# Use gate_is_met() to decide whether the gate counts as met.
 gate_status() {
   local file="$1" gate="$2"
-  awk -v want="## ${gate}" '
-    $0 == want { inside = 1; next }
-    inside && /^## / { exit }
+  awk -v want="$gate" '
+    function norm(s) {
+      sub(/^##[[:space:]]+/, "", s)
+      s = tolower(s)
+      gsub(/[[:space:]_]+/, "-", s)
+      gsub(/^-+|-+$/, "", s)
+      return s
+    }
+    /^## / {
+      if (inside) exit
+      if (norm($0) == want) { inside = 1 }
+      next
+    }
     inside && /^\*\*Status:\*\*/ {
       sub(/^\*\*Status:\*\*[[:space:]]*/, "")
-      gsub(/[[:space:]]+$/, "")
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "")
       print
       exit
     }
   ' "$file"
+}
+
+# A gate is met only when its Status value starts with the word PASS. Anything else
+# (NOT MET, NOT ATTEMPTED, ACTIVATED, NONE, FAIL, BLOCKED, absent) is not met.
+gate_is_met() {
+  printf '%s' "${1:-}" | grep -qiE '^pass([^a-z]|$)'
 }
 
 # Print the Status cell of a "| <phase> | <status> |" row under "## Current Phase".
@@ -87,22 +110,51 @@ self_test() {
   tmp="$(mktemp -d)"
   trap 'rm -rf "$tmp"' RETURN
 
+  # Shapes taken from real hand-annotated ledgers, not just the pristine template.
   cat >"${tmp}/gates.md" <<'EOF'
 ## strategy-ready
 **Status:** PASS
 **Evidence:** `x`
 
 ## brand-ready
-**Status:** NOT MET
+
+**Status:** PASS 2026-07-25 - deployed and verified live (screenshots: dir/)
+**Note:** annotated by hand
+
+## pipeline-ready
+**Status:** ACTIVATED 2026-07-30 - outreach hold lifted
+
+## sales-ready
+**Status:** NOT ATTEMPTED
+
+## active deal
+**Status:** NONE - 0 active deals
 EOF
 
   status="$(gate_status "${tmp}/gates.md" strategy-ready)"
-  [ "$status" = "PASS" ] || { echo "gate-verify self-test: FAIL (strategy-ready parsed as '${status}')" >&2; return 1; }
+  gate_is_met "$status" || { echo "gate-verify self-test: FAIL (strategy-ready not met, parsed '${status}')" >&2; return 1; }
 
+  # A PASS with trailing commentary must still count as met.
   status="$(gate_status "${tmp}/gates.md" brand-ready)"
-  [ "$status" = "NOT MET" ] || { echo "gate-verify self-test: FAIL (brand-ready parsed as '${status}')" >&2; return 1; }
+  gate_is_met "$status" || { echo "gate-verify self-test: FAIL (annotated PASS not met, parsed '${status}')" >&2; return 1; }
 
-  status="$(gate_status "${tmp}/gates.md" pipeline-ready)"
+  # ACTIVATED, NOT ATTEMPTED, and NONE are not PASS.
+  for g in pipeline-ready sales-ready; do
+    status="$(gate_status "${tmp}/gates.md" "$g")"
+    [ -n "$status" ] || { echo "gate-verify self-test: FAIL (${g} status not found)" >&2; return 1; }
+    if gate_is_met "$status"; then
+      echo "gate-verify self-test: FAIL (${g} wrongly met, parsed '${status}')" >&2; return 1
+    fi
+  done
+
+  # A space-separated heading must resolve to the hyphenated gate id.
+  status="$(gate_status "${tmp}/gates.md" active-deal)"
+  [ -n "$status" ] || { echo "gate-verify self-test: FAIL (space-separated heading not matched)" >&2; return 1; }
+  if gate_is_met "$status"; then
+    echo "gate-verify self-test: FAIL (active-deal wrongly met, parsed '${status}')" >&2; return 1
+  fi
+
+  status="$(gate_status "${tmp}/gates.md" nonexistent-gate)"
   [ -z "$status" ] || { echo "gate-verify self-test: FAIL (absent gate parsed as '${status}')" >&2; return 1; }
 
   cat >"${tmp}/NEXT.md" <<'EOF'
@@ -168,7 +220,7 @@ else
 
     status="$(gate_status "$GATES" "$gate")"
 
-    if [ "$status" = "PASS" ]; then
+    if gate_is_met "$status"; then
       for path in $evidence; do
         if [ ! -e "${WORK}/${path}" ]; then
           gate_fail "gates.md claims ${gate} PASS but .work.biz/${path} is missing"
@@ -180,7 +232,7 @@ else
     if [ -n "$phase" ] && [ -f "$NEXT" ]; then
       phase_val="$(phase_status "$NEXT" "$phase")"
       if echo "$phase_val" | grep -qiE '(^|[^a-z])(ready|certified|pass|complete|done)([^a-z]|$)'; then
-        if [ "$status" != "PASS" ]; then
+        if ! gate_is_met "$status"; then
           gate_fail "NEXT.md reports ${phase} phase as '${phase_val}' but gates.md has ${gate} at '${status:-absent}'"
         fi
       fi

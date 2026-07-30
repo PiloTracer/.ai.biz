@@ -25,7 +25,7 @@ description: >-
 
 ### Reconciliation steps
 
-1. **Read** `{WORK_BUSINESS_ROOT}/gates.md`. If it is missing, create it from `templates/work/gates.md.template` with every gate at `NOT MET`, then continue.
+1. **Read** `{WORK_BUSINESS_ROOT}/gates.md`. If it is missing, create it from `templates/work/gates.md.template` with every gate at `NOT MET`, then continue. A gate is met only when its `**Status:**` starts with the word `PASS`; trailing commentary after `PASS` is fine. Preserve any hand-written annotations and any extra sections the project added (for example a proof-asset table) when you rewrite a gate section.
 2. **Verify each PASS claim** against the evidence above. Any gate claiming PASS without its evidence on disk is **demoted** to `NOT MET` and reported as drift — never leave a PASS you could not substantiate.
 3. **Promote `pipeline-ready`** when all three of its evidence artifacts exist and are filled in, and `strategy-ready` is PASS. Replace the section in place, leaving other gates untouched:
 

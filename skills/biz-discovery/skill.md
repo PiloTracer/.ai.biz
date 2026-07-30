@@ -22,7 +22,7 @@ This skill supports three modes via the `biz-discovery` command:
 
 ## I0 — Gate pre-check
 
-Before `prepare` or `run` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+Before `prepare` or `run` executes, read `{WORK_BUSINESS_ROOT}/gates.md`. A gate is met only when its `**Status:**` starts with the word `PASS`; trailing commentary after `PASS` is fine. A status of `ACTIVATED`, `NOT ATTEMPTED`, or `NONE` is **not** met.
 
 - If the file does not exist, or `pipeline-ready` is not PASS, stop and emit:
 

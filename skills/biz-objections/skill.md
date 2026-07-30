@@ -30,7 +30,7 @@ Track objection patterns. Summarize recent objections encountered, categorize by
 
 ## I0 — Gate pre-check
 
-Before `handle` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+Before `handle` executes, read `{WORK_BUSINESS_ROOT}/gates.md`. A gate is met only when its `**Status:**` starts with the word `PASS`; trailing commentary after `PASS` is fine. Gate ids normalize, so a `## active deal` heading resolves to `active-deal`.
 
 - If the file does not exist, or `active-deal` is not PASS, stop and emit:
 
