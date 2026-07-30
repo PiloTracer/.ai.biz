@@ -28,6 +28,24 @@ Practice responding to objections. The user plays the prospect, the AI plays the
 ### status
 Track objection patterns. Summarize recent objections encountered, categorize by type (Value/Trust/Risk), and suggest adjustments to positioning or discovery.
 
+## I0 — Gate pre-check
+
+Before `handle` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+
+- If the file does not exist, or `active-deal` is not PASS, stop and emit:
+
+```text
+BLOCKED (prerequisite): no active deal
+  Required state: {WORK_BUSINESS_ROOT}/gates.md with active-deal PASS
+  Current state: <what was found>
+  To proceed: run `@biz-discovery run` to qualify a deal, or use
+              `@biz-objections roleplay` to practice without a live deal
+```
+
+Handling an objection needs the specific deal's context: what they said, their budget signal, who else decides. Without it the response is generic and unusable.
+
+- Exception: `roleplay` and `status` run without the gate. `roleplay` exists precisely for practice before a real deal.
+
 ## The 7 Common Objections
 
 ### 1. "That's more than I expected / That's expensive"

@@ -45,6 +45,7 @@ echo ""
 mkdir -p "${WORK}"
 
 copy_if_missing "${TPL}/README.md.template" "${WORK}/README.md"
+copy_if_missing "${TPL}/gates.md.template" "${WORK}/gates.md"
 copy_if_missing "${TPL}/context/HANDOFF.md.template" "${WORK}/context/HANDOFF.md"
 copy_if_missing "${TPL}/plans/NEXT.md.template" "${WORK}/plans/NEXT.md"
 copy_if_missing "${TPL}/plans/UNKNOWNS.md.template" "${WORK}/plans/UNKNOWNS.md"
@@ -53,6 +54,7 @@ copy_if_missing "${TPL}/pipeline/outreach-cadence.md.template" "${WORK}/pipeline
 copy_if_missing "${TPL}/research/research_index.md.template" "${WORK}/research/research_index.md"
 copy_if_missing "${TPL}/strategy/README.md.template" "${WORK}/strategy/README.md"
 copy_if_missing "${TPL}/reference/CONTENT_STATUS.md.template" "${WORK}/reference/CONTENT_STATUS.md"
+copy_if_missing "${TPL}/reference/BRAND_STATUS.md.template" "${WORK}/reference/BRAND_STATUS.md"
 
 for dir in context plans pipeline research drafts strategy reference; do
   mkdir -p "${WORK}/${dir}"

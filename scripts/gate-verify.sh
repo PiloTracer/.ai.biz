@@ -1,34 +1,74 @@
 #!/usr/bin/env bash
-# gate-verify.sh — Verify NEXT.md tasks cite evidence and claimed readiness states have support.
+# gate-verify.sh — Verify NEXT.md tasks cite evidence and claimed gates have support.
+#
+# Two independent checks:
+#   1. Every row in NEXT.md's task tables has a non-empty description/Notes cell.
+#   2. Every gate claiming PASS in .work.biz/gates.md has its evidence on disk,
+#      and every phase NEXT.md reports as reached has a matching PASS in the ledger.
+#
+# The ledger is authoritative. Mentioning a gate name in prose is not a claim that
+# the gate is met, so notes like "unlocks the strategy-ready gate" do not trip this.
+#
+# Use --warn-only to report findings and exit 0. Use --self-test to check the parsers.
 set -euo pipefail
-
-SELF_TEST="${1:-}"
-if [ "$SELF_TEST" = "--self-test" ]; then
-  echo "gate-verify self-test: PASS"
-  exit 0
-fi
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 fail=0
+WARN_ONLY=0
+SELF_TEST=0
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --warn-only) WARN_ONLY=1 ;;
+    --self-test) SELF_TEST=1 ;;
+    *) echo "usage: gate-verify.sh [--warn-only] [--self-test]" >&2; exit 2 ;;
+  esac
+  shift
+done
 
 gate_fail() { echo "FAIL: $*" >&2; fail=1; }
 
-NEXT="${REPO_ROOT}/.work.biz/plans/NEXT.md"
+# Print the Status value of a "## <gate>" section in a gates ledger, or nothing.
+gate_status() {
+  local file="$1" gate="$2"
+  awk -v want="## ${gate}" '
+    $0 == want { inside = 1; next }
+    inside && /^## / { exit }
+    inside && /^\*\*Status:\*\*/ {
+      sub(/^\*\*Status:\*\*[[:space:]]*/, "")
+      gsub(/[[:space:]]+$/, "")
+      print
+      exit
+    }
+  ' "$file"
+}
 
-# Check a markdown table section for rows with empty description cells.
+# Print the Status cell of a "| <phase> | <status> |" row under "## Current Phase".
+phase_status() {
+  local file="$1" phase="$2"
+  awk -v want="$phase" '
+    /^## Current Phase/ { inside = 1; next }
+    inside && /^## / { exit }
+    inside && /^\|/ && !/^\|[[:space:]]*-/ {
+      n = split($0, cells, "|")
+      name = cells[2]; val = cells[3]
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", name)
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", val)
+      if (tolower(name) == tolower(want)) { print val; exit }
+    }
+  ' "$file"
+}
+
+# Report rows in a markdown table section whose description cell is empty.
 check_table_section() {
-  local file="$1"
-  local start_marker="$2"
-  local end_marker="$3"
-  local desc_col="$4"
+  local file="$1" start_marker="$2" end_marker="$3" desc_col="$4"
 
   awk -v start="$start_marker" -v end="$end_marker" -v col="$desc_col" '
     $0 ~ start { capture=1; next }
     $0 ~ end && capture { capture=0 }
     capture && /^\|/ && !/^\|---/ {
-      # Split by "|"; NF counts fields, but leading/trailing empty cells matter.
+      # Split by "|"; the leading empty cell shifts visible columns by one.
       n = split($0, cells, "|");
-      # desc_col is 1-based in the visible cells; array index includes leading empty cell.
       val = cells[col + 1];
       gsub(/[[:space:]]/, "", val);
       task = cells[2];
@@ -39,6 +79,60 @@ check_table_section() {
     }
   ' "$file" 2>/dev/null
 }
+
+# --- self-test: exercise the parsers against a fixture -----------------------
+
+self_test() {
+  local tmp status
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' RETURN
+
+  cat >"${tmp}/gates.md" <<'EOF'
+## strategy-ready
+**Status:** PASS
+**Evidence:** `x`
+
+## brand-ready
+**Status:** NOT MET
+EOF
+
+  status="$(gate_status "${tmp}/gates.md" strategy-ready)"
+  [ "$status" = "PASS" ] || { echo "gate-verify self-test: FAIL (strategy-ready parsed as '${status}')" >&2; return 1; }
+
+  status="$(gate_status "${tmp}/gates.md" brand-ready)"
+  [ "$status" = "NOT MET" ] || { echo "gate-verify self-test: FAIL (brand-ready parsed as '${status}')" >&2; return 1; }
+
+  status="$(gate_status "${tmp}/gates.md" pipeline-ready)"
+  [ -z "$status" ] || { echo "gate-verify self-test: FAIL (absent gate parsed as '${status}')" >&2; return 1; }
+
+  cat >"${tmp}/NEXT.md" <<'EOF'
+## Current Phase
+
+| Phase | Status |
+|-------|--------|
+| Strategy | Ready |
+| Brand | Pending |
+
+## Active tasks
+EOF
+
+  status="$(phase_status "${tmp}/NEXT.md" Strategy)"
+  [ "$status" = "Ready" ] || { echo "gate-verify self-test: FAIL (Strategy phase parsed as '${status}')" >&2; return 1; }
+
+  status="$(phase_status "${tmp}/NEXT.md" Brand)"
+  [ "$status" = "Pending" ] || { echo "gate-verify self-test: FAIL (Brand phase parsed as '${status}')" >&2; return 1; }
+
+  echo "gate-verify self-test: PASS"
+}
+
+if [ "$SELF_TEST" -eq 1 ]; then
+  self_test
+  exit $?
+fi
+
+# --- check 1: NEXT.md tasks cite evidence -----------------------------------
+
+NEXT="${REPO_ROOT}/.work.biz/plans/NEXT.md"
 
 if [ -f "$NEXT" ]; then
   # Active tasks: columns are # | Task | Status | Notes
@@ -52,33 +146,59 @@ if [ -f "$NEXT" ]; then
   done < <(check_table_section "$NEXT" "## Recently completed" "## " 2)
 fi
 
-# Verify claimed readiness states have supporting evidence.
-# Only scan "Current Phase" and "Active tasks" — completed history may mention
-# gates without claiming them as current states.
+# --- check 2: claimed gates have evidence -----------------------------------
+
 WORK="${REPO_ROOT}/.work.biz"
-if [ -f "$NEXT" ]; then
-  active_content="$(awk '/^## Current Phase$|^## Active tasks$/{flag=1; next} flag && /^## /{flag=0} flag' "$NEXT" 2>/dev/null || true)"
-  if echo "$active_content" | grep -qE "strategy-ready|Strategy.*Ready"; then
-    if [ ! -f "${WORK}/strategy/certification.md" ]; then
-      gate_fail "NEXT.md references strategy-ready but .work.biz/strategy/certification.md is missing"
+GATES="${WORK}/gates.md"
+
+# gate id | NEXT.md phase name | evidence paths relative to .work.biz/
+GATE_SPEC="
+strategy-ready|Strategy|strategy/certification.md
+brand-ready|Brand|reference/BRAND_STATUS.md
+pipeline-ready|Pipeline|strategy/pricing.md pipeline/pipeline_tracker.md pipeline/outreach-cadence.md
+sales-ready|Sales|pipeline/pipeline_tracker.md
+active-deal||pipeline/pipeline_tracker.md
+"
+
+if [ ! -f "$GATES" ]; then
+  echo "skip: no .work.biz/gates.md — gate ledger checks not applicable"
+else
+  while IFS='|' read -r gate phase evidence; do
+    [ -z "$gate" ] && continue
+
+    status="$(gate_status "$GATES" "$gate")"
+
+    if [ "$status" = "PASS" ]; then
+      for path in $evidence; do
+        if [ ! -e "${WORK}/${path}" ]; then
+          gate_fail "gates.md claims ${gate} PASS but .work.biz/${path} is missing"
+        fi
+      done
     fi
-  fi
-  if echo "$active_content" | grep -qE "pipeline-ready|Pipeline.*Ready"; then
-    if [ ! -f "${WORK}/pipeline/pipeline_tracker.md" ]; then
-      gate_fail "NEXT.md references pipeline-ready but .work.biz/pipeline/pipeline_tracker.md is missing"
+
+    # A phase reported as reached in NEXT.md must be backed by the ledger.
+    if [ -n "$phase" ] && [ -f "$NEXT" ]; then
+      phase_val="$(phase_status "$NEXT" "$phase")"
+      if echo "$phase_val" | grep -qiE '(^|[^a-z])(ready|certified|pass|complete|done)([^a-z]|$)'; then
+        if [ "$status" != "PASS" ]; then
+          gate_fail "NEXT.md reports ${phase} phase as '${phase_val}' but gates.md has ${gate} at '${status:-absent}'"
+        fi
+      fi
     fi
-    if [ ! -f "${WORK}/pipeline/outreach-cadence.md" ]; then
-      gate_fail "NEXT.md references pipeline-ready but .work.biz/pipeline/outreach-cadence.md is missing"
-    fi
-    if [ ! -f "${WORK}/strategy/pricing.md" ]; then
-      gate_fail "NEXT.md references pipeline-ready but .work.biz/strategy/pricing.md is missing"
-    fi
-  fi
+  done <<EOF
+$(echo "$GATE_SPEC")
+EOF
 fi
 
 if [ "$fail" -eq 0 ]; then
   echo "gate-verify: PASS"
-else
-  echo "gate-verify: FAIL"
+  exit 0
 fi
-exit "$fail"
+
+if [ "$WARN_ONLY" -eq 1 ]; then
+  echo "gate-verify: WARN (findings above; --warn-only)"
+  exit 0
+fi
+
+echo "gate-verify: FAIL (use --warn-only to override)"
+exit 1

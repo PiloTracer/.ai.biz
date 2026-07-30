@@ -16,7 +16,7 @@ Write and publish one piece of content (LinkedIn post, article, or native video)
 
 ## I0 - Gate pre-check
 
-Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+Before any mode executes, read `{WORK_BUSINESS_ROOT}/gates.md`. This skill's gate is **brand-ready**: publishing drives traffic to a profile and website, so those surfaces must already match the offer or the content converts into a dead end.
 
 - If the file does not exist, or `strategy-ready` is not PASS, stop and emit:
 
@@ -27,9 +27,18 @@ BLOCKED (prerequisite): strategy-ready not certified
   To proceed: run `@biz-strategy greenfield` then `@biz-strategy certify`
 ```
 
+- Else if `brand-ready` is not PASS, stop and emit:
+
+```text
+BLOCKED (prerequisite): brand-ready not confirmed
+  Required state: {WORK_BUSINESS_ROOT}/gates.md with brand-ready PASS
+  Current state: <what was found>
+  To proceed: run `@biz-brand audit` then `@biz-brand overhaul`
+```
+
 - Exception: `status` mode is read-only and runs without the gate.
 
-This check applies to `publish`, `plan`, and `challenge` modes (`status` exempt).
+This check applies to `publish`, `plan`, and `challenge` modes (`status` exempt). To draft content before brand-ready, use the ungated `@content-writing` or `@content-social write` instead.
 
 ## Parse invocation
 

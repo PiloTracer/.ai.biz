@@ -2,6 +2,7 @@
 
 | Path | Purpose |
 |------|---------|
+| `gates.md` | Readiness ledger — which gates are PASS. Every gated skill reads it before working |
 | `context/HANDOFF.md` | Session bookmark |
 | `plans/NEXT.md` | Tactical next action |
 | `plans/UNKNOWNS.md` | Open questions |
@@ -9,5 +10,8 @@
 | `pipeline/outreach-cadence.md` | Outreach sequence and follow-up rules |
 | `research/research_index.md` | Research evidence |
 | `strategy/README.md` | Strategy artifact index |
+| `reference/CONTENT_STATUS.md` | Publish/status tracker for all content |
+| `reference/BRAND_STATUS.md` | Brand audit history and overhaul log |
 | `drafts/` | In-progress drafts |
 | `reference/` | Project reference files (PROJECTS.md, VISUAL_GUIDE.md, etc.) |
+| `touch-scope` | Declared change scope for the current work session (session-local, not tracked) |

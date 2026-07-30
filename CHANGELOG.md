@@ -5,14 +5,42 @@ All notable changes to Business OS are documented here.
 ## [Unreleased]
 
 ### Added
+- **`.work.biz/gates.md` readiness ledger** — `templates/work/gates.md.template` with all five gates (`strategy-ready`, `brand-ready`, `pipeline-ready`, `sales-ready`, `active-deal`) at `NOT MET`, a documented five-field schema, and a one-writer-per-gate rule. Scaffolded by `templates/bootstrap.sh` and `@biz-bootstrap init`
+- **Gate promotion for gates 2 through 5** — previously only `strategy-ready` had a writer, so `brand-ready` and `sales-ready` were documented but unreachable. `@biz-brand overhaul` now promotes `brand-ready` (§ 7b), `@biz-review status` promotes `pipeline-ready` and reconciles the whole ledger, `@biz-discovery run` promotes `sales-ready` and `active-deal`
+- **Gate pre-checks where documentation promised them but none existed** — `biz-discovery` (`pipeline-ready`), `biz-proposal` (`pipeline-ready`), `biz-objections handle` (`active-deal`), `biz-community engage` (`brand-ready`)
+- **`.work.biz/reference/BRAND_STATUS.md`** — `templates/work/reference/BRAND_STATUS.md.template`; brand audit history, overhaul log, and current-surface state. Gives `@biz-brand status` a real source for its `Last audit` / `Last overhaul` fields, which previously had nowhere to read from, and supplies the `brand-ready` evidence
+- **Gate demotion rules** — `@biz-strategy amend` demotes `strategy-ready` and cascades to `brand-ready`, `pipeline-ready`, and `sales-ready`; `@biz-review status` demotes any gate whose evidence is missing
 - **`concepts/content-topic-buckets/prompt.md` (BIZ-09)** — canonical four-bucket framework for content topic rotation
 - **`skills/content-social/platforms/{reddit,instagram,linkedin,linkedin-video,facebook,x,youtube}.md`** — platform-specific content guides loaded on demand
 - **`skills/content-social/platforms/linkedin-video.md`** — complete LinkedIn native video mentor guide: scripting, shooting, editing, captions, first-frame optimization, analytics, 30-day challenge
 - **`@content-social write linkedin video`** — generates a full LinkedIn native video production package (script, shot list, captions, post copy, posting ritual)
 - **`@biz-content challenge - video`** — 30-day LinkedIn native video challenge with production coaching and video-specific metrics
 - **Anti-AI-artifact rules** in `standards/20260621-CONTENT-STANDARD.md` — guidance on em-dash overuse, hedging words, generic transitions, passive voice, empty intensifiers, and platform-specific tics
+- **`@biz-strategy amend`** — records mid-cycle strategy changes to `.work.biz/strategy/changelog.md`, folds in out-of-tree positioning docs, flags dependent artifacts stale, and never certifies. Adds the audience hierarchy (primary / secondary / opportunistic)
+- **Gate self-checks on gated skills** — `biz-brand`, `biz-pricing`, and `biz-content` verify `strategy-ready` in their own I0 rather than trusting `biz-director` to have checked
+- **`.work.biz/reference/CONTENT_STATUS.md`** — `templates/work/reference/CONTENT_STATUS.md.template`, the canonical publish/status tracker; scaffolded by bootstrap and updated by publish flows
+- **`@biz-review weekly` drift check** — flags stale certification, out-of-tree strategy docs, and an unupdated `CONTENT_STATUS.md`
+- **Strategy-alignment quality gates in `content-social`** — checks the implied buyer against `target-buyer-profile.md`, the CTA against `offer-scope.md`, and strategy freshness against the last certification
+
+### Changed (content and safety rules)
+- **Zero em-dashes and en-dashes** in all generated content, enforced across `standards/20260621-CONTENT-STANDARD.md`, `content-writing`, `content-social`, and the LinkedIn platform guide. Use periods, commas, colons, or parentheses
+- **LinkedIn anti-generic rules tightened** in `content-writing` — specific hooks, explicit stakes, credibility markers, and no actionable framework hidden in the first comment
+- **`.cursorrules` data-loss and destructive-ops rules hardened** — explicit permission table covering git publish and history rewrite, database destruction, filesystem deletes, protected-file edits, project-memory wipes, and secret commits. Approval applies only to the current message, never standing
+- **Canonical strategy path conventions clarified** — `.work.biz/strategy/` uses flat canonical names; `plans/strategy_*.md` are historical and defer to `strategy/` on conflict
+
+### Fixed
+- **`scripts/gate-verify.sh` false positive** — the readiness check treated any mention of a gate name in `NEXT.md` prose as a claim that the gate was met, so a note like "unlocks the strategy-ready gate" failed the run. The ledger is now authoritative: the script verifies that every gate claiming PASS in `.work.biz/gates.md` has its evidence on disk, and that any phase `NEXT.md` reports as reached has a matching PASS. Mentions in prose no longer trip it
+- **`scripts/gate-verify.sh --self-test` was a stub** — it printed PASS without testing anything. It now exercises the ledger and phase-table parsers against fixtures
+- **`standards/20260621-DIRECTORY_MAP.md` duplicated blocks** — `strategy/` and `plans/` were each listed twice with differing contents from a bad merge. Deduplicated, and `gates.md`, `reference/CONTENT_STATUS.md`, `reference/BRAND_STATUS.md`, and `pipeline/youtube-tracker.md` added
+- **`skills/biz-director/skill.md` broken intent table** — the "Business ideas" and "Product / service ideas" rows sat after a blockquote, orphaning them from the table so they rendered as plain text. Moved back inside the table
+- **Contradictory `biz-community` gate** — `SKILL_DEPENDENCIES.md` required `brand-ready` for `engage` while `biz-director` listed the skill as ungated. Resolved: `find` and `status` are ungated, `engage` requires `brand-ready`
+- **Two writers for `brand-ready`** — `standards/20260621-BUSINESS-CONVENTIONS.md` allowed both `@biz-brand overhaul` and `@biz-strategy certify` to set it, and assigned `sales-ready` to `@biz-review status` rather than `@biz-discovery run`. One writer per gate is now binding
+- **`templates/work/README.md.template` stale** — missing `gates.md`, the reference trackers, and `touch-scope`
 
 ### Changed
+- **`skills/biz-content/skill.md`** — I0 now enforces its documented `brand-ready` gate after `strategy-ready`, instead of checking only `strategy-ready`. Points pre-brand-ready drafting at the ungated `@content-writing` / `@content-social write`
+- **`skills/SKILL_DEPENDENCIES.md` § Gate Descriptions** — rewritten around the ledger: evidence path and sole promoting skill per gate, a per-skill table of which gate each I0 enforces and which modes are ungated, plus the demotion rules
+- **Gate id spelling** — `active deal` is now `active-deal` everywhere, matching the ledger section ids so the ledger stays greppable
 - **`skills/content-social/skill.md`** — reduced from 1,316 to ~670 lines by extracting R1–R6 platform bodies into `platforms/*.md`; write/research modes now instruct agents to load the relevant platform guide; added R3V LinkedIn native video section, `write linkedin video` parse invocation, video entries in repurpose tables, and video-specific quality checks
 - **`skills/content-social/platforms/linkedin.md`** — added LinkedIn native video quick-reference and link to full mentor guide
 - **`skills/biz-content/skill.md`** — added LinkedIn native video to challenge format mix, repurposing workflow, content tracker, success criteria, failure mode, and new `challenge - video` mode

@@ -32,8 +32,8 @@ Then in chat:
 
 - **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-youtube`, `@biz-discovery`, `@biz-proposal`, … run the playbook (23 skills in total).
 - **Standards** — binding contracts (business conventions, pricing standard, brand guide, content standard) keep agent output honest.
-- **`.work.biz/`** — the project's memory: strategy docs, plans, pipeline tracker, `HANDOFF.md`, `NEXT.md`. Survives session boundaries.
-- **Gates** — strategy-ready, brand-ready, pipeline-ready, sales-ready; skip a step and the agent **stops** with a redirect.
+- **`.work.biz/`** — the project's memory: strategy docs, plans, pipeline tracker, `gates.md`, `HANDOFF.md`, `NEXT.md`. Survives session boundaries.
+- **Gates** — strategy-ready, brand-ready, pipeline-ready, sales-ready, active-deal, tracked in `.work.biz/gates.md`; skip a step and the agent **stops** with a redirect.
 
 Result: less re-prompting, fewer "where were we?" threads, a loop you can run **start → execute → review → hand off** every session.
 
@@ -70,20 +70,23 @@ Business OS is a **gated pipeline**: each stage unlocks the next. Skills enforce
 
 ### Readiness states (do not skip or confuse)
 
+State lives in one file, `.work.biz/gates.md`, and exactly one skill may promote each gate. Gated skills read the ledger before doing anything; `scripts/gate-verify.sh` fails when a gate claims PASS without its evidence on disk.
+
 | State | You get there with | What it unlocks |
 |-------|-------------------|-----------------|
-| *(scaffold)* | `@biz-bootstrap init` | Foundation planning, session files |
+| *(scaffold)* | `@biz-bootstrap init` | Foundation planning, session files, the gate ledger |
 | **strategy-ready** | `@biz-strategy greenfield` → `@biz-strategy certify` | `@biz-brand`, `@biz-pricing` |
-| **brand-ready** | `@biz-brand audit` → `@biz-brand overhaul` | `@biz-content`, `@biz-community` |
-| **pipeline-ready** | `@biz-pricing set` + pipeline tracker configured + outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md`, confirmed by `@biz-review status` | `@biz-discovery`, `@biz-proposal` |
-| **sales-ready** | `@biz-discovery verified` | `@biz-objections`, `@biz-referrals` |
+| **brand-ready** | `@biz-brand audit` → `@biz-brand overhaul` | `@biz-content`, `@biz-community engage` |
+| **pipeline-ready** | `@biz-pricing set` + pipeline tracker configured + outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md`, then confirmed by `@biz-review status` | `@biz-discovery`, `@biz-proposal` |
+| **sales-ready** | `@biz-discovery run` (one completed call, logged) | `@biz-referrals` |
+| **active-deal** | `@biz-discovery run` or `@biz-proposal write` (deal at Conversation stage or later) | `@biz-objections handle` |
 
 ### Full flow (once per project → every day → per phase)
 
 ```text
   @biz-bootstrap init
         │
-        │  Creates: .cursorrules · .work.biz/ skeleton
+        │  Creates: .cursorrules · .work.biz/ skeleton · gates.md (all gates NOT MET)
         │  (scaffold only; no planning gates)
         ▼
   @biz-strategy greenfield
@@ -175,7 +178,7 @@ Or in chat: **`@biz-bootstrap init`**
 
 This creates:
 - `.cursorrules` from template
-- `.work.biz/` skeleton (HANDOFF, NEXT, pipeline tracker, plan folders)
+- `.work.biz/` skeleton (gate ledger, HANDOFF, NEXT, pipeline tracker, plan folders)
 
 Then:
 1. Replace every **`REPLACE:`** token in `.cursorrules`.
@@ -213,9 +216,10 @@ Then:
 
 1. [`START_HERE.md`](START_HERE.md)
 2. **`.cursorrules`** (project root — install via bootstrap)
-3. `.work.biz/context/HANDOFF.md`
-4. `.work.biz/plans/NEXT.md`
-5. `.work.biz/strategy/strategy_*.md` when present
+3. `.work.biz/gates.md`
+4. `.work.biz/context/HANDOFF.md`
+5. `.work.biz/plans/NEXT.md`
+6. `.work.biz/strategy/strategy_*.md` when present
 
 **Free-text entry point:** Don't know which skill to run? → `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework).
 

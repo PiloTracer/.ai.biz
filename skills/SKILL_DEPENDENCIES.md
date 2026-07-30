@@ -23,6 +23,7 @@ biz-pricing set  ← requires strategy-ready
        │
 biz-content publish  ← requires brand-ready (brand assets exist)
 biz-youtube publish/plan/challenge ← no hard gate; benefits from brand-ready + strategy-ready
+biz-community find/status ← no hard gate
 biz-community engage ← requires brand-ready
 content-social write ← no hard gate (improves with strategy-ready; best after @biz-community find)
 content-social research ← no hard gate (improves with strategy-ready)
@@ -32,9 +33,9 @@ content-social strategy ← requires strategy-ready
 content-social plan ← requires strategy-ready
         │
         ▼
-biz-discovery run  ← requires pipeline-ready (pipeline tracker set up)
-biz-proposal write ← requires pricing set
-biz-objections handle ← requires active deal
+biz-discovery run  ← requires pipeline-ready; promotes sales-ready + active-deal
+biz-proposal write ← requires pipeline-ready (pricing set)
+biz-objections handle ← requires active-deal (roleplay is ungated)
 biz-referrals ask  ← no strict gate (can start anytime)
        │
        │
@@ -65,16 +66,31 @@ biz-referrals ask  ← no strict gate (can start anytime)
 
 ## Gate Descriptions
 
-| Gate | State | Check | Unlocked by |
-|------|-------|-------|-------------|
-| — | scaffold | `.work.biz/` exists | `@biz-bootstrap init` |
-| 1 | strategy-ready | Niche + offer + buyer defined and certified | `@biz-strategy greenfield` + `@biz-strategy certify` |
-| 2 | brand-ready | LinkedIn/website aligned to offer | `@biz-brand audit` + `@biz-brand overhaul` |
-| 3 | pipeline-ready | Pipeline tracker configured, pricing set, outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md` | `@biz-pricing set` + `@biz-review status` |
-| 4 | sales-ready | Discovery call run, process verified | `@biz-discovery run` |
-| 5 | active deal | At least one deal in pipeline tracker at Conversation stage or later | `@biz-discovery run` or `@biz-proposal write` |
+`{WORK_BUSINESS_ROOT}/gates.md` is the single authoritative ledger of which gates are met. It is created by `@biz-bootstrap init` from `templates/work/gates.md.template` with every gate at `NOT MET`. A gate counts as met only when its section reads `**Status:** PASS`.
 
-Gated skills (biz-brand, biz-pricing, biz-content publish/plan/challenge) self-verify the strategy-ready gate via `{WORK_BUSINESS_ROOT}/gates.md` in their own I0 pre-check; biz-director's gate check is the second layer, not the only one.
+| Gate | State (ledger id) | Evidence | Promoted by (only writer) |
+|------|-------------------|----------|---------------------------|
+| — | scaffold | `.work.biz/` exists (no ledger entry) | `@biz-bootstrap init` |
+| 1 | `strategy-ready` | `.work.biz/strategy/certification.md` | `@biz-strategy certify` |
+| 2 | `brand-ready` | `.work.biz/reference/BRAND_STATUS.md` overhaul log with a passing five-second test | `@biz-brand overhaul` |
+| 3 | `pipeline-ready` | `.work.biz/strategy/pricing.md` + `.work.biz/pipeline/pipeline_tracker.md` + `.work.biz/pipeline/outreach-cadence.md` | `@biz-review status` |
+| 4 | `sales-ready` | Pipeline tracker with a completed discovery call logged | `@biz-discovery run` |
+| 5 | `active-deal` | Pipeline tracker with a deal at Conversation stage or later | `@biz-discovery run` or `@biz-proposal write` |
+
+**Two-layer enforcement.** Every gated skill self-verifies the ledger in its own I0 pre-check, and `biz-director` checks it before routing. Neither layer is the only one.
+
+| Skill | Gate its I0 enforces | Ungated modes |
+|-------|---------------------|---------------|
+| `biz-brand` | `strategy-ready` | `status` |
+| `biz-pricing` | `strategy-ready` | `status` |
+| `biz-content` | `strategy-ready` then `brand-ready` | `status` |
+| `biz-community` | `brand-ready` (`engage` only) | `find`, `status` |
+| `biz-discovery` | `pipeline-ready` | `status` |
+| `biz-proposal` | `pipeline-ready` | `status` |
+| `biz-objections` | `active-deal` (`handle` only) | `roleplay`, `status` |
+| `content-social` | `strategy-ready` (`strategy`, `plan` only) | `write`, `research`, `repurpose`, `icp`, `status` |
+
+**Demotion.** A gate that no longer holds must be demoted, not left as a stale PASS. `@biz-strategy amend` demotes `strategy-ready` and cascades to `brand-ready`, `pipeline-ready`, and `sales-ready`. `@biz-review status` reconciles the whole ledger and demotes any gate whose evidence is missing. `scripts/gate-verify.sh` fails the build when a PASS lacks its evidence.
 
 ## Blocked Report Shape
 

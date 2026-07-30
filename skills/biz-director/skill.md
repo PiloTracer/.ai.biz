@@ -103,17 +103,19 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **LinkedIn carousel / document post** | "LinkedIn carousel about X", "document post for LinkedIn", "slide deck for LinkedIn", "PDF post LinkedIn" | `@content-social write linkedin carousel - <topic>` | — |
 | **LinkedIn native video** | "LinkedIn video about X", "make a LinkedIn video", "LinkedIn talking head script", "video post for LinkedIn", "coach me on LinkedIn video" | `@content-social write linkedin video - <topic>` | — |
 | **Social media content (platform-specific)** | "write a reddit post about X", "create an instagram post for...", "draft a facebook post", "write something for LinkedIn and Reddit", "make a post for instagram about...", "linkedin post idea", "write a tweet about...", "generate social media content", "draft a twitter thread" | `@content-social` (write, repurpose, research, strategy, plan, or status per parse invocation) | — (no hard gate for write/research/repurpose; strategy-ready for strategy/plan modes) |
-| **Community find & engage** | "join communities", "engage on Reddit", "find my audience", "find communities to join", "where should I participate", "find subreddits for...", "find instagram accounts in...", "find facebook groups for..." | `@biz-community` (find, engage, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
+| **Community find & engage** | "join communities", "engage on Reddit", "find my audience", "find communities to join", "where should I participate", "find subreddits for...", "find instagram accounts in...", "find facebook groups for..." | `@biz-community` (find, engage, or status per parse invocation) | — for `find`/`status`; brand-ready for `engage` |
 | **Referrals** | "ask for referrals", "get introduced" | `@biz-referrals ask` | — |
 | **Discovery / sales calls** | "prepare for a call", "run a discovery call", "I have a prospect meeting" | `@biz-discovery prepare` or `run` | pipeline-ready |
 | **Proposals** | "write a proposal", "scope this project", "review my proposal before sending", "check proposal pipeline" | `@biz-proposal` (write, review, or status per parse invocation) | pipeline-ready |
-| **Objections** | "client said it's too expensive", "handle objections", "overcome price concerns", "roleplay objection responses" | `@biz-objections handle` or `roleplay` | active deal |
+| **Objections** | "client said it's too expensive", "handle objections", "overcome price concerns", "roleplay objection responses" | `@biz-objections handle` or `roleplay` | active-deal for `handle`; — for `roleplay` |
 | **Pipeline diagnosis** | "nothing is converting", "find my bottleneck", "why aren't we closing" | `@biz-pipeline-diagnosis run` | pipeline tracker with data |
 | **Review / health** | "weekly review", "quarterly review", "how are we doing", "progress check" | `@biz-review` (weekly, quarterly, or status per parse invocation) | at least one strategy doc |
 | **Session management** | "start the day", "close the session", "what was I doing" | `@session-biz start` or `close` or `status` | scaffold |
 | **Project orientation** | "where am I", "what should I do next", "I'm lost" | `@session-biz status` + `@biz-review status` | — |
 | **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@deploy-files copy - <path>` or `@deploy-repo` (clone, archive, or status per parse invocation) | — |
 | **Content writing (craft)** | "write me a post about X", "draft an article on Y", "help me write something for LinkedIn", "write a LinkedIn post", "publish an article" (when no integration/ops needed), "case study", "landing page copy", "email sequence", "repurpose this draft", "audit my draft" | `@content-writing` (write, plan, repurpose, audit, or status per parse invocation) | — (no hard gate; improves with strategy/brand-ready) |
+| **Business ideas** | "give me business ideas for...", "what businesses could benefit from...", "how could I monetize...", "I want to start something in...", "pivot my business", "stress-test this idea", "new venture directions" | `@business-ideas` (generate, stress, pivot, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
+| **Product / service ideas** | "what product could I build for...", "give me SaaS product ideas in...", "what features should I add", "I want a tool that...", "service package ideas", "scope an MVP for", "evaluate this product concept", "extend my platform" | `@product-service-ideas` (generate, extend, scope, audit, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 
 > **Content route disambiguation (three-tier):**
 > 
@@ -130,8 +132,6 @@ Parse the user's request against this routing table. Match on intent, not keywor
 > **YouTube flow:** `@biz-brand audit` (YouTube section) → `@biz-youtube plan` → `@content-social write youtube` / `write youtube shorts` per plan → `@biz-youtube status` weekly.
 > 
 > **How they compose:** `@content-writing write` produces a long-form piece or YouTube source outline. `@content-social write youtube` produces the full script + packaging. `@content-social write linkedin video` produces a complete LinkedIn native video production package. `@content-social repurpose` spins long-form into platform-native posts for Reddit, Instagram, LinkedIn, Facebook, X/Twitter, YouTube, and LinkedIn video. `@biz-content publish` tracks LinkedIn performance (text, carousel, and video); `@biz-youtube publish` tracks YouTube performance. `@biz-community find` discovers where to post. `@biz-community engage` handles daily comment participation.
-| **Business ideas** | "give me business ideas for...", "what businesses could benefit from...", "how could I monetize...", "I want to start something in...", "pivot my business", "stress-test this idea", "new venture directions" | `@business-ideas` (generate, stress, pivot, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
-| **Product / service ideas** | "what product could I build for...", "give me SaaS product ideas in...", "what features should I add", "I want a tool that...", "service package ideas", "scope an MVP for", "evaluate this product concept", "extend my platform" | `@product-service-ideas` (generate, extend, scope, audit, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 
 If the request spans multiple intents (e.g., "I want to fix my LinkedIn and start posting content"), route through all matching skills in gate order.
 
@@ -146,7 +146,7 @@ If the request spans multiple intents (e.g., "I want to fix my LinkedIn and star
 Before invoking any skill, verify its prerequisites against `SKILL_DEPENDENCIES.md`:
 
 ```
-scaffold → strategy-ready → brand-ready → pipeline-ready → sales-ready → active deal
+scaffold → strategy-ready → brand-ready → pipeline-ready → sales-ready → active-deal
 ```
 
 ### Gate-exempt skills (skip the gate check entirely)
@@ -160,18 +160,22 @@ These **project-aware generative skills** have **no prerequisite gate** and may 
 | `@business-ideas` | `generate` · `stress` · `pivot` · `status` | Ideation; no gate |
 | `@product-service-ideas` | `generate` · `extend` · `scope` · `audit` · `status` | Concepts + MVP scoping; no gate |
 | `@biz-market-validate` | `test` · `design` · `status` | (pre-existing) Validation; no gate |
-| `@biz-community` | `find` · `engage` · `status` | Community discovery + engagement; no gate |
+| `@biz-community` | `find` · `status` | Community discovery; no gate. **`engage` is gated** on brand-ready |
 
 ### Check each gate:
 
-| Gate | How to verify | If not met |
-|------|--------------|------------|
-| scaffold | `.work.biz/` exists | Route to `@biz-bootstrap init` first |
-| strategy-ready | Strategy docs exist + certified (`.work.biz/strategy/`) | Route to `@biz-strategy greenfield` → `@biz-strategy certify` |
-| brand-ready | LinkedIn / website aligned to offer (check via `@biz-brand status`) | Route to `@biz-brand audit` → `@biz-brand overhaul` |
-| pipeline-ready | Pipeline tracker configured + pricing set + outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md` | Route to `@biz-pricing set` + configure tracker + fill outreach cadence |
-| sales-ready | Discovery call process verified | Route to `@biz-discovery run` first |
-| active deal | At least one deal in pipeline tracker with stage ≥ Conversation | Route to `@biz-discovery run` first to generate pipeline |
+`{WORK_BUSINESS_ROOT}/gates.md` is the authoritative ledger. Read it and check the `**Status:**` line of the relevant `## <gate-id>` section. A gate is met only when `Status` is PASS; a missing file or missing section means not met. Do not infer a gate from the presence of files — the promoting skill writes the ledger entry after verifying its own criteria.
+
+| Gate id | Promoted by | If not met |
+|---------|-------------|------------|
+| scaffold | `@biz-bootstrap init` (no ledger entry; `.work.biz/` exists) | Route to `@biz-bootstrap init` first |
+| `strategy-ready` | `@biz-strategy certify` | Route to `@biz-strategy greenfield` → `@biz-strategy certify` |
+| `brand-ready` | `@biz-brand overhaul` | Route to `@biz-brand audit` → `@biz-brand overhaul` |
+| `pipeline-ready` | `@biz-review status` | Route to `@biz-pricing set` + configure tracker + fill outreach cadence, then `@biz-review status` |
+| `sales-ready` | `@biz-discovery run` | Route to `@biz-discovery prepare` → `@biz-discovery run` |
+| `active-deal` | `@biz-discovery run` or `@biz-proposal write` | Route to `@biz-discovery run` first to generate pipeline |
+
+The gated skills also self-check the ledger in their own I0. The director's check is the first layer, not the only one, so a stale ledger gets caught twice.
 
 ### Informal prerequisites
 
@@ -220,7 +224,7 @@ If after scanning all skills no existing skill covers the user's request:
 A new skill `biz-onboarding` would need to:
   - Define onboarding stages and milestones
   - Provide a tracking template (likely under .work.biz/pipeline/)
-  - Gate after pipeline-ready (requires active deal)
+  - Gate after pipeline-ready (requires active-deal)
 
 To create: model after `biz-pipeline-diagnosis` and register in skills/README.md.
 ```

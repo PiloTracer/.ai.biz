@@ -20,6 +20,26 @@ This skill supports three modes via the `biz-discovery` command:
 
 ---
 
+## I0 — Gate pre-check
+
+Before `prepare` or `run` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+
+- If the file does not exist, or `pipeline-ready` is not PASS, stop and emit:
+
+```text
+BLOCKED (prerequisite): pipeline-ready not confirmed
+  Required state: {WORK_BUSINESS_ROOT}/gates.md with pipeline-ready PASS
+  Current state: <what was found>
+  To proceed: run `@biz-pricing set`, fill .work.biz/pipeline/outreach-cadence.md
+              and the pipeline tracker, then `@biz-review status`
+```
+
+Taking a discovery call without a price range and a tracker means improvising on the call and losing the deal record afterward.
+
+- Exception: `status` mode is read-only and runs without the gate.
+
+---
+
 ## Mode: prepare — Pre-Call Checklist
 
 **Research basis:** SPIN Selling (Neil Rackham) and BANT are validated sales methodologies. Average B2B sales cycle is 84 days (Prospeo, 2026). Deals closed within 50 days have 47% win rate; deals beyond 50 days drop to 20%.
@@ -156,6 +176,36 @@ Best,
 
 ---
 
+### After the Call — Gate promotion
+
+`biz-discovery run` owns two gates. Promote only what the call actually evidences.
+
+**`sales-ready`** — promote after the first call where every Success Criteria item below is met and the call is logged in the tracker with BANT captured. One completed call proves the process works end to end; a booked-but-not-held call does not.
+
+```markdown
+## sales-ready
+**Status:** PASS
+**Certified:** {date}
+**By:** @biz-discovery run
+**Evidence:** `.work.biz/pipeline/pipeline_tracker.md` with at least one completed discovery call logged
+**Next gate:** active-deal — advance a qualified deal to Conversation stage or later
+```
+
+**`active-deal`** — promote when the call ends at Phase 4 with a "strong fit" or "needs more info" outcome and the deal sits at Conversation stage or later in the tracker. A "weak fit" or "not ready" outcome does **not** promote it.
+
+```markdown
+## active-deal
+**Status:** PASS
+**Certified:** {date}
+**By:** @biz-discovery run
+**Evidence:** `.work.biz/pipeline/pipeline_tracker.md` with at least one deal at Conversation stage or later
+**Next gate:** — run `@biz-proposal write`
+```
+
+Replace each section in `{WORK_BUSINESS_ROOT}/gates.md` in place, leaving other gates untouched. When the last active deal closes or dies, demote `active-deal` back to `NOT MET` so `@biz-objections` stops claiming a live deal.
+
+---
+
 ## Mode: status — Pipeline Report
 
 Run `biz-discovery status` to view:
@@ -211,5 +261,7 @@ If discovery calls feel good in the moment but never convert to a proposal stage
 
 - `.work.biz/reference/PROJECTS.md` — case studies for credibility (create if missing)
 - `.work.biz/pipeline/pipeline_tracker.md` — update pipeline stage
+- `.work.biz/gates.md` — read in I0; `sales-ready` and `active-deal` promoted after the call
+- `.work.biz/strategy/pricing.md` — price range to reference when they push for a number
 - `skills/biz-objections/skill.md` — for when objections come up
 - `skills/biz-proposal/skill.md` — for writing the proposal after the call

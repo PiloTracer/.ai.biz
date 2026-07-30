@@ -108,6 +108,8 @@ Overall:        9/19 passed
 Next step recommended: biz-brand overhaul
 ```
 
+Append the same scores as a row to the **Audit history** table in `.work.biz/reference/BRAND_STATUS.md` (create it from `templates/work/reference/BRAND_STATUS.md.template` if missing) so `biz-brand status` and the `brand-ready` gate have a durable record. Audit never promotes a gate.
+
 ---
 
 ## 2. Overhaul Mode — `biz-brand overhaul`
@@ -332,6 +334,8 @@ Lock in a repeatable system:
 
 Read-only. Reports the current state of all brand components.
 
+Source the `Last audit` / `Last overhaul` dates and the per-surface state from `.work.biz/reference/BRAND_STATUS.md`. If that file is missing, report every field as `unknown` and recommend `@biz-brand audit` — do not guess dates.
+
 Output template:
 
 ```
@@ -431,6 +435,36 @@ The overhaul is complete when:
 
 ---
 
+## 7b. Gate promotion — `brand-ready`
+
+`biz-brand overhaul` is the only skill allowed to promote `brand-ready`. Run this after § 2 and only when § 7 is fully satisfied.
+
+**Refuse to promote** and report which criterion failed if any of these is true:
+
+- Any § 7 success criterion is unmet.
+- The § 4 five-second test failed, or was not run on a real person.
+- `strategy-ready` is not PASS in `{WORK_BUSINESS_ROOT}/gates.md` (a brand cannot be aligned to an uncertified offer).
+
+**On pass:**
+
+1. Append a row to the **Overhaul log** in `.work.biz/reference/BRAND_STATUS.md` with the date, the surfaces rewritten, and the five-second test result. Refresh **Current surfaces**.
+2. Replace the `## brand-ready` section in `{WORK_BUSINESS_ROOT}/gates.md` in place, leaving every other gate untouched:
+
+```markdown
+## brand-ready
+**Status:** PASS
+**Certified:** {date}
+**By:** @biz-brand overhaul
+**Evidence:** `.work.biz/reference/BRAND_STATUS.md`
+**Next gate:** pipeline-ready — run `@biz-pricing set`, fill the pipeline tracker and outreach cadence, then `@biz-review status`
+```
+
+3. Report what the gate now unlocks: `@biz-content publish`, `@biz-community engage`.
+
+**On a later overhaul that regresses:** if a re-audit drops below the § 7 bar, demote `brand-ready` to `NOT MET` rather than leaving a stale PASS.
+
+---
+
 ## 8. Files Referenced
 
 - `.work.biz/strategy/one-pager.md` (niche, unified offer, target buyer, price range)
@@ -438,6 +472,8 @@ The overhaul is complete when:
 - `.work.biz/strategy/channel-plan.md` (primary channel + messaging angles)
 - `.work.biz/reference/PROJECTS.md` (project descriptions for proof points; create if missing)
 - `.work.biz/reference/VISUAL_GUIDE.md` (banner specs, color palette, typography; create if missing)
+- `.work.biz/reference/BRAND_STATUS.md` (audit history, overhaul log, current surfaces; written by this skill, read by `status` mode and the `brand-ready` gate)
+- `.work.biz/gates.md` (readiness ledger; read in I0, `brand-ready` promoted in § 7b)
 - `skills/biz-content/skill.md` (posts for activity section)
 
 ---
@@ -448,7 +484,8 @@ The overhaul is complete when:
 On "biz-brand audit":
   → Run section 1 (Audit Mode)
   → Output pass/fail table + summary
-  → Do not modify anything
+  → Append scores to reference/BRAND_STATUS.md Audit history
+  → Do not promote any gate
 
 On "biz-brand overhaul":
   → Run section 2 (Overhaul Mode)
@@ -456,9 +493,10 @@ On "biz-brand overhaul":
   → Modify website files (via collaborator or manual instructions)
   → Verify consistency
   → Run 5-second test
+  → Run section 7b (Gate promotion) — promote brand-ready only if section 7 is fully met
 
 On "biz-brand status":
-  → Run section 3 (Status Mode)
+  → Run section 3 (Status Mode), reading reference/BRAND_STATUS.md
   → Output current state report
   → Do not modify anything
 ```

@@ -67,6 +67,7 @@ Read these at the start of every conversation:
 |------|---------|
 | **`START_HERE.md`** | What to invoke right now; decision tree |
 | **`CONVENTIONS.md`** | Business framework conventions |
+| **`.work.biz/gates.md`** | Readiness ledger — authoritative gate state; read before any gated work |
 | **`.work.biz/context/HANDOFF.md`** | Session handoff (session-biz read/write) |
 | **`.work.biz/plans/NEXT.md`** | Tactical next action + active phase |
 | **`.work.biz/plans/UNKNOWNS.md`** | Open unknowns and blocked decisions |
@@ -77,6 +78,7 @@ Read these at the start of every conversation:
 |-------------|-------------|
 | `{WORK_BUSINESS_ROOT}` | `.work.biz/` |
 | `{PLANS_ROOT}` | `.work.biz/plans/` |
+| `{GATES}` | `.work.biz/gates.md` |
 | `{HANDOFF}` | `.work.biz/context/HANDOFF.md` |
 | `{NEXT}` | `.work.biz/plans/NEXT.md` |
 | `{PIPELINE_TRACKER}` | `.work.biz/pipeline/pipeline_tracker.md` |
@@ -98,7 +100,7 @@ Run before commit / before claiming completion:
 |------|---------|-----------|
 | Touch scope | `bash scripts/touch-scope-verify.sh` | File outside `.work.biz/touch-scope` |
 | Blast radius | `bash scripts/blast-radius-check.sh` | Cross-area diff ≥3 areas |
-| Gate check | `bash scripts/gate-verify.sh` | Done task with empty Notes |
+| Gate check | `bash scripts/gate-verify.sh` | Task with empty Notes, or a gate claiming PASS in `.work.biz/gates.md` without its evidence |
 | Framework verify | `bash scripts/framework-verify.sh` | Non-zero exit |
 
 **Declare scope first:** Copy `templates/work/touch-scope.template` → `.work.biz/touch-scope`.

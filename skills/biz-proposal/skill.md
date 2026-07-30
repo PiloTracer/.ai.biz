@@ -23,6 +23,26 @@ Report the current pipeline of sent/pending/closed proposals.
 
 ---
 
+## I0 — Gate pre-check
+
+Before `write` or `review` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+
+- If the file does not exist, or `pipeline-ready` is not PASS, stop and emit:
+
+```text
+BLOCKED (prerequisite): pipeline-ready not confirmed
+  Required state: {WORK_BUSINESS_ROOT}/gates.md with pipeline-ready PASS
+  Current state: <what was found>
+  To proceed: run `@biz-pricing set`, fill .work.biz/pipeline/outreach-cadence.md
+              and the pipeline tracker, then `@biz-review status`
+```
+
+A proposal without a settled price range invents a number under deadline pressure, which is how engagements get underpriced.
+
+- Exception: `status` mode is read-only and runs without the gate.
+
+---
+
 ## write — Proposal Writing Process
 
 ### 1. Gather What You Need

@@ -10,7 +10,7 @@ description: >-
 
 **Shell:** `bash .ai.biz/templates/bootstrap.sh`
 
-Entry point for setting up Business OS in any project. Creates the `.work.biz/` skeleton (HANDOFF, NEXT, UNKNOWNS, pipeline tracker) and copies `.cursorrules` from template — everything you need to start a strategy session or begin a new engagement.
+Entry point for setting up Business OS in any project. Creates the `.work.biz/` skeleton (gates ledger, HANDOFF, NEXT, UNKNOWNS, pipeline tracker) and copies `.cursorrules` from template — everything you need to start a strategy session or begin a new engagement.
 
 **Canonical path:** `.ai.biz/skills/biz-bootstrap/skill.md` · **Shell:** `.ai.biz/templates/bootstrap.sh`
 
@@ -49,6 +49,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | Output | Source template |
    |--------|----------------|
    | `.work.biz/README.md` | `templates/work/README.md.template` |
+   | `.work.biz/gates.md` | `templates/work/gates.md.template` — readiness ledger; every gated skill reads it in its I0 pre-check. Ships with all five gates at `NOT MET` |
    | `.work.biz/context/HANDOFF.md` | `templates/work/context/HANDOFF.md.template` |
    | `.work.biz/plans/NEXT.md` | `templates/work/plans/NEXT.md.template` |
    | `.work.biz/plans/UNKNOWNS.md` | `templates/work/plans/UNKNOWNS.md.template` |
@@ -57,6 +58,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/research/research_index.md` | `templates/work/research/research_index.md.template` |
    | `.work.biz/strategy/README.md` | `templates/work/strategy/README.md.template` |
    | `.work.biz/reference/CONTENT_STATUS.md` | `templates/work/reference/CONTENT_STATUS.md.template` — canonical publish/status tracker across all content types; prevents recommending already-published content |
+   | `.work.biz/reference/BRAND_STATUS.md` | `templates/work/reference/BRAND_STATUS.md.template` — brand audit history and overhaul log; evidence for the `brand-ready` gate |
 
 4. **Complete** — report summary and next steps.
 
@@ -80,6 +82,7 @@ Read-only report of the current bootstrap state:
 |-------|----------|
 | `.cursorrules` exists at project root | `ls "$PROJECT_ROOT/.cursorrules"` |
 | `.work.biz/` directory exists | `ls -d "$PROJECT_ROOT/.work.biz"` |
+| `.work.biz/gates.md` exists | `ls "$WORK_DIR/gates.md"` |
 | `.work.biz/context/HANDOFF.md` exists | `ls "$WORK_DIR/context/HANDOFF.md"` |
 | `.work.biz/plans/NEXT.md` exists | `ls "$WORK_DIR/plans/NEXT.md"` |
 | `.work.biz/plans/UNKNOWNS.md` exists | `ls "$WORK_DIR/plans/UNKNOWNS.md"` |
@@ -88,6 +91,8 @@ Read-only report of the current bootstrap state:
 | `.work.biz/research/research_index.md` exists | `ls "$WORK_DIR/research/research_index.md"` |
 | `.work.biz/strategy/README.md` exists | `ls "$WORK_DIR/strategy/README.md"` |
 | `.work.biz/reference/CONTENT_STATUS.md` exists | `ls "$WORK_DIR/reference/CONTENT_STATUS.md"` |
+| `.work.biz/reference/BRAND_STATUS.md` exists | `ls "$WORK_DIR/reference/BRAND_STATUS.md"` |
+| Which gates are PASS | `grep -A1 '^## ' "$WORK_DIR/gates.md"` — a fresh bootstrap has all five at `NOT MET` |
 | Any `REPLACE:` tokens remain in `.cursorrules` | `grep -c 'REPLACE:' "$PROJECT_ROOT/.cursorrules" \|\| echo 0` |
 
 Output a summary table. If the project is fully bootstrapped, recommend next skill: `@biz-strategy greenfield`. If not yet bootstrapped, recommend `@biz-bootstrap init`.
@@ -101,6 +106,7 @@ Output a summary table. If the project is fully bootstrapped, recommend next ski
 | 1 | `.cursorrules` created from template (or skipped if existing) | pass |
 | 2 | `.work.biz/` skeleton created with all template files | pass |
 | 3 | All directories (`context/`, `plans/`, `pipeline/`, `research/`, `drafts/`, `strategy/`, `reference/`) exist | pass |
+| 3b | `.work.biz/gates.md` exists with all five gates at `NOT MET` | pass |
 | 4 | User informed of `REPLACE:` token checklist | pass |
 | 5 | User informed of next steps | pass |
 

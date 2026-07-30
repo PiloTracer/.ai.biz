@@ -11,18 +11,36 @@ description: >-
 
 ---
 
-## I0 — Status mode (read-only)
+## I0 — Status mode (reconciles the gate ledger)
 
-`@biz-review status` confirms the current Business OS readiness state.
+`@biz-review status` is the reconciler for `{WORK_BUSINESS_ROOT}/gates.md`. It checks every gate's evidence against what the ledger claims, and it is the only skill allowed to promote `pipeline-ready`.
 
-| State | Evidence to check |
-|-------|-------------------|
-| strategy-ready | `.work.biz/strategy/certification.md` exists and passes internal gate |
-| brand-ready | LinkedIn/website audit shows offer + proof + CTA are clear |
-| pipeline-ready | Pricing documented in `.work.biz/strategy/pricing.md`, pipeline tracker configured, outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md` |
-| sales-ready | Discovery process verified, proposal template ready |
+| State | Promoted by | Evidence to check |
+|-------|-------------|-------------------|
+| strategy-ready | `@biz-strategy certify` | `.work.biz/strategy/certification.md` exists, and nothing under `strategy/` is newer than it |
+| brand-ready | `@biz-brand overhaul` | `.work.biz/reference/BRAND_STATUS.md` has an overhaul log entry with a passing five-second test |
+| pipeline-ready | **this skill** | `.work.biz/strategy/pricing.md`, `.work.biz/pipeline/pipeline_tracker.md` (configured, not an empty template), and `.work.biz/pipeline/outreach-cadence.md` all exist and are filled in |
+| sales-ready | `@biz-discovery run` | Pipeline tracker has at least one completed discovery call logged with BANT captured |
+| active-deal | `@biz-discovery run` / `@biz-proposal write` | Pipeline tracker has a deal at Conversation stage or later |
 
-Output: a short report of which states are met and what is missing.
+### Reconciliation steps
+
+1. **Read** `{WORK_BUSINESS_ROOT}/gates.md`. If it is missing, create it from `templates/work/gates.md.template` with every gate at `NOT MET`, then continue.
+2. **Verify each PASS claim** against the evidence above. Any gate claiming PASS without its evidence on disk is **demoted** to `NOT MET` and reported as drift — never leave a PASS you could not substantiate.
+3. **Promote `pipeline-ready`** when all three of its evidence artifacts exist and are filled in, and `strategy-ready` is PASS. Replace the section in place, leaving other gates untouched:
+
+```markdown
+## pipeline-ready
+**Status:** PASS
+**Certified:** {date}
+**By:** @biz-review status
+**Evidence:** `.work.biz/strategy/pricing.md`, `.work.biz/pipeline/pipeline_tracker.md`, `.work.biz/pipeline/outreach-cadence.md`
+**Next gate:** sales-ready — run `@biz-discovery prepare` then `@biz-discovery run`
+```
+
+4. **Do not promote any other gate.** Report what is missing and name the skill that owns it.
+
+Output: a short report of which states are met, which were demoted and why, and the single next command.
 
 ---
 
@@ -63,6 +81,7 @@ Score each stage 0 (blocked) → 5 (healthy):
 1. Compare dates: any file under `.work.biz/strategy/` newer than `strategy/certification.md` -> flag "strategy changed since certification; run @biz-strategy certify".
 2. Glob for strategy-bearing files outside `strategy/` (`ideas/positioning_*.md`, `plans/strategy_*.md`) -> flag "out-of-tree strategy docs; run @biz-strategy amend".
 3. If anything was published this week, confirm `.work.biz/reference/CONTENT_STATUS.md` was updated.
+4. Run the I0 reconciliation against `{WORK_BUSINESS_ROOT}/gates.md` -> flag any gate claiming PASS without evidence, and demote it.
 
 Render findings as a short "Drift check" block in the review output (or "clean" if nothing found).
 
@@ -117,5 +136,6 @@ All numbers come from your **pipeline tracker** (a spreadsheet, CRM, or `.ai.biz
 | 3 | Quarterly: retrospective answers written | |
 | 4 | Quarterly: channel effectiveness scored | |
 | 5 | Quarterly: next quarter focus documented | |
+| 6 | Gate ledger reconciled — every PASS in `.work.biz/gates.md` has its evidence on disk | |
 
 **Next:** `@biz-pipeline-diagnosis run` — deep-dive on the bottleneck you identified.

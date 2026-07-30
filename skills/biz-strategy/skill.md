@@ -312,6 +312,7 @@ Strategy changes between certifications: an owner grill locks new positioning, a
 3. **Detect out-of-tree strategy docs.** Glob for `ideas/positioning_*.md`, `plans/strategy_*.md`, and any file asserting positioning authority (buyer, offer, pricing claims). For each: fold its content into `strategy/` and mark the original with an amendment banner pointing at `strategy/` as canonical, or delete the stale claims.
 4. **Flag dependent artifacts stale.** List what must be reviewed against the new strategy: LinkedIn headline/About, website copy, pricing, queued-content buyers and CTAs, `plans/strategy_*.md`. Record the stale list in `{WORK_BUSINESS_ROOT}/plans/NEXT.md`.
 5. **Require re-certification.** Amend never certifies. Downstream gated work (brand, pricing, content publish) pauses until `@biz-strategy certify` passes again.
+6. **Demote the gates.** In `{WORK_BUSINESS_ROOT}/gates.md`, set `strategy-ready` to `NOT MET` with `**Certified:** —`, and cascade: every downstream gate (`brand-ready`, `pipeline-ready`, `sales-ready`) also demotes to `NOT MET`, because each one rests on the positioning that just changed. Leave `active-deal` alone — a live deal survives a positioning change. Without this step the gate ledger keeps asserting PASS against superseded strategy, and gated skills run on stale positioning.
 
 ---
 
@@ -382,15 +383,18 @@ If all checks pass:
    - Assumption ledger summary (counts: confirmed, inferred, unknown)
    - Certified by: `@biz-strategy certify`
 
-2. Promote **strategy-ready** gate in `{WORK_BUSINESS_ROOT}/gates.md`:
+2. Promote **strategy-ready** gate in `{WORK_BUSINESS_ROOT}/gates.md`, replacing the existing `## strategy-ready` section in place and leaving every other gate section untouched:
 
 ```markdown
 ## strategy-ready
 **Status:** PASS
 **Certified:** {date}
 **By:** @biz-strategy certify
-**Next gate:** brand-ready (@biz-brand audit)
+**Evidence:** `.work.biz/strategy/certification.md`
+**Next gate:** brand-ready — run `@biz-brand audit` then `@biz-brand overhaul`
 ```
+
+If `gates.md` does not exist, create it from `templates/work/gates.md.template` first, then promote. Keep all five fields — `scripts/gate-verify.sh` checks the `Evidence` path when `Status` is PASS.
 
 3. Output:
 

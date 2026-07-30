@@ -35,6 +35,24 @@ description: >-
 
 ---
 
+## I0a — Gate pre-check (`engage` only)
+
+`find` and `status` are ungated: researching where your buyer gathers is safe at any stage and improves with `strategy-ready`.
+
+`engage` requires **brand-ready**. Engagement sends people to your profile, so the profile has to say the right thing first. Before `engage` executes, read `{WORK_BUSINESS_ROOT}/gates.md`.
+
+- If the file does not exist, or `brand-ready` is not PASS, stop and emit:
+
+```text
+BLOCKED (prerequisite): brand-ready not confirmed
+  Required state: {WORK_BUSINESS_ROOT}/gates.md with brand-ready PASS
+  Current state: <what was found>
+  To proceed: run `@biz-brand audit` then `@biz-brand overhaul`
+  Meanwhile: `@biz-community find` is ungated and maps where your buyer gathers
+```
+
+---
+
 ## I0 — Find the right communities
 
 Load project context first: read `.work.biz/strategy/target-buyer-profile.md` and `.cursorrules` to understand who you're trying to reach and what they care about. Community fit is only as good as your understanding of the buyer.

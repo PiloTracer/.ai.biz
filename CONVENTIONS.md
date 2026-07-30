@@ -19,10 +19,13 @@
 **Path rule:** `biz-strategy` writes strategy artifacts to `.work.biz/strategy/`. All other skills read strategy artifacts from `.work.biz/strategy/`. `strategy_*.md` files under `.work.biz/plans/` are historical/ad-hoc only; on any conflict, `strategy/` is canonical.
 
 ### Project Memory (`.work.biz/`)
+- `gates.md` — readiness ledger (authoritative gate state)
 - `context/HANDOFF.md` — session handoff
 - `plans/NEXT.md` — next actions
 - `plans/UNKNOWNS.md` — open questions
 - `pipeline/pipeline_tracker.md` — sales pipeline
+- `reference/CONTENT_STATUS.md` — publish/status tracker
+- `reference/BRAND_STATUS.md` — brand audit history and overhaul log
 - `strategy/` — strategy artifacts (canonical location; see Document naming below)
 
 ## Business Phase Lifecycle
@@ -33,14 +36,16 @@ strategy-ready → brand-ready → pipeline-ready → sales-ready → execution 
 
 ### Phase Definitions
 
-| Phase | Key Deliverables | Gate to pass |
-|-------|-----------------|--------------|
-| **Strategy** | Niche decision, unified offer, target buyer, channel plan | strategy-ready |
-| **Brand** | LinkedIn profile, website, brand assets | brand-ready |
-| **Pipeline** | Pipeline tracker configured, pricing set, outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md`, confirmed by `@biz-review status` | pipeline-ready |
-| **Sales** | Discovery, proposals, objection handling | sales-ready |
-| **Execution** | Content, community, referrals, delivery | N/A (ongoing) |
-| **Review** | Weekly metrics, quarterly retro, pipeline diagnosis | N/A (ongoing) |
+Gate state lives in `.work.biz/gates.md`. One skill promotes each gate; see `skills/SKILL_DEPENDENCIES.md` § Gate Descriptions for evidence paths and `standards/20260621-BUSINESS-CONVENTIONS.md` § Phase lifecycle for the binding rules.
+
+| Phase | Key Deliverables | Gate to pass | Promoted by |
+|-------|-----------------|--------------|-------------|
+| **Strategy** | Niche decision, unified offer, target buyer, channel plan | strategy-ready | `@biz-strategy certify` |
+| **Brand** | LinkedIn profile, website, brand assets | brand-ready | `@biz-brand overhaul` |
+| **Pipeline** | Pipeline tracker configured, pricing set, outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md` | pipeline-ready | `@biz-review status` |
+| **Sales** | Discovery, proposals, objection handling | sales-ready, then active-deal | `@biz-discovery run` |
+| **Execution** | Content, community, referrals, delivery | N/A (ongoing) | — |
+| **Review** | Weekly metrics, quarterly retro, pipeline diagnosis | N/A (ongoing) | — |
 
 ## Core Principles
 

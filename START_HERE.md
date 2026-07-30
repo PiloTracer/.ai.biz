@@ -60,7 +60,8 @@
 
 | Need | Command |
 |------|---------|
-| **Where am I / what's next?** | `@session-biz status` + `.work.biz/context/HANDOFF.md` + `.work.biz/plans/NEXT.md` |
+| **Where am I / what's next?** | `@session-biz status` + `.work.biz/gates.md` + `.work.biz/context/HANDOFF.md` + `.work.biz/plans/NEXT.md` |
+| Which gates have I passed? | Read `.work.biz/gates.md`, or run `@biz-review status` to reconcile it |
 | One-paragraph status (no writes) | `@session-biz status` |
 | Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
 | Are we still in strategy or executing? | `@biz-strategy status` **or** `@biz-review status` |
@@ -146,11 +147,12 @@ These project-aware generative skills run any time — even before bootstrap. Th
 |------|------|-----|
 | 1 | `.cursorrules` | Identity, core principles, protected items |
 | 2 | `README.md` | Canonical map |
-| 3 | `.work.biz/context/HANDOFF.md` | Last session state |
-| 4 | `.work.biz/plans/NEXT.md` | Tactical next action |
-| 5 | `skills/README.md` | Registered skills |
-| 6 | The specific `skill.md` you're invoking | Verbs and gates |
-| 7 | The specific standard | Binding rules |
+| 3 | `.work.biz/gates.md` | Which readiness gates are PASS |
+| 4 | `.work.biz/context/HANDOFF.md` | Last session state |
+| 5 | `.work.biz/plans/NEXT.md` | Tactical next action |
+| 6 | `skills/README.md` | Registered skills |
+| 7 | The specific `skill.md` you're invoking | Verbs and gates |
+| 8 | The specific standard | Binding rules |
 
 ---
 
@@ -165,6 +167,8 @@ These project-aware generative skills run any time — even before bootstrap. Th
 ## 9. Anti-patterns to refuse
 
 - Claiming PASS when analysis shows gaps
+- Hand-editing a gate to PASS in `.work.biz/gates.md` instead of running the promoting skill
+- Leaving a gate at PASS after its evidence changed (amend or re-audit demotes it)
 - Modifying protected files without explicit approval
 - AI attribution markers in any artifact
 - Logging real client data in planning docs

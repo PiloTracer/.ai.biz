@@ -4,20 +4,25 @@ Binding conventions for the Business OS framework and all `biz-*` skills.
 
 ## Phase lifecycle
 
-Every business moves through four readiness states:
+Every business moves through five readiness states:
 
 ```text
-strategy-ready → brand-ready → pipeline-ready → sales-ready
+strategy-ready → brand-ready → pipeline-ready → sales-ready → active-deal
 ```
 
-Only the listed skill can mark a state ready. Skills must check the current state before running gated operations.
+State is recorded in one place: `.work.biz/gates.md`. A state counts as reached only when its section reads `**Status:** PASS`. Skills must read the ledger before running gated operations, and must not infer a state from the presence of files.
 
-| State | Set by | Evidence required |
-|-------|--------|-------------------|
-| `strategy-ready` | `@biz-strategy certify` | `.work.biz/strategy/certification.md` exists and passes internal gate |
-| `brand-ready` | `@biz-brand overhaul` or `@biz-strategy certify` (if brand is in scope) | LinkedIn and/or website audit shows offer, proof, and CTA are clear |
-| `pipeline-ready` | `@biz-review status` after `@biz-pricing set` | Pipeline tracker exists, pricing documented, outreach cadence defined |
-| `sales-ready` | `@biz-review status` (advanced) | Active deals in pipeline, proposal template ready, objection handling practiced |
+**One writer per gate.** Exactly one skill may promote each state. This is binding: a second writer makes the ledger unverifiable, because no skill can be held responsible for a wrong PASS.
+
+| State | Promoted by (only writer) | Evidence required |
+|-------|---------------------------|-------------------|
+| `strategy-ready` | `@biz-strategy certify` | `.work.biz/strategy/certification.md` exists and passes the internal gate |
+| `brand-ready` | `@biz-brand overhaul` | `.work.biz/reference/BRAND_STATUS.md` has an overhaul entry with a passing five-second test; audit shows offer, proof, and CTA are clear |
+| `pipeline-ready` | `@biz-review status` | `.work.biz/strategy/pricing.md`, `.work.biz/pipeline/pipeline_tracker.md`, and `.work.biz/pipeline/outreach-cadence.md` all exist and are filled in |
+| `sales-ready` | `@biz-discovery run` | Pipeline tracker has at least one completed discovery call logged with BANT captured |
+| `active-deal` | `@biz-discovery run` or `@biz-proposal write` | Pipeline tracker has at least one deal at Conversation stage or later |
+
+**Demotion is mandatory.** A state whose evidence no longer holds must be set back to `NOT MET`. `@biz-strategy amend` demotes `strategy-ready` and cascades downstream; `@biz-review status` reconciles the whole ledger. A stale PASS is worse than no gate at all, because downstream skills act on it.
 
 ## Document naming
 
@@ -45,8 +50,11 @@ Only the listed skill can mark a state ready. Skills must check the current stat
 ## Gate discipline
 
 - A skill must refuse to run a gated operation if its prerequisite state is not met, unless it is explicitly gate-exempt.
-- Gate-exempt skills: `content-writing`, `content-social` (write/research/repurpose modes), `business-ideas`, `product-service-ideas`, `biz-market-validate`.
+- Gate-exempt skills: `content-writing`, `content-social` (write/research/repurpose/icp modes), `business-ideas`, `product-service-ideas`, `biz-market-validate`, `biz-community` (find/status modes), `biz-objections` (roleplay mode), and every skill's `status` mode.
 - Gated skills must record their output to `.work.biz/` and, where applicable, update the pipeline tracker or HANDOFF.
+- A gated skill reads `.work.biz/gates.md` in its own I0 pre-check. It does not rely on `biz-director` having checked first.
+- Every documented gate must have a promoting skill and a machine-checkable evidence path. A gate nothing can promote is not a gate; either implement the promotion or remove the claim.
+- Gate ids are the hyphenated forms `strategy-ready`, `brand-ready`, `pipeline-ready`, `sales-ready`, `active-deal`. Use these exact ids in ledger sections and skill pre-checks so the ledger stays greppable.
 
 ## Change safety
 
