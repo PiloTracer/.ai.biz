@@ -159,6 +159,66 @@ Directional best window for B2B audiences: **Tuesday–Thursday, 2–4 PM local 
 - CTR/AVD/retention mechanics: consensus from creator-economy analysis; treat benchmarks as directional, not guarantees.
 - Shorts 3-minute extension: YouTube product update, October 2024.
 
+## Substack
+
+Substack is two systems, and conflating them produces bad strategy. **Email** reaches the inbox with no algorithm in the way; the list is an owned asset. The **in-app network** (recommendations, Notes, the feed) is a discovery algorithm whose only job is filling that list.
+
+Rule: **the network is the growth engine, not your posting volume.** Substack states that recommendations plus the apps drive roughly **50% of new free subscriptions and 25% of new paid subscriptions**, and network-driven discovery accounts for roughly **60% of platform growth**.
+
+1. **Ranking is audience-overlap based.** Subscribing to two publications maps an intersection between their audiences, and that graph drives recommendations. Retrieval moved to a sequential model through 2025 that reads the reader's current session momentum, not a static taste profile. Consistent niche content places you in the graph; topic-hopping does not.
+2. **Weight long-form, use Notes as a funnel.** The two surfaces diverged: post volume grew 49% year over year while post reactions grew 80% (attention outrunning supply), whereas Notes volume grew 47% while average likes per note fell from 22.5 to 18.8, a 16% decline (supply outrunning attention). Long-form earns more each year; Notes earn less.
+3. **Restack with substantive commentary.** Publications that restack others with added perspective grow 2–3x faster than those posting only original notes. Bare reshares do nothing.
+4. **Rotate who you restack.** Saturation penalties apply to closed loops. Restacking the same few accounts repeatedly is read as a closed circle, not discovery. Reciprocal engagement pods are penalized.
+5. **Measure subscribers per note, not likes per note.** The algorithm weights conversion probability. One tracked test found story-shaped notes produced 8x more subscribers than tip-shaped notes despite 3x fewer likes.
+6. **Paid conversion norm is ~3%** of free subscribers platform-wide; Notes-sourced subscribers convert at 2–3%. Substack takes 10%. Cited benchmarks of 5–10% describe high performers, not the median.
+7. **Fixed cadence beats chasing hits.** Weekly or biweekly on a consistent day outperforms sporadic publishing.
+8. **Earn recommendations deliberately.** A handful of well-matched publications recommending you outperforms months of solo posting. Be useful in their comments and notes first, then ask.
+
+### Anti-patterns
+
+- Treating Notes as the destination rather than the funnel
+- Format-first titles ("Part 3", "Weekly roundup") instead of the idea
+- Issue-number or greeting preambles before the content
+- Paywalling the actual value while the free portion is a pure teaser
+- Cross-posting LinkedIn copy verbatim; its compression reads as thin to a reader who opted into depth
+- Implying meaningful revenue from a small list without running the 3% math
+
+### Sources and caveats
+
+- Network share of growth: [creator-economy analysis of Substack's recommendations engine, 2026](https://365247esp.substack.com/p/substack-the-creator-economys-quiet), reporting Substack's own figures via Hamish McKenzie. Company-reported and not independently verified.
+- Surface divergence and conversion norms: [analysis of 2.9M posts and 14.5M Notes, 2026](https://thewritingedge.substack.com/p/i-analyzed-145-million-notes-and); [growth mechanics synthesis, 2026](https://research.mental-momentum.ai/r/substack-algorithm-discovery-growth-rz6bj5).
+- Retrieval architecture: [Substack engineering on sequential feed models, 2026](https://mrkcohen.substack.com/p/how-the-substack-feed-is-learning).
+- Restack multiples and per-note conversion: [Notes algorithm analysis, 2026](https://medium.com/codetodeploy/cracking-the-code-how-substack-notes-algorithm-actually-rewards-creators-in-2026-27eac09e3285). Single-practitioner samples; treat multiples as directional.
+
+## Threads
+
+Rule: **replies are the currency, and the first 30–60 minutes are permanent.** Threads runs on Meta's recommendation engine with a text-first twist, and it is not a smaller X. The feed is not chronological.
+
+1. **Signal order:** reply engagement and follow probability first, then profile clicks and likes, with scroll-past likelihood as the negative signal and engagement velocity as a multiplier across all of them.
+2. **The early window does not reopen.** Distribution is decided from engagement shortly after publishing and the system does not revisit the post. Publish only when you can be present for 60–90 minutes. Creator replies deliver roughly a **42% engagement lift**, the highest of any platform.
+3. **Conversation depth outranks volume.** A post with 40 replies in the first hour typically beats one with 400 likes and no replies. Reply-to-reply depth is tracked, not just reply count.
+4. **Cold reach is narrowing.** Mosseri stated in November 2024 that ranking was being rebalanced toward followed accounts and away from cold recommendations. A base of regulars who reliably reply is the durable asset.
+5. **Engagement bait is down-ranked.** Meta is explicitly suppressing bait replies such as "nice post" and emoji-only comments, so "Agree?" and "Tag someone who…" now cost reach rather than buying it.
+6. **Links and promotional posts are deprioritized.** Keep links in a reply, never the post.
+7. **Human voice outranks brand voice, measurably.** Reply depth, velocity, and follow-through all favor content that reads as a person talking. Polished brand copy is structurally less likely to start conversation, so it earns less reach. On this platform the anti-AI-artifact rules are a distribution requirement, not just style.
+8. **Cadence: 2–7 posts per week, and sources disagree within that band.** Both ends agree on the boundaries: below 2–3 per week momentum never builds; above roughly 10 per week with thin content the account is throttled as a broadcast account. More than 1–2 per day cannibalizes your own reach, because a newer post suppresses the older one before it accumulates replies. Start at 3 and only add what the presence window supports.
+9. **Allow 30–45 days** of consistent niche posting before the relevance model places the account. The first two weeks feel slow by design.
+
+### Anti-patterns
+
+- Scheduling into hours when nobody can reply; the window is permanent
+- Porting LinkedIn formality, or the "🧵" thread marker from X
+- Engagement bait of any form
+- Links in the main post
+- Chasing cold viral reach as the primary strategy
+
+### Sources and caveats
+
+- Signal set and ranking behavior: [Postory on the Threads algorithm, 2026](https://postory.io/blog/threads-algorithm) and [what works on Threads, 2026](https://postory.io/blog/what-works-on-threads-2026), synthesizing Meta transparency disclosures.
+- Early-window permanence, creator-reply lift, and median engagement rate: [SocialPilot on Threads algorithm signals, 2026](https://www.socialpilot.co/blog/instagram-threads-algorithm).
+- Cadence and content mix: [Monolit, 2026](https://monolit.sh/blog/threads-algorithm-2026-how-it-works-founders-beat-it). Conflicts with Postory's 2–5/week figure; the range above reflects the disagreement rather than resolving it.
+- Meta has not published weighted signal rankings. Treat the ordering as informed inference, and re-check when ranking is retuned, which happens every few months.
+
 ## Reference
 
 - Concept: BIZ-07 Content Platform Algorithms (`concepts/content-platform-algorithms/prompt.md`)

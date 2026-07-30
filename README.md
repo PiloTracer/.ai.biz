@@ -158,7 +158,7 @@ All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
 | **biz-director** | Universal orchestrator; accepts free-text, routes to correct skills | `<free-text request>` |
 | **content-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
-| **content-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel, Facebook, X, YouTube incl. Shorts) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |
+| **content-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |
 | **business-ideas** | Structured, stress-tested business/venture/pivot idea generation | `generate - <domain>` · `stress - <idea>` · `pivot - <situation>` |
 | **product-service-ideas** | Buildable, stack-fit product/service concepts + MVP scoping | `generate - <space>` · `extend - <product>` · `scope - <concept>` · `audit - <concept>` |
 

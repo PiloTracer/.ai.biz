@@ -479,7 +479,7 @@ When Business OS is present and the user is publishing to attract leads, the com
 
 | Skill | When |
 |-------|------|
-| `@content-social write` | Platform-adapt the draft for Reddit, Instagram, LinkedIn, or Facebook |
+| `@content-social write` | Platform-adapt the draft for Reddit, Instagram, LinkedIn, Facebook, X, YouTube, Substack, or Threads |
 | `@content-social repurpose` | Spin the long-form piece into platform-native social posts |
 | `@biz-content publish` | LinkedIn publishing workflow, engagement, repurpose cadence — ops layer |
 | `@biz-brand overhaul` | When brand voice / profile is not yet defined |

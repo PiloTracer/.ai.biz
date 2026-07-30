@@ -2,10 +2,11 @@
 name: content-social
 description: >-
   Platform-specialized social media content generation across Reddit, Instagram,
-  LinkedIn, Facebook, X (Twitter), and YouTube (long-form + Shorts). Produces
-  content calibrated to each platform's unique audience, culture, formatting
+  LinkedIn (text, carousel, native video), Facebook, X (Twitter), YouTube
+  (long-form + Shorts), Substack, and Threads. Produces content calibrated to
+  each platform's unique audience, culture, formatting
   norms, and engagement mechanics — always grounded in the host project's
-  strategy, brand voice, and target buyer. For community discovery (finding
+  strategy, voice profile, and target buyer. For community discovery (finding
   subreddits, Instagram accounts, Facebook groups), use @biz-community find. For
   pure writing craft and long-form content (blog articles, case studies, landing
   pages, email sequences), use @content-writing.
@@ -20,7 +21,7 @@ description: >-
 
 **Canonical path:** `.ai.biz/skills/content-social/skill.md`
 
-**Platform guides:** `skills/content-social/platforms/{reddit,instagram,linkedin,facebook,x,youtube}.md` — loaded on demand for the requested platform.
+**Platform guides:** `skills/content-social/platforms/{reddit,instagram,linkedin,linkedin-video,facebook,x,youtube,substack,threads}.md` — loaded on demand for the requested platform.
 
 Generate platform-native social media content. Every platform has a different culture, audience expectation, and consumption pattern. A LinkedIn post pasted into a Reddit subreddit will be deleted — or worse, mocked. A Facebook group post formatted like an Instagram caption will be ignored. This skill produces content that belongs on each platform.
 
@@ -51,7 +52,7 @@ Generate platform-native social media content. Every platform has a different cu
 | `@content-social research youtube - <topic/keyword>` | Find trending topics, title gaps, thumbnail gaps, and competitor content on YouTube |
 | `@content-social research <platform>` | General topic/trend research for a platform (without a specific keyword) |
 | `@content-social repurpose - <source> to <platform>` | Adapt existing content for a different platform |
-| `@content-social repurpose - <source>` | Repurpose one piece into formats for all 7 platforms |
+| `@content-social repurpose - <source>` | Repurpose one piece into formats for every platform the channel plan sanctions |
 | `@content-social strategy` | Assess which platforms fit the project's target buyer; recommend platform mix |
 | `@content-social icp` | Run BIZ-08 LinkedIn ICP analysis and save to `.work.biz/strategy/linkedin-icp.md` |
 | `@content-social plan <platform> - <horizon>` | Platform-specific content calendar (e.g., `30 days`, `Q3`) |
@@ -149,6 +150,8 @@ Before writing for any platform, understand who you're writing for and the cultu
 | **Facebook** | Groups are hyper-engaged communities; Pages are broadcast | Groups: threaded, conversational. Pages: feed scroll. | Community membership; consistent helpful presence; local relevance | Varies wildly. Groups: low tolerance, moderator-enforced. Pages: moderate. |
 | **X (Twitter)** | Real-time, news-driven, tech/VC/journalist-heavy, high velocity | Rapid-fire feed; 280-char limit shapes consumption; threads for depth | Wit, speed, insider knowledge, being first to insight. Followers/lists = credibility. | Moderate-low. Self-promotion is common but must be wrapped in value. Quote-tweet culture rewards sharp takes. |
 | **YouTube** | Search-driven, education/entertainment hybrid, high intent | Long-form: intentional viewing. Shorts: rapid scroll in vertical feed. | Consistency, production value, proof of expertise, community interaction | Moderate. Pitch only after value delivery; CTAs must be earned. |
+| **Substack** | Self-selected subscribers who opted into depth; email-first | Inbox reading by choice; long-form tolerated and rewarded. In-app feed is discovery only | Sustained depth over months, intellectual honesty, a consistent niche, recommendations from adjacent writers | **Highest of any platform here.** Readers subscribed to you. Paid tiers are an explicit pitch the audience consented to. |
+| **Threads** | Text-first, conversational, Instagram-adjacent audience | Rapid scroll, but replies pull people back into threads | Being a present, replying human. Regulars who recognize you | Low. Promotional and link-heavy posts are explicitly deprioritized by ranking. |
 
 ---
 
@@ -162,17 +165,31 @@ The same person behaves differently on each platform. Content must account for t
 |---------|--------|-----------|----------|----------|-------------|---------|
 | **Identity** | Pseudonymous, interest-based | Curated, visual identity | Real name, professional identity | Real name, personal + community identity | Real name or pseudonymous; persona-based | Anonymous or persona-based; intent-driven |
 | **Mindset** | Learning, debating, problem-solving | Discovery, inspiration, entertainment | Career growth, industry awareness, hiring | Community belonging, local connection, peer support | Real-time awareness, breaking news, hot takes, networking | Learning, entertainment, research before purchase |
-| **Attention span** | Willing to read long-form if valuable | Seconds. Visual hook or scroll past. | Moderate. Will read 200-300 words; will watch 30–90 sec video if hook earns it. | Variable. Groups: moderate. Feed: short. | Seconds per tweet. Threads earn sustained reading if hook is strong. | Long-form: 8–15 min if value is sustained. Shorts: 0–3 sec hook. |
+| **Attention span** | Willing to read long-form if valuable | Seconds. Visual hook or scroll past. | Moderate. Will read 200-300 words; will watch 30–90 sec video if hook earns it. | Variable. Groups: moderate. Feed: short. | Seconds per tweet. Tweet chains earn sustained reading if the anchor is strong. | Long-form: 8–15 min if value is sustained. Shorts: 0–3 sec hook. |
 | **Trust trigger** | Specific, verifiable claims. No marketing language. | Visual authenticity, social proof, consistency. | Deep expertise demonstrated. Specific results. Named clients. On-camera authenticity. | Peer validation. Group membership. Mutual friends. | Insider knowledge, speed, contrarian-but-correct takes, consistency over time. | Demonstrated expertise, consistent uploads, transparent proof, community engagement. |
 | **Rejection trigger** | Self-promotion, vagueness, link-dropping | Overt selling, inauthentic polish, stock imagery | Thought leadership without proof. Buzzword bingo. Low-energy or over-polished video. | Spammy posts. Breaking group rules. Uninvited pitching. | Over-polished corporate voice, threadbois, engagement farming, stale takes. | Clickbait, wasted time, sales-first openings, low production value that undermines expertise. |
 
+The two text platforms added later sit at opposite ends of the same axis, so they get their own row set:
+
+| Element | Substack | Threads |
+|---------|----------|---------|
+| **Identity** | Real name, authorial identity. The reader chose *you*, not a topic | Real name, conversational identity. Instagram-adjacent, less formal than LinkedIn |
+| **Mindset** | Deliberate reading, often at a chosen time. Learning in depth | Ambient browsing, but willing to argue. Wants an exchange, not a broadcast |
+| **Attention span** | Longest of any platform here. 700–2,000 words is normal, not indulgent | Seconds for the post; minutes for a reply thread that engages them |
+| **Trust trigger** | Sustained depth across months. Intellectual honesty. Recommendations from writers they already trust | Being a present, replying human. Recognition from repeated exchanges |
+| **Rejection trigger** | Padding, format-first titles ("Part 3"), paywalling the actual value, issue-number preambles | Brand voice, engagement bait, links in the post, posting and vanishing |
+
 **Rule:** Never use a LinkedIn post as a Reddit post. Never use an Instagram caption as a Facebook group post. Each platform gets purpose-built content.
+
+**The two hard directional rules:** compression down is fine, expansion up is not. Substack long-form repurposes cleanly to every shorter surface; a LinkedIn post expanded into a Substack piece reads as padded. And a LinkedIn post ported to Threads fails on register, because Threads ranking actively penalizes the formality LinkedIn rewards.
 
 ---
 
 ## Universal Platform Format
 
-The seven platforms share a common anatomy. Start from this skeleton, then apply the platform-specific deltas in R1–R6.
+The platforms share a common anatomy. Start from this skeleton, then apply the platform-specific deltas in R1–R8.
+
+**One exception.** Substack is the only surface here where the reader opted into depth by subscribing, so the compression this skeleton assumes is a downgrade there. On Substack, narrative prose beats the hook/body/CTA anatomy. See R7.
 
 ### Universal post structure
 
@@ -228,7 +245,7 @@ Resolve from the request:
 
 ### Step 2 — Load platform-specific rules
 
-Load the platform guide from `skills/content-social/platforms/<platform>.md` for formatting, structure, anti-patterns, and posting cadence. The R1–R6 markers below are thin pointers; the detailed rules live in the platform files.
+Load the platform guide from `skills/content-social/platforms/<platform>.md` for formatting, structure, anti-patterns, and posting cadence. The R1–R8 markers below are thin pointers; the detailed rules live in the platform files.
 
 ### Step 3 — Draft with quality rules
 
@@ -286,6 +303,22 @@ Load `skills/content-social/platforms/x.md` and apply its platform-specific rule
 ## R6 — YouTube Content
 
 Load `skills/content-social/platforms/youtube.md` and apply its platform-specific rules when writing, researching, planning, or repurposing for youtube.
+
+---
+
+## R7 — Substack Content
+
+Load `skills/content-social/platforms/substack.md` and apply its platform-specific rules when writing, researching, planning, or repurposing for substack.
+
+Substack is the one platform in this skill that is an owned email list first and a discovery network second. Two consequences override the universal skeleton: narrative prose beats compressed hook/body/CTA structure, and long-form is the compounding asset while Notes are only the funnel. Read the guide before drafting; do not infer Substack rules from the LinkedIn or newsletter format rules.
+
+---
+
+## R8 — Threads Content
+
+Load `skills/content-social/platforms/threads.md` and apply its platform-specific rules when writing, researching, planning, or repurposing for threads.
+
+Threads is a conversation-velocity platform, not a smaller X. Its real cost is operational rather than editorial: the first 30–60 minutes after posting permanently set the reach ceiling, so a post nobody is present to reply to is largely wasted. Never recommend Threads without stating that presence requirement.
 
 ---
 
@@ -403,7 +436,7 @@ Take one piece of content and produce platform-adapted versions. Each must stand
 
 ### Multi-platform repurpose output
 
-When repurposing to all 7 platforms, produce:
+When repurposing to all platforms, produce the blocks below. **Only produce blocks for platforms the project's `channel-plan.md` actually sanctions.** A full nine-platform dump is almost always the wrong deliverable: it looks productive while creating publishing obligations the operator has no capacity to meet. If no channel plan exists, produce the three closest fits and name what you skipped and why.
 
 ```
 CORE INSIGHT: [one sentence — the DNA of all versions]
@@ -446,7 +479,22 @@ YOUTUBE VERSION
   Long-form segment outline: [3–4 segments with retention points]
   Shorts hook: [0–3 sec hook]
   Thumbnail concept: [3–5 words + visual focal point]
+
+SUBSTACK VERSION
+  Title: [the idea, not the format]
+  Subtitle: [the stake or tension — do not restate the title]
+  Opening line: [scene or problem; no greeting, no issue number]
+  Narrative outline: [3–5 beats as prose sections, not bullets]
+  Length target: [400–700 short / 700–2,000 long-form]
+  Note (funnel): [1–3 paragraph note whose job is to pull toward this piece]
+
+THREADS VERSION
+  Post: [≤500 chars, conversational, one idea]
+  Reply opening: [the unresolved tradeoff or real question left open]
+  Presence window: [when the operator must be available for 60–90 min]
 ```
+
+**Repurposing asymmetry.** Compression is easy and expansion is not. A Substack long-form piece repurposes cleanly down to LinkedIn, X, and Threads. The reverse does not work: a LinkedIn post expanded into a Substack piece reads as padded, because the compression that made it good on LinkedIn removed the narrative the Substack reader subscribed for. When the source is short-form and the target is Substack, say that the piece needs new material rather than delivering inflated filler.
 
 ---
 
@@ -508,12 +556,33 @@ Assess which platforms fit the project's target buyer profile. Output a platform
   Content pillars: {2-3 themes}
   Search vs. discovery emphasis: {one sentence}
 
+### Substack
+  Fit: {EXCELLENT / GOOD / POOR}
+  Cadence: {weekly / biweekly long-form on a fixed day}
+  Free vs paid: {all-free authority play / paid tier — and the honest revenue math}
+  Recommendation targets: {3-5 adjacent publications to earn recommendations from}
+  Time to inbound: {6-12 months typical for a services business}
+
+### Threads
+  Fit: {EXCELLENT / GOOD / POOR}
+  Cadence: {2-5/week, only as many as the presence window allows}
+  Presence capacity: {can the operator hold 60-90 min after each post? If no, fit is POOR regardless of audience match}
+  Content pillars: {2-3 themes}
+
 ### 30-day action plan
   Week 1: {action}
   Week 2: {action}
   Week 3: {action}
   Week 4: {action}
 ```
+
+### Strategy rules (these override an enthusiastic reading of the matrix)
+
+1. **Recommend fewer platforms than the operator asks for.** More surfaces is almost never the answer for a solo operator. One platform done consistently beats four done sporadically, and the framework's own strategy standard requires picking a single primary channel.
+2. **Rate fit on capacity, not just audience match.** A platform where the buyer lives but the operator cannot sustain the cadence is a POOR fit, not an EXCELLENT one. State the weekly hour cost explicitly for each recommendation.
+3. **Check the existing channel plan before recommending anything new.** If `channel-plan.md` already names a primary channel, your job is to serve it, not to relitigate it. If a platform appears on its "explicitly not channels" list, do not recommend it without naming the recorded reason it was excluded and what has changed since.
+4. **Distinguish authority channels from pipeline channels.** Substack and YouTube build authority over 6–12 months. If the project needs revenue sooner than that, say so plainly and route the recommendation toward conversation-led motions instead of content volume.
+5. **If content volume has already been tried without pipeline results, say so.** Check `.work.biz/analysis/` and `reference/CONTENT_STATUS.md` for prior performance. Recommending more platforms after impressions failed to convert repeats a known-failed experiment at higher cost.
 
 ---
 
@@ -625,7 +694,7 @@ You may only claim the task complete when all are true:
 | `research` (single platform, focused topic) | 15-25 min |
 | `research` (single platform, broad scan) | 25-40 min |
 | `repurpose` (one source → one platform) | 15-20 min |
-| `repurpose` (one source → all 7 platforms) | 60-80 min |
+| `repurpose` (one source → all sanctioned platforms) | 60-100 min |
 | `strategy` | 10-15 min |
 | `plan` | 20-30 min |
 | `icp` | 15-25 min |
