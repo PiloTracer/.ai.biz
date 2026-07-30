@@ -135,6 +135,41 @@ The goal is not polished prose. The goal is a credible human talking to a peer.
 - **Substack and newsletters:** Avoid "Welcome back to another edition of…" and numbered-issue preambles before the actual content. Avoid a subject line that describes the format instead of the idea ("Thoughts on AI, part 3"). Avoid the subscribe-CTA-in-the-middle interruption unless the piece is genuinely long. Avoid a sign-off block inside the prose; bylines belong on the platform, not in the text.
 - **Threads:** Avoid porting LinkedIn thought-leadership cadence over. Threads punishes formality and rewards conversational replies. Avoid numbered listicles and avoid the X-style "🧵" thread marker.
 
+## Graded claims (mandatory on commentary content)
+
+Commentary inherits other people's facts. Without grading, their errors silently become yours, and a single unverifiable inherited claim can cost more credibility than the piece earns.
+
+Any content that comments on external events (a launch, an outage, an industry bet, a trend, someone else's post or study) must visibly separate three kinds of statement **in the text**, not in a footnote:
+
+| Label | Meaning |
+|-------|---------|
+| **Verified** | Fact with a source, linked or named |
+| **Inference** | Your judgment from experience. Say that it is |
+| **Would check / would prove me wrong** | What to verify before betting money on it, or what evidence would flip the take |
+
+This grading is a credibility feature, not a hedge. It is the visible content-side counterpart of the assumption ledger the agent rules already require for planning work: the same discipline, applied where readers can see it.
+
+**Recommended commentary structure:** the event (sourced) → what actually happened, in one paragraph → what you would watch, from experience → what would prove the take wrong.
+
+**Anti-patterns:**
+
+- Restating a vendor's or a study's numbers as your own finding
+- "Studies show" or "it's well known that" with nothing named
+- Hedging the whole piece instead of grading individual claims. Grade the claims and own the judgment
+- Grading in a disclaimer block at the bottom that the reader reaches after already believing the piece
+
+**Experience-to-commentary ratio.** Commentary keeps a publication current; experience is what differentiates it. A useful default is roughly **70/30 experience to commentary** across a rolling month. When commentary becomes the majority, expect reach without buyers: you get read by peers and other commentators rather than by the people who hire you. If a project has performance data showing that pattern, cite it in the project's own standard rather than relying on this default.
+
+## Voice convergence (measure whether drafting rules work)
+
+A voice profile is a hypothesis about how the owner sounds. The only evidence that it is correct is that the owner stops having to fix the same things.
+
+Projects that use an owner-pass workflow should keep a retro at `.work.biz/reference/VOICE_RETRO.md` (template: `templates/work/reference/VOICE_RETRO.md.template`). One short entry per published asset, recording what the draft said and what the owner changed.
+
+**The signal to watch:** owner edits per piece should *fall* over time. If they do not fall after five or six pieces, the drafting rules are wrong and the voice profile needs amending. The failure mode this prevents is real and expensive: an owner quietly making the same correction forever while everyone treats the drafts as fine.
+
+**Rule:** when the same class of edit appears three times, amend `VOICE_PROFILE.md`. Do not expect the owner to keep making a correction the rules could carry.
+
 ## Anti-patterns
 
 - Generic headlines ("The Future of X").

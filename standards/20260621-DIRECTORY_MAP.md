@@ -63,6 +63,7 @@ Stored in the consumer project. Never copied from source; owned by the user and 
 │   ├── CONTENT_STATUS.md      # Publish/status tracker for all content
 │   ├── BRAND_STATUS.md        # Brand audit history + overhaul log (brand-ready evidence)
 │   ├── VOICE_PROFILE.md       # How this owner sounds (binding for every content skill)
+│   ├── VOICE_RETRO.md         # Draft vs owner edits; measures whether VOICE_PROFILE works
 │   ├── PROJECTS.md            # Case studies and proof points
 │   └── VISUAL_GUIDE.md        # Banner specs, palette, typography
 ├── drafts/                    # In-progress drafts

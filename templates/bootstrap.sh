@@ -70,6 +70,7 @@ copy_if_missing "${TPL}/strategy/README.md.template" "${WORK}/strategy/README.md
 copy_if_missing "${TPL}/reference/CONTENT_STATUS.md.template" "${WORK}/reference/CONTENT_STATUS.md"
 copy_if_missing "${TPL}/reference/BRAND_STATUS.md.template" "${WORK}/reference/BRAND_STATUS.md"
 copy_if_missing "${TPL}/reference/VOICE_PROFILE.md.template" "${WORK}/reference/VOICE_PROFILE.md"
+copy_if_missing "${TPL}/reference/VOICE_RETRO.md.template" "${WORK}/reference/VOICE_RETRO.md"
 
 for dir in context plans pipeline research drafts strategy reference; do
   mkdir -p "${WORK}/${dir}"

@@ -60,6 +60,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/reference/CONTENT_STATUS.md` | `templates/work/reference/CONTENT_STATUS.md.template` — canonical publish/status tracker across all content types; prevents recommending already-published content |
    | `.work.biz/reference/BRAND_STATUS.md` | `templates/work/reference/BRAND_STATUS.md.template` — brand audit history and overhaul log; evidence for the `brand-ready` gate |
    | `.work.biz/reference/VOICE_PROFILE.md` | `templates/work/reference/VOICE_PROFILE.md.template` — how this owner sounds; binding for every content skill on every platform. Ships as a skeleton the owner must fill |
+   | `.work.biz/reference/VOICE_RETRO.md` | `templates/work/reference/VOICE_RETRO.md.template` — draft vs owner edits; measures whether the voice profile is working |
 
 4. **Complete** — report summary and next steps.
 

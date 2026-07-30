@@ -107,6 +107,12 @@ AI detectors reward imperfection and penalize polish. This profile optimizes for
 
 ---
 
+## Amendment rule
+
+This file is a hypothesis about how the owner sounds. When `reference/VOICE_RETRO.md` shows the same class of owner edit three times, the rules above are wrong: amend them rather than expecting the owner to keep making the same correction. Record the change in the revision header.
+
+---
+
 ## Quality gate (before delivering any draft)
 
 - [ ] Anti-AI-artifact scan passed against the Content Standard (zero em-dashes and en-dashes)

@@ -4,7 +4,8 @@ description: >-
   Define your niche, unified offer, target buyer, and channel strategy.
   Produces strategy docs that guide all other business development.
   Certifies strategy-ready gate. biz-strategy greenfield, biz-strategy probe,
-  biz-strategy amend, biz-strategy certify, biz-strategy status.
+  biz-strategy amend, biz-strategy reconcile, biz-strategy certify,
+  biz-strategy status.
 ---
 
 # biz-strategy
@@ -64,6 +65,7 @@ Choice constrains channel, price, and offer structure.
 | `@biz-strategy probe` | Adaptive gap-filling questioning. Targets unknown/inferred assumptions. |
 | `@biz-strategy probe - <element>` | Probe a specific element (person, problem, offer, channel, price, geography). |
 | `@biz-strategy amend - <what changed>` | Record a strategy change made outside greenfield, fold out-of-tree strategy docs back in, and flag dependent artifacts stale. Requires re-certify afterward. |
+| `@biz-strategy reconcile - <what is inconsistent>` | Make a canonical file carry a decision the certified record **already** asserts. Changes no positioning, so it moves no gate and needs no re-certification. Strictly bounded — see I2c. |
 | `@biz-strategy certify` | Deep consistency check. Promotes strategy-ready gate on pass. |
 | `@biz-strategy certify - why` | Explain why current strategy would fail certification (without attempting it). |
 | `@biz-strategy status` | Read-only state report. What's defined, what's missing, gate status. |
@@ -84,7 +86,7 @@ All strategy files live under `{WORK_BUSINESS_ROOT}` (`.work.biz/`):
 | `strategy/target-buyer-profile.md` | Detailed buyer persona |
 | `strategy/channel-plan.md` | Primary channel + supporting channels |
 | `strategy/certification.md` | Gate certification record (certify mode writes here) |
-| `strategy/changelog.md` | Append-only record of strategy changes (amend mode writes here) |
+| `strategy/changelog.md` | Append-only record of strategy changes (amend mode writes here; reconcile mode appends entries marked **(correction)**) |
 
 ---
 
@@ -316,6 +318,63 @@ Strategy changes between certifications: an owner grill locks new positioning, a
 
 ---
 
+## I2c - Reconcile mode
+
+Sometimes a canonical strategy file contradicts the certified record, not because positioning changed but because a decision was never transcribed into that file. `amend` is the wrong instrument: it demotes `strategy-ready` and cascades to three downstream gates, so a pure consistency repair would pause gated work in order to record something the certification already asserts. That asymmetry pressures operators to leave inconsistencies unrecorded, which is the opposite of what the gate system is for.
+
+Reconcile exists for exactly that case, and it is deliberately hard to qualify for.
+
+### Eligibility test (all four must hold — otherwise this is an amend)
+
+| # | Condition | How to prove it |
+|---|-----------|-----------------|
+| 1 | **The decision is already in the certified record** | Quote it from `strategy/certification.md`, or from another file that was binding at the time of the last passing certification. A quote is mandatory; a recollection is not evidence |
+| 2 | **No certification element changes** | Person, problem, offer, price, channel hierarchy, and geography are all untouched. Adding a *secondary* or *supporting* item that the certification already named is in scope. Naming a **new** primary channel is not |
+| 3 | **The fix is transcription, not judgment** | You are copying an existing decision into a file that lacks it. If you must decide anything the record does not already settle, stop |
+| 4 | **No downstream artifact becomes stale** | Nothing that was correct before the fix becomes wrong after it. If the profile, website, pricing, or queued content would need rework, it is an amend |
+
+**If any condition fails, stop and run `@biz-strategy amend` instead.** Say which condition failed and why. Reconcile must never become the path of least resistance for a real strategy change; that would let positioning drift while the ledger keeps asserting PASS, which is the precise failure the gate system exists to prevent.
+
+### Workflow
+
+1. **Prove eligibility.** Emit the four conditions with evidence before editing anything. Quote the certified source.
+2. **Apply the transcription** to the canonical file under `{WORK_BUSINESS_ROOT}/strategy/`. Add a short inline correction note stating what was missing, which files already carried the decision, and that no gate moves.
+3. **Log it** in `strategy/changelog.md` marked **(correction)**, with the certified quote, the eligibility reasoning, and an explicit statement that no re-certification is required.
+4. **Do not touch `gates.md`.** No promotion, no demotion. Say so in the report.
+5. **Do not flag artifacts stale.** By condition 4 there are none. If you find one, you ran the wrong mode; stop and escalate to amend.
+6. **Report** what was inconsistent, what now matches, and the gates you deliberately left alone.
+
+### Output
+
+```
+RECONCILE — {PROJECT_NAME}
+
+INCONSISTENCY
+  File missing the decision: <path>
+  Decision:                  <one line>
+
+CERTIFIED SOURCE
+  <path> — "<direct quote>"
+
+ALSO ALREADY CARRIED BY
+  <paths that had it right>
+
+ELIGIBILITY
+  1 In certified record:      PASS — <evidence>
+  2 No element changes:       PASS — <which elements checked>
+  3 Transcription only:       PASS — <what was copied>
+  4 No artifact goes stale:   PASS — <what was checked>
+
+APPLIED
+  <path> — <what changed>
+  strategy/changelog.md — correction logged
+
+GATES
+  Unchanged. No re-certification required.
+```
+
+---
+
 ## I3 — Certify mode
 
 Deep consistency check. Produces a pass/fail verdict and promotes the **strategy-ready** gate on pass.
@@ -494,6 +553,7 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 | First client signed but market feels different from strategy | `@biz-strategy probe` (scan for new assumptions from real market feedback) |
 | Buyer conversations consistently confuse the offer | `@biz-strategy probe - offer` then `@biz-strategy certify` |
 | A positioning decision was made in another skill or session (owner grill, brand session, pricing change) | `@biz-strategy amend` then `@biz-strategy certify` |
+| A canonical file contradicts the certification, but only because a decision the certification already asserts was never transcribed into it | `@biz-strategy reconcile` — no gate moves, no re-certification. Prove all four eligibility conditions in I2c first |
 | 6+ months since last certification | `@biz-strategy probe` then `@biz-strategy certify` (re-certify quarterly) |
 
 ---

@@ -27,6 +27,7 @@
 - `reference/CONTENT_STATUS.md` — publish/status tracker
 - `reference/BRAND_STATUS.md` — brand audit history and overhaul log
 - `reference/VOICE_PROFILE.md` — canonical voice definition (binding for all content skills)
+- `reference/VOICE_RETRO.md` — draft vs owner edits; amend the voice profile when an edit class repeats three times
 - `strategy/` — strategy artifacts (canonical location; see Document naming below)
 
 ## Business Phase Lifecycle
