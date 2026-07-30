@@ -59,6 +59,7 @@ Stored in the consumer project. Never copied from source; owned by the user and 
 ├── reference/                 # Project reference files
 │   ├── CONTENT_STATUS.md      # Publish/status tracker for all content
 │   ├── BRAND_STATUS.md        # Brand audit history + overhaul log (brand-ready evidence)
+│   ├── VOICE_PROFILE.md       # How this owner sounds (binding for every content skill)
 │   ├── PROJECTS.md            # Case studies and proof points
 │   └── VISUAL_GUIDE.md        # Banner specs, palette, typography
 ├── drafts/                    # In-progress drafts
@@ -66,6 +67,8 @@ Stored in the consumer project. Never copied from source; owned by the user and 
 ```
 
 **Path rule:** `biz-strategy` writes strategy artifacts to `.work.biz/strategy/`. All other skills read from `.work.biz/strategy/`. Do not scatter strategy files under `.work.biz/plans/`.
+
+**Voice rule:** `.work.biz/reference/VOICE_PROFILE.md` is the canonical location for the owner's voice definition. Content skills read it there first, then fall back to the legacy paths `ideas/VOICE_STANDARD.md`, `reference/VOICE_STANDARD.md`, and `reference/voice-profile.md`. Do not scatter voice rules across scoped documents: a voice file scoped to one directory only applies when work happens in that directory, which is how LinkedIn-only voice discipline happens by accident.
 
 **Gate rule:** `.work.biz/gates.md` is the only authoritative record of readiness state. Each gate has exactly one promoting skill (see `skills/SKILL_DEPENDENCIES.md` § Gate Descriptions). Gated skills read it in their I0 pre-check; `scripts/gate-verify.sh` fails when a gate claims PASS without its evidence on disk.
 

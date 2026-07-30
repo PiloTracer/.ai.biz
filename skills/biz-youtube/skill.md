@@ -310,6 +310,27 @@ patterns:
 
 ---
 
+## Voice profile (binding when present)
+
+Read `.work.biz/reference/VOICE_PROFILE.md` before producing scripts, titles, or
+descriptions. If absent, check `.work.biz/ideas/VOICE_STANDARD.md` and
+`.work.biz/reference/VOICE_STANDARD.md`.
+
+The Content Standard's anti-AI-artifact rules are the floor and always bind. The
+voice profile governs how the spoken lines sound above that floor, and its
+**texture** rules are deliberate. Spoken copy is where a generic voice is most
+obvious, because viewers hear the rhythm. If the profile names a reference sample
+for narrative or spoken formats, read it before scripting. If it makes an owner
+pass mandatory, label the script a draft.
+
+**Channel-plan check.** If `.work.biz/strategy/channel-plan.md` does not list
+YouTube as a channel, or lists it under "explicitly not channels", say so before
+producing a cadence or challenge plan. Draft if asked, but do not let tooling
+quietly expand the channel mix past what the strategy sanctions. `@biz-strategy
+amend` is how the plan changes on the record.
+
+---
+
 ## Gate rules
 
 - **No hard gate for write/research.** You can draft a YouTube script or topic

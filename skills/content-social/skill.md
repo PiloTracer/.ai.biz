@@ -77,21 +77,39 @@ Read, if they exist:
 | `.work.biz/strategy/channel-plan.md` | Primary channel — determines which platforms are primary vs secondary |
 | `.work.biz/context/HANDOFF.md` | Recent decisions; avoid contradicting them |
 
-### Priority 2 — Project identity
+### Priority 2 — Voice profile (binding when present)
+
+Read `.work.biz/reference/VOICE_PROFILE.md`. This is the canonical definition of how *this owner* sounds, and it applies to **every** platform.
+
+If it is absent, check these legacy locations before falling back: `.work.biz/ideas/VOICE_STANDARD.md`, `.work.biz/reference/VOICE_STANDARD.md`, `.work.biz/reference/voice-profile.md`. If you find voice rules only in a legacy location, use them and tell the operator that `@content-social voice` can consolidate them to the canonical path.
+
+Apply it as follows:
+
+| Layer | Wins on |
+|-------|---------|
+| Content Standard § Anti-AI-artifact rules | Always binding. Zero em-dashes and en-dashes regardless of what any other file says |
+| Voice profile | Tone, rhythm, structure, vocabulary, point of view |
+| Platform guide | Format, length, CTA placement, posting mechanics |
+
+If the profile lists **reference samples**, read the sample matching the requested format before drafting and match its rhythm, not just its topic. If it lists **texture** rules, treat them as deliberate: do not normalize long comma-joined sentences, regional English patterns, or fragments into polished prose. If it names an **owner pass** as mandatory, say so explicitly when delivering and label the output a draft.
+
+Without a voice profile, output will be correctly de-AI-ified but generically human. Say so in the context summary and point the operator at `templates/work/reference/VOICE_PROFILE.md.template`.
+
+### Priority 3 — Project identity
 
 Read `.cursorrules` — its `REPLACE:` tokens resolve to `PROJECT_NAME`, `UNIFIED_OFFER`, `TARGET_BUYER`, `PRICE_RANGE`. These anchor tone and positioning across all platforms.
 
-### Priority 3 — Tech stack fingerprint
+### Priority 4 — Tech stack fingerprint
 
 - `package.json`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `docker-compose*.yml` → real tech to cite
 - `README.md` → what the project actually does
 - Any `work/`, `case-studies/`, or `docs/` folder → real proof points
 
-### Priority 4 — Brand standard
+### Priority 5 — Brand standard
 
 Read `standards/*BRAND-GUIDE*`, `standards/*CONTENT-STANDARD*`, and `standards/*PLATFORM-ALGORITHM-STANDARD*` if present. These are binding.
 
-### Priority 5 — Fallback example
+### Priority 6 — Fallback example
 
 If none of the above yield a usable brand/audience, load `references/project-context.example.md` (a worked example showing the expected shape and depth) and state explicitly: **"No project context found; using generic professional defaults calibrated to the example profile."** Then proceed with professional-quality defaults and the structure rules below.
 
@@ -102,11 +120,16 @@ LOADED CONTEXT
   Project:      <name or "unnamed — generic defaults">
   Offer:        <one line or "unspecified">
   Audience:     <buyer persona or "general tech-aware readers">
+  Voice:        <"VOICE_PROFILE.md (locked <date>)" | "legacy: <path>" | "none — generic human defaults">
+  Reference sample: <path used for this format, or "none for this format">
   Stack:        <concrete tech or "unspecified">
   Primary channel: <from channel-plan or "unspecified">
+  Platform fit:   <"in channel-plan" | "NOT in channel-plan — flag before publishing">
   LinkedIn ICP:   <titles + hook vocabulary or "unspecified — using BIZ-08 defaults">
   Gaps:         <what's missing that the user should supply for better output>
 ```
+
+**Channel-plan check.** If the requested platform is not listed in `.work.biz/strategy/channel-plan.md`, or appears on its "explicitly not channels" list, say so before delivering. Draft anyway if asked, but do not let tooling quietly expand the channel mix past what the strategy sanctions. Point at `@biz-strategy amend` as the way to change the plan on the record.
 
 If critical gaps exist (no audience, no offer), name them and ask **one** consolidated question only if they would materially change platform selection or content direction. Otherwise proceed with profession-quality defaults.
 

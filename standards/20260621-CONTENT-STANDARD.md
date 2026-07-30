@@ -60,6 +60,8 @@ Before any piece is marked done:
 
 Readers and viewers increasingly associate certain stylistic tics with low-effort AI-generated content. Avoid them.
 
+**Relationship to the project voice profile.** The **Mechanical tics**, **Vocabulary red flags**, and **Structural red flags** below are a floor. They bind on every platform and no project file may override them. The **Human voice rules** below are *defaults* for projects with no voice definition of their own; `.work.biz/reference/VOICE_PROFILE.md` may override any of them when it states the override and the reason. That is deliberate: a real human voice sometimes breaks generic style advice, for example long comma-joined sentences or non-native English patterns that are genuinely part of how the owner writes. Rules the voice profile marks as **texture** must not be "corrected" away.
+
 ### Mechanical tics
 
 - **Em-dashes (—) and en-dashes (–).** Do not use them. Zero. Rewrite every sentence that wants a dash. Use a period, comma, colon, semicolon, or parentheses instead.
@@ -128,6 +130,10 @@ The goal is not polished prose. The goal is a credible human talking to a peer.
 - **X/Twitter:** Avoid thread starters like "Most people don't know…" unless you genuinely have a non-obvious insight. Avoid ending every tweet with a takeaway sentence.
 - **YouTube:** Avoid "In this video, we will…" intros. Avoid over-smooth transitions ("With that said…", "That being said…") every 30 seconds.
 - **Reddit:** Avoid numbered lists when a paragraph answer is more natural. Avoid signposting ("TL;DR at the bottom" can be fine, but don't over-format).
+- **Instagram:** Avoid the emoji-per-line caption template and walls of hashtags posing as a caption. Avoid opening with "Swipe to see…" or "Save this post for later!" as the hook. Avoid the "Here's what nobody tells you about X 👇" formula. Don't caption a carousel with a summary of the slides; the caption should add something the slides don't.
+- **Facebook:** Avoid corporate Page voice inside a Group ("We are excited to announce…"). Avoid opening with "Hey everyone!" or "Quick question for the group:" followed by a pitch. Avoid engagement bait ("Tag someone who…", "Drop a 🙌 if…"). Group posts should read like one member talking to peers, not an announcement.
+- **Substack and newsletters:** Avoid "Welcome back to another edition of…" and numbered-issue preambles before the actual content. Avoid a subject line that describes the format instead of the idea ("Thoughts on AI, part 3"). Avoid the subscribe-CTA-in-the-middle interruption unless the piece is genuinely long. Avoid a sign-off block inside the prose; bylines belong on the platform, not in the text.
+- **Threads:** Avoid porting LinkedIn thought-leadership cadence over. Threads punishes formality and rewards conversational replies. Avoid numbered listicles and avoid the X-style "🧵" thread marker.
 
 ## Anti-patterns
 

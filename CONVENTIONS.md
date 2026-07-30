@@ -26,6 +26,7 @@
 - `pipeline/pipeline_tracker.md` — sales pipeline
 - `reference/CONTENT_STATUS.md` — publish/status tracker
 - `reference/BRAND_STATUS.md` — brand audit history and overhaul log
+- `reference/VOICE_PROFILE.md` — canonical voice definition (binding for all content skills)
 - `strategy/` — strategy artifacts (canonical location; see Document naming below)
 
 ## Business Phase Lifecycle

@@ -59,6 +59,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/strategy/README.md` | `templates/work/strategy/README.md.template` |
    | `.work.biz/reference/CONTENT_STATUS.md` | `templates/work/reference/CONTENT_STATUS.md.template` — canonical publish/status tracker across all content types; prevents recommending already-published content |
    | `.work.biz/reference/BRAND_STATUS.md` | `templates/work/reference/BRAND_STATUS.md.template` — brand audit history and overhaul log; evidence for the `brand-ready` gate |
+   | `.work.biz/reference/VOICE_PROFILE.md` | `templates/work/reference/VOICE_PROFILE.md.template` — how this owner sounds; binding for every content skill on every platform. Ships as a skeleton the owner must fill |
 
 4. **Complete** — report summary and next steps.
 
@@ -92,6 +93,7 @@ Read-only report of the current bootstrap state:
 | `.work.biz/strategy/README.md` exists | `ls "$WORK_DIR/strategy/README.md"` |
 | `.work.biz/reference/CONTENT_STATUS.md` exists | `ls "$WORK_DIR/reference/CONTENT_STATUS.md"` |
 | `.work.biz/reference/BRAND_STATUS.md` exists | `ls "$WORK_DIR/reference/BRAND_STATUS.md"` |
+| `.work.biz/reference/VOICE_PROFILE.md` exists and is filled in | `ls "$WORK_DIR/reference/VOICE_PROFILE.md"`; report `skeleton` if `<` placeholders remain |
 | Which gates are PASS | `grep -A1 '^## ' "$WORK_DIR/gates.md"` — a fresh bootstrap has all five at `NOT MET` |
 | Any `REPLACE:` tokens remain in `.cursorrules` | `grep -c 'REPLACE:' "$PROJECT_ROOT/.cursorrules" \|\| echo 0` |
 

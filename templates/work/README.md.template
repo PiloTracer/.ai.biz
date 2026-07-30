@@ -12,6 +12,7 @@
 | `strategy/README.md` | Strategy artifact index |
 | `reference/CONTENT_STATUS.md` | Publish/status tracker for all content |
 | `reference/BRAND_STATUS.md` | Brand audit history and overhaul log |
+| `reference/VOICE_PROFILE.md` | How you sound. Binding for every content skill, every platform |
 | `drafts/` | In-progress drafts |
 | `reference/` | Project reference files (PROJECTS.md, VISUAL_GUIDE.md, etc.) |
 | `touch-scope` | Declared change scope for the current work session (session-local, not tracked) |

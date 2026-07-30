@@ -53,11 +53,25 @@ Read, if they exist, in this order:
 | `.work.biz/strategy/channel-plan.md` | Primary channel → matching content format |
 | `.work.biz/context/HANDOFF.md` | Recent decisions; avoid contradicting them |
 
-### Priority 2 — Project identity file
+### Priority 2 — Voice profile (binding when present)
+
+Read `.work.biz/reference/VOICE_PROFILE.md` — the canonical definition of how *this owner* sounds. If absent, check `.work.biz/ideas/VOICE_STANDARD.md`, `.work.biz/reference/VOICE_STANDARD.md`, and `.work.biz/reference/voice-profile.md` before falling back.
+
+| Layer | Wins on |
+|-------|---------|
+| Content Standard § Anti-AI-artifact rules | Always binding. Zero em-dashes and en-dashes regardless of any other file |
+| Voice profile | Tone, rhythm, structure, vocabulary, point of view |
+| Format rules below | Length, section shape, CTA placement |
+
+If the profile lists **reference samples**, read the one matching the requested format and match its rhythm, not just its topic. Treat **texture** rules as deliberate: do not normalize long comma-joined sentences, regional English patterns, or fragments into polished prose. If an **owner pass** is mandatory, label the output a draft and say so.
+
+Without a voice profile, output is correctly de-AI-ified but generically human. Note that in the context summary and point at `templates/work/reference/VOICE_PROFILE.md.template`.
+
+### Priority 3 — Project identity file
 
 Read the project root `.cursorrules` (or `AGENTS.md`) — its `REPLACE:` tokens resolve to the real `PROJECT_NAME`, `UNIFIED_OFFER`, `TARGET_BUYER`, `PRICE_RANGE`. These four values anchor voice and positioning.
 
-### Priority 3 — Tech stack & proof (technology tilt)
+### Priority 4 — Tech stack & proof (technology tilt)
 
 These skills exist to produce **technology-related** results. Establish the operator's real tech fingerprint so content is concrete:
 
@@ -65,11 +79,11 @@ These skills exist to produce **technology-related** results. Establish the oper
 - `README.md` → what the project actually does.
 - Any `work/`, `case-studies/`, or `docs/` folder → real projects to cite with numbers.
 
-### Priority 4 — Brand standard
+### Priority 5 — Brand standard
 
 Read `standards/*BRAND-GUIDE*`, `standards/*CONTENT-STANDARD*`, and `standards/*PLATFORM-ALGORITHM-STANDARD*` if present. These are binding; do not violate them. Pay particular attention to platform-specific link rules (LinkedIn, Facebook, Instagram).
 
-### Priority 5 — Fallback example
+### Priority 6 — Fallback example
 
 If none of the above yield a usable brand/audience, load `references/project-context.example.md` (a worked example showing the expected shape and depth) and state explicitly: **"No project context found; using generic professional defaults calibrated to the example profile."** Then proceed with professional-quality defaults and the structure rules below.
 
@@ -80,6 +94,8 @@ LOADED CONTEXT
   Project:      <name or "unnamed — generic defaults">
   Offer:        <one line or "unspecified">
   Audience:     <buyer or "general tech-aware readers">
+  Voice:        <"VOICE_PROFILE.md (locked <date>)" | "legacy: <path>" | "none — generic human defaults">
+  Reference sample: <path used for this format, or "none for this format">
   Stack:        <concrete tech or "unspecified — keep examples generic">
   Channel:      <primary channel or "unspecified — match request">
   Gaps:         <what's missing that the user should supply for better output>

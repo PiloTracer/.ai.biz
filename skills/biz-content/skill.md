@@ -40,6 +40,14 @@ BLOCKED (prerequisite): brand-ready not confirmed
 
 This check applies to `publish`, `plan`, and `challenge` modes (`status` exempt). To draft content before brand-ready, use the ungated `@content-writing` or `@content-social write` instead.
 
+## I0b - Voice profile (binding when present)
+
+Read `.work.biz/reference/VOICE_PROFILE.md` before drafting or reviewing any copy. If absent, check `.work.biz/ideas/VOICE_STANDARD.md` and `.work.biz/reference/VOICE_STANDARD.md`.
+
+The Content Standard's anti-AI-artifact rules are the floor and always bind (zero em-dashes and en-dashes). The voice profile governs tone, rhythm, structure, and vocabulary above that floor, and its **texture** rules are deliberate: do not normalize them into polished prose. If it lists a **reference sample** for the format you are producing, read it and match its rhythm. If it makes an **owner pass** mandatory, label the output a draft and say so in the delivery.
+
+Report which voice source you loaded, or state plainly that none exists and the output will be generically human.
+
 ## Parse invocation
 
 | User says | Mode |
