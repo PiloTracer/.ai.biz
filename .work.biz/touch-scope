@@ -1,0 +1,16 @@
+# Touch Scope — gate ledger implementation + docs hygiene
+#
+# Session goal: make .work.biz/gates.md a real end-to-end artifact
+# (writers for gates 2-5, template, bootstrap wiring, script check),
+# fix the gate-verify false positive, dedup DIRECTORY_MAP, refresh CHANGELOG.
+
+scripts/
+skills/
+standards/
+templates/
+.cursorrules
+CHANGELOG.md
+CONVENTIONS.md
+README.md
+START_HERE.md
+.work.biz/
