@@ -66,6 +66,25 @@ gate_is_met() {
   printf '%s' "${1:-}" | grep -qiE '^pass([^a-z]|$)'
 }
 
+# Does a NEXT.md phase cell claim the phase has been reached?
+#
+# Negative markers are checked first and win outright, because a cell routinely
+# names the gate it is waiting on: "Pending (gated on strategy-ready)" must not
+# read as reached just because it contains the word "ready".
+#
+# The affirmative pattern additionally refuses a match preceded by a hyphen, so a
+# bare gate id such as "strategy-ready" is never mistaken for a status.
+phase_claims_reached() {
+  local val="${1:-}"
+  [ -n "$val" ] || return 1
+
+  if printf '%s' "$val" | grep -qiE '(^|[^a-z])(pending|not|never|no|blocked|gated|waiting|todo|t\.b\.d|tbd|n/a|deferred|skip|unmet|in progress|wip)([^a-z]|$)'; then
+    return 1
+  fi
+
+  printf '%s' "$val" | grep -qiE '(^|[^a-z-])(ready|certified|pass|passed|complete|completed|done|met)([^a-z]|$)'
+}
+
 # Print the Status cell of a "| <phase> | <status> |" row under "## Current Phase".
 phase_status() {
   local file="$1" phase="$2"
@@ -157,22 +176,37 @@ EOF
   status="$(gate_status "${tmp}/gates.md" nonexistent-gate)"
   [ -z "$status" ] || { echo "gate-verify self-test: FAIL (absent gate parsed as '${status}')" >&2; return 1; }
 
+  # Phrasings taken from real NEXT.md files, not sanitized one-word values. A cell
+  # routinely names the gate it waits on, which is what broke the first version.
   cat >"${tmp}/NEXT.md" <<'EOF'
 ## Current Phase
 
 | Phase | Status |
 |-------|--------|
 | Strategy | Ready |
-| Brand | Pending |
+| Brand | Pending (gated on strategy-ready) |
+| Pipeline | Not started |
+| Sales | Blocked — waiting on pipeline-ready |
+| Delivery | Complete |
 
 ## Active tasks
 EOF
 
   status="$(phase_status "${tmp}/NEXT.md" Strategy)"
-  [ "$status" = "Ready" ] || { echo "gate-verify self-test: FAIL (Strategy phase parsed as '${status}')" >&2; return 1; }
+  phase_claims_reached "$status" || { echo "gate-verify self-test: FAIL (Strategy '${status}' should claim reached)" >&2; return 1; }
 
-  status="$(phase_status "${tmp}/NEXT.md" Brand)"
-  [ "$status" = "Pending" ] || { echo "gate-verify self-test: FAIL (Brand phase parsed as '${status}')" >&2; return 1; }
+  status="$(phase_status "${tmp}/NEXT.md" Delivery)"
+  phase_claims_reached "$status" || { echo "gate-verify self-test: FAIL (Delivery '${status}' should claim reached)" >&2; return 1; }
+
+  # None of these claim the phase is reached, even though each contains a word
+  # that the naive affirmative pattern matched.
+  for p in Brand Pipeline Sales; do
+    status="$(phase_status "${tmp}/NEXT.md" "$p")"
+    [ -n "$status" ] || { echo "gate-verify self-test: FAIL (${p} phase not found)" >&2; return 1; }
+    if phase_claims_reached "$status"; then
+      echo "gate-verify self-test: FAIL (${p} '${status}' wrongly claims reached)" >&2; return 1
+    fi
+  done
 
   echo "gate-verify self-test: PASS"
 }
@@ -231,7 +265,7 @@ else
     # A phase reported as reached in NEXT.md must be backed by the ledger.
     if [ -n "$phase" ] && [ -f "$NEXT" ]; then
       phase_val="$(phase_status "$NEXT" "$phase")"
-      if echo "$phase_val" | grep -qiE '(^|[^a-z])(ready|certified|pass|complete|done)([^a-z]|$)'; then
+      if phase_claims_reached "$phase_val"; then
         if ! gate_is_met "$status"; then
           gate_fail "NEXT.md reports ${phase} phase as '${phase_val}' but gates.md has ${gate} at '${status:-absent}'"
         fi

@@ -7,6 +7,20 @@
 #
 set -euo pipefail
 
+# The target is chosen by REPO_ROOT, never by a positional argument. Accepting one
+# silently would be worse than useless: the fallback below resolves to the Business
+# OS repo itself when it is a git repo, so `bootstrap.sh /path/to/project` would
+# scaffold into the framework instead of the project and report success.
+if [[ $# -gt 0 ]]; then
+  echo "bootstrap.sh: unexpected argument '$1'" >&2
+  echo "" >&2
+  echo "The target is set with REPO_ROOT, not a positional argument:" >&2
+  echo "  REPO_ROOT=/path/to/project bash .ai.biz/templates/bootstrap.sh" >&2
+  echo "" >&2
+  echo "Run with no arguments to scaffold the enclosing project." >&2
+  exit 2
+fi
+
 if [[ -n "${BIZ_SOURCE:-}" ]]; then
   BIZ_ROOT="$(cd "$BIZ_SOURCE" && pwd)"
 else
