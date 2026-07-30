@@ -1,0 +1,75 @@
+# <Platform> Tracker
+
+**Purpose:** Running performance record for one platform. Copy this template to `.work.biz/pipeline/<platform>-tracker.md` (for example `substack-tracker.md`, `threads-tracker.md`, `youtube-tracker.md`) the first time you publish there.
+
+**Why per-platform files rather than one big table:** each platform's meaningful metrics differ, and a shared schema forces you to track impressions everywhere, which is the metric least connected to revenue. Keep `reference/CONTENT_STATUS.md` as the cross-platform index of what exists; keep this file as the per-platform performance record.
+
+**Last updated:** <date>
+
+---
+
+## Channel status
+
+| Field | Value |
+|-------|-------|
+| **Role in channel plan** | `primary` / `supporting` / `secondary` / **`not sanctioned`** |
+| **Sanctioned in `strategy/channel-plan.md`?** | yes / no — if **no**, stop and resolve the drift before publishing more |
+| **Committed cadence** | <e.g. 1 long-form/week> |
+| **Actual cadence, last 4 weeks** | <count> |
+| **Started** | <date> |
+| **Expected time to inbound** | <e.g. 6-12 months for authority channels> |
+| **Weekly hours cost** | <real number, including the engagement window> |
+
+**Drift rule:** if actual cadence is under half the committed cadence for three consecutive weeks, this channel is not being run. Either cut it or cut something else. Record the decision in `context/HANDOFF.md` rather than letting it decay silently.
+
+---
+
+## Published
+
+| # | Date | Piece | Format | Reach metric | Engagement metric | Conversion metric | Note |
+|---|------|-------|--------|--------------|-------------------|-------------------|------|
+
+Pick the three metric columns from the table below and write the chosen metric name into the header. Do not track all of them.
+
+| Platform | Reach metric | Engagement metric | **Conversion metric (the one that matters)** |
+|----------|--------------|-------------------|---------------------------------------------|
+| Substack | Opens / open rate | Comments, restacks | **New subscribers attributable to the piece; paid conversions** |
+| Threads | Non-follower reach % | Replies in first hour; reply depth | **Profile clicks, follows** |
+| YouTube | Impressions, CTR | AVD / retention % | **Subscribers gained, lead-magnet clicks** |
+| LinkedIn | Impressions | Comments, saves | **Profile views, conversations started** |
+| Reddit | Upvotes | Comment threads engaged | **Profile views, DMs received** |
+| Instagram | Reach | Saves, shares | **Profile visits, link taps** |
+| Facebook | Reach | Comments (Groups) | **Conversations started** |
+| X | Impressions | Replies, bookmarks | **Profile clicks, follows** |
+
+---
+
+## Conversations produced
+
+The only column that connects this channel to revenue. A channel with strong reach and an empty table here is producing authority, not pipeline. Say so out loud in reviews.
+
+| Date | Who | Source piece | Outcome |
+|------|-----|--------------|---------|
+
+---
+
+## What is working
+
+| Pattern | Evidence | Confidence |
+|---------|----------|------------|
+
+Record shapes and structures, not topics: shapes transfer across subjects, topics do not. Confidence is `proven` (three or more instances), `likely` (two), or `single data point`.
+
+## What is not working
+
+| Pattern | Evidence | Decision |
+|---------|----------|----------|
+
+---
+
+## Review log
+
+| Date | Pieces since last review | Conversations produced | Decision |
+|------|--------------------------|------------------------|----------|
+
+Review this file whenever `@biz-review` runs. The decision column should be one of: continue, change approach, reduce cadence, or stop the channel. "Keep going" without evidence after a full review cycle is how a channel consumes a year.

@@ -282,7 +282,7 @@ format combo, then continue at a sustainable cadence using `@biz-youtube plan`.
 
 ### Content tracker template
 
-Save this as `.work.biz/pipeline/youtube-tracker.md` (same location as the challenge tracker):
+Save this as `.work.biz/pipeline/youtube-tracker.md` (same location as the challenge tracker). If the file does not exist, create it from `templates/work/pipeline/platform-tracker.md.template`, which supplies the channel-status block, the drift rule, and the conversations table that connect the channel to revenue:
 
 | Video | Format | Topic bucket | Publish date | Thumbnail variant | CTR | AVD | Retention % | Impressions | Subs from video | Likes / Comments / Shares | Notes |
 |-------|--------|--------------|--------------|-------------------|-----|-----|-------------|-------------|-----------------|---------------------------|-------|

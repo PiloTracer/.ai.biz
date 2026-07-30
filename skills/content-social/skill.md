@@ -27,7 +27,7 @@ Generate platform-native social media content. Every platform has a different cu
 
 **Core principle:** Every piece of content must deliver genuine value to the specific audience on that platform. No cross-posting identical content. No generic marketing language dressed up as a platform post.
 
-**Jump to section:** [Parse invocation](#parse-invocation) · [I0 Project context](#i0--project-context-contract-run-before-writing-anything) · [Platform matrix](#platform-culture--audience-matrix) · [Universal format](#universal-platform-format) · [R1 Reddit](#r1--reddit-content) · [R2 Instagram](#r2--instagram-content) · [R3 LinkedIn](#r3--linkedin-content) · [R3V LinkedIn Video](#r3v--linkedin-native-video) · [R4 Facebook](#r4--facebook-content) · [R5 X](#r5--x-twitter-content) · [R6 YouTube](#r6--youtube-content) · [I2 Research](#i2--research-mode) · [I3 Repurpose](#i3--repurpose-mode) · [I4 Strategy](#i4--strategy-mode) · [I5 Plan](#i5--plan-mode) · [ICP mode](#linkedin-icp-mode)
+**Jump to section:** [Parse invocation](#parse-invocation) · [I0 Project context](#i0--project-context-contract-run-before-writing-anything) · [Platform matrix](#platform-culture--audience-matrix) · [Universal format](#universal-platform-format) · [R1 Reddit](#r1--reddit-content) · [R2 Instagram](#r2--instagram-content) · [R3 LinkedIn](#r3--linkedin-content) · [R3V LinkedIn Video](#r3v--linkedin-native-video) · [R4 Facebook](#r4--facebook-content) · [R5 X](#r5--x-twitter-content) · [R6 YouTube](#r6--youtube-content) · [R7 Substack](#r7--substack-content) · [R8 Threads](#r8--threads-content) · [I2 Research](#i2--research-mode) · [I3 Repurpose](#i3--repurpose-mode) · [I4 Strategy](#i4--strategy-mode) · [I5 Plan](#i5--plan-mode) · [ICP mode](#linkedin-icp-mode) · [I6 Status](#i6--status-mode)
 
 ---
 
@@ -56,7 +56,7 @@ Generate platform-native social media content. Every platform has a different cu
 | `@content-social strategy` | Assess which platforms fit the project's target buyer; recommend platform mix |
 | `@content-social icp` | Run BIZ-08 LinkedIn ICP analysis and save to `.work.biz/strategy/linkedin-icp.md` |
 | `@content-social plan <platform> - <horizon>` | Platform-specific content calendar (e.g., `30 days`, `Q3`) |
-| `@content-social status` | Read-only: report loaded project context and platform readiness |
+| `@content-social status` | Read-only: per-platform state, cadence drift, and channel-plan divergence (see I6) |
 
 **Default:** `write` if no verb matches. If the user gives a free-text request like "write me a reddit post about X" with no verb, treat it as `write reddit - <their words>`.
 
@@ -750,6 +750,62 @@ This is **not** a content-writing mode. It produces the targeting brief that mak
 - Best formats: [text / carousel / video / newsletter]
 - Proof they need: [case studies, metrics, credentials]
 ```
+
+---
+
+## I6 — `status` mode
+
+Read-only. Report what context is loaded, which platforms are actually running, and where the operator's stated plan and real behavior have diverged. Write nothing.
+
+This mode exists to answer "where do I actually stand across platforms", which no other mode covers: `@biz-content status` covers LinkedIn and `@biz-youtube status` covers YouTube, leaving every other platform unreported.
+
+### Workflow
+
+1. Run I0, including the voice profile lookup. Do not ask questions; report gaps instead.
+2. Read `.work.biz/strategy/channel-plan.md` for sanctioned channels, their roles, and any "explicitly not channels" list.
+3. Read `.work.biz/reference/CONTENT_STATUS.md` for the cross-platform index of what exists.
+4. Read every `.work.biz/pipeline/*-tracker.md` for per-platform performance.
+5. Read `.work.biz/analysis/` if present for prior performance evidence.
+6. Compare and report. Do not soften a divergence.
+
+### Output format
+
+```
+CONTENT STATUS — {PROJECT_NAME}
+
+CONTEXT
+  Strategy:     <certified <date> | uncertified | absent>
+  Voice:        <VOICE_PROFILE.md (locked <date>) | legacy: <path> | none>
+  Buyer:        <one line or "absent">
+  Primary channel: <from channel-plan or "unspecified">
+
+PLATFORMS
+  <platform>  <role>  <cadence committed vs actual>  <last published>  <conversations produced>
+  ...
+
+DIVERGENCE
+  Producing but not sanctioned:  <platforms with assets but absent from channel-plan>
+  Sanctioned but not producing:  <platforms in the plan with no recent activity>
+  Cadence drift:                 <platforms under half their committed cadence 3+ weeks>
+  On the exclusion list:         <platforms the plan explicitly rules out>
+
+EVIDENCE CHECK
+  Reach without conversations:   <platforms with activity and an empty conversations table>
+  Untracked platforms:           <platforms with assets but no tracker file>
+
+GAPS
+  <what is missing that would materially improve output>
+
+NEXT
+  <single highest-leverage action>
+```
+
+### Reporting rules
+
+1. **Name divergence plainly.** A platform with published assets that the channel plan does not list is drift, not a minor inconsistency. Report it in both directions: producing without sanction, and sanctioned without producing.
+2. **Reach without conversations is the headline finding, not a footnote.** If a platform shows sustained activity and an empty conversations table, say that it is producing authority rather than pipeline. That is the single most common and most expensive content failure for a services business.
+3. **Never recommend adding a platform from this mode.** Status reports state; it does not expand scope. If the operator asks for more platforms, route to `strategy` mode, which is required to weigh capacity.
+4. **Report absent trackers as untracked, not as zero.** No file means unmeasured, and claiming zero performance from missing data is the same error as claiming success from it.
 
 ---
 
