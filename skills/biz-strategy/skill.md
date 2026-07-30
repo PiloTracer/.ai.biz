@@ -14,7 +14,7 @@ description: >-
 
 Define your niche, unified offer, target buyer, channel plan, and pricing range. This is the foundational Business OS skill — every other skill depends on the strategy docs this skill produces. Run before anything else.
 
-**Research basis:** Niche specialization commands 20-30% premium pricing over generalists. Specialists convert at 2-3x the rate of multi-service agencies. Single-offer positioning reduces choice overload (Hick's Law) and increases conversion. See `RESEARCH_APPENDIX.md` §1 for full sourcing.
+**Why specialize (directional, not measured):** specialists generally command higher rates than generalists, convert better against a narrow buyer, and a single offer reduces choice overload (Hick's Law). Treat these as the *rationale* for the skill, not as citable figures: the framework has no sourced study behind them, so do not repeat percentages to the user as fact. When a project needs real numbers for its own niche, gather them with `@biz-market-validate test` and record them in `.work.biz/strategy/assumption-ledger.md` with citations.
 
 ---
 
@@ -537,8 +537,11 @@ Strategy status — {WORK_BUSINESS_ROOT}/strategy/
 
 | Gate | Unlocked by | Enables |
 |------|-------------|---------|
-| **strategy-ready** | `@biz-strategy certify` (pass) | `@biz-brand audit`, `@biz-pricing set`, `@biz-content publish`, `@biz-market-validate test` |
-| — | (strategy-ready must pass before any downstream skill) | All biz-* skills check this gate implicitly |
+| **strategy-ready** | `@biz-strategy certify` (pass) | `@biz-brand audit`, `@biz-pricing set`, `@content-social strategy` / `plan` |
+| **brand-ready** | `@biz-brand overhaul` | `@biz-content` (all modes but `status`), `@biz-community engage` |
+| — | (strategy-ready must pass before any downstream gate can) | Gated skills read `.work.biz/gates.md` in their I0; they do not infer state from files |
+
+`@biz-content publish` requires **brand-ready**, not strategy-ready: publishing drives traffic to a profile and website, so those surfaces must already match the offer or the content converts into a dead end.
 
 See `SKILL_DEPENDENCIES.md` for the full gate graph.
 
@@ -581,4 +584,4 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 - `{WORK_BUSINESS_ROOT}/strategy/certification.md`
 - `{WORK_BUSINESS_ROOT}/gates.md`
 - `.ai.biz/skills/SKILL_DEPENDENCIES.md`
-- `.work.biz/reference/RESEARCH_APPENDIX.md` (external references)
+- `{WORK_BUSINESS_ROOT}/strategy/changelog.md` (append-only amend and reconcile log)

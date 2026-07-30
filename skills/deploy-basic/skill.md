@@ -48,8 +48,10 @@ Thin-client deploy of the `.ai.biz` (Business OS) framework. The target project 
 | Path | Source | If target exists |
 |------|--------|-------------------|
 | `.cursorrules` | `templates/cursorrules.template` with `AGENT_OS_SOURCE=<source>` substituted | skip (preserve); `--force` overwrites |
-| `.work.biz/README.md`, `context/HANDOFF.md`, `plans/NEXT.md`, `plans/UNKNOWNS.md`, `pipeline/pipeline_tracker.md`, `research/research_index.md` | `templates/work/*.template` (suffix stripped) | skip (preserve) |
-| `.work.biz/{context,plans,pipeline,research,drafts}/` | created empty dirs | skip (preserve) |
+| `.work.biz/README.md`, `gates.md`, `context/HANDOFF.md`, `plans/NEXT.md`, `plans/UNKNOWNS.md`, `pipeline/pipeline_tracker.md`, `pipeline/outreach-cadence.md`, `research/research_index.md`, `strategy/README.md`, `reference/CONTENT_STATUS.md`, `reference/BRAND_STATUS.md`, `reference/VOICE_PROFILE.md`, `reference/VOICE_RETRO.md` | `templates/work/*.template` (suffix stripped) | skip (preserve) |
+| `.work.biz/{context,plans,pipeline,research,drafts,strategy,reference}/` | created empty dirs | skip (preserve) |
+
+**Sync rule:** this list, `scripts/deploy-basic.sh` `WORK_FILES`, `templates/bootstrap.sh`, `templates/README.md`, and `skills/biz-bootstrap/skill.md` § I1 must agree. `--update` only offers files in `WORK_FILES`, so an omission there means the artifact is silently never updated on an existing install.
 
 **Explicitly NOT copied (stay in source, loaded at runtime):** `skills/**`, `standards/**`, `concepts/**`, `docs/**`, `scripts/**`, `templates/**`, `SKILL_DEPENDENCIES.md`, root `README.md`, `PROCESS_ROUTER.md`, `START_HERE.md`, `CONVENTIONS.md`, `.github/`, `.gitignore`, `.gitattributes`.
 
@@ -168,7 +170,7 @@ test -d "$(grep -oE 'AGENT_OS_SOURCE=[^ ]*' .cursorrules | head -1 | cut -d= -f2
 ## Anti-patterns
 
 - Copying `skills/`/`standards/`/`concepts/` into the target (that defeats thin-client; use `@deploy-files` instead).
-- Wholesale-replacing `.cursorrules` or `.work.biz/HANDOFF.md` on `update`.
+- Wholesale-replacing `.cursorrules` or `.work.biz/context/HANDOFF.md` on `update`.
 - Resetting `AGENT_OS_SOURCE` to `REPLACE_BASICSOURCE` instead of the resolved path.
 - Running `@deploy-basic` and expecting skills to work offline — thin-client requires the source path to remain reachable.
 - Failing to verify `$AGENT_OS_SOURCE` is readable before claiming bootstrap complete.

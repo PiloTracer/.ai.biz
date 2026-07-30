@@ -102,12 +102,18 @@ fi
 
 # Scaffold file set (the thin-client local surface for Business OS).
 CURS_DEST="${DEST_ROOT}/.cursorrules"
+# Must stay in sync with templates/bootstrap.sh and skills/biz-bootstrap/skill.md § I1.
+# The `--update` merge scan only considers files listed here, so anything missing is
+# silently never offered for update on an existing thin-client install.
 WORK_FILES=(
   "README.md" "context/HANDOFF.md" "plans/NEXT.md" "plans/UNKNOWNS.md"
-  "pipeline/pipeline_tracker.md" "research/research_index.md"
+  "pipeline/pipeline_tracker.md" "pipeline/outreach-cadence.md"
+  "research/research_index.md" "strategy/README.md" "gates.md"
+  "reference/CONTENT_STATUS.md" "reference/BRAND_STATUS.md"
+  "reference/VOICE_PROFILE.md" "reference/VOICE_RETRO.md"
 )
 WORK_DIRS=(
-  "context" "plans" "pipeline" "research" "drafts"
+  "context" "plans" "pipeline" "research" "drafts" "strategy" "reference"
 )
 
 echo "=== deploy-basic (Business OS) → $DEST_ROOT (thin-client bootstrap) ==="

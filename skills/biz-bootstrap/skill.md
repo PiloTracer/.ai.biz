@@ -62,6 +62,10 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/reference/VOICE_PROFILE.md` | `templates/work/reference/VOICE_PROFILE.md.template` — how this owner sounds; binding for every content skill on every platform. Ships as a skeleton the owner must fill |
    | `.work.biz/reference/VOICE_RETRO.md` | `templates/work/reference/VOICE_RETRO.md.template` — draft vs owner edits; measures whether the voice profile is working |
 
+   **Sync rule:** this table, `templates/bootstrap.sh`, `templates/README.md`, `scripts/deploy-basic.sh` `WORK_FILES`, and `skills/deploy-basic/skill.md` must list the same set. `WORK_FILES` is the one that fails quietly: `deploy-basic --update` only offers files listed there, so an artifact missing from it is never updated on existing installs and nothing reports the omission.
+
+   Not scaffolded here, created on first use: `templates/work/pipeline/platform-tracker.md.template` → `.work.biz/pipeline/<platform>-tracker.md`.
+
 4. **Complete** — report summary and next steps.
 
 ### Post-init checklist

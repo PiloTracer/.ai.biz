@@ -167,4 +167,4 @@ PINNED COMMENT
 When running `@content-social research youtube`, use these methods:
 
 
-See [R6 — YouTube research methods](#content-social-research-youtube--research-methods).
+See [Research methods](#research-methods) at the end of this file.

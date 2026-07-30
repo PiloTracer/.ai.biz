@@ -195,7 +195,7 @@ An objection is handled well when:
 
 ## Status Tracking
 
-> Current status recorded in `.work.biz/plans/progress_tracker.md`.
+> Current status recorded in `.work.biz/pipeline/pipeline_tracker.md`.
 
 | Field | Status |
 |-------|--------|

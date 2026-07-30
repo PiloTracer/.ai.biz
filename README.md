@@ -143,7 +143,8 @@ All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-strategy** | Define niche, unified offer, target buyer, channel plan; certifies **strategy-ready** | `greenfield` · `probe` · `status` · `certify` |
 | **biz-brand** | Audit and overhaul LinkedIn, website, brand presence to match offer | `audit` · `overhaul` · `status` |
 | **biz-pricing** | Arrive at value-based pricing for any engagement | `set` · `status` · `revise` |
-| **biz-content** | Write and publish content that attracts leads (LinkedIn, blog, articles) | `publish` · `plan` · `status` |
+| **biz-content** | LinkedIn publishing ops: tracker, calendar, engagement cadence, consistency challenges | `publish` · `plan` · `challenge` · `status` |
+| **biz-youtube** | YouTube publishing ops: tracker, upload calendar, challenges, analytics review | `publish` · `plan` · `challenge` · `status` |
 | **biz-community** | Choose communities, engage without selling, convert relationships | `engage` · `find` · `status` |
 | **biz-referrals** | Systematically ask for referrals at every stage | `ask` · `status` |
 | **biz-discovery** | Run discovery calls that qualify and uncover the real problem | `run` · `prepare` · `status` |
