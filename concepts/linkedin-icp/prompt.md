@@ -6,7 +6,7 @@
 
 Run when LinkedIn is a primary channel, before a content challenge, or when posts get reach but not from the right audience.
 
-**Invocation:** `@content-social icp` runs this analysis and saves the output.
+**Invocation:** `@biz-social icp` runs this analysis and saves the output.
 
 ## Questions to explore
 
@@ -50,6 +50,6 @@ Save to `.work.biz/strategy/linkedin-icp.md`:
 
 - Profile: `@biz-brand audit` / `overhaul`
 - Content ops: `@biz-content challenge` / `plan` / `status`
-- Drafts: `@content-social write linkedin` / `write linkedin carousel`
+- Drafts: `@biz-social write linkedin` / `write linkedin carousel`
 - Algorithm rules: `standards/20260701-PLATFORM-ALGORITHM-STANDARD.md` § LinkedIn
 - Channel choice: BIZ-03 Channel Strategy (`concepts/channel-strategy/prompt.md`)

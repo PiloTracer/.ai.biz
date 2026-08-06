@@ -28,7 +28,7 @@ git rev-parse --is-inside-work-tree &>/dev/null && ok "inside git work tree" || 
 
 note "Core files"
 for f in README.md START_HERE.md LICENSE templates/bootstrap.sh \
-  scripts/deploy-basic.sh scripts/deploy-files.sh scripts/deploy-repo.sh; do
+  scripts/biz-deploy-basic.sh scripts/biz-deploy-files.sh scripts/biz-deploy-repo.sh; do
   [[ -f "$AI_ROOT/$f" ]] && ok "$f" || die "missing $f"
 done
 
@@ -75,29 +75,29 @@ while IFS= read -r f; do
 done < <(find "$AI_ROOT/standards" -maxdepth 1 -type f -name '*.md' | sort)
 ok "${std_count} standards non-empty"
 
-note "deploy-files in-place scaffold"
+note "biz-deploy-files in-place scaffold"
 DF_SMOKE="$(mktemp -d)"
 pushd "$DF_SMOKE" >/dev/null
-bash "$AI_ROOT/scripts/deploy-files.sh" . >/dev/null
-[[ -f .cursorrules ]] || die "deploy-files in-place missing .cursorrules"
-[[ -f .work.biz/context/HANDOFF.md ]] || die "deploy-files in-place missing .work.biz/context/HANDOFF.md"
-[[ -d .ai.biz/skills ]] || die "deploy-files in-place missing .ai.biz/skills"
+bash "$AI_ROOT/scripts/biz-deploy-files.sh" . >/dev/null
+[[ -f .cursorrules ]] || die "biz-deploy-files in-place missing .cursorrules"
+[[ -f .work.biz/context/HANDOFF.md ]] || die "biz-deploy-files in-place missing .work.biz/context/HANDOFF.md"
+[[ -d .ai.biz/skills ]] || die "biz-deploy-files in-place missing .ai.biz/skills"
 popd >/dev/null
-ok "deploy-files in-place creates .ai.biz/ + .work.biz/ + .cursorrules"
+ok "biz-deploy-files in-place creates .ai.biz/ + .work.biz/ + .cursorrules"
 
-note "deploy-repo --status"
-bash "$AI_ROOT/scripts/deploy-repo.sh" --status >/dev/null
-bash "$AI_ROOT/scripts/deploy-repo.sh" --status "$DF_SMOKE" >/dev/null
-ok "deploy-repo --status reports source + target"
+note "biz-deploy-repo --status"
+bash "$AI_ROOT/scripts/biz-deploy-repo.sh" --status >/dev/null
+bash "$AI_ROOT/scripts/biz-deploy-repo.sh" --status "$DF_SMOKE" >/dev/null
+ok "biz-deploy-repo --status reports source + target"
 rm -rf "$DF_SMOKE"
 
-note "deploy-basic thin-client scaffold"
+note "biz-deploy-basic thin-client scaffold"
 DB_SMOKE="$(mktemp -d)"
-bash "$AI_ROOT/scripts/deploy-basic.sh" "$DB_SMOKE" >/dev/null
+bash "$AI_ROOT/scripts/biz-deploy-basic.sh" "$DB_SMOKE" >/dev/null
 if [[ -f "${DB_SMOKE}/.cursorrules" ]] && grep -q 'AGENT_OS_SOURCE=' "${DB_SMOKE}/.cursorrules"; then
-  ok "deploy-basic creates thin-client .cursorrules + .work.biz/"
+  ok "biz-deploy-basic creates thin-client .cursorrules + .work.biz/"
 else
-  die "deploy-basic thin-client scaffold failed"
+  die "biz-deploy-basic thin-client scaffold failed"
 fi
 rm -rf "$DB_SMOKE"
 

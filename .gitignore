@@ -44,6 +44,7 @@ Thumbs.db
 # Cursor/AI local config
 .cursor/mcp.json
 AI_RULES.md
+reasonix.toml
 
 # Agent workspace
 **/tmp/

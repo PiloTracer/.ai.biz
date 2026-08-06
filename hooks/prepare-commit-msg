@@ -5,7 +5,8 @@ HOOKS_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 
 TMPFILE="$1.tmp"
-grep -viE '^Co-authored-by:' "$1" > "$TMPFILE" && mv "$TMPFILE" "$1"
+grep -viE '^Co-authored-by:' "$1" > "$TMPFILE" || true
+mv "$TMPFILE" "$1"
 
 BRANCH="$(git symbolic-ref --short HEAD 2>/dev/null || true)"
 case "${2:-}" in

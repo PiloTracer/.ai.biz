@@ -46,7 +46,7 @@
 1. **Captures** your exact wording.
 2. **Loads** `{HANDOFF}`, `{NEXT}`, `{UNKNOWNS}`, `{PIPELINE_TRACKER}`, `skills/README.md`, and `SKILL_DEPENDENCIES.md`.
 3. **Classifies** intent into a business bucket (strategy, brand, pricing, content, sales, etc.).
-4. **Checks** prerequisite gates (`scaffold → strategy-ready → brand-ready → pipeline-ready → sales-ready → active deal`).
+4. **Checks** prerequisite gates (`scaffold → strategy-ready → brand-ready → pipeline-ready → sales-ready → active-deal`).
 5. **Invokes** the correct `biz-*` skill chain with canonical syntax.
 6. **Records** the action in `{HANDOFF}`, updates `{NEXT}`, and logs new unknowns in `{UNKNOWNS}`.
 

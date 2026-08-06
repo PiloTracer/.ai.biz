@@ -16,7 +16,7 @@ Added from reference's change-safety and gate-verification layer:
 | `scripts/blast-radius-check.sh` | `scripts/blast-radius-check.sh` | ✅ Created |
 | `scripts/gate-verify.sh` | `scripts/gate-verify.sh` | ✅ Created |
 | `.cursorrules` § Change safety | `.cursorrules` § Change safety | ✅ Updated |
-| `templates/work.biz/touch-scope.template` | — | **TODO** |
+| `templates/work/touch-scope.template` | — | **TODO** |
 
 **Rationale:** Prevents cross-area strategy plan edits and empty-notes tasks from reaching commit. Validated through reference v0.5.3 audit.
 
@@ -57,7 +57,7 @@ Added from reference's Co-authored-by enforcement:
 
 ## Next actions
 
-1. **Create `templates/work.biz/touch-scope.template`** — copy pattern from `.ai/templates/work/touch-scope.template`
+1. **Create `templates/work/touch-scope.template`** — copy pattern from `.ai/templates/work/touch-scope.template`
 2. **Run hooks install** — `bash scripts/install-git-hooks.sh` from repo root
 3. **Update `framework-verify.sh`** — add self-test calls for new scripts
 4. **Verify** — `bash scripts/framework-verify.sh` passes before next commit

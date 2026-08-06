@@ -15,9 +15,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | Rule | Requirement |
 |------|-------------|
 | **Shape** | `{prefix}-{role}` in **kebab-case** |
-| **Business prefix** | `biz-` (e.g., `biz-strategy`, `biz-content`) |
-| **System prefix** | `deploy-`, `session-` for infrastructure skills |
-| **Generative prefix** | plain descriptive name (`content-writing`, `business-ideas`, `product-service-ideas`) for project-aware generative skills with no hard gate |
+| **Business prefix** | `biz-` for **all** skills — business (`biz-strategy`, `biz-content`), infrastructure (`biz-deploy-basic`, `biz-deploy-files`, `biz-deploy-repo`, `biz-session`), and generative (`biz-writing`, `biz-social`, `biz-ideas`, `biz-products`) |
 | **Stable id** | Folder name = `name:` in frontmatter = `@` handle |
 
 ---
@@ -26,9 +24,9 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 
 | Skill id | Folder | Role |
 |----------|--------|------|
-| deploy-basic | `deploy-basic/` | Thin-client bootstrap (`.cursorrules` + `.work.biz/`); skills load via `AGENT_OS_SOURCE` |
-| deploy-files | `deploy-files/` | Deploy `.ai.biz/` files into target project |
-| deploy-repo | `deploy-repo/` | Full git-based deploy (clone or archive) |
+| biz-deploy-basic | `biz-deploy-basic/` | Thin-client bootstrap (`.cursorrules` + `.work.biz/`); skills load via `AGENT_OS_SOURCE` |
+| biz-deploy-files | `biz-deploy-files/` | Deploy `.ai.biz/` files into target project |
+| biz-deploy-repo | `biz-deploy-repo/` | Full git-based deploy (clone or archive) |
 | biz-bootstrap | `biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
 | biz-strategy | `biz-strategy/` | Define niche, offer, positioning; certifies **strategy-ready** |
 | biz-brand | `biz-brand/` | Audit/overhaul LinkedIn, website, brand presence |
@@ -43,14 +41,14 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-review | `biz-review/` | Weekly/quarterly business review |
 | biz-market-validate | `biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| session-biz | `session-biz/` | Session open/close, HANDOFF, NEXT |
+| biz-session | `biz-session/` | Session open/close, HANDOFF, NEXT; scoped to `.work.biz/`; combinable `close` / `commit` / `push` params |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
-| content-writing | `content-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
-| content-social | `content-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads). Write, research, repurpose, plan. |
-| business-ideas | `business-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
-| product-service-ideas | `product-service-ideas/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
+| biz-writing | `biz-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
+| biz-social | `biz-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads). Write, research, repurpose, plan. |
+| biz-ideas | `biz-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
+| biz-products | `biz-products/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
 
-**Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand audit` → `@biz-pricing set` → `@biz-community find` → `@content-social strategy` → `@content-social write` → `@biz-youtube plan` → ...
+**Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand audit` → `@biz-pricing set` → `@biz-community find` → `@biz-social strategy` → `@biz-social write` → `@biz-youtube plan` → ...
 
 ---
 
@@ -85,14 +83,19 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `quarterly` | Quarterly strategic review (biz-review) |
 | `roleplay` | Practice objection handling (biz-objections) |
 | `close` / `start` | Session bookends |
+| `commit` / `push` | Scoped session flags with `close` — commit `.work.biz/` (incl. untracked) / push branch; any order, combinable |
 | `clone` / `archive` | Deploy modes |
 | `copy` | Deploy files mode |
-| `write` | Author content (content-writing, content-social) |
-| `repurpose` | Spin one asset into multiple formats (content-writing, content-social) |
-| `research` | Discover trending topics, active discussions, content gaps on a platform (content-social) |
-| `generate` | Produce a set of structured concepts/ideas (business-ideas, product-service-ideas) |
-| `stress` | Stress-test/kill one idea (business-ideas) |
-| `pivot` | Generate pivot directions from an existing business (business-ideas) |
-| `extend` | Extension concepts for an existing product (product-service-ideas) |
-| `scope` | Produce a ruthlessly minimal MVP definition (product-service-ideas) |
+| `write` | Author content (biz-writing, biz-social) |
+| `repurpose` | Spin one asset into multiple formats (biz-writing, biz-social) |
+| `research` | Discover trending topics, active discussions, content gaps on a platform (biz-social) |
+| `generate` | Produce a set of structured concepts/ideas (biz-ideas, biz-products) |
+| `stress` | Stress-test/kill one idea (biz-ideas) |
+| `pivot` | Generate pivot directions from an existing business (biz-ideas) |
+| `extend` | Extension concepts for an existing product (biz-products) |
+| `scope` | Produce a ruthlessly minimal MVP definition (biz-products) |
 | `find` | Discover communities/subreddits/accounts/groups on a platform (biz-community) |
+| `reconcile` | Transcribe certification-asserted decisions into canonical files; no gate moves, no re-certification (biz-strategy) |
+| `icp` | Run LinkedIn ICP analysis, saved to `.work.biz/strategy/linkedin-icp.md` (biz-social) |
+| `context` | Read-only full session context load, uncommitted-aware (biz-session) |
+| `update` | Deploy update mode with rules-aware merge (biz-deploy-basic, biz-deploy-files) |

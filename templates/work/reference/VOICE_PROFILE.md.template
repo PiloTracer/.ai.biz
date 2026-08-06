@@ -5,7 +5,7 @@
 **Status:** <draft | locked YYYY-MM-DD>
 **Last revised:** <YYYY-MM-DD> - <note>
 
-**Binding.** Every content skill reads this file before drafting: `@content-writing`, `@content-social`, `@biz-content`, `@biz-youtube`. It applies to every platform, not just the one you publish on most.
+**Binding.** Every content skill reads this file before drafting: `@biz-writing`, `@biz-social`, `@biz-content`, `@biz-youtube`. It applies to every platform, not just the one you publish on most.
 
 ---
 
@@ -16,7 +16,7 @@
 | **Floor** | `standards/*CONTENT-STANDARD*` § Anti-AI-artifact rules | **No.** Zero em-dashes and en-dashes, no vocabulary red flags, no AI endings. These hold no matter what |
 | **Defaults** | Content Standard § Human voice rules (vary sentence length, contractions, plain verbs) | **Yes**, when this file states the override explicitly and says why |
 | **Voice** | This file | Authoritative for tone, rhythm, structure, vocabulary, and point of view |
-| **Platform** | `skills/content-social/platforms/<platform>.md` | Platform rules govern format and length. This file governs how the words sound inside that format |
+| **Platform** | `skills/biz-social/platforms/<platform>.md` | Platform rules govern format and length. This file governs how the words sound inside that format |
 
 When this file and a platform guide disagree on format, the platform guide wins. When they disagree on voice, this file wins. Record any deliberate override in § Deliberate deviations so no future session "corrects" it back.
 

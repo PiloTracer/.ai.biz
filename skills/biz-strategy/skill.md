@@ -85,6 +85,7 @@ All strategy files live under `{WORK_BUSINESS_ROOT}` (`.work.biz/`):
 | `strategy/offer-scope.md` | Detailed offer definition, what it IS and IS NOT |
 | `strategy/target-buyer-profile.md` | Detailed buyer persona |
 | `strategy/channel-plan.md` | Primary channel + supporting channels |
+| `strategy/pricing.md` | Distilled price range from the Price element |
 | `strategy/certification.md` | Gate certification record (certify mode writes here) |
 | `strategy/changelog.md` | Append-only record of strategy changes (amend mode writes here; reconcile mode appends entries marked **(correction)**) |
 
@@ -385,7 +386,7 @@ Each check must pass. First failure stops the check.
 
 | # | Check | What it verifies | Fail if |
 |---|-------|------------------|---------|
-| 1 | **Files exist** | All 5 strategy files present | Any file missing |
+| 1 | **Files exist** | All 6 strategy files present | Any file missing |
 | 2 | **Ledger complete** | All elements have at least one assumption recorded | An element has zero entries |
 | 3 | **Unknown tolerance** | Unknown assumptions ≤ 30% of total | More than 30% unknown (run probe first) |
 | 4 | **Internal consistency** | Each element constrains and is constrained by the others | Person can't afford price. Channel doesn't reach person. Problem doesn't match offer. Geography blocks channel. |
@@ -537,11 +538,11 @@ Strategy status — {WORK_BUSINESS_ROOT}/strategy/
 
 | Gate | Unlocked by | Enables |
 |------|-------------|---------|
-| **strategy-ready** | `@biz-strategy certify` (pass) | `@biz-brand audit`, `@biz-pricing set`, `@content-social strategy` / `plan` |
+| **strategy-ready** | `@biz-strategy certify` (pass) | `@biz-brand audit`, `@biz-pricing set`, `@biz-social strategy` / `plan` |
 | **brand-ready** | `@biz-brand overhaul` | `@biz-content` (all modes but `status`), `@biz-community engage` |
 | — | (strategy-ready must pass before any downstream gate can) | Gated skills read `.work.biz/gates.md` in their I0; they do not infer state from files |
 
-`@biz-content publish` requires **brand-ready**, not strategy-ready: publishing drives traffic to a profile and website, so those surfaces must already match the offer or the content converts into a dead end.
+`@biz-content publish` requires **brand-ready**, which itself rests on strategy-ready: publishing drives traffic to a profile and website, so those surfaces must already match the offer or the content converts into a dead end.
 
 See `SKILL_DEPENDENCIES.md` for the full gate graph.
 

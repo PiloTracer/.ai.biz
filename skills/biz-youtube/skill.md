@@ -24,7 +24,7 @@ For B2B founders and experts, it is a high-trust channel:
 
 > **Platform scope:** This skill covers YouTube publishing operations (tracker,
 > calendar, production-capacity gating, retention/CTR diagnosis, and 30-day
-> challenges). For script drafting, invoke `@content-social write youtube`. For
+> challenges). For script drafting, invoke `@biz-social write youtube`. For
 > platform/channel strategy, use `@biz-strategy`. For brand-voice checks, use
 > `@biz-brand`.
 
@@ -95,7 +95,7 @@ split a long-form idea into a mini-series rather than one 20-minute video.
 
 ### 3. Script the video
 
-Invoke `@content-social write youtube - <title/angle>`.
+Invoke `@biz-social write youtube - <title/angle>`.
 
 For long-form, request:
 - **Hook** (first 30 seconds): problem + promise + credibility
@@ -334,7 +334,7 @@ amend` is how the plan changes on the record.
 ## Gate rules
 
 - **No hard gate for write/research.** You can draft a YouTube script or topic
-  list anytime with `@content-social write youtube`.
+  list anytime with `@biz-social write youtube`.
 - **`plan` and `challenge` benefit from strategy-ready and brand-ready state.**
   Best results come from having `.work.biz/strategy/target-buyer-profile.md`,
   a channel plan, and a `@biz-brand audit`. If those are missing, still
@@ -350,7 +350,7 @@ amend` is how the plan changes on the record.
 
 | Step | Time | Notes |
 |------|------|-------|
-| Topic + script | 60–90 min | Use `@content-social write youtube` |
+| Topic + script | 60–90 min | Use `@biz-social write youtube` |
 | Record | 60–120 min | Includes retakes; teleprompter reduces this |
 | Edit | 120–240 min | Captions, B-roll, graphics, sound |
 | Thumbnail | 30–45 min | Design 2–3 concepts, pick strongest |

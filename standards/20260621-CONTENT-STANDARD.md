@@ -1,6 +1,6 @@
 # Content Standard
 
-Binding rules for all content produced by `content-writing`, `content-social`, `biz-content`, and `biz-youtube`.
+Binding rules for all content produced by `biz-writing`, `biz-social`, `biz-content`, and `biz-youtube`.
 
 ## Universal content rules
 

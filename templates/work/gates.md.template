@@ -41,32 +41,32 @@ One `## <gate-id>` section per gate, each with the five fields below.
 **Certified:** —
 **By:** @biz-strategy certify
 **Evidence:** `.work.biz/strategy/certification.md`
-**Next gate:** strategy-ready — run `@biz-strategy greenfield` then `@biz-strategy certify`
+**Next gate:** brand-ready — run `@biz-brand audit` then `@biz-brand overhaul`
 
 ## brand-ready
 **Status:** NOT MET
 **Certified:** —
 **By:** @biz-brand overhaul
 **Evidence:** `.work.biz/reference/BRAND_STATUS.md`
-**Next gate:** brand-ready — run `@biz-brand audit` then `@biz-brand overhaul`
+**Next gate:** pipeline-ready — run `@biz-pricing set`, fill the pipeline tracker and outreach cadence, then `@biz-review status`
 
 ## pipeline-ready
 **Status:** NOT MET
 **Certified:** —
 **By:** @biz-review status
 **Evidence:** `.work.biz/strategy/pricing.md`, `.work.biz/pipeline/pipeline_tracker.md`, `.work.biz/pipeline/outreach-cadence.md`
-**Next gate:** pipeline-ready — run `@biz-pricing set`, fill the pipeline tracker and outreach cadence, then `@biz-review status`
+**Next gate:** sales-ready — run `@biz-discovery prepare` then `@biz-discovery run`
 
 ## sales-ready
 **Status:** NOT MET
 **Certified:** —
 **By:** @biz-discovery run
 **Evidence:** `.work.biz/pipeline/pipeline_tracker.md` with at least one completed discovery call logged
-**Next gate:** sales-ready — run `@biz-discovery prepare` then `@biz-discovery run`
+**Next gate:** active-deal — run `@biz-discovery run` until a deal reaches Conversation stage or later
 
 ## active-deal
 **Status:** NOT MET
 **Certified:** —
-**By:** @biz-discovery run or @biz-proposal write
+**By:** @biz-discovery run
 **Evidence:** `.work.biz/pipeline/pipeline_tracker.md` with at least one deal at Conversation stage or later
-**Next gate:** active-deal — log a qualified deal in the pipeline tracker
+**Next gate:** none — active-deal is the final readiness state

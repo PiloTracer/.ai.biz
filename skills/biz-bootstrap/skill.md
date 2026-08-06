@@ -62,7 +62,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/reference/VOICE_PROFILE.md` | `templates/work/reference/VOICE_PROFILE.md.template` — how this owner sounds; binding for every content skill on every platform. Ships as a skeleton the owner must fill |
    | `.work.biz/reference/VOICE_RETRO.md` | `templates/work/reference/VOICE_RETRO.md.template` — draft vs owner edits; measures whether the voice profile is working |
 
-   **Sync rule:** this table, `templates/bootstrap.sh`, `templates/README.md`, `scripts/deploy-basic.sh` `WORK_FILES`, and `skills/deploy-basic/skill.md` must list the same set. `WORK_FILES` is the one that fails quietly: `deploy-basic --update` only offers files listed there, so an artifact missing from it is never updated on existing installs and nothing reports the omission.
+   **Sync rule:** this table, `templates/bootstrap.sh`, `templates/README.md`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, and `skills/biz-deploy-basic/skill.md` must list the same set. `WORK_FILES` is the one that fails quietly: `biz-deploy-basic --update` only offers files listed there, so an artifact missing from it is never updated on existing installs and nothing reports the omission.
 
    Not scaffolded here, created on first use: `templates/work/pipeline/platform-tracker.md.template` → `.work.biz/pipeline/<platform>-tracker.md`.
 
@@ -76,7 +76,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
 | 2 | Review `.work.biz/context/HANDOFF.md` — set date and initial status | User |
 | 3 | Review `.work.biz/plans/NEXT.md` — confirm current phase | User |
 | 4 | Run `@biz-strategy greenfield` to define niche and offer | Agent |
-| 5 | Run `@session-biz start` to open first session | Agent |
+| 5 | Run `@biz-session start` to open first session | Agent |
 
 ---
 
@@ -121,7 +121,7 @@ Output a summary table. If the project is fully bootstrapped, recommend next ski
 
 ```text
 @biz-strategy greenfield        # define niche, offer, target buyer
-@session-biz start          # open first session
+@biz-session start          # open first session
 @biz-brand audit                # assess current brand presence
 ```
 

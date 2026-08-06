@@ -1,6 +1,6 @@
 # Brand Guide
 
-Binding rules for brand presence across all channels. All `biz-brand`, `biz-content`, `content-social`, `content-writing`, and `biz-youtube` output must comply.
+Binding rules for brand presence across all channels. All `biz-brand`, `biz-content`, `biz-social`, `biz-writing`, and `biz-youtube` output must comply.
 
 ## Core brand rule: one unified offer
 

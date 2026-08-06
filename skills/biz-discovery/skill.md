@@ -259,7 +259,7 @@ If discovery calls feel good in the moment but never convert to a proposal stage
 
 ## Related Files
 
-- `.work.biz/reference/PROJECTS.md` — case studies for credibility (create if missing)
+- `.work.biz/reference/PROJECTS.md` — case studies for credibility (created on first use if missing)
 - `.work.biz/pipeline/pipeline_tracker.md` — update pipeline stage
 - `.work.biz/gates.md` — read in I0; `sales-ready` and `active-deal` promoted after the call
 - `.work.biz/strategy/pricing.md` — price range to reference when they push for a number

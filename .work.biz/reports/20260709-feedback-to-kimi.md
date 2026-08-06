@@ -1,7 +1,7 @@
 # Feedback on Uncommitted Changes — `.ai.biz` Agent OS
 
 **Date:** 2026-07-09  
-**Reviewer:** Session agent (autonomous review per `@session-biz context`)  
+**Reviewer:** Session agent (autonomous review per `@biz-session context`)  
 **Scope:** All uncommitted changes on `main` — do not merge as-is without addressing items below  
 **Goal assessed:** Reliable, consistent, professional business/marketing advisor skills (including content generation)
 
@@ -34,7 +34,7 @@
 
 **Pick up here (from NEXT.md):** Regenerate `.tmp/*.skill` archives; populate `.work.biz/strategy/*` for host project.
 
-**No HANDOFF/NEXT/UNKNOWNS writes** — this review is read-only per `@session-biz context`.
+**No HANDOFF/NEXT/UNKNOWNS writes** — this review is read-only per `@biz-session context`.
 
 ---
 
@@ -54,7 +54,7 @@ However, the change set is **not integration-complete**. It would fail the repo'
 
 2. **`biz-review status` mode** — Adding a read-only readiness reporter closes a real gap. Pipeline-ready now has an explicit verification surface instead of implying `@biz-review status` without defining it.
 
-3. **`biz-youtube` skill shape** — Follows the proven `biz-content` ops pattern (publish / plan / challenge / status), delegates scripting to `@content-social write youtube`, and includes production-capacity gating. Good separation of concerns.
+3. **`biz-youtube` skill shape** — Follows the proven `biz-content` ops pattern (publish / plan / challenge / status), delegates scripting to `@biz-social write youtube`, and includes production-capacity gating. Good separation of concerns.
 
 4. **Change-safety hardening** — `touch-scope-verify.sh` now actually checks scope; `--warn-only` flags on scripts; pre-commit defaults to enforcing. Appropriate for a framework repo.
 
@@ -62,7 +62,7 @@ However, the change set is **not integration-complete**. It would fail the repo'
 
 6. **Platform standard YouTube section** — `20260701-PLATFORM-ALGORITHM-STANDARD.md` YouTube block is actionable and aligns with the ops skills.
 
-7. **`content-social icp` mode** — Wiring BIZ-08 (`concepts/linkedin-icp/prompt.md`) into a first-class invocation with a defined output path is valuable for LinkedIn-heavy users.
+7. **`biz-social icp` mode** — Wiring BIZ-08 (`concepts/linkedin-icp/prompt.md`) into a first-class invocation with a defined output path is valuable for LinkedIn-heavy users.
 
 ---
 
@@ -80,7 +80,7 @@ However, the change set is **not integration-complete**. It would fail the repo'
 | `skills/biz-director/skill.md` intent map | Missing |
 | `CHANGELOG.md` | Not updated for this work |
 
-`PROCESS_ROUTER.md` and `skills/README.md` reference `@biz-youtube`, but the universal entry points (`@biz-director`, `@session-biz` → START_HERE) do not. Free-text requests like *"help me start a YouTube channel"* will miss routing.
+`PROCESS_ROUTER.md` and `skills/README.md` reference `@biz-youtube`, but the universal entry points (`@biz-director`, `@biz-session` → START_HERE) do not. Free-text requests like *"help me start a YouTube channel"* will miss routing.
 
 **Severity:** High — breaks the "don't know which skill" promise.
 
@@ -93,7 +93,7 @@ However, the change set is **not integration-complete**. It would fail the repo'
 | `README.md` line 32 | "22 skills in total" |
 | `.work.biz/context/HANDOFF.md` | "22 skills registered" |
 | `framework-verify.sh` (current tree) | **23** |
-| `.cursorrules` | No `biz-youtube`; still lists old `content-social` description (no YouTube) |
+| `.cursorrules` | No `biz-youtube`; still lists old `biz-social` description (no YouTube) |
 
 Adopter projects copy `.cursorrules` from template — if template lags, thin-client deployments inherit stale skill registries.
 
@@ -125,35 +125,35 @@ These files are **never produced** by `biz-strategy greenfield`. Agents followin
 
 ---
 
-### 4. Gate rule contradictions on `content-social`
+### 4. Gate rule contradictions on `biz-social`
 
 Three documents disagree:
 
 | Document | Says |
 |----------|------|
-| `SKILL_DEPENDENCIES.md` | `content-social strategy` and `plan` **require strategy-ready** |
-| `content-social/skill.md` § Gates | Entire skill has **no hard prerequisite gate** |
+| `SKILL_DEPENDENCIES.md` | `biz-social strategy` and `plan` **require strategy-ready** |
+| `biz-social/skill.md` § Gates | Entire skill has **no hard prerequisite gate** |
 | `biz-director` gate-exempt table | Only `write` · `research` · `repurpose` · `status` exempt |
 
-Additionally, `icp` mode is not listed in `SKILL_DEPENDENCIES.md` or `biz-director` gate-exempt table. Unclear whether `@content-social icp` should run pre-bootstrap.
+Additionally, `icp` mode is not listed in `SKILL_DEPENDENCIES.md` or `biz-director` gate-exempt table. Unclear whether `@biz-social icp` should run pre-bootstrap.
 
 **Severity:** High — `@biz-director` will either over-block or under-block.
 
 ---
 
-### 5. YouTube content route ambiguity (`content-writing` vs `content-social`)
+### 5. YouTube content route ambiguity (`biz-writing` vs `biz-social`)
 
 Both skills now own YouTube scripting:
 
-- `content-writing/skill.md` — frontmatter + § YouTube script / video outline
-- `content-social/skill.md` — `@content-social write youtube` / `write youtube shorts`
-- `biz-youtube` — invokes `@content-social write youtube`
+- `biz-writing/skill.md` — frontmatter + § YouTube script / video outline
+- `biz-social/skill.md` — `@biz-social write youtube` / `write youtube shorts`
+- `biz-youtube` — invokes `@biz-social write youtube`
 
-`biz-director` three-tier disambiguation (§ I1) does **not** mention YouTube or `biz-youtube`. `content-writing` still advertises YouTube in its description.
+`biz-director` three-tier disambiguation (§ I1) does **not** mention YouTube or `biz-youtube`. `biz-writing` still advertises YouTube in its description.
 
 **Severity:** Medium-High — duplicate paths → inconsistent script format and packaging.
 
-**Fix direction:** Pick one owner for YouTube *scripts* (`content-social` is the better fit given platform packaging rules). Demote `content-writing` YouTube section to "delegate to `@content-social write youtube`" or blog-to-video outline only.
+**Fix direction:** Pick one owner for YouTube *scripts* (`biz-social` is the better fit given platform packaging rules). Demote `biz-writing` YouTube section to "delegate to `@biz-social write youtube`" or blog-to-video outline only.
 
 ---
 
@@ -177,7 +177,7 @@ An agent following `biz-youtube status` may tell a user 4% CTR is "average" whil
 |--------|----------------------------------------|
 | `biz-strategy` channel fit table | 1–2 long-form/week **OR** 4–7 Shorts/week; 6-month commitment |
 | `biz-youtube` low capacity | 1 long-form/**month**; 1 Short/week |
-| `content-social` strategy output example | "1 long-form + 3–5 Shorts per week" |
+| `biz-social` strategy output example | "1 long-form + 3–5 Shorts per week" |
 
 Operators get conflicting answers on whether YouTube is viable at low capacity.
 
@@ -209,7 +209,7 @@ But `gate-verify.sh` only checks for `pipeline_tracker.md` existence when "pipel
 
 `biz-bootstrap` and `templates/work/` create `context/`, `plans/`, `pipeline/`, `research/` — **not** `strategy/`, `drafts/`.
 
-Yet every updated skill assumes `.work.biz/strategy/*`. First-run `@biz-strategy greenfield` creates files, but `@content-social` / `@biz-review status` before strategy will always report gaps with no placeholder path.
+Yet every updated skill assumes `.work.biz/strategy/*`. First-run `@biz-strategy greenfield` creates files, but `@biz-social` / `@biz-review status` before strategy will always report gaps with no placeholder path.
 
 **Severity:** Medium — friction on greenfield projects; conflicts with DIRECTORY_MAP.
 
@@ -230,7 +230,7 @@ Only one can be canonical. The nested path should be removed to avoid agent conf
 
 ---
 
-### 12. Platform count stale in `content-social`
+### 12. Platform count stale in `biz-social`
 
 Still says "all **6** platforms" in repurpose mode and time budget, but YouTube is now the 7th platform.
 
@@ -240,11 +240,11 @@ Still says "all **6** platforms" in repurpose mode and time budget, but YouTube 
 
 ## Smells (design / maintainability)
 
-### A. `content-social/skill.md` at ~1,297 lines
+### A. `biz-social/skill.md` at ~1,297 lines
 
 Largest skill by far. Every platform addition increases agent context load linearly.
 
-**Smell:** Monolith skill file. Consider extracting platform sections to `skills/content-social/platforms/{reddit,linkedin,youtube,...}.md` loaded on demand — same pattern as concepts/ for BIZ-08.
+**Smell:** Monolith skill file. Consider extracting platform sections to `skills/biz-social/platforms/{reddit,linkedin,youtube,...}.md` loaded on demand — same pattern as concepts/ for BIZ-08.
 
 ### B. Near-duplicate topic buckets across `biz-content` and `biz-youtube`
 
@@ -274,9 +274,9 @@ Calendar goes to `plans/youtube-calendar.md`; challenge says `pipeline/youtube-t
 
 **Smell:** Agents will scatter tracking files. Pick one location (recommend `pipeline/` alongside `pipeline_tracker.md`, calendars in `plans/`).
 
-### E. Technology tilt underspecified in `content-social`
+### E. Technology tilt underspecified in `biz-social`
 
-Quality checklist mentions "technology tilt (for tech-positioned projects)" but unlike `content-writing`, there is no explicit gate or fallback behavior for non-tech host projects — relevant to UNKNOWNS #2.
+Quality checklist mentions "technology tilt (for tech-positioned projects)" but unlike `biz-writing`, there is no explicit gate or fallback behavior for non-tech host projects — relevant to UNKNOWNS #2.
 
 ### F. Pre-commit enforcement vs blast-radius on this very diff
 
@@ -296,7 +296,7 @@ Pre-commit now **enforces** by default (`WARN_ONLY=0`). This 26-file / 8-area ch
 
 | Issue | Impact | Recommendation |
 |-------|--------|----------------|
-| 1,297-line `content-social` loaded for any `@content-social write reddit` | High token burn | Split platform bodies; load only target platform section |
+| 1,297-line `biz-social` loaded for any `@biz-social write reddit` | High token burn | Split platform bodies; load only target platform section |
 | Jump-to-section TOC + repeated universal rules | Medium | Keep parse table + I0 contract in `skill.md`; move R1–R6 to subfiles |
 | Standards duplicated into skills (YouTube CTR, LinkedIn links) | Drift risk | Skills should **reference** standards by section, not restate benchmarks |
 
@@ -305,7 +305,7 @@ Pre-commit now **enforces** by default (`WARN_ONLY=0`). This 26-file / 8-area ch
 | Issue | Impact | Recommendation |
 |-------|--------|----------------|
 | `biz-director` missing YouTube intents | Misroutes ~10–20% of video requests | Add intent cluster before commit |
-| Two YouTube script paths | Wasted turns / rework | Single owner: `content-social` |
+| Two YouTube script paths | Wasted turns / rework | Single owner: `biz-social` |
 | `PROCESS_ROUTER` updated but not START_HERE | Operators use wrong entry doc | Sync both in same commit |
 
 ### Verification efficiency
@@ -322,7 +322,7 @@ Pre-commit now **enforces** by default (`WARN_ONLY=0`). This 26-file / 8-area ch
 |----------|------|
 | Production capacity check in `biz-youtube` | Prevents unrealistic cadence — good advisor behavior |
 | `@biz-review status` | Enables `@biz-director` gate checks without weekly review overhead |
-| ICP as `@content-social icp` | Reduces LinkedIn spray-and-pray — high leverage for B2B |
+| ICP as `@biz-social icp` | Reduces LinkedIn spray-and-pray — high leverage for B2B |
 
 | Weakness | Fix |
 |----------|-----|
@@ -344,13 +344,13 @@ Pre-commit now **enforces** by default (`WARN_ONLY=0`). This 26-file / 8-area ch
 **Inferred (likely, not proven by running adopters):**
 
 - Users invoking YouTube via `@biz-director` will get wrong routing until director is updated
-- Agents loading both `content-writing` and `content-social` for YouTube will produce inconsistent deliverables
+- Agents loading both `biz-writing` and `biz-social` for YouTube will produce inconsistent deliverables
 - Enforcing pre-commit will frustrate contributors who don't declare touch-scope first
 
 **Unknowns (need testing):**
 
-- Whether 1,297-line `content-social` causes quality degradation in models with smaller context windows
-- Whether pattern-based `@content-social research youtube` is sufficient vs live fetch (UNKNOWNS #4 — still open)
+- Whether 1,297-line `biz-social` causes quality degradation in models with smaller context windows
+- Whether pattern-based `@biz-social research youtube` is sufficient vs live fetch (UNKNOWNS #4 — still open)
 - Whether non-tech host projects hit false "technology tilt" failures (UNKNOWNS #2)
 
 ---
@@ -361,7 +361,7 @@ Do **not** land as one commit. Suggested order:
 
 1. **Infrastructure:** scripts + hooks + gate fixes (`desc_col`, pipeline-ready checks)
 2. **Path migration:** CONVENTIONS, standards DIRECTORY_MAP, strategy path references (fix filename mapping)
-3. **YouTube channel layer:** `content-social` YouTube sections + platform standard + `biz-community` YouTube discovery
+3. **YouTube channel layer:** `biz-social` YouTube sections + platform standard + `biz-community` YouTube discovery
 4. **Ops skill:** `biz-youtube` + registry sync (`.cursorrules`, template, START_HERE, biz-director, README, CHANGELOG, SKILL_DEPENDENCIES)
 5. **Host project:** `.work.biz/strategy/*` population (separate from framework)
 
@@ -374,8 +374,8 @@ Each commit: declare `.work.biz/touch-scope`, run `framework-verify.sh`, expect 
 1. **Agents certify pipeline-ready without outreach cadence** — user proceeds to discovery under-prepared.
 2. **Brand overhaul reads wrong strategy files** — LinkedIn/website copy not aligned to certified strategy.
 3. **YouTube users get inconsistent CTR advice** — credibility hit for "trusted advisor" positioning.
-4. **Skill registry lies (22 vs 23)** — deploy-basic copies stale `.cursorrules` to new projects.
-5. **Monolithic content-social grows unbounded** — each platform add slows every social content invocation.
+4. **Skill registry lies (22 vs 23)** — biz-deploy-basic copies stale `.cursorrules` to new projects.
+5. **Monolithic biz-social grows unbounded** — each platform add slows every social content invocation.
 
 ---
 

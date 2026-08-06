@@ -23,10 +23,10 @@
 | Test if your niche/offer works | `@biz-market-validate test` |
 | Fix your LinkedIn profile and brand | `@biz-brand overhaul` |
 | Publish LinkedIn content | `@biz-content publish` |
-| Create a YouTube video | `@content-social write youtube` · `@biz-youtube publish` |
+| Create a YouTube video | `@biz-social write youtube` · `@biz-youtube publish` |
 | Plan YouTube content strategy / calendar | `@biz-youtube plan` |
 | Audit / rebrand a YouTube channel | `@biz-brand audit` (YouTube section) |
-| Plan YouTube Shorts strategy | `@content-social write youtube shorts` |
+| Plan YouTube Shorts strategy | `@biz-social write youtube shorts` |
 | Price an engagement | `@biz-pricing set` |
 | Run a discovery call | `@biz-discovery run` |
 | Write a proposal | `@biz-proposal write` |
@@ -35,24 +35,24 @@
 | Engage in communities | `@biz-community engage` |
 | Diagnose pipeline bottlenecks | `@biz-pipeline-diagnosis run` |
 | Review weekly progress | `@biz-review weekly` |
-| Close your session | `@session-biz close` |
-| Open a session | `@session-biz start` |
+| Close your session | `@biz-session close` |
+| Open a session | `@biz-session start` |
 | Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
-| Deploy `.ai.biz/` to another project | `@deploy-files copy - <path>` |
-| Write a post / article / case study / landing page / email / thread | `@content-writing write - <topic>` |
-| Build a content calendar / topic plan | `@content-writing plan - <horizon>` |
-| Repurpose one piece into multiple formats | `@content-writing repurpose - <source>` |
-| Critique an existing draft | `@content-writing audit - <draft or path>` |
-| Generate business / venture / pivot ideas | `@business-ideas generate - <domain>` |
-| Stress-test one business idea | `@business-ideas stress - <idea>` |
-| Pivot directions from current business | `@business-ideas pivot - <situation>` |
-| Generate product / service / SaaS / add-on concepts | `@product-service-ideas generate - <space>` |
-| Extension concepts for an existing product | `@product-service-ideas extend - <product>` |
-| Scope a minimal MVP for one concept | `@product-service-ideas scope - <concept>` |
-| Evaluate one product concept (Go/Refine/Kill) | `@product-service-ideas audit - <concept>` |
+| Deploy `.ai.biz/` to another project | `@biz-deploy-files copy - <path>` |
+| Write a post / article / case study / landing page / email / thread | `@biz-writing write - <topic>` |
+| Build a content calendar / topic plan | `@biz-writing plan - <horizon>` |
+| Repurpose one piece into multiple formats | `@biz-writing repurpose - <source>` |
+| Critique an existing draft | `@biz-writing audit - <draft or path>` |
+| Generate business / venture / pivot ideas | `@biz-ideas generate - <domain>` |
+| Stress-test one business idea | `@biz-ideas stress - <idea>` |
+| Pivot directions from current business | `@biz-ideas pivot - <situation>` |
+| Generate product / service / SaaS / add-on concepts | `@biz-products generate - <space>` |
+| Extension concepts for an existing product | `@biz-products extend - <product>` |
+| Scope a minimal MVP for one concept | `@biz-products scope - <concept>` |
+| Evaluate one product concept (Go/Refine/Kill) | `@biz-products audit - <concept>` |
 
 ## Readiness states
 
-`strategy-ready → brand-ready → pipeline-ready → sales-ready`
+`strategy-ready → brand-ready → pipeline-ready → sales-ready → active-deal`
 
 Only `@biz-strategy certify` can mark **strategy-ready**. Only `@biz-review status` can mark **pipeline-ready**.

@@ -25,12 +25,12 @@ biz-content publish  ← requires brand-ready (brand assets exist)
 biz-youtube publish/plan/challenge ← no hard gate; benefits from brand-ready + strategy-ready
 biz-community find/status ← no hard gate
 biz-community engage ← requires brand-ready
-content-social write ← no hard gate (improves with strategy-ready; best after @biz-community find)
-content-social research ← no hard gate (improves with strategy-ready)
-content-social repurpose ← no hard gate
-content-social icp ← no hard gate (improves with strategy-ready; produces linkedin-icp.md)
-content-social strategy ← requires strategy-ready
-content-social plan ← requires strategy-ready
+biz-social write ← no hard gate (improves with strategy-ready; best after @biz-community find)
+biz-social research ← no hard gate (improves with strategy-ready)
+biz-social repurpose ← no hard gate
+biz-social icp ← no hard gate (improves with strategy-ready; produces linkedin-icp.md)
+biz-social strategy ← requires strategy-ready
+biz-social plan ← requires strategy-ready
         │
         ▼
 biz-discovery run  ← requires pipeline-ready; promotes sales-ready + active-deal
@@ -44,19 +44,19 @@ biz-referrals ask  ← no strict gate (can start anytime)
         ├── biz-pipeline-diagnosis run ← requires pipeline tracker with data
         │
          │  ── Generative skills (no hard gate; run any time) ──
-         ├── content-writing write/plan/repurpose/audit ← run any time (improves with strategy-ready + brand-ready)
-         ├── content-social write/research/repurpose/icp ← run any time (improves with strategy-ready; best after @biz-community find)
-         ├── business-ideas generate/stress/pivot ← run any time (improves with strategy-ready)
-         └── product-service-ideas generate/extend/scope/audit ← run any time (improves with strategy-ready)
+         ├── biz-writing write/plan/repurpose/audit ← run any time (improves with strategy-ready + brand-ready)
+         ├── biz-social write/research/repurpose/icp ← run any time (improves with strategy-ready; best after @biz-community find)
+         ├── biz-ideas generate/stress/pivot ← run any time (improves with strategy-ready)
+         └── biz-products generate/extend/scope/audit ← run any time (improves with strategy-ready)
 ```
 
 ### Generative skills (no gate)
 
-`content-writing`, `content-social`, `business-ideas`, and `product-service-ideas` are **project-aware generative skills**: they have **no prerequisite gate** for `write`, `research`, `repurpose`, and `audit` modes and can be invoked at any time, even before `biz-bootstrap init`. They load the host project's own context dynamically (`.cursorrules`, `.work.biz/strategy/*`, `README.md`, stack manifests) and fall back to a bundled example profile when none exists. They produce dramatically better output when the host project is bootstrapped and strategy-certified, because audience, offer, stack, and channel are then loaded from project memory rather than guessed.
+`biz-writing`, `biz-social`, `biz-ideas`, and `biz-products` are **project-aware generative skills**: they have **no prerequisite gate** for `write`, `research`, `repurpose`, and `audit` modes and can be invoked at any time, even before `biz-bootstrap init`. They load the host project's own context dynamically (`.cursorrules`, `.work.biz/strategy/*`, `README.md`, stack manifests) and fall back to a bundled example profile when none exists. They produce dramatically better output when the host project is bootstrapped and strategy-certified, because audience, offer, stack, and channel are then loaded from project memory rather than guessed.
 
 ## System skills (no gate)
 
-`deploy-basic`, `deploy-files`, `deploy-repo`, and `session-biz` are **infrastructure skills** with no prerequisite gate. They can be invoked at any time to manage Business OS deployment, update, and session lifecycle (`@session-biz start` / `@session-biz close` / `@session-biz context`). Deployment skills do not interact with the business gate graph. `session-biz` is aliased as `session-control` (`@session-control start`, `@session-control context`, etc.).
+`biz-deploy-basic`, `biz-deploy-files`, `biz-deploy-repo`, and `biz-session` are **infrastructure skills** with no prerequisite gate. They can be invoked at any time to manage Business OS deployment, update, and session lifecycle (`@biz-session start` / `@biz-session close` / `@biz-session context`). Deployment skills do not interact with the business gate graph. `biz-session` is aliased as `session-control` (`@session-control start`, `@session-control context`, etc.).
 
 ## biz-director (meta-skill)
 
@@ -77,7 +77,7 @@ biz-referrals ask  ← no strict gate (can start anytime)
 | 2 | `brand-ready` | `.work.biz/reference/BRAND_STATUS.md` overhaul log with a passing five-second test | `@biz-brand overhaul` |
 | 3 | `pipeline-ready` | `.work.biz/strategy/pricing.md` + `.work.biz/pipeline/pipeline_tracker.md` + `.work.biz/pipeline/outreach-cadence.md` | `@biz-review status` |
 | 4 | `sales-ready` | Pipeline tracker with a completed discovery call logged | `@biz-discovery run` |
-| 5 | `active-deal` | Pipeline tracker with a deal at Conversation stage or later | `@biz-discovery run` or `@biz-proposal write` |
+| 5 | `active-deal` | Pipeline tracker with a deal at Conversation stage or later | `@biz-discovery run` |
 
 **Two-layer enforcement.** Every gated skill self-verifies the ledger in its own I0 pre-check, and `biz-director` checks it before routing. Neither layer is the only one.
 
@@ -90,7 +90,7 @@ biz-referrals ask  ← no strict gate (can start anytime)
 | `biz-discovery` | `pipeline-ready` | `status` |
 | `biz-proposal` | `pipeline-ready` | `status` |
 | `biz-objections` | `active-deal` (`handle` only) | `roleplay`, `status` |
-| `content-social` | `strategy-ready` (`strategy`, `plan` only) | `write`, `research`, `repurpose`, `icp`, `status` |
+| `biz-social` | `strategy-ready` (`strategy`, `plan` only) | `write`, `research`, `repurpose`, `icp`, `status` |
 
 **Demotion.** A gate that no longer holds must be demoted, not left as a stale PASS. `@biz-strategy amend` demotes `strategy-ready` and cascades to `brand-ready`, `pipeline-ready`, and `sales-ready`. `@biz-review status` reconciles the whole ledger and demotes any gate whose evidence is missing. `scripts/gate-verify.sh` fails the build when a PASS lacks its evidence.
 

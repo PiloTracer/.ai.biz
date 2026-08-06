@@ -73,6 +73,16 @@ description: >-
 
 ---
 
+## I3 — Status
+
+Read-only. Report where validation stands:
+
+1. **Tests run:** each experiment, its test type (A/B/C), result, and go/no-go decision.
+2. **Decisions pending:** assumptions designed but not yet tested, and tests awaiting their decision deadline.
+3. **Records:** validation experiments and decisions live in `.work.biz/strategy/validation-log.md` (created on first use if missing).
+
+---
+
 ## Completion
 
 | # | Check | Result |

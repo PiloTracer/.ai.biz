@@ -39,15 +39,15 @@
 | 1 | `biz-youtube` missing from orchestration | **Fixed** | `.cursorrules`, `templates/cursorrules.template`, `START_HERE.md`, `biz-director` intent map + three-tier disambiguation |
 | 2 | Skill count 22 vs 23 | **Fixed** | `README.md`, `HANDOFF.md`, `CHANGELOG.md` say 23; `framework-verify` counts 23 |
 | 3 | Strategy filename mismatch | **Fixed** | `biz-brand` → `one-pager.md`, `offer-scope.md`, `channel-plan.md`; `biz-objections` → `one-pager.md`, `offer-scope.md` |
-| 4 | `content-social` gate contradictions | **Fixed** | Skill § Gates: no hard gate for write/research/repurpose/icp/status; strategy/plan require strategy-ready; `biz-director` gate-exempt table aligned |
-| 5 | YouTube route duplication | **Fixed** | `content-writing` → "YouTube source outline" only; delegates script/packaging to `@content-social write youtube` |
+| 4 | `biz-social` gate contradictions | **Fixed** | Skill § Gates: no hard gate for write/research/repurpose/icp/status; strategy/plan require strategy-ready; `biz-director` gate-exempt table aligned |
+| 5 | YouTube route duplication | **Fixed** | `biz-writing` → "YouTube source outline" only; delegates script/packaging to `@biz-social write youtube` |
 | 6 | CTR benchmark contradictions | **Mostly fixed** | `biz-youtube` now uses <3% / 3–6% / 6–12% / >12%; standard adds "directional, not guarantees" note |
 | 7 | YouTube capacity contradictions | **Mostly fixed** | `biz-strategy` distinguishes primary vs secondary; points low capacity to `@biz-youtube plan` |
 | 8 | `gate-verify` Notes column bug | **Fixed** | Active tasks use `desc_col=4`; Recently completed uses `desc_col=2` |
 | 9 | `pipeline-ready` not enforceable | **Partially fixed** | `gate-verify` checks `outreach-cadence.md`; `biz-review status` documents it; template + `bootstrap.sh` added |
 | 10 | Bootstrap missing `strategy/` | **Partially fixed** | `bootstrap.sh` scaffolds `strategy/README.md` + dirs; **`biz-bootstrap/skill.md` still stale** |
 | 11 | DIRECTORY_MAP contradiction | **Fixed** | Single canonical `strategy/` under `.work.biz/` |
-| 12 | Platform count "6" stale | **Fixed** | `content-social` now says 7 platforms throughout |
+| 12 | Platform count "6" stale | **Fixed** | `biz-social` now says 7 platforms throughout |
 
 **Summary:** 9 of 12 round-1 blockers fully resolved; 2 partially fixed; 0 fully open from original list.
 
@@ -55,7 +55,7 @@
 
 ## What improved (net new quality)
 
-1. **Registry coherence** — `.cursorrules` ↔ `templates/cursorrules.template` are identical (diff clean). Adopter thin-client deploys will get `biz-youtube` and updated `content-social` description.
+1. **Registry coherence** — `.cursorrules` ↔ `templates/cursorrules.template` are identical (diff clean). Adopter thin-client deploys will get `biz-youtube` and updated `biz-social` description.
 
 2. **`biz-director` content architecture** — Four-tier disambiguation (craft → platform → ops) now includes YouTube with explicit flows. This is the highest-leverage fix for user free-text requests.
 
@@ -96,7 +96,7 @@ This will **fail** unless you split commits or declare `.work.biz/touch-scope` c
 1. Scripts + hooks (`scripts/`, `hooks/`)
 2. Bootstrap templates (`templates/bootstrap.sh`, `templates/work/*`, `skills/biz-bootstrap/skill.md`)
 3. Strategy path migration (`CONVENTIONS.md`, standards DIRECTORY_MAP, skill path refs)
-4. YouTube + content layer (`skills/biz-youtube/`, `content-social`, `content-writing`, `biz-brand`, `biz-community`, `biz-strategy`, platform standard)
+4. YouTube + content layer (`skills/biz-youtube/`, `biz-social`, `biz-writing`, `biz-brand`, `biz-community`, `biz-strategy`, platform standard)
 5. Registry + docs (`.cursorrules`, `README`, `START_HERE`, `PROCESS_ROUTER`, `CHANGELOG`, `biz-director`, `SKILL_DEPENDENCIES`)
 
 ---
@@ -131,28 +131,28 @@ Line 4 status says verified, committed, and pushed — but **32 modified files**
 
 ---
 
-### R2-6. `content-social` has no bundled fallback profile
+### R2-6. `biz-social` has no bundled fallback profile
 
 Other generative skills ship `references/project-context.example.md` and explicit fallback language:
 
-- `content-writing` ✓
-- `business-ideas` ✓
-- `product-service-ideas` ✓
-- `content-social` ✗ — no `references/` folder, no "No project context found" contract in I0
+- `biz-writing` ✓
+- `biz-ideas` ✓
+- `biz-products` ✓
+- `biz-social` ✗ — no `references/` folder, no "No project context found" contract in I0
 
-`SKILL_DEPENDENCIES.md` and `biz-director` still claim content-social "falls back to a bundled example profile when none exists" — **this is false for content-social**.
+`SKILL_DEPENDENCIES.md` and `biz-director` still claim biz-social "falls back to a bundled example profile when none exists" — **this is false for biz-social**.
 
 **Severity:** Medium-High — pre-bootstrap invocations will guess silently instead of labeling uncertainty.
 
-**Fix direction:** Add `skills/content-social/references/project-context.example.md` (can symlink pattern from content-writing) + one paragraph in I0 matching content-writing's contract.
+**Fix direction:** Add `skills/biz-social/references/project-context.example.md` (can symlink pattern from biz-writing) + one paragraph in I0 matching biz-writing's contract.
 
 ---
 
-### R2-7. `content-social` composing table omits `biz-youtube`
+### R2-7. `biz-social` composing table omits `biz-youtube`
 
-`biz-director` documents the YouTube ops flow, but `content-social` § Composing with other skills lists `@biz-content` but not `@biz-youtube`.
+`biz-director` documents the YouTube ops flow, but `biz-social` § Composing with other skills lists `@biz-content` but not `@biz-youtube`.
 
-**Severity:** Low-Medium — agents in content-social won't suggest the ops next step after script delivery.
+**Severity:** Low-Medium — agents in biz-social won't suggest the ops next step after script delivery.
 
 ---
 
@@ -188,7 +188,7 @@ No standard artifact path for pricing (e.g. `.work.biz/strategy/pricing.md` or p
 
 ### R2-10. `NEXT.md` archive task outdated
 
-Active task #1: regenerate `.tmp/*.skill` archives — Notes say "Include `content-social`" only. Should include **`biz-youtube`** and note skill count 23.
+Active task #1: regenerate `.tmp/*.skill` archives — Notes say "Include `biz-social`" only. Should include **`biz-youtube`** and note skill count 23.
 
 **Severity:** Low — housekeeping.
 
@@ -212,10 +212,10 @@ Shows only `pipeline_tracker.md`. Should add:
 
 | File | Lines (R1 → R2) |
 |------|-----------------|
-| `content-social/skill.md` | 1,297 → **1,309** |
+| `biz-social/skill.md` | 1,297 → **1,309** |
 | `biz-youtube/skill.md` | 381 → 384 |
 
-The monolith grew. Every `@content-social write reddit` loads YouTube + LinkedIn + all platform sections. Extraction to `skills/content-social/platforms/*.md` (load on demand) is now more urgent, not less.
+The monolith grew. Every `@biz-social write reddit` loads YouTube + LinkedIn + all platform sections. Extraction to `skills/biz-social/platforms/*.md` (load on demand) is now more urgent, not less.
 
 ### DRY — topic buckets
 
@@ -257,10 +257,10 @@ The monolith grew. Every `@content-social write reddit` loads YouTube + LinkedIn
 1. **`git add`** untracked framework files (`biz-youtube`, new templates) — do not commit without them.
 2. **Sync** `biz-bootstrap/skill.md` + `templates/work/README.md.template` with `bootstrap.sh`.
 3. **Fix** `HANDOFF.md` status line — remove "Committed and pushed" until actually committed.
-4. **Add** `content-social/references/project-context.example.md` + I0 fallback contract.
+4. **Add** `biz-social/references/project-context.example.md` + I0 fallback contract.
 5. **Declare** touch-scope and **split** into ≤2-area commits per slice.
 6. **Update** `NEXT.md` task #1 to include `biz-youtube` in archive regen.
-7. **Optional quality:** cite or label Unverified stats; extract topic buckets; split content-social platform bodies.
+7. **Optional quality:** cite or label Unverified stats; extract topic buckets; split biz-social platform bodies.
 
 ---
 
@@ -274,7 +274,7 @@ The monolith grew. Every `@content-social write reddit` loads YouTube + LinkedIn
 | 4 | Residual risks listed | Yes |
 | 5 | Concrete next steps | Yes |
 
-**Overall assessment:** Round 2 is a **material improvement**. The framework is ~**85% integration-complete** for the YouTube + strategy-path release. The remaining ~15% is mostly **git hygiene** (untracked files, commit splitting), **bootstrap doc sync**, and **content-social fallback parity**. Safe to commit after R2-1 through R2-4 are addressed.
+**Overall assessment:** Round 2 is a **material improvement**. The framework is ~**85% integration-complete** for the YouTube + strategy-path release. The remaining ~15% is mostly **git hygiene** (untracked files, commit splitting), **bootstrap doc sync**, and **biz-social fallback parity**. Safe to commit after R2-1 through R2-4 are addressed.
 
 ---
 

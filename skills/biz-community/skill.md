@@ -2,9 +2,9 @@
 name: biz-community
 description: >-
   Find and evaluate communities across Reddit, Instagram, LinkedIn, Facebook,
-  Indie Hackers, and niche platforms. Engage without selling. Convert
+  X, YouTube, Indie Hackers, and niche platforms. Engage without selling. Convert
   relationships into pipeline. For generating platform-specific content FOR
-  those communities, use @content-social write. biz-community find,
+  those communities, use @biz-social write. biz-community find,
   biz-community engage, biz-community status.
 ---
 
@@ -14,7 +14,7 @@ description: >-
 
 **Purpose:** Find the right communities, engage with genuine value, and build relationships that convert into pipeline — no cold outreach, no pitching strangers.
 
-**Content generation:** This skill covers community *discovery and engagement*. For creating posts, captions, and content calibrated FOR these communities, use `@content-social write <platform> - <topic>`. The two skills compose: `biz-community find` finds where to post, `content-social write` produces what to post.
+**Content generation:** This skill covers community *discovery and engagement*. For creating posts, captions, and content calibrated FOR these communities, use `@biz-social write <platform> - <topic>`. The two skills compose: `biz-community find` finds where to post, `biz-social write` produces what to post.
 
 ---
 
@@ -26,6 +26,7 @@ description: >-
 | `@biz-community find instagram - <topic/keyword>` | Find Instagram accounts, hashtags, and communities to follow/engage |
 | `@biz-community find linkedin - <topic/keyword>` | Find LinkedIn creators, groups, and hashtags in the space |
 | `@biz-community find facebook - <topic/keyword>` | Find Facebook Groups and pages relevant to the niche |
+| `@biz-community find x - <topic/keyword>` | Find X (Twitter) accounts, lists, and conversations to follow and engage |
 | `@biz-community find youtube - <topic/keyword>` | Find relevant YouTube creators/channels in the niche |
 | `@biz-community find` | Find communities across all platforms based on project strategy |
 | `@biz-community engage` | Guide for daily engagement — what to do, where, how to track |
@@ -213,7 +214,7 @@ For each candidate subreddit, evaluate:
 | **2** | Quote-tweet with genuine value-add (not just "this") | 1-2x/week |
 | **3** | Build and maintain private Lists of target buyers, peers, industry voices | One-time setup; review monthly |
 | **4** | Join 1-2 X Spaces per week. Listen more than speak initially | Weekly |
-| **5** | Post original content (tweets + threads) via `@content-social write x` | 3-5 tweets + 1-2 threads/week |
+| **5** | Post original content (tweets + threads) via `@biz-social write x` | 3-5 tweets + 1-2 threads/week |
 
 ### I0-Y — YouTube: Creator & Channel Discovery
 
@@ -357,7 +358,7 @@ Before committing to any community, verify:
 | 4 | Engagement tracked in pipeline tracker | |
 | 5 | At least 1 inbound conversation started | |
 
-**Next:** `@content-social write <platform> - <topic>` to create content for the communities found. `@biz-pipeline-diagnosis run` — check if community engagement is feeding your pipeline.
+**Next:** `@biz-social write <platform> - <topic>` to create content for the communities found. `@biz-pipeline-diagnosis run` — check if community engagement is feeding your pipeline.
 
 ---
 
@@ -365,9 +366,9 @@ Before committing to any community, verify:
 
 | Skill | When |
 |-------|------|
-| `@content-social write` | Generate platform-native posts for communities you've found |
-| `@content-social research` | Research trending topics before writing for a community |
-| `@content-writing write` | Draft long-form content to adapt for community posts |
+| `@biz-social write` | Generate platform-native posts for communities you've found |
+| `@biz-social research` | Research trending topics before writing for a community |
+| `@biz-writing write` | Draft long-form content to adapt for community posts |
 | `@biz-pipeline-diagnosis run` | Check if community engagement is converting to pipeline |
 | `@biz-strategy certify` | Ensure target buyer is defined before committing to communities |
 

@@ -14,6 +14,7 @@ Business concept prompts that guide strategic thinking and decision-making. Each
 | BIZ-06 | Operations | Scaling delivery and operations |
 | BIZ-07 | Content Platform Algorithms | Maximizing organic reach per platform; content type, link strategy, timing, anti-patterns |
 | BIZ-08 | LinkedIn ICP | Calibrating LinkedIn content to the buyer who engages on-platform (titles, hooks, formats) |
+| BIZ-09 | Content Topic Buckets | Balancing the content mix across four buckets |
 
 ### Trigger Table
 
@@ -27,3 +28,4 @@ Business concept prompts that guide strategic thinking and decision-making. Each
 | Positioning feels unclear | BIZ-04 Brand Positioning |
 | Deals aren't closing | BIZ-05 Sales Process |
 | Delivery is bottleneck | BIZ-06 Operations |
+| Content mix is lopsided — one topic dominates | BIZ-09 Content Topic Buckets |

@@ -12,7 +12,7 @@ description: >-
 ## Purpose
 Write and publish one piece of content (LinkedIn post, article, or native video) that demonstrates your expertise and attracts inbound leads. No pitching. No "DM me."
 
-> **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing, consistency challenges, native video workflows). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@content-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@content-writing`. For drafts, invoke `@content-social write linkedin`, `write linkedin carousel`, or `write linkedin video` after planning.
+> **Platform scope:** This skill covers LinkedIn publishing ops (tracker, calendar, engagement cadence, A/B hook testing, consistency challenges, native video workflows). For generating content calibrated to other platforms (Reddit, Instagram, Facebook), use `@biz-social`. For pure writing craft (blog articles, case studies, landing pages, email sequences), use `@biz-writing`. For drafts, invoke `@biz-social write linkedin`, `write linkedin carousel`, or `write linkedin video` after planning.
 
 ## I0 - Gate pre-check
 
@@ -38,11 +38,11 @@ BLOCKED (prerequisite): brand-ready not confirmed
 
 - Exception: `status` mode is read-only and runs without the gate.
 
-This check applies to `publish`, `plan`, and `challenge` modes (`status` exempt). To draft content before brand-ready, use the ungated `@content-writing` or `@content-social write` instead.
+This check applies to `publish`, `plan`, and `challenge` modes (`status` exempt). To draft content before brand-ready, use the ungated `@biz-writing` or `@biz-social write` instead.
 
 ## I0b - Voice profile (binding when present)
 
-Read `.work.biz/reference/VOICE_PROFILE.md` before drafting or reviewing any copy. If absent, check `.work.biz/ideas/VOICE_STANDARD.md` and `.work.biz/reference/VOICE_STANDARD.md`.
+Read `.work.biz/reference/VOICE_PROFILE.md` before drafting or reviewing any copy. If absent, check `.work.biz/ideas/VOICE_STANDARD.md`, `.work.biz/reference/VOICE_STANDARD.md`, and `.work.biz/reference/voice-profile.md`.
 
 The Content Standard's anti-AI-artifact rules are the floor and always bind (zero em-dashes and en-dashes). The voice profile governs tone, rhythm, structure, and vocabulary above that floor, and its **texture** rules are deliberate: do not normalize them into polished prose. If it lists a **reference sample** for the format you are producing, read it and match its rhythm. If it makes an **owner pass** mandatory, label the output a draft and say so in the delivery.
 
@@ -126,7 +126,7 @@ After publishing, repurpose the same content into different formats:
 |--------|------|-------|
 | Original LinkedIn post | Day 1 | LinkedIn |
 | Expanded LinkedIn article (1500 words) | Day 3 | LinkedIn Articles |
-| LinkedIn native video (60–90 sec, same story) | Day 5 | LinkedIn video post — use `@content-social write linkedin video - <topic>` |
+| LinkedIn native video (60–90 sec, same story) | Day 5 | LinkedIn video post — use `@biz-social write linkedin video - <topic>` |
 | PDF version (case study or guide) | Day 7 | Website lead magnet |
 
 **Why repurpose:** Each format reaches a different audience segment. The video watchers may not read the post. The article readers want depth. One core insight = 4 assets.
@@ -165,7 +165,7 @@ Time-boxed posting program for **share expertise, grow impact, post consistently
 | **Carousel (document)** | ≥1× / week | Highest organic reach on LinkedIn (3–5× text) |
 | **Video** | 1× / 1–2 weeks once minimum setup is available | Trust-building, demos, behind-the-scenes, quick tips |
 
-Draft carousels with `@content-social write linkedin carousel - <topic>`. Draft text with `@content-social write linkedin - <topic>`. Draft video with `@content-social write linkedin video - <topic>`.
+Draft carousels with `@biz-social write linkedin carousel - <topic>`. Draft text with `@biz-social write linkedin - <topic>`. Draft video with `@biz-social write linkedin video - <topic>`.
 
 ### 30-day plan table
 
@@ -173,8 +173,8 @@ Output this table. Rotate topic buckets; no same bucket 3 days in a row.
 
 | Day | Format | Topic bucket | Hook seed | Challenge tag | Draft command |
 |-----|--------|--------------|-----------|---------------|---------------|
-| 1 | text | Architecture lesson | Opening expertise statement | #CreateImpact if createimpact mode | `@content-social write linkedin - …` |
-| 3 | video | Architecture lesson / AI in practice | Mistake or number hook | — | `@content-social write linkedin video - …` |
+| 1 | text | Architecture lesson | Opening expertise statement | #CreateImpact if createimpact mode | `@biz-social write linkedin - …` |
+| 3 | video | Architecture lesson / AI in practice | Mistake or number hook | — | `@biz-social write linkedin video - …` |
 | 2 | — | — | Rest / engage only | — | Comment on 5 ICP posts |
 | … | … | … | … | … | … |
 

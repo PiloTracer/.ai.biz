@@ -1,7 +1,25 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** 2026-07-30 — Session closed
-> **Status:** Multi-platform content capability shipped (canonical voice profile, Substack + Threads, per-platform ops layer, `biz-strategy reconcile`, graded claims, voice convergence). Gate-ledger parser fixed twice against a real consumer ledger. Eight framework consistency fixes. Committed and pushed.
+> **Date:** 2026-08-06 — Session closed
+> **Status:** v0.6.0 released. All skill ids standardized under the `biz-` prefix (8 renames across folders, frontmatter, handles, scripts, docs). Full framework verification sweep: one HIGH deploy bug fixed, 29 consistency findings resolved, unsourced `biz-referrals` stats de-claimed. All gates green (blast-radius WARN acknowledged for a rename-wide diff). Tagged and pushed.
+
+---
+
+## Session summary (2026-08-06, close)
+
+| Step | Status |
+|------|--------|
+| Skill rename to `biz-*` ids carried through every doc, script, and standard | Done |
+| `biz-deploy-basic --update` doubled `AGENT_OS_SOURCE` on greenfield targets — fixed + repro-tested | Done |
+| Phantom verbs implemented: `status` for biz-market-validate / biz-pipeline-diagnosis / biz-referrals / biz-deploy-repo | Done |
+| `biz-social` Substack/Threads parse rows + enumeration; `biz-community` `find x` + frontmatter | Done |
+| `active-deal` restored to one writer (`@biz-discovery run`) across five files | Done |
+| biz-strategy certify file count (5→6), deploy-files scaffold path, brand-ready wording, biz-review pre-check | Done |
+| Doc alignment sweep (concepts BIZ-09, CONVENTIONS, PROCESS_ROUTER, .quick, templates, DIRECTORY_MAP) | Done |
+| Unsourced `biz-referrals` stats (5-8x, close-rate table) replaced with directional rationale | Done |
+| CHANGELOG cut to v0.6.0 with pre-rename names normalized inside the release section | Done |
+| Gates: framework-verify PASS, gate-verify PASS (n/a — no ledger), touch-scope PASS, blast-radius WARN (acknowledged) | Done |
+| Commit, tag v0.6.0, push, GitHub release | Done |
 
 ---
 
@@ -13,14 +31,14 @@
 | `reference/VOICE_RETRO.md` template — voice convergence measurement | Done |
 | `platforms/substack.md` (R7) + `platforms/threads.md` (R8) + algorithm standard sections | Done |
 | Missing platform-specific anti-AI tics (Instagram, Facebook, Substack, Threads) | Done |
-| `@content-social status` (I6) implemented — was advertised in four places, never written | Done |
+| `@biz-social status` (I6) implemented — was advertised in four places, never written | Done |
 | `pipeline/platform-tracker.md.template` — per-platform ops layer | Done |
 | `@biz-strategy reconcile` (I2c) — consistency repair without a gate cascade | Done |
 | Graded-claims rule + voice-convergence section in Content Standard | Done |
 | `biz-director` routes for Substack/Threads + content-strategy + content-scripts intents | Done |
 | Gate-ledger parser: tolerate hand annotations; reject pending-phase false positive | Done |
 | `bootstrap.sh` rejects positional args (was silently scaffolding into the framework repo) | Done |
-| `deploy-basic --update` manifest drift — `WORK_FILES` missed 7 artifacts | Done |
+| `biz-deploy-basic --update` manifest drift — `WORK_FILES` missed 7 artifacts | Done |
 | `install-git-hooks.sh` — unknown-flag guard, real `--self-test`, backup path | Done |
 | Consistency fixes: biz-strategy gate self-contradiction, README missing biz-youtube, 3 dangling paths, unsourced stats | Done |
 | Consumer project (`future-strategy`): VOICE_PROFILE migration + channel-plan Substack correction | Done (left uncommitted for owner review) |
@@ -36,7 +54,7 @@
 | Add `biz-strategy amend` + `strategy/changelog.md` + audience hierarchy + out-of-tree fold-in | Done |
 | Gate pre-check (strategy-ready via `gates.md`) on biz-brand, biz-pricing, biz-content | Done |
 | biz-review weekly drift check (stale cert, out-of-tree strategy, CONTENT_STATUS) | Done |
-| content-social quality gates: buyer/offer/freshness vs strategy | Done |
+| biz-social quality gates: buyer/offer/freshness vs strategy | Done |
 | `CONTENT_STATUS.md` template + bootstrap wiring (biz-bootstrap + bootstrap.sh) | Done |
 | Document gated-skill self-verify in SKILL_DEPENDENCIES; list `amend` in skills/README | Done |
 | Commit and push | Done |
@@ -47,15 +65,13 @@
 
 | # | Task | Priority |
 |---|------|----------|
-| 1 | **Verbs advertised with no implementation** — `biz-market-validate` (test/design/status), `biz-pipeline-diagnosis` (run/status), `biz-referrals` (ask/status). Bodies are topic reference sections, not verb-dispatched modes, so `@biz-referrals status` has no defined workflow. Same class as the `content-social status` gap fixed this session | High |
-| 2 | **Unsourced stats still in skill bodies** — `biz-referrals` claims "5-8x better than cold outreach". `biz-strategy` was fixed this session by replacing the numbers with directional rationale; apply the same treatment or source it. Also check biz-brand/biz-youtube | Medium |
-| 3 | Owner review of the uncommitted `future-strategy` changes (VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD → Publishing Standard refactor) | High |
-| 4 | Substack + Threads guides are untested — no project has published to either. Validate against real output before trusting the cadence and format rules | Medium |
-| 5 | `blast-radius-check.sh` measures against `HEAD`, i.e. the whole working tree, which makes the "split into scoped commits" workflow it exists to enforce impossible to execute for the first commit. Needs to diff staged content instead | Medium |
-| 6 | Regenerate `.tmp/*.skill` archives — now also missing voice profile, Substack/Threads, reconcile, platform tracker | Medium |
-| 7 | Test revised `content-writing` skill against a new LinkedIn draft and measure engagement | Medium |
-| 8 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
-| 9 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
+| 1 | Owner review of the uncommitted `future-strategy` changes (VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD → Publishing Standard refactor) | High |
+| 2 | Substack + Threads guides are untested — no project has published to either. Validate against real output before trusting the cadence and format rules | Medium |
+| 3 | `blast-radius-check.sh` measures against `HEAD`, i.e. the whole working tree, which makes the "split into scoped commits" workflow it exists to enforce impossible to execute for the first commit. Needs to diff staged content instead | Medium |
+| 4 | Regenerate `.tmp/*.skill` archives — now also missing voice profile, Substack/Threads, reconcile, platform tracker | Medium |
+| 5 | Test revised `biz-writing` skill against a new LinkedIn draft and measure engagement | Medium |
+| 6 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
+| 7 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
 
 ---
 
@@ -63,14 +79,14 @@
 
 | # | Decision |
 |---|----------|
-| 1 | **Platform guides** live under `skills/content-social/platforms/` — loaded on demand, not inlined in `skill.md`. |
-| 2 | **Topic buckets** canonical in `concepts/content-topic-buckets/` — referenced by content-writing, biz-content, biz-youtube. |
-| 3 | **LinkedIn video** — `@content-social write linkedin video`; deep rules in `platforms/linkedin-video.md`. |
+| 1 | **Platform guides** live under `skills/biz-social/platforms/` — loaded on demand, not inlined in `skill.md`. |
+| 2 | **Topic buckets** canonical in `concepts/content-topic-buckets/` — referenced by biz-writing, biz-content, biz-youtube. |
+| 3 | **LinkedIn video** — `@biz-social write linkedin video`; deep rules in `platforms/linkedin-video.md`. |
 | 4 | **Anti-AI-artifact** — binding in Content Standard; scan required before content delivery. |
 | 5 | **Zero em-dashes/en-dashes** in all generated content. Use periods, commas, colons, or parentheses instead. |
 | 6 | **Human voice over literary voice** — contractions allowed, sentence length varied, minor roughness preferred to polished perfection. |
 | 7 | **Actionable frameworks belong in the post body or a carousel**, not hidden in the first comment. |
-| 8 | Four-tier content: `content-writing` → `content-social` → `biz-content` / `biz-youtube`. |
+| 8 | Four-tier content: `biz-writing` → `biz-social` → `biz-content` / `biz-youtube`. |
 | 9 | Strategy artifacts in `.work.biz/strategy/` only. `plans/strategy_*.md` are historical/ad-hoc; on conflict, `strategy/` wins. |
 | 10 | `.work.biz/touch-scope` is session-local — declare before scoped edits; not required in git. |
 | 11 | **`biz-strategy amend`** records mid-cycle strategy changes + changelog; never certifies — re-certify required before gated work. |
@@ -84,7 +100,9 @@
 | 19 | **Graded claims** are mandatory on commentary: Verified / Inference / would-check, in the text. Commentary inherits other people's facts; grading stops their errors becoming yours. |
 | 20 | **Gate status reading is tolerant** — a gate is met when its status *starts with* `PASS`, so hand annotations like `PASS 2026-07-25 - verified live` are valid. Gate ids match on a normalized form. |
 | 21 | **Per-platform trackers** (`pipeline/<platform>-tracker.md`) are created on first publish, not at bootstrap. `CONTENT_STATUS.md` stays the cross-platform index. |
-| 22 | **Bootstrap manifest sync rule** — `templates/bootstrap.sh`, `templates/README.md`, `scripts/deploy-basic.sh` `WORK_FILES`, `skills/deploy-basic/skill.md`, and `skills/biz-bootstrap/skill.md` § I1 must list the same files. `WORK_FILES` is the one that fails silently. |
+| 22 | **Bootstrap manifest sync rule** — `templates/bootstrap.sh`, `templates/README.md`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, `skills/biz-deploy-basic/skill.md`, and `skills/biz-bootstrap/skill.md` § I1 must list the same files. `WORK_FILES` is the one that fails silently. |
+| 23 | **All skill ids carry the `biz-` prefix** (v0.6.0) — one naming scheme, no exceptions; `session-control` remains an alias of `biz-session`. Old ids (`content-social`, `content-writing`, `deploy-*`, `session-biz`, `business-ideas`, `product-service-ideas`) exist only in pre-v0.6.0 CHANGELOG sections. |
+| 24 | **One writer per gate is binding** — `active-deal` is promoted by `@biz-discovery run` alone; `@biz-proposal write` is not a promoter. |
 
 ---
 
@@ -93,9 +111,9 @@
 | Need to... | Read / Run |
 |------------|-----------|
 | What to do next | `.work.biz/plans/NEXT.md` |
-| LinkedIn video | `skills/content-social/platforms/linkedin-video.md` |
-| Platform guides | `skills/content-social/platforms/` |
+| LinkedIn video | `skills/biz-social/platforms/linkedin-video.md` |
+| Platform guides | `skills/biz-social/platforms/` |
 | Content quality bar | `standards/20260621-CONTENT-STANDARD.md` |
-| LinkedIn text/carousel rules | `skills/content-writing/skill.md` § LinkedIn post |
+| LinkedIn text/carousel rules | `skills/biz-writing/skill.md` § LinkedIn post |
 | Strategy change mid-cycle | `@biz-strategy amend` then `@biz-strategy certify` |
 | Publish status tracker | `.work.biz/reference/CONTENT_STATUS.md` |

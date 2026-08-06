@@ -35,7 +35,9 @@ Or: `@biz-bootstrap init`
 
 Created on demand rather than at bootstrap: `work/pipeline/platform-tracker.md.template` → `.work.biz/pipeline/<platform>-tracker.md`, instantiated on the first publish to a given platform.
 
-**Sync rule:** this table, `templates/bootstrap.sh`, `scripts/deploy-basic.sh` `WORK_FILES`, and `skills/biz-bootstrap/skill.md` § I1 must list the same set. `deploy-basic --update` only offers files in `WORK_FILES`, so an omission there means an artifact is silently never updated on existing installs.
+Copied manually, not at bootstrap: `work/touch-scope.template` → `.work.biz/touch-scope`, to declare change scope (see `.cursorrules` § Change safety).
+
+**Sync rule:** this table, `templates/bootstrap.sh`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, and `skills/biz-bootstrap/skill.md` § I1 must list the same set. `biz-deploy-basic --update` only offers files in `WORK_FILES`, so an omission there means an artifact is silently never updated on existing installs.
 
 ## `REPLACE:` checklist (`.cursorrules`)
 

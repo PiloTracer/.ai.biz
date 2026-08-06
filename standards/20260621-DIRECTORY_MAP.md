@@ -39,7 +39,7 @@ Stored in the consumer project. Never copied from source; owned by the user and 
 ├── plans/
 │   ├── NEXT.md                # Tactical next actions
 │   ├── UNKNOWNS.md            # Open questions
-│   └── youtube-calendar.md    # YouTube publishing calendar (when YouTube is active)
+│   └── youtube-calendar.md    # YouTube publishing calendar (created on demand by `@biz-youtube plan`)
 ├── strategy/                  # Strategy artifacts (canonical location per CONVENTIONS)
 │   ├── certification.md       # Evidence for the strategy-ready gate
 │   ├── changelog.md           # Mid-cycle strategy amendments

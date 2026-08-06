@@ -1,7 +1,7 @@
 # Business OS — turn your career into a business
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version: v0.5.3](https://img.shields.io/badge/Version-v0.5.3-blue.svg)](CHANGELOG.md)
+[![Version: v0.6.0](https://img.shields.io/badge/Version-v0.6.0-blue.svg)](CHANGELOG.md)
 
 > Your freelance/consulting business has no CRM, no sales playbook, no repeatable pipeline — just you guessing what to do next. **Business OS fixes that** with a complete set of repeatable **skills**, binding **standards**, and a tiny **project-memory** folder.
 
@@ -18,10 +18,10 @@ bash .ai.biz/templates/bootstrap.sh    # 30-second setup, any project
 Then in chat:
 
 ```text
-@session-biz start             # bookend the day
+@biz-session start             # bookend the day
 @biz-bootstrap init                # scaffold .work.biz/
 @biz-strategy greenfield           # define niche, offer, positioning
-@session-biz close             # update HANDOFF · draft commit message
+@biz-session close             # update HANDOFF · draft commit message
 ```
 
 **Lost?** → [`START_HERE.md`](START_HERE.md) · **All commands** → [Skills at a glance](#skills-at-a-glance)
@@ -79,7 +79,7 @@ State lives in one file, `.work.biz/gates.md`, and exactly one skill may promote
 | **brand-ready** | `@biz-brand audit` → `@biz-brand overhaul` | `@biz-content`, `@biz-community engage` |
 | **pipeline-ready** | `@biz-pricing set` + pipeline tracker configured + outreach cadence documented in `.work.biz/pipeline/outreach-cadence.md`, then confirmed by `@biz-review status` | `@biz-discovery`, `@biz-proposal` |
 | **sales-ready** | `@biz-discovery run` (one completed call, logged) | `@biz-referrals` |
-| **active-deal** | `@biz-discovery run` or `@biz-proposal write` (deal at Conversation stage or later) | `@biz-objections handle` |
+| **active-deal** | `@biz-discovery run` (deal at Conversation stage or later) | `@biz-objections handle` |
 
 ### Full flow (once per project → every day → per phase)
 
@@ -110,11 +110,11 @@ State lives in one file, `.work.biz/gates.md`, and exactly one skill may promote
 
   ┌─ EVERY SESSION ──────────────────────────────────────────────┐
 
-  @session-biz start          ← load HANDOFF · NEXT · UNKNOWNS
+  @biz-session start          ← load HANDOFF · NEXT · UNKNOWNS
         │
         │  … your business development work …
         ▼
-  @session-biz close          ← refresh HANDOFF + NEXT; draft commit message
+  @biz-session close          ← refresh HANDOFF + NEXT; draft commit message
 
   └──────────────────────────────────────────────────────────────┘
 
@@ -153,15 +153,15 @@ All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-review** | Weekly/quarterly pipeline, content, and business health review | `weekly` · `quarterly` · `status` |
 | **biz-market-validate** | Test offers, niches, and channels with low-cost experiments | `test` · `design` · `status` |
 | **biz-pipeline-diagnosis** | Identify which funnel stage is the bottleneck | `run` · `status` |
-| **session-biz** | Session bookends; updates HANDOFF + NEXT | `start` · `close` · `status` |
-| **deploy-files** | Deploy `.ai.biz/` into target project (no-overwrite default; `--update`/`--force`) | in-place · `copy - <path>` · `status` |
-| **deploy-basic** | Thin-client bootstrap (`.cursorrules` + `.work.biz/` only) | `update` · `status` · `- <path>` |
-| **deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
+| **biz-session** | Session bookends; updates HANDOFF + NEXT | `start` · `close` · `status` |
+| **biz-deploy-files** | Deploy `.ai.biz/` into target project (no-overwrite default; `--update`/`--force`) | in-place · `copy - <path>` · `status` |
+| **biz-deploy-basic** | Thin-client bootstrap (`.cursorrules` + `.work.biz/` only) | `update` · `status` · `- <path>` |
+| **biz-deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
 | **biz-director** | Universal orchestrator; accepts free-text, routes to correct skills | `<free-text request>` |
-| **content-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
-| **content-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |
-| **business-ideas** | Structured, stress-tested business/venture/pivot idea generation | `generate - <domain>` · `stress - <idea>` · `pivot - <situation>` |
-| **product-service-ideas** | Buildable, stack-fit product/service concepts + MVP scoping | `generate - <space>` · `extend - <product>` · `scope - <concept>` · `audit - <concept>` |
+| **biz-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
+| **biz-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |
+| **biz-ideas** | Structured, stress-tested business/venture/pivot idea generation | `generate - <domain>` · `stress - <idea>` · `pivot - <situation>` |
+| **biz-products** | Buildable, stack-fit product/service concepts + MVP scoping | `generate - <space>` · `extend - <product>` · `scope - <concept>` · `audit - <concept>` |
 
 Gates between skills: [`skills/SKILL_DEPENDENCIES.md`](skills/SKILL_DEPENDENCIES.md).
 

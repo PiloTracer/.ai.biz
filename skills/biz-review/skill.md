@@ -11,6 +11,19 @@ description: >-
 
 ---
 
+## Entry pre-check
+
+`biz-review` requires at least one strategy doc. Before any mode runs, check `.work.biz/strategy/` for docs. If none exist, stop and redirect:
+
+```text
+BLOCKED (prerequisite): no strategy docs found
+  Required state: at least one doc in .work.biz/strategy/
+  Current state: <what was found>
+  To proceed: run `@biz-strategy greenfield`
+```
+
+---
+
 ## I0 — Status mode (reconciles the gate ledger)
 
 `@biz-review status` is the reconciler for `{WORK_BUSINESS_ROOT}/gates.md`. It checks every gate's evidence against what the ledger claims, and it is the only skill allowed to promote `pipeline-ready`.
@@ -21,7 +34,7 @@ description: >-
 | brand-ready | `@biz-brand overhaul` | `.work.biz/reference/BRAND_STATUS.md` has an overhaul log entry with a passing five-second test |
 | pipeline-ready | **this skill** | `.work.biz/strategy/pricing.md`, `.work.biz/pipeline/pipeline_tracker.md` (configured, not an empty template), and `.work.biz/pipeline/outreach-cadence.md` all exist and are filled in |
 | sales-ready | `@biz-discovery run` | Pipeline tracker has at least one completed discovery call logged with BANT captured |
-| active-deal | `@biz-discovery run` / `@biz-proposal write` | Pipeline tracker has a deal at Conversation stage or later |
+| active-deal | `@biz-discovery run` | Pipeline tracker has a deal at Conversation stage or later |
 
 ### Reconciliation steps
 

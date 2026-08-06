@@ -110,6 +110,17 @@ description: >-
 
 ---
 
+## I4 — Status
+
+Read-only. Report the current diagnosis state:
+
+1. **Latest diagnosis:** date, funnel metrics pulled, and conversion between stages.
+2. **Bottleneck found:** which stage (Awareness / Interest / Trust / Decision) and the drop-off measured.
+3. **Fixes applied:** the fix chosen, start date, review date, and whether the metric moved at review.
+4. **Records:** diagnoses and fixes live in `.work.biz/reports/` (created on first use if missing).
+
+---
+
 ## Completion
 
 | # | Check | Result |

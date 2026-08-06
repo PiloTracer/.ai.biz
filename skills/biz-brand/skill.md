@@ -470,7 +470,7 @@ The overhaul is complete when:
 - `.work.biz/strategy/one-pager.md` (niche, unified offer, target buyer, price range)
 - `.work.biz/strategy/offer-scope.md` (what the offer IS and IS NOT)
 - `.work.biz/strategy/channel-plan.md` (primary channel + messaging angles)
-- `.work.biz/reference/PROJECTS.md` (project descriptions for proof points; create if missing)
+- `.work.biz/reference/PROJECTS.md` (project descriptions for proof points; created on first use if missing)
 - `.work.biz/reference/VISUAL_GUIDE.md` (banner specs, color palette, typography; create if missing)
 - `.work.biz/reference/BRAND_STATUS.md` (audit history, overhaul log, current surfaces; written by this skill, read by `status` mode and the `brand-ready` gate)
 - `.work.biz/gates.md` (readiness ledger; read in I0, `brand-ready` promoted in § 7b)

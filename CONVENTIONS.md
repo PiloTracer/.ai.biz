@@ -5,8 +5,8 @@
 ### Skills
 - Format: `{prefix}-{role}` in **kebab-case** (lowercase ASCII, hyphens)
 - Business OS prefix: `biz-` (e.g., `biz-strategy`, `biz-content`, `biz-community`)
-- System skills: `deploy-files`, `deploy-repo`, `session-biz`, `biz-director` (meta-orchestrator)
-- Generative/entry-level skills: plain descriptive name without prefix (e.g., `content-writing`, `content-social`, `business-ideas`, `product-service-ideas`). These have no hard prerequisite gate and load project context dynamically.
+- System skills: `biz-deploy-basic`, `biz-deploy-files`, `biz-deploy-repo`, `biz-session`, `biz-director` (meta-orchestrator)
+- Generative/entry-level skills: plain descriptive role name under the same `biz-` prefix (e.g., `biz-writing`, `biz-social`, `biz-ideas`, `biz-products`). These have no hard prerequisite gate and load project context dynamically.
 
 ### Documents
 - Canonical strategy files use flat names under `.work.biz/strategy/`: `one-pager.md`, `target-buyer-profile.md`, `offer-scope.md`, `channel-plan.md`, `pricing.md`, `assumption-ledger.md`, `certification.md`, `changelog.md`

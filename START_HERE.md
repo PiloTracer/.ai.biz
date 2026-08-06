@@ -6,7 +6,7 @@
 
 **Rule:** If something below contradicts a `skill.md` or a binding standard, the **skill / standard wins**.
 
-**Paths:** In an project repo, prefix with `.ai.biz/`. When Business OS **is** the git root (this repository), use `START_HERE.md`, `skills/`, `standards/` with no prefix.
+**Paths:** In a project repo, prefix with `.ai.biz/`. When Business OS **is** the git root (this repository), use `START_HERE.md`, `skills/`, `standards/` with no prefix.
 
 ---
 
@@ -35,13 +35,13 @@
        │
         ├── "I want to publish content"           ──► `@biz-content publish` · `@biz-youtube publish`
         │
-        ├── "I want social content for Reddit, LinkedIn (posts / carousels / native video), Instagram, X, Facebook, YouTube"  ──► `@content-social write - <platform>`
+        ├── "I want social content for Reddit, LinkedIn (posts / carousels / native video), Instagram, X, Facebook, YouTube"  ──► `@biz-social write - <platform>`
         │
-        ├── "I want to write an article / post / case study / email"  ──► `@content-writing write - <topic>`
+        ├── "I want to write an article / post / case study / email"  ──► `@biz-writing write - <topic>`
        │
-       ├── "I want business / venture / pivot ideas"  ──► `@business-ideas generate - <domain>`
+       ├── "I want business / venture / pivot ideas"  ──► `@biz-ideas generate - <domain>`
        │
-       ├── "I want product / service / SaaS concepts"  ──► `@product-service-ideas generate - <space>`
+       ├── "I want product / service / SaaS concepts"  ──► `@biz-products generate - <space>`
        │
        ├── "I have a sales conversation"         ──► §5 Sales
        │
@@ -60,9 +60,9 @@
 
 | Need | Command |
 |------|---------|
-| **Where am I / what's next?** | `@session-biz status` + `.work.biz/gates.md` + `.work.biz/context/HANDOFF.md` + `.work.biz/plans/NEXT.md` |
+| **Where am I / what's next?** | `@biz-session status` + `.work.biz/gates.md` + `.work.biz/context/HANDOFF.md` + `.work.biz/plans/NEXT.md` |
 | Which gates have I passed? | Read `.work.biz/gates.md`, or run `@biz-review status` to reconcile it |
-| One-paragraph status (no writes) | `@session-biz status` |
+| One-paragraph status (no writes) | `@biz-session status` |
 | Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
 | Are we still in strategy or executing? | `@biz-strategy status` **or** `@biz-review status` |
 
@@ -99,22 +99,22 @@ These project-aware generative skills run any time — even before bootstrap. Th
 
 | You need… | Run |
 |-----------|-----|
-| Write an article, post, case study, landing page, email, thread | `@content-writing write - <topic>` |
-| Build a content calendar / topic plan | `@content-writing plan - <30 days>` |
-| Repurpose one piece into multiple formats | `@content-writing repurpose - <source>` |
-| Critique a draft | `@content-writing audit - <draft or path>` |
-| Research trending topics/gaps on a social platform | `@content-social research - <platform>` |
-| Write platform-native social content (incl. LinkedIn video / YouTube scripts / Shorts) | `@content-social write - <platform>` |
-| Repurpose one asset into multiple platform formats | `@content-social repurpose - <source>` |
-| Plan a cross-platform social content calendar | `@content-social plan - <30 days>` |
+| Write an article, post, case study, landing page, email, thread | `@biz-writing write - <topic>` |
+| Build a content calendar / topic plan | `@biz-writing plan - <30 days>` |
+| Repurpose one piece into multiple formats | `@biz-writing repurpose - <source>` |
+| Critique a draft | `@biz-writing audit - <draft or path>` |
+| Research trending topics/gaps on a social platform | `@biz-social research - <platform>` |
+| Write platform-native social content (incl. LinkedIn video / YouTube scripts / Shorts) | `@biz-social write - <platform>` |
+| Repurpose one asset into multiple platform formats | `@biz-social repurpose - <source>` |
+| Plan a cross-platform social content calendar | `@biz-social plan - <30 days>` |
 | Build a YouTube publishing calendar / 30-day challenge | `@biz-youtube plan` · `@biz-youtube challenge` |
-| Business / venture / pivot ideas | `@business-ideas generate - <domain>` |
-| Stress-test one idea (try to kill it) | `@business-ideas stress - <idea>` |
-| Pivot directions from current business | `@business-ideas pivot - <situation>` |
-| Product / service / SaaS / add-on concepts | `@product-service-ideas generate - <space>` |
-| Extension concepts for an existing product | `@product-service-ideas extend - <product>` |
-| Scope a minimal MVP for one concept | `@product-service-ideas scope - <concept>` |
-| Evaluate one concept (Go/Refine/Kill) | `@product-service-ideas audit - <concept>` |
+| Business / venture / pivot ideas | `@biz-ideas generate - <domain>` |
+| Stress-test one idea (try to kill it) | `@biz-ideas stress - <idea>` |
+| Pivot directions from current business | `@biz-ideas pivot - <situation>` |
+| Product / service / SaaS / add-on concepts | `@biz-products generate - <space>` |
+| Extension concepts for an existing product | `@biz-products extend - <product>` |
+| Scope a minimal MVP for one concept | `@biz-products scope - <concept>` |
+| Evaluate one concept (Go/Refine/Kill) | `@biz-products audit - <concept>` |
 
 ---
 
@@ -135,8 +135,10 @@ These project-aware generative skills run any time — even before bootstrap. Th
 ## 6. Close for the day
 
 ```text
-@session-biz close                      # safe default — drafts message, no commit
-@session-biz close commit               # commits with drafted message
+@biz-session close                      # safe default — writes HANDOFF/NEXT/UNKNOWNS to .work.biz/, no git
+@biz-session close commit               # + scoped git commit of .work.biz/ (incl. new untracked files)
+@biz-session close push                 # + scoped commit, then git push
+@biz-session close commit push          # all three: write state, scoped commit, push
 ```
 
 ---

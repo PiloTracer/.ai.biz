@@ -7,7 +7,7 @@ description: >-
 
 # biz-referrals
 
-**Purpose:** Turn every client touchpoint into a referral engine. Referral leads convert 5-8x better than cold outreach.
+**Purpose:** Turn every client touchpoint into a referral engine. Referral leads arrive with trust pre-built and convert far better than cold outreach (directional rationale, not a citable figure — measure your own rates via the I2 tracker).
 
 ---
 
@@ -51,13 +51,24 @@ description: >-
 
 ## I3 — Why referrals win
 
-| Channel | Typical close rate |
-|---------|-------------------|
-| Cold outbound | 1-3% |
-| Inbound (content) | 5-10% |
-| **Referral** | **25-40%** |
+| Channel | Relative close rate |
+|---------|---------------------|
+| Cold outbound | Lowest — no prior trust |
+| Inbound (content) | Better — the prospect came to you |
+| **Referral** | **Highest — trust transfers from the referrer** |
 
-Referrals skip the trust-building phase entirely. The referrer's credibility transfers to you.
+Referrals skip the trust-building phase entirely. The referrer's credibility transfers to you. The ordering above is directional, not sourced research — do not quote specific close-rate multiples; measure your own with the I2 tracker and `@biz-market-validate test`.
+
+---
+
+## I4 — Status
+
+Read-only. Report the referral engine state:
+
+1. **Asks made:** count per stage (warm network, after discovery call, kickoff, after delivery).
+2. **Outcomes:** introductions received, meetings booked, proposals sent.
+3. **Conversion:** closed deals from referrals, compared against the other channels you run (referrals should out-convert cold and inbound — see I3).
+4. **Records:** referral tracking lives in `.work.biz/pipeline/referral-tracker.md` (created on first use if missing).
 
 ---
 

@@ -28,12 +28,14 @@ State is recorded in one place: `.work.biz/gates.md`. A state counts as reached 
 
 | Type | Pattern | Location |
 |------|---------|----------|
-| Strategy documents | `strategy_<topic>.md` | `.work.biz/strategy/` |
+| Strategy documents | Flat canonical names (`one-pager.md`, `target-buyer-profile.md`, `offer-scope.md`, `channel-plan.md`, `pricing.md`) | `.work.biz/strategy/` |
 | Plans | `plan_<topic>.md` or `NEXT.md` / `UNKNOWNS.md` | `.work.biz/plans/` |
 | Research | `research_<topic>.md` | `.work.biz/research/` |
 | Drafts | `draft_<topic>.md` | `.work.biz/drafts/` |
 | Pipeline tracker | `pipeline_tracker.md` | `.work.biz/pipeline/` |
 | Handoff | `HANDOFF.md` | `.work.biz/context/` |
+
+`strategy_<topic>.md` is a historical / ad-hoc pattern only; new strategy docs use the flat canonical names above.
 
 **Critical:** `biz-strategy` writes to `.work.biz/strategy/`. All other skills read strategy artifacts from `.work.biz/strategy/`. No skill should look for `strategy_*.md` under `.work.biz/plans/`.
 
@@ -50,7 +52,7 @@ State is recorded in one place: `.work.biz/gates.md`. A state counts as reached 
 ## Gate discipline
 
 - A skill must refuse to run a gated operation if its prerequisite state is not met, unless it is explicitly gate-exempt.
-- Gate-exempt skills: `content-writing`, `content-social` (write/research/repurpose/icp modes), `business-ideas`, `product-service-ideas`, `biz-market-validate`, `biz-community` (find/status modes), `biz-objections` (roleplay mode), and every skill's `status` mode.
+- Gate-exempt skills: `biz-writing`, `biz-social` (write/research/repurpose/icp modes), `biz-ideas`, `biz-products`, `biz-market-validate`, `biz-community` (find/status modes), `biz-objections` (roleplay mode), and every skill's `status` mode.
 - Gated skills must record their output to `.work.biz/` and, where applicable, update the pipeline tracker or HANDOFF.
 - A gated skill reads `.work.biz/gates.md` in its own I0 pre-check. It does not rely on `biz-director` having checked first.
 - Every documented gate must have a promoting skill and a machine-checkable evidence path. A gate nothing can promote is not a gate; either implement the promotion or remove the claim.

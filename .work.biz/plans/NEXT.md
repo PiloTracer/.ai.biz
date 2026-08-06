@@ -12,18 +12,17 @@
 
 ## Recommended next
 
-1. **Implement the verbs three skills advertise but never define** — `biz-market-validate`, `biz-pipeline-diagnosis`, `biz-referrals`. Highest-value remaining framework defect: the router sends work to a verb with no workflow, so the agent improvises silently.
-2. **Owner review of the uncommitted `future-strategy` changes** — VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD refactor. Left deliberately uncommitted.
-3. **Fix `blast-radius-check.sh` to diff staged content** rather than the whole working tree against `HEAD`, which currently makes the scoped-commit workflow it enforces impossible to follow.
-4. **Regenerate `.tmp/*.skill` archives** — now also missing voice profile, Substack/Threads, reconcile, platform tracker.
+1. **Owner review of the uncommitted `future-strategy` changes** — VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD refactor. Left deliberately uncommitted.
+2. **Fix `blast-radius-check.sh` to diff staged content** rather than the whole working tree against `HEAD`, which currently makes the scoped-commit workflow it enforces impossible to follow.
+3. **Regenerate `.tmp/*.skill` archives** — now also missing the v0.6.0 renames, voice profile, Substack/Threads, reconcile, platform tracker.
 
 ## Active tasks
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1 | Implement verb dispatch in biz-market-validate / biz-pipeline-diagnosis / biz-referrals | Pending | Advertised verbs have no mode sections. Same class as the `content-social status` gap closed 2026-07-30 |
+| 1 | Implement verb dispatch in biz-market-validate / biz-pipeline-diagnosis / biz-referrals | Done 2026-08-06 | Status sections added to all three + biz-deploy-repo; biz-social Substack/Threads and biz-community `find x` parse gaps closed in the same sweep |
 | 2 | Owner review of uncommitted `future-strategy` changes | Pending | Consumer repo; four files touched |
-| 3 | Source or de-claim remaining unsourced stats | Pending | `biz-referrals` "5-8x"; check biz-brand, biz-youtube. `biz-strategy` done 2026-07-30 |
+| 3 | Source or de-claim remaining unsourced stats | Done 2026-08-06 | `biz-referrals` 5-8x + close-rate table de-claimed; biz-brand/biz-youtube checked, their figures are cited |
 | 4 | Fix `blast-radius-check.sh` to measure staged content | Pending | Currently blocks its own prescribed workflow; worked around with `--warn-only` |
 | 5 | Validate Substack + Threads guides against real published output | Pending | Both untested; no project has published to either |
 | 6 | Regenerate `.tmp/*.skill` archives | Pending | Include voice profile, Substack/Threads, reconcile, platform tracker, graded claims |
@@ -35,10 +34,11 @@
 
 | # | What was done | Date |
 |---|---------------|------|
-| 1 | Canonical VOICE_PROFILE + VOICE_RETRO; Substack + Threads guides; `@content-social status`; per-platform tracker; `@biz-strategy reconcile`; graded claims; gate-parser fixes; bootstrap/deploy manifest sync; 8 consistency fixes | 2026-07-30 |
+| 0 | v0.6.0: `biz-*` skill id rename across the whole framework; 29-fix consistency sweep (deploy `--update` path doubling, phantom status verbs, Substack/Threads parse rows, one-writer active-deal, unsourced biz-referrals stats); gates green | 2026-08-06 |
+| 1 | Canonical VOICE_PROFILE + VOICE_RETRO; Substack + Threads guides; `@biz-social status`; per-platform tracker; `@biz-strategy reconcile`; graded claims; gate-parser fixes; bootstrap/deploy manifest sync; 8 consistency fixes | 2026-07-30 |
 | 2 | Strategy amend mode + audience hierarchy + path conventions; gate self-checks on brand/pricing/content; biz-review drift; CONTENT_STATUS template + bootstrap | 2026-07-21 |
-| 2 | Harden anti-em-dash and anti-AI-artifact rules across content skills (Content Standard + content-writing + content-social + linkedin platform guide) | 2026-07-13 |
-| 3 | Tighten LinkedIn quality gates in `content-writing` skill (specific hook, stakes, credibility, no hidden frameworks) | 2026-07-13 |
+| 2 | Harden anti-em-dash and anti-AI-artifact rules across content skills (Content Standard + biz-writing + biz-social + linkedin platform guide) | 2026-07-13 |
+| 3 | Tighten LinkedIn quality gates in `biz-writing` skill (specific hook, stakes, credibility, no hidden frameworks) | 2026-07-13 |
 | 4 | LinkedIn native video mentor guide + skill integration (`platforms/linkedin-video.md`) | 2026-07-09 |
 | 5 | Anti-AI-artifact rules in Content Standard + content skill checklists | 2026-07-09 |
-| 6 | Split content-social into platform guides; canonical topic buckets (BIZ-09) | 2026-07-09 |
+| 6 | Split biz-social into platform guides; canonical topic buckets (BIZ-09) | 2026-07-09 |

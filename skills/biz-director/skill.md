@@ -100,11 +100,11 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Pricing** | "how much should I charge", "set my prices", "price this project", "revise my pricing", "is my pricing right", "what's my current price" | `@biz-pricing` (set, revise, or status per parse invocation) | strategy-ready |
 | **Content publishing ops (LinkedIn)** | "publish this on LinkedIn", "set up my LinkedIn content tracker", "LinkedIn content calendar", "LinkedIn engagement cadence", "LinkedIn 30-day challenge", "#CreateImpact", "post more consistently on LinkedIn", "LinkedIn consistency program" | `@biz-content` (`publish`, `plan`, `challenge`, or `status` per parse invocation) | brand-ready |
 | **YouTube publishing ops** | "publish a YouTube video", "YouTube content calendar", "YouTube upload plan", "YouTube 30-day challenge", "track my YouTube analytics" | `@biz-youtube` (`publish`, `plan`, `challenge`, or `status` per parse invocation) | — (benefits from brand-ready + strategy-ready) |
-| **LinkedIn carousel / document post** | "LinkedIn carousel about X", "document post for LinkedIn", "slide deck for LinkedIn", "PDF post LinkedIn" | `@content-social write linkedin carousel - <topic>` | — |
-| **LinkedIn native video** | "LinkedIn video about X", "make a LinkedIn video", "LinkedIn talking head script", "video post for LinkedIn", "coach me on LinkedIn video" | `@content-social write linkedin video - <topic>` | — |
-| **Social media content (platform-specific)** | "write a reddit post about X", "create an instagram post for...", "draft a facebook post", "write something for LinkedIn and Reddit", "make a post for instagram about...", "linkedin post idea", "write a tweet about...", "generate social media content", "draft a twitter thread", "write a Substack piece / issue / newsletter post", "draft a Substack Note", "write a Threads post" | `@content-social` (write, repurpose, research, strategy, plan, or status per parse invocation) | — (no hard gate for write/research/repurpose; strategy-ready for strategy/plan modes) |
-| **Content strategy (which platforms)** | "content strategy", "which platforms should I be on", "platform mix", "should I start a newsletter / YouTube channel", "where should I publish" | `@content-social strategy` — **but first read `strategy/channel-plan.md`.** If a certified channel plan exists, serve it rather than producing a fresh platform matrix, and say that is what you are doing. Relitigating a certified channel decision requires `@biz-strategy amend`, not a content skill | strategy-ready |
-| **Content scripts (spoken / video)** | "write a script for...", "video script", "talking head script", "YouTube script", "Shorts script", "podcast script" | `@content-social write <platform> video` or `write youtube` / `write youtube shorts`. Ask which platform if the request does not say, since script structure differs sharply per platform | — |
+| **LinkedIn carousel / document post** | "LinkedIn carousel about X", "document post for LinkedIn", "slide deck for LinkedIn", "PDF post LinkedIn" | `@biz-social write linkedin carousel - <topic>` | — |
+| **LinkedIn native video** | "LinkedIn video about X", "make a LinkedIn video", "LinkedIn talking head script", "video post for LinkedIn", "coach me on LinkedIn video" | `@biz-social write linkedin video - <topic>` | — |
+| **Social media content (platform-specific)** | "write a reddit post about X", "create an instagram post for...", "draft a facebook post", "write something for LinkedIn and Reddit", "make a post for instagram about...", "linkedin post idea", "write a tweet about...", "generate social media content", "draft a twitter thread", "write a Substack piece / issue / newsletter post", "draft a Substack Note", "write a Threads post" | `@biz-social` (write, repurpose, research, strategy, plan, or status per parse invocation) | — (no hard gate for write/research/repurpose; strategy-ready for strategy/plan modes) |
+| **Content strategy (which platforms)** | "content strategy", "which platforms should I be on", "platform mix", "should I start a newsletter / YouTube channel", "where should I publish" | `@biz-social strategy` — **but first read `strategy/channel-plan.md`.** If a certified channel plan exists, serve it rather than producing a fresh platform matrix, and say that is what you are doing. Relitigating a certified channel decision requires `@biz-strategy amend`, not a content skill | strategy-ready |
+| **Content scripts (spoken / video)** | "write a script for...", "video script", "talking head script", "YouTube script", "Shorts script", "podcast script" | `@biz-social write <platform> video` or `write youtube` / `write youtube shorts`. Ask which platform if the request does not say, since script structure differs sharply per platform | — |
 | **Community find & engage** | "join communities", "engage on Reddit", "find my audience", "find communities to join", "where should I participate", "find subreddits for...", "find instagram accounts in...", "find facebook groups for..." | `@biz-community` (find, engage, or status per parse invocation) | — for `find`/`status`; brand-ready for `engage` |
 | **Referrals** | "ask for referrals", "get introduced" | `@biz-referrals ask` | — |
 | **Discovery / sales calls** | "prepare for a call", "run a discovery call", "I have a prospect meeting" | `@biz-discovery prepare` or `run` | pipeline-ready |
@@ -112,33 +112,33 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Objections** | "client said it's too expensive", "handle objections", "overcome price concerns", "roleplay objection responses" | `@biz-objections handle` or `roleplay` | active-deal for `handle`; — for `roleplay` |
 | **Pipeline diagnosis** | "nothing is converting", "find my bottleneck", "why aren't we closing" | `@biz-pipeline-diagnosis run` | pipeline tracker with data |
 | **Review / health** | "weekly review", "quarterly review", "how are we doing", "progress check" | `@biz-review` (weekly, quarterly, or status per parse invocation) | at least one strategy doc |
-| **Session management** | "start the day", "close the session", "what was I doing" | `@session-biz start` or `close` or `status` | scaffold |
-| **Project orientation** | "where am I", "what should I do next", "I'm lost" | `@session-biz status` + `@biz-review status` | — |
-| **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@deploy-files copy - <path>` or `@deploy-repo` (clone, archive, or status per parse invocation) | — |
-| **Content writing (craft)** | "write me a post about X", "draft an article on Y", "help me write something for LinkedIn", "write a LinkedIn post", "publish an article" (when no integration/ops needed), "case study", "landing page copy", "email sequence", "repurpose this draft", "audit my draft" | `@content-writing` (write, plan, repurpose, audit, or status per parse invocation) | — (no hard gate; improves with strategy/brand-ready) |
-| **Business ideas** | "give me business ideas for...", "what businesses could benefit from...", "how could I monetize...", "I want to start something in...", "pivot my business", "stress-test this idea", "new venture directions" | `@business-ideas` (generate, stress, pivot, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
-| **Product / service ideas** | "what product could I build for...", "give me SaaS product ideas in...", "what features should I add", "I want a tool that...", "service package ideas", "scope an MVP for", "evaluate this product concept", "extend my platform" | `@product-service-ideas` (generate, extend, scope, audit, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
+| **Session management** | "start the day", "close the session", "what was I doing" | `@biz-session start` or `close` or `status` | scaffold |
+| **Project orientation** | "where am I", "what should I do next", "I'm lost" | `@biz-session status` + `@biz-review status` | — |
+| **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@biz-deploy-files copy - <path>` or `@biz-deploy-repo` (clone, archive, or status per parse invocation) | — |
+| **Content writing (craft)** | "write me a post about X", "draft an article on Y", "help me write something for LinkedIn", "write a LinkedIn post", "publish an article" (when no integration/ops needed), "case study", "landing page copy", "email sequence", "repurpose this draft", "audit my draft" | `@biz-writing` (write, plan, repurpose, audit, or status per parse invocation) | — (no hard gate; improves with strategy/brand-ready) |
+| **Business ideas** | "give me business ideas for...", "what businesses could benefit from...", "how could I monetize...", "I want to start something in...", "pivot my business", "stress-test this idea", "new venture directions" | `@biz-ideas` (generate, stress, pivot, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
+| **Product / service ideas** | "what product could I build for...", "give me SaaS product ideas in...", "what features should I add", "I want a tool that...", "service package ideas", "scope an MVP for", "evaluate this product concept", "extend my platform" | `@biz-products` (generate, extend, scope, audit, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 
 > **Content route disambiguation (three-tier):**
 > 
-> 1. **Pure writing craft** (blog articles, case studies, landing pages, emails, newsletters as a *format*, technical deep dives) → `@content-writing` (no gate). Platform-agnostic, quality-gated writing.
+> 1. **Pure writing craft** (blog articles, case studies, landing pages, emails, newsletters as a *format*, technical deep dives) → `@biz-writing` (no gate). Platform-agnostic, quality-gated writing.
 > 
-> 2. **Platform-specialized social content** (Reddit posts, Instagram captions + visual briefs, LinkedIn posts / carousels / native video, Facebook Group posts, X/Twitter tweets + tweet chains, YouTube scripts / Shorts, Substack posts + Notes, Threads posts, cross-platform repurposing, trending topic research, platform strategy) → `@content-social` (no gate for write/research/repurpose/icp). Each piece calibrated to platform culture, audience, and format norms.
+> 2. **Platform-specialized social content** (Reddit posts, Instagram captions + visual briefs, LinkedIn posts / carousels / native video, Facebook Group posts, X/Twitter tweets + tweet chains, YouTube scripts / Shorts, Substack posts + Notes, Threads posts, cross-platform repurposing, trending topic research, platform strategy) → `@biz-social` (no gate for write/research/repurpose/icp). Each piece calibrated to platform culture, audience, and format norms.
 > 
 > **Two naming collisions to resolve deliberately:**
 > 
-> - **"newsletter" vs Substack.** A newsletter as a *format* (an email to a list, platform-agnostic) is `@content-writing`. **Substack as a platform** is `@content-social write substack`, because its guide carries mechanics that the format alone does not: the recommendations network, Notes as a funnel, free-versus-paid economics, and the fact that its readers opted into depth so the usual compression is a downgrade. If the request names Substack, route to `@content-social` even though the word "newsletter" appears.
+> - **"newsletter" vs Substack.** A newsletter as a *format* (an email to a list, platform-agnostic) is `@biz-writing`. **Substack as a platform** is `@biz-social write substack`, because its guide carries mechanics that the format alone does not: the recommendations network, Notes as a funnel, free-versus-paid economics, and the fact that its readers opted into depth so the usual compression is a downgrade. If the request names Substack, route to `@biz-social` even though the word "newsletter" appears.
 > - **"thread" vs Threads.** A "thread" or "twitter thread" means a chain of tweets on X. **Threads** is Meta's platform with its own guide. When the request is ambiguous, ask; the two have opposite register rules, since Threads ranking penalizes the formality X tolerates.
 > 
 > 3. **Publishing ops** (content tracker, posting calendar, 30-day challenges, engagement cadence, analytics review, video habit coaching) → `@biz-content` for LinkedIn (brand-ready gate) or `@biz-youtube` for YouTube.
 > 
-> **LinkedIn challenge flow:** `@biz-brand audit` → `@biz-content challenge - createimpact` (or `challenge`) → `@content-social write linkedin` / `write linkedin carousel` / `write linkedin video` per plan day → `@biz-content status` weekly.
+> **LinkedIn challenge flow:** `@biz-brand audit` → `@biz-content challenge - createimpact` (or `challenge`) → `@biz-social write linkedin` / `write linkedin carousel` / `write linkedin video` per plan day → `@biz-content status` weekly.
 > 
-> **LinkedIn video challenge flow:** `@biz-brand audit` → `@content-social icp` if missing → `@biz-content challenge - video` → `@content-social write linkedin video` per plan day → `@biz-content status` weekly.
+> **LinkedIn video challenge flow:** `@biz-brand audit` → `@biz-social icp` if missing → `@biz-content challenge - video` → `@biz-social write linkedin video` per plan day → `@biz-content status` weekly.
 > 
-> **YouTube flow:** `@biz-brand audit` (YouTube section) → `@biz-youtube plan` → `@content-social write youtube` / `write youtube shorts` per plan → `@biz-youtube status` weekly.
+> **YouTube flow:** `@biz-brand audit` (YouTube section) → `@biz-youtube plan` → `@biz-social write youtube` / `write youtube shorts` per plan → `@biz-youtube status` weekly.
 > 
-> **How they compose:** `@content-writing write` produces a long-form piece or YouTube source outline. `@content-social write youtube` produces the full script + packaging. `@content-social write linkedin video` produces a complete LinkedIn native video production package. `@content-social repurpose` spins long-form into platform-native posts for Reddit, Instagram, LinkedIn, LinkedIn video, Facebook, X/Twitter, YouTube, Substack, and Threads, limited to the platforms the channel plan sanctions. `@biz-content publish` tracks LinkedIn performance (text, carousel, and video); `@biz-youtube publish` tracks YouTube performance. `@biz-community find` discovers where to post. `@biz-community engage` handles daily comment participation.
+> **How they compose:** `@biz-writing write` produces a long-form piece or YouTube source outline. `@biz-social write youtube` produces the full script + packaging. `@biz-social write linkedin video` produces a complete LinkedIn native video production package. `@biz-social repurpose` spins long-form into platform-native posts for Reddit, Instagram, LinkedIn, LinkedIn video, Facebook, X/Twitter, YouTube, Substack, and Threads, limited to the platforms the channel plan sanctions. `@biz-content publish` tracks LinkedIn performance (text, carousel, and video); `@biz-youtube publish` tracks YouTube performance. `@biz-community find` discovers where to post. `@biz-community engage` handles daily comment participation.
 
 If the request spans multiple intents (e.g., "I want to fix my LinkedIn and start posting content"), route through all matching skills in gate order.
 
@@ -162,10 +162,10 @@ These **project-aware generative skills** have **no prerequisite gate** and may 
 
 | Skill | Verb | Note |
 |------|------|------|
-| `@content-writing` | `write` · `plan` · `repurpose` · `audit` · `status` | Craft of content; no gate |
-| `@content-social` | `write` · `research` · `repurpose` · `icp` · `status` | Platform-specialized social content; no gate (`strategy`/`plan` modes require strategy-ready) |
-| `@business-ideas` | `generate` · `stress` · `pivot` · `status` | Ideation; no gate |
-| `@product-service-ideas` | `generate` · `extend` · `scope` · `audit` · `status` | Concepts + MVP scoping; no gate |
+| `@biz-writing` | `write` · `plan` · `repurpose` · `audit` · `status` | Craft of content; no gate |
+| `@biz-social` | `write` · `research` · `repurpose` · `icp` · `status` | Platform-specialized social content; no gate (`strategy`/`plan` modes require strategy-ready) |
+| `@biz-ideas` | `generate` · `stress` · `pivot` · `status` | Ideation; no gate |
+| `@biz-products` | `generate` · `extend` · `scope` · `audit` · `status` | Concepts + MVP scoping; no gate |
 | `@biz-market-validate` | `test` · `design` · `status` | (pre-existing) Validation; no gate |
 | `@biz-community` | `find` · `status` | Community discovery; no gate. **`engage` is gated** on brand-ready |
 
@@ -180,7 +180,7 @@ These **project-aware generative skills** have **no prerequisite gate** and may 
 | `brand-ready` | `@biz-brand overhaul` | Route to `@biz-brand audit` → `@biz-brand overhaul` |
 | `pipeline-ready` | `@biz-review status` | Route to `@biz-pricing set` + configure tracker + fill outreach cadence, then `@biz-review status` |
 | `sales-ready` | `@biz-discovery run` | Route to `@biz-discovery prepare` → `@biz-discovery run` |
-| `active-deal` | `@biz-discovery run` or `@biz-proposal write` | Route to `@biz-discovery run` first to generate pipeline |
+| `active-deal` | `@biz-discovery run` | Route to `@biz-discovery run` first to generate pipeline |
 
 The gated skills also self-check the ledger in their own I0. The director's check is the first layer, not the only one, so a stale ledger gets caught twice.
 

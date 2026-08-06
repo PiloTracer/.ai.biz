@@ -1,6 +1,6 @@
 # Content Topic Buckets — BIZ-09
 
-Use these four buckets to generate a balanced, repeatable content mix. Every content skill (`content-writing`, `content-social`, `biz-content`, `biz-youtube`) should rotate across them so the audience gets depth, credibility, and proof without repetition.
+Use these four buckets to generate a balanced, repeatable content mix. Every content skill (`biz-writing`, `biz-social`, `biz-content`, `biz-youtube`) should rotate across them so the audience gets depth, credibility, and proof without repetition.
 
 > **Rule of thumb:** If you can replace your name/company with anyone else's and the piece still works, it's too generic. Each bucket should be specific enough that only you could have created it.
 

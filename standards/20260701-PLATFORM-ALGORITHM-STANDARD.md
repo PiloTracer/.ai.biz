@@ -1,6 +1,6 @@
 # PLATFORM-ALGORITHM-STANDARD
 
-Binding content distribution rules per platform. All content skills (`content-writing`, `content-social`) must follow these. Violating platform-specific rules reduces organic reach — sometimes to zero.
+Binding content distribution rules per platform. All content skills (`biz-writing`, `biz-social`) must follow these. Violating platform-specific rules reduces organic reach — sometimes to zero.
 
 ## Cross-platform universal rules
 
@@ -39,7 +39,7 @@ Official LinkedIn consistency programs reward **expertise sharing**, not volume 
 3. **Challenge hashtags:** Use program hashtag (e.g. `#CreateImpact`) on **one post per week**, not every post
 4. **Feedback loop:** Log format + hook + impressions in `@biz-content status` after each post; adjust from data
 5. **ICP alignment:** Run BIZ-08 LinkedIn ICP before starting; save to `.work.biz/strategy/linkedin-icp.md`
-6. **Ops skill:** `@biz-content challenge` for 30-day plan; `@content-social write linkedin carousel` for highest-reach drafts
+6. **Ops skill:** `@biz-content challenge` for 30-day plan; `@biz-social write linkedin carousel` for highest-reach drafts
 
 ## Reddit
 
@@ -223,4 +223,4 @@ Rule: **replies are the currency, and the first 30–60 minutes are permanent.**
 
 - Concept: BIZ-07 Content Platform Algorithms (`concepts/content-platform-algorithms/prompt.md`)
 - Concept: BIZ-08 LinkedIn ICP (`concepts/linkedin-icp/prompt.md`)
-- Skills: `content-writing/skill.md` § LinkedIn post, `content-social/skill.md` § LinkedIn, `biz-content/skill.md` § challenge
+- Skills: `biz-writing/skill.md` § LinkedIn post, `biz-social/skill.md` § LinkedIn, `biz-content/skill.md` § challenge
