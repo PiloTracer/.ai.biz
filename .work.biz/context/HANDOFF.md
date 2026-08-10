@@ -1,7 +1,26 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** 2026-08-06 — Session closed
-> **Status:** v0.6.0 released. All skill ids standardized under the `biz-` prefix (8 renames across folders, frontmatter, handles, scripts, docs). Full framework verification sweep: one HIGH deploy bug fixed, 29 consistency findings resolved, unsourced `biz-referrals` stats de-claimed. All gates green (blast-radius WARN acknowledged for a rename-wide diff). Tagged and pushed.
+> **Date:** 2026-08-10 — Session closed
+> **Status:** Content Status Protocol shipped: publish/status tracking fixed across all four content skills (only 1 of 4 publish paths wrote `CONTENT_STATUS.md` before), new `@biz-social log` mode, `framework-verify` regression check, `blast-radius-check.sh` staged-aware with a real self-test, UNKNOWNS #6 resolved. Gates: framework-verify PASS, gate-verify PASS, touch-scope PASS. Uncommitted; owner to commit.
+
+---
+
+## Session summary (2026-08-10, close)
+
+| Step | Status |
+|------|--------|
+| Diagnosed publish-status tracking failure: tracker existed but only biz-content challenge wrote to it | Done |
+| CONVENTIONS § Content Status Protocol: lifecycle states, read rule, write rule, self-heal rule | Done |
+| `CONTENT_STATUS.md` template: Draft column, status vocabulary, purpose statement | Done |
+| biz-content publish: step 0 load tracker + step 7 record publish; status mode reconciles | Done |
+| biz-writing: I0 tracker read + Step 7 register piece + completion gate item | Done |
+| biz-social: I0 tracker read + Step 5 register + new `log` mode (I7) + time budget | Done |
+| biz-youtube publish: step 0 load + step 7 record (index + youtube-tracker); status reads index | Done |
+| biz-review drift check: self-heal missing tracker + backfill | Done |
+| Routing sync: biz-director intent row, skills/README verb, .cursorrules + template, START_HERE, PROCESS_ROUTER, SKILL_DEPENDENCIES | Done |
+| framework-verify: content-status wiring check (silent-failure guard) | Done |
+| blast-radius-check.sh: staged-aware measurement + real self-test (4 scenarios) | Done |
+| UNKNOWNS #6 resolved (deploy update creates missing files via bootstrap copy_if_missing) | Done |
 
 ---
 
@@ -66,12 +85,13 @@
 | # | Task | Priority |
 |---|------|----------|
 | 1 | Owner review of the uncommitted `future-strategy` changes (VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD → Publishing Standard refactor) | High |
-| 2 | Substack + Threads guides are untested — no project has published to either. Validate against real output before trusting the cadence and format rules | Medium |
-| 3 | `blast-radius-check.sh` measures against `HEAD`, i.e. the whole working tree, which makes the "split into scoped commits" workflow it exists to enforce impossible to execute for the first commit. Needs to diff staged content instead | Medium |
-| 4 | Regenerate `.tmp/*.skill` archives — now also missing voice profile, Substack/Threads, reconcile, platform tracker | Medium |
-| 5 | Test revised `biz-writing` skill against a new LinkedIn draft and measure engagement | Medium |
-| 6 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
-| 7 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
+| 2 | Commit this session's framework changes (content status protocol + blast-radius fix) | High |
+| 3 | Validate the Content Status Protocol on a live target project: run a publish + `@biz-social log` cycle and confirm the tracker stays current | High |
+| 4 | Substack + Threads guides are untested — no project has published to either. Validate against real output before trusting the cadence and format rules | Medium |
+| 5 | Regenerate `.tmp/*.skill` archives — now also missing voice profile, Substack/Threads, reconcile, platform tracker, content status protocol | Medium |
+| 6 | Test revised `biz-writing` skill against a new LinkedIn draft and measure engagement | Medium |
+| 7 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
+| 8 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
 
 ---
 
@@ -103,6 +123,8 @@
 | 22 | **Bootstrap manifest sync rule** — `templates/bootstrap.sh`, `templates/README.md`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, `skills/biz-deploy-basic/skill.md`, and `skills/biz-bootstrap/skill.md` § I1 must list the same files. `WORK_FILES` is the one that fails silently. |
 | 23 | **All skill ids carry the `biz-` prefix** (v0.6.0) — one naming scheme, no exceptions; `session-control` remains an alias of `biz-session`. Old ids (`content-social`, `content-writing`, `deploy-*`, `session-biz`, `business-ideas`, `product-service-ideas`) exist only in pre-v0.6.0 CHANGELOG sections. |
 | 24 | **One writer per gate is binding** — `active-deal` is promoted by `@biz-discovery run` alone; `@biz-proposal write` is not a promoter. |
+| 25 | **Content Status Protocol is binding on all content skills** — every content skill reads `CONTENT_STATUS.md` before drafting and records into it after producing or publishing; a missing tracker is created from its template at record time, never a reason to skip the record. Publishes that happened outside any skill are recorded via `@biz-social log`. Lifecycle: draft → ready → published (+ blocked, hold). |
+| 26 | **`blast-radius-check.sh` measures the next commit, not the tree** — staged content wins when anything is staged; working-tree-vs-HEAD only when nothing is staged. This is what makes the split-into-scoped-commits workflow executable. |
 
 ---
 

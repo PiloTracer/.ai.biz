@@ -76,6 +76,21 @@ while IFS= read -r f; do
 done < <(find "$AI_ROOT/standards" -maxdepth 1 -type f -name '*.md' | sort)
 ok "${std_count} standards non-empty"
 
+note "Content Status Protocol wiring"
+# Publish tracking only works if every content-producing skill reads and writes
+# the canonical tracker. A skill that quietly stops referencing CONTENT_STATUS.md
+# starves the tracker in every target project — exactly the failure mode this
+# check exists to catch.
+for skill in biz-writing biz-social biz-content biz-youtube; do
+  grep -q "CONTENT_STATUS.md" "$AI_ROOT/skills/${skill}/skill.md" \
+    || die "skills/${skill}/skill.md does not reference CONTENT_STATUS.md (Content Status Protocol)"
+done
+grep -q "Content Status Protocol" "$AI_ROOT/CONVENTIONS.md" \
+  || die "CONVENTIONS.md is missing the Content Status Protocol section"
+grep -q '^| `log` |' "$AI_ROOT/skills/README.md" \
+  || die "skills/README.md verb table is missing the log verb (biz-social)"
+ok "all four content skills reference CONTENT_STATUS.md; protocol + log verb documented"
+
 note "biz-deploy-files in-place scaffold"
 DF_SMOKE="$(mktemp -d)"
 pushd "$DF_SMOKE" >/dev/null

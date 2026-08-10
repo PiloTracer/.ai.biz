@@ -2,6 +2,24 @@
 
 All notable changes to Business OS are documented here.
 
+## [Unreleased]
+
+### Added
+- **Content Status Protocol (CONVENTIONS § Content Status Protocol)** — the binding read/write contract for `.work.biz/reference/CONTENT_STATUS.md`. Publish tracking was broken in target projects by construction: the tracker existed and `biz-session` loaded it, but only one of four content paths ever wrote to it (`biz-content challenge`'s posting ritual). `biz-content publish`, `biz-youtube publish`, `biz-social write`, and `biz-writing` neither read it before drafting nor recorded into it after publishing, so the file starved, later sessions could not tell what was live, and agents re-drafted already-published topics. The protocol defines five lifecycle states (`draft`, `ready`, `published`, `blocked`, `hold`), a read rule (every content skill reads before drafting; never re-draft a published piece; prefer advancing `ready`/`draft` pieces), a write rule (drafts registered on delivery, publishes recorded by whichever flow shipped them), and a self-heal rule (create the tracker from its template at record time when missing, instead of skipping the record)
+- **`@biz-social log` (I7)** — explicit recording path for publishes that happened outside any skill, which is most publishes: operator posts from a phone, or a draft goes live between sessions. Promotes the existing Items row rather than duplicating it, refreshes By platform and Summary, runs the tracker's "What to do after a publish" checklist, and flags channel-plan drift without blocking the record. Ungated, 1-2 min per piece. Routed from `biz-director` ("I published the post", "mark this piece published"), listed in `skills/README.md` verb table, `START_HERE.md`, `PROCESS_ROUTER.md`, `.cursorrules`, and `templates/cursorrules.template`
+- **Tracker wiring in all four content skills** — `biz-content publish` gains step 0 (load tracker, prefer ready/draft pieces) and step 7 (record the publish, mandatory); `biz-writing` gains the tracker in its I0 context load and a Step 7 registering delivered pieces (`ready`, or `draft` when an owner pass is pending) plus a completion-gate item; `biz-social` gains the tracker in I0, a Step 5 registration, and a time-budget row; `biz-youtube publish` gains step 0 and step 7 (record into both `CONTENT_STATUS.md` and `youtube-tracker.md`), and its `status` mode reads the index first. `biz-content status` and `biz-youtube status` now reconcile: any post the operator names that is missing from the tracker gets recorded
+- **`framework-verify.sh` content-status wiring check** — fails when any of the four content skills stops referencing `CONTENT_STATUS.md`, when CONVENTIONS loses the protocol section, or when the verb table loses `log`. This failure mode is silent by nature (the tracker simply stays empty in target projects), so it gets the same treatment as the `WORK_FILES` manifest drift: a machine check where prose review already proved insufficient
+- **Real `blast-radius-check.sh --self-test`** — exercises a temp git repo through four scenarios (clean tree, one staged area amid three changed areas, three staged areas, `--warn-only` override) instead of printing PASS unconditionally
+
+### Changed
+- **`CONTENT_STATUS.md` template** — Summary gains a Draft column; Items gains a status-vocabulary line; Purpose states the read/write obligation and points at the protocol
+- **`biz-review weekly` drift check** — a missing tracker no longer just gets flagged: it is created from the template and backfilled with pieces known to be published
+- **`blast-radius-check.sh` measures what the next commit carries** — when anything is staged, only staged content is counted (`git diff --cached`); the working-tree-vs-HEAD sweep now applies only when nothing is staged. The old behavior counted every unstaged leftover, which made the first scoped commit of the split-into-scoped-commits workflow this script enforces impossible to pass (backlog item since 2026-08-06)
+- **`standards/20260621-DIRECTORY_MAP.md`** — Tracker rule points at the Content Status Protocol for the read/write/self-heal contract
+
+### Resolved
+- **UNKNOWNS #6** — verified in code that `@biz-deploy-basic update` already creates missing `.work.biz/` artifacts: the script runs `templates/bootstrap.sh` in every mode, and `copy_if_missing` creates absent files outright; the merge-candidate scan only governs existing-but-differing files. Content skills additionally self-heal a missing tracker at record time
+
 ## [v0.6.0] - 2026-08-06
 
 ### Added

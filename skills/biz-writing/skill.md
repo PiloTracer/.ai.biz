@@ -51,6 +51,7 @@ Read, if they exist, in this order:
 | `.work.biz/strategy/target-buyer-profile.md` | Who reads this content, what they fear, what they value |
 | `.work.biz/strategy/offer-scope.md` | What the offer IS / IS NOT — keeps content on-position |
 | `.work.biz/strategy/channel-plan.md` | Primary channel → matching content format |
+| `.work.biz/reference/CONTENT_STATUS.md` | What already exists: never re-write a `published` piece for the same platform; prefer advancing a `ready` or `draft` piece over starting fresh |
 | `.work.biz/context/HANDOFF.md` | Recent decisions; avoid contradicting them |
 
 ### Priority 2 — Voice profile (binding when present)
@@ -349,6 +350,16 @@ Provide the complete, ready-to-publish content. Then, below a divider, offer:
 
 Do not pad the response with commentary about what you did. Show the work, not the commentary.
 
+### Step 7 — Register the piece (Business OS projects)
+
+If `.work.biz/` exists, record the piece in `.work.biz/reference/CONTENT_STATUS.md` so later sessions know it exists (create the file from `templates/work/reference/CONTENT_STATUS.md.template` if missing):
+
+- Add an **Items** row: piece title, status `ready`, or `draft` when an owner pass is still required, target platform in the Note column.
+- If the piece is also saved as a file, use the conventional path `.work.biz/drafts/draft_<topic>.md` and reference it in the Note column.
+- Refresh the **Summary** counts.
+
+Skip this step only when the user explicitly asked for a throwaway fragment.
+
 ---
 
 ## I2 — `plan` mode
@@ -450,7 +461,8 @@ You may only claim the task complete when all are true:
 2. Project context was loaded per I0; any critical gaps were surfaced.
 3. The quality check above passes.
 4. Unproven claims are flagged **Unverified** or backed by evidence.
-5. A concrete next step is proposed (e.g., "supply these proof points," "publish to channel X," "run `@biz-writing repurpose` on this").
+5. In a Business OS project, a written piece was registered in `CONTENT_STATUS.md` per Step 7.
+6. A concrete next step is proposed (e.g., "supply these proof points," "publish to channel X," "run `@biz-writing repurpose` on this").
 
 ---
 

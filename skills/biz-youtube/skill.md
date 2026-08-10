@@ -74,6 +74,13 @@ but time and on-camera consistency remain the binding constraints. Pick a cadenc
 
 ## Mode: publish — End-to-end video workflow
 
+### 0. Load the content status tracker
+
+Read `.work.biz/reference/CONTENT_STATUS.md`. If it does not exist, create it from `templates/work/reference/CONTENT_STATUS.md.template` before proceeding (self-heal rule, see CONVENTIONS § Content Status Protocol).
+
+- Never pick a topic already marked `published` for YouTube.
+- If scripts are marked `ready` or `draft`, prefer recording or finishing one of them over starting a new one.
+
 ### 1. Choose topic
 
 Pick from one of the four canonical topic buckets in `concepts/content-topic-buckets/prompt.md` (BIZ-09):
@@ -140,7 +147,15 @@ subscription feed.
 - Share in relevant communities/email list if applicable
 - Note performance checkpoints: 1h, 24h, 48h, 7 days
 
-### 7. Repurpose
+### 7. Record the publish (mandatory)
+
+Update `.work.biz/reference/CONTENT_STATUS.md` before the session ends:
+
+1. Mark the video `published` in the **Items** table with the date and video URL.
+2. Refresh the **By platform** row (YouTube published count, last publish date, tracker file pointer) and the **Summary** counts.
+3. Append the video to `.work.biz/pipeline/youtube-tracker.md` (create it from `templates/work/pipeline/platform-tracker.md.template` if this is the first publish), and follow the file's "What to do after a publish" checklist for `plans/NEXT.md` and `context/HANDOFF.md`.
+
+### 8. Repurpose
 
 Turn one long-form video into:
 
@@ -268,6 +283,8 @@ format combo, then continue at a sustainable cadence using `@biz-youtube plan`.
 ---
 
 ## Mode: status — Read the tracker and diagnose bottlenecks
+
+Read `.work.biz/reference/CONTENT_STATUS.md` first for the cross-platform index of what exists, then `.work.biz/pipeline/youtube-tracker.md` for performance. Any published video missing from either file gets recorded now. Then diagnose:
 
 ### YouTube analytics literacy
 

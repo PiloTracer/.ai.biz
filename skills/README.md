@@ -44,7 +44,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-session | `biz-session/` | Session open/close, HANDOFF, NEXT; scoped to `.work.biz/`; combinable `close` / `commit` / `push` params |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
 | biz-writing | `biz-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
-| biz-social | `biz-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads). Write, research, repurpose, plan. |
+| biz-social | `biz-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads). Write, research, repurpose, plan, log publishes. |
 | biz-ideas | `biz-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
 | biz-products | `biz-products/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
 
@@ -97,5 +97,6 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `find` | Discover communities/subreddits/accounts/groups on a platform (biz-community) |
 | `reconcile` | Transcribe certification-asserted decisions into canonical files; no gate moves, no re-certification (biz-strategy) |
 | `icp` | Run LinkedIn ICP analysis, saved to `.work.biz/strategy/linkedin-icp.md` (biz-social) |
+| `log` | Record a publish or status change into `CONTENT_STATUS.md` (biz-social) |
 | `context` | Read-only full session context load, uncommitted-aware (biz-session) |
 | `update` | Deploy update mode with rules-aware merge (biz-deploy-basic, biz-deploy-files) |

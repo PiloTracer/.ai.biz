@@ -1,22 +1,16 @@
-# Touch Scope — v0.6.0 release: biz-* skill rename + framework consistency hardening
+# Touch Scope — content status protocol + framework improvements
 #
-# Session goal: standardize all skill ids under the biz- prefix (folders,
-# frontmatter, @handles, scripts, docs), verify framework consistency
-# end-to-end, fix found gaps, and cut release v0.6.0.
+# Session goal: fix publish/status tracking (CONTENT_STATUS.md not wired into
+# publish flows), add biz-social log mode, staged-aware blast-radius check,
+# resolve UNKNOWNS #6, and record session state.
 
-scripts/
 skills/
 standards/
 templates/
-concepts/
-context/
-.quick/
-hooks/
-.cursorrules
-.gitignore
-CHANGELOG.md
+scripts/
 CONVENTIONS.md
-PROCESS_ROUTER.md
-README.md
+CHANGELOG.md
 START_HERE.md
+PROCESS_ROUTER.md
+.cursorrules
 .work.biz/

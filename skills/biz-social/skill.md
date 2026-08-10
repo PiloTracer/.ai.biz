@@ -12,7 +12,7 @@ description: >-
   pages, email sequences), use @biz-writing.
   biz-social write, biz-social research, biz-social repurpose,
   biz-social strategy, biz-social plan, biz-social icp,
-  biz-social status.
+  biz-social status, biz-social log.
   LinkedIn: write linkedin, write linkedin carousel, write linkedin video.
   YouTube: write youtube, write youtube shorts.
 ---
@@ -27,7 +27,7 @@ Generate platform-native social media content. Every platform has a different cu
 
 **Core principle:** Every piece of content must deliver genuine value to the specific audience on that platform. No cross-posting identical content. No generic marketing language dressed up as a platform post.
 
-**Jump to section:** [Parse invocation](#parse-invocation) · [I0 Project context](#i0--project-context-contract-run-before-writing-anything) · [Platform matrix](#platform-culture--audience-matrix) · [Universal format](#universal-platform-format) · [R1 Reddit](#r1--reddit-content) · [R2 Instagram](#r2--instagram-content) · [R3 LinkedIn](#r3--linkedin-content) · [R3V LinkedIn Video](#r3v--linkedin-native-video) · [R4 Facebook](#r4--facebook-content) · [R5 X](#r5--x-twitter-content) · [R6 YouTube](#r6--youtube-content) · [R7 Substack](#r7--substack-content) · [R8 Threads](#r8--threads-content) · [I2 Research](#i2--research-mode) · [I3 Repurpose](#i3--repurpose-mode) · [I4 Strategy](#i4--strategy-mode) · [I5 Plan](#i5--plan-mode) · [ICP mode](#linkedin-icp-mode) · [I6 Status](#i6--status-mode)
+**Jump to section:** [Parse invocation](#parse-invocation) · [I0 Project context](#i0--project-context-contract-run-before-writing-anything) · [Platform matrix](#platform-culture--audience-matrix) · [Universal format](#universal-platform-format) · [R1 Reddit](#r1--reddit-content) · [R2 Instagram](#r2--instagram-content) · [R3 LinkedIn](#r3--linkedin-content) · [R3V LinkedIn Video](#r3v--linkedin-native-video) · [R4 Facebook](#r4--facebook-content) · [R5 X](#r5--x-twitter-content) · [R6 YouTube](#r6--youtube-content) · [R7 Substack](#r7--substack-content) · [R8 Threads](#r8--threads-content) · [I2 Research](#i2--research-mode) · [I3 Repurpose](#i3--repurpose-mode) · [I4 Strategy](#i4--strategy-mode) · [I5 Plan](#i5--plan-mode) · [ICP mode](#linkedin-icp-mode) · [I6 Status](#i6--status-mode) · [I7 Log](#i7--log-mode)
 
 ---
 
@@ -61,6 +61,7 @@ Generate platform-native social media content. Every platform has a different cu
 | `@biz-social icp` | Run BIZ-08 LinkedIn ICP analysis and save to `.work.biz/strategy/linkedin-icp.md` |
 | `@biz-social plan <platform> - <horizon>` | Platform-specific content calendar (e.g., `30 days`, `Q3`) |
 | `@biz-social status` | Read-only: per-platform state, cadence drift, and channel-plan divergence (see I6) |
+| `@biz-social log - <piece> - <platform> [url]` | Record a publish into `CONTENT_STATUS.md` (see I7). Use when something was posted outside a publish flow |
 
 **Default:** `write` if no verb matches. If the user gives a free-text request like "write me a reddit post about X" with no verb, treat it as `write reddit - <their words>`.
 
@@ -80,6 +81,7 @@ Read, if they exist:
 | `.work.biz/strategy/linkedin-icp.md` | How the buyer shows up on LinkedIn — titles, hook language, format preference |
 | `.work.biz/strategy/one-pager.md` | Niche, unified offer, price range, geography |
 | `.work.biz/strategy/channel-plan.md` | Primary channel — determines which platforms are primary vs secondary |
+| `.work.biz/reference/CONTENT_STATUS.md` | What already exists on every platform: never re-write a `published` piece for the same platform; prefer advancing a `ready` or `draft` piece over starting fresh |
 | `.work.biz/context/HANDOFF.md` | Recent decisions; avoid contradicting them |
 
 ### Priority 2 — Voice profile (binding when present)
@@ -265,6 +267,16 @@ Provide the complete, ready-to-post content. Below a divider, offer:
 2. **Alternate hooks** (2 options — different angles)
 3. **Posting time suggestion** — best window for this platform + audience
 4. **Engagement plan** — 1-2 sentences on what to do after posting
+
+### Step 5 — Register the piece (Business OS projects)
+
+If `.work.biz/` exists, record the piece in `.work.biz/reference/CONTENT_STATUS.md` so later sessions know it exists (create the file from `templates/work/reference/CONTENT_STATUS.md.template` if missing):
+
+- Add an **Items** row: piece title, status `ready` (or `draft` when an owner pass is still required), target platform in the Note column.
+- Refresh the **By platform** and **Summary** rows.
+- Remind the operator: once posted, record the publish (date + URL) here or via `@biz-social log`. The tracker is only true if publishes land in it.
+
+Skip this step for `research` mode and for throwaway fragments the user explicitly did not want kept.
 
 ---
 
@@ -703,6 +715,7 @@ You may only claim the task complete when all are true:
 | `plan` | 20-30 min |
 | `icp` | 15-25 min |
 | `status` | < 2 min |
+| `log` (per piece) | 1-2 min |
 
 ---
 
@@ -813,6 +826,36 @@ NEXT
 
 ---
 
+## I7 — `log` mode
+
+Record a publish (or a status change) into `.work.biz/reference/CONTENT_STATUS.md`. This is the explicit path for content that shipped outside any publish flow, which is most content: the operator posts a piece from their phone, or a draft written last week goes live without a skill in the loop. Without this mode the tracker starves and every later session loses the publish record.
+
+### Invocation shapes
+
+| User says | Meaning |
+|-----------|---------|
+| `@biz-social log - <piece> - <platform>` | Record a publish today |
+| `@biz-social log - <piece> - <platform> - <url>` | Record with the live URL |
+| `@biz-social log - <piece> - <platform> - <date>` | Backdate the publish |
+| "I published the RAG post on LinkedIn yesterday" | Same as above; parse piece, platform, date from the sentence |
+
+### Workflow
+
+1. Read `.work.biz/reference/CONTENT_STATUS.md`. If missing, create it from `templates/work/reference/CONTENT_STATUS.md.template` first (self-heal rule).
+2. Find the piece in the **Items** table. If it exists as `ready` or `draft`, promote that row; do not add a duplicate. If it does not exist, add a row.
+3. Set status `published`, the publish date, and platform / URL. Ask for the URL only if it materially helps retrieval; never block the record on a missing URL.
+4. Refresh the **By platform** row (published count, last publish date, conversations column if one was reported) and the **Summary** counts. Update **Last updated**.
+5. Run the file's "What to do after a publish" checklist: platform tracker row (create `pipeline/<platform>-tracker.md` from the template on first publish there), `plans/NEXT.md`, `context/HANDOFF.md`.
+6. Confirm in one line what was recorded. No commentary beyond that.
+
+### Rules
+
+- `log` never drafts content and never recommends new content. It writes tracker state only.
+- If the platform is not in `strategy/channel-plan.md`, still record the publish and flag the drift in the confirmation line, exactly as the tracker's `not sanctioned` rule requires.
+- Multiple pieces in one invocation are fine; record each, then confirm as a short list.
+
+---
+
 ## Sources and caveats
 
 Benchmarks in this skill are a mix of platform-reported data, widely cited industry studies, and directional rules of thumb observed across creators. Because social-platform algorithms and audience behavior change frequently:
@@ -825,7 +868,7 @@ Benchmarks in this skill are a mix of platform-reported data, widely cited indus
 
 ## Gates & dependencies
 
-**No hard gate:** `write`, `research`, `repurpose`, `icp`, and `status` modes can run at any time, like `biz-writing`. Output improves dramatically when the host project is bootstrapped (`@biz-bootstrap init`) and strategy-certified (`@biz-strategy certify`).
+**No hard gate:** `write`, `research`, `repurpose`, `icp`, `log`, and `status` modes can run at any time, like `biz-writing`. Output improves dramatically when the host project is bootstrapped (`@biz-bootstrap init`) and strategy-certified (`@biz-strategy certify`).
 
 **Requires `strategy-ready`:** `strategy` and `plan` modes need a certified strategy (`@biz-strategy certify`) because they commit to a platform mix and publishing calendar.
 

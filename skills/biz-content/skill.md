@@ -66,6 +66,13 @@ Report which voice source you loaded, or state plainly that none exists and the 
 
 ## Mode: publish — Write and post one piece
 
+### 0. Load the content status tracker
+
+Read `.work.biz/reference/CONTENT_STATUS.md`. If it does not exist, create it from `templates/work/reference/CONTENT_STATUS.md.template` before proceeding (self-heal rule, see CONVENTIONS § Content Status Protocol).
+
+- Never pick a topic already marked `published` for LinkedIn.
+- If pieces are marked `ready` or `draft`, prefer publishing or finishing one of them over starting a new piece. Say which one you are advancing.
+
 ### 1. Choose Topic
 
 Pick from one of the four canonical topic buckets in `concepts/content-topic-buckets/prompt.md` (BIZ-09):
@@ -118,7 +125,17 @@ Test across posts: track which style gets the most engagement in your content tr
 - Within 30 min of posting, comment on 5-10 relevant posts from your target audience
 - Reply to every comment on your post within 24 hours
 
-### 7. Repurpose (Get 4 Assets From 1 Effort)
+### 7. Record the publish (mandatory)
+
+Update `.work.biz/reference/CONTENT_STATUS.md` before the session ends:
+
+1. Mark the piece `published` in the **Items** table with the date and post URL.
+2. Refresh the **By platform** row (published count, last publish date) and the **Summary** counts.
+3. Follow the file's "What to do after a publish" checklist: platform tracker row, `plans/NEXT.md`, `context/HANDOFF.md`, weekly metrics.
+
+If the operator reports later that they posted a piece outside this flow, record it the same way (or via `@biz-social log`).
+
+### 8. Repurpose (Get 4 Assets From 1 Effort)
 
 After publishing, repurpose the same content into different formats:
 
@@ -225,6 +242,8 @@ Use this when the operator wants to make LinkedIn native video a primary trust-b
 **Completion:** After 30 days, run `@biz-content status`, identify the winning hook × video-type combination, and commit to a sustainable LinkedIn video cadence (e.g., 1 video/week + 2 text/carousel posts/week).
 
 ## Mode: status — Content Performance Tracking
+
+First read `.work.biz/reference/CONTENT_STATUS.md` and report it: what is published, ready, or stuck in draft on LinkedIn, and when the last publish was. Then reconcile: any post the operator names that is missing from the tracker gets recorded now (that is what this tracker is for). Only then review performance:
 
 ### Content Tracker Template
 

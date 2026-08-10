@@ -30,6 +30,43 @@
 - `reference/VOICE_RETRO.md` — draft vs owner edits; amend the voice profile when an edit class repeats three times
 - `strategy/` — strategy artifacts (canonical location; see Document naming below)
 
+## Content Status Protocol (binding for all content skills)
+
+`.work.biz/reference/CONTENT_STATUS.md` is the single source of truth for what content exists and whether it is published. A tracker nobody writes to is indistinguishable from no tracker, so every content-producing skill both reads and writes it.
+
+### Lifecycle states
+
+| Status | Meaning |
+|--------|---------|
+| `draft` | Written, needs owner edits or an owner pass before it is publishable |
+| `ready` | Publication-ready, waiting to be posted |
+| `published` | Live on a platform, with date and URL |
+| `blocked` | Cannot proceed; the Note column says why |
+| `hold` | Deliberately parked; the Note column says until what |
+
+### Read rule (before drafting)
+
+Every content skill (`biz-writing`, `biz-social`, `biz-content`, `biz-youtube`) reads `CONTENT_STATUS.md` in its context load when the file exists. Before choosing a topic or drafting: never re-draft a piece marked `published` on the same platform, and prefer advancing a `ready` or `draft` piece over starting a new one.
+
+### Write rule (after producing or publishing)
+
+| Event | Who records it | Where |
+|-------|----------------|-------|
+| A piece is drafted and saved or delivered | The drafting skill | Items row at `draft` (owner pass pending) or `ready` |
+| A piece is published | The publish flow that shipped it | Items row → `published` + date + platform/URL; refresh Summary and By platform rows |
+| A publish happened outside any skill ("I posted it yesterday") | `@biz-social log` | Same as above |
+| A conversation comes from a piece | The skill logging the publish or the operator | The tracker's conversations column |
+
+Every publish also follows the "What to do after a publish" checklist inside `CONTENT_STATUS.md` itself (platform tracker row, NEXT, HANDOFF, weekly metrics).
+
+### Self-heal rule
+
+If a content skill is about to record something and `CONTENT_STATUS.md` does not exist (project bootstrapped before the tracker shipped), create it from `templates/work/reference/CONTENT_STATUS.md.template` first, then record. Never skip the record because the file is missing.
+
+### Split of records
+
+`CONTENT_STATUS.md` is the cross-platform index of what exists and its state. `pipeline/<platform>-tracker.md` holds per-platform performance. Index here, metrics there; never merge them (see `standards/20260621-DIRECTORY_MAP.md` § Tracker rule).
+
 ## Business Phase Lifecycle
 
 ```

@@ -93,7 +93,7 @@ Score each stage 0 (blocked) → 5 (healthy):
 
 1. Compare dates: any file under `.work.biz/strategy/` newer than `strategy/certification.md` -> flag "strategy changed since certification; run @biz-strategy certify".
 2. Glob for strategy-bearing files outside `strategy/` (`ideas/positioning_*.md`, `plans/strategy_*.md`) -> flag "out-of-tree strategy docs; run @biz-strategy amend".
-3. If anything was published this week, confirm `.work.biz/reference/CONTENT_STATUS.md` was updated.
+3. If anything was published this week, confirm `.work.biz/reference/CONTENT_STATUS.md` was updated. If the file is missing entirely, create it from `templates/work/reference/CONTENT_STATUS.md.template` and backfill the pieces known to be published (self-heal rule, see CONVENTIONS § Content Status Protocol) — a missing tracker means every future session loses the publish record.
 4. Run the I0 reconciliation against `{WORK_BUSINESS_ROOT}/gates.md` -> flag any gate claiming PASS without evidence, and demote it.
 
 Render findings as a short "Drift check" block in the review output (or "clean" if nothing found).

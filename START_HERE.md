@@ -107,6 +107,7 @@ These project-aware generative skills run any time — even before bootstrap. Th
 | Write platform-native social content (incl. LinkedIn video / YouTube scripts / Shorts) | `@biz-social write - <platform>` |
 | Repurpose one asset into multiple platform formats | `@biz-social repurpose - <source>` |
 | Plan a cross-platform social content calendar | `@biz-social plan - <30 days>` |
+| Record a publish / mark a piece live ("I posted X on Y") | `@biz-social log - <piece> - <platform>` |
 | Build a YouTube publishing calendar / 30-day challenge | `@biz-youtube plan` · `@biz-youtube challenge` |
 | Business / venture / pivot ideas | `@biz-ideas generate - <domain>` |
 | Stress-test one idea (try to kill it) | `@biz-ideas stress - <idea>` |

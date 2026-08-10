@@ -90,7 +90,7 @@ biz-referrals ask  ← no strict gate (can start anytime)
 | `biz-discovery` | `pipeline-ready` | `status` |
 | `biz-proposal` | `pipeline-ready` | `status` |
 | `biz-objections` | `active-deal` (`handle` only) | `roleplay`, `status` |
-| `biz-social` | `strategy-ready` (`strategy`, `plan` only) | `write`, `research`, `repurpose`, `icp`, `status` |
+| `biz-social` | `strategy-ready` (`strategy`, `plan` only) | `write`, `research`, `repurpose`, `icp`, `log`, `status` |
 
 **Demotion.** A gate that no longer holds must be demoted, not left as a stale PASS. `@biz-strategy amend` demotes `strategy-ready` and cascades to `brand-ready`, `pipeline-ready`, and `sales-ready`. `@biz-review status` reconciles the whole ledger and demotes any gate whose evidence is missing. `scripts/gate-verify.sh` fails the build when a PASS lacks its evidence.
 
