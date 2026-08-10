@@ -33,10 +33,17 @@ Two-direction deploy of the `.ai.biz` framework into a target project. **Default
 | User says | Direction | Mode |
 |-----------|-----------|------|
 | `@biz-deploy-files` | in-place (cwd is target) | copy no-overwrite + scaffold no-overwrite |
-| `@biz-deploy-files update` | in-place | copy no-overwrite + scaffold + **rules-aware merge** |
+| `@biz-deploy-files update` | in-place | copy no-overwrite + scaffold + verifier repair (`--fix`) + **rules-aware merge** |
 | `@biz-deploy-files copy - /path/to/repo` | outbound | copy no-overwrite to `/path/to/repo/.ai.biz` |
 | `@biz-deploy-files copy - /path/to/repo --force` | outbound | legacy overwrite |
-| `@biz-deploy-files status` | report | report whether `.ai.biz/` exists |
+| `@biz-deploy-files status` | report | `.ai.biz/skills` presence + read-only `.cursorrules` verification via `scripts/biz-cursorrules-verify.sh` |
+
+**Argument forms are equivalent.** Verbs accept the `--` prefix or bare form, `-` / `--` separators are ignored, and the target path may appear in any position:
+
+```text
+@biz-deploy-files copy - /path/to/repo update
+  ≡  @biz-deploy-files /path/to/repo --update
+```
 
 **Default:** `status` if no verb matches; bare invoke with no local `.ai.biz/` → in-place bootstrap.
 
@@ -57,7 +64,7 @@ Path auto-resolution: if the path ends in `.ai.biz` it is used as-is; otherwise 
 ## I1 — Copy mode (no-overwrite by default)
 
 1. `bash <source>/.ai.biz/scripts/biz-deploy-files.sh "<resolved-target>"` — or `--force` / `--update`.
-2. **Skill-level omissions:** `.github/`, `.gitignore`, `.gitattributes`, `.cursorrules`, deploy scripts.
+2. **Skill-level omissions:** `.github/`, `.gitignore`, `.gitattributes`, `.cursorrules`, deploy scripts (`biz-deploy-*.sh`, `biz-cursorrules-verify.sh`).
 3. **No-overwrite default:** `rsync --ignore-existing`. `--update` emits merge candidate list.
 
 ---
@@ -71,6 +78,8 @@ REPO_ROOT=<target> BIZ_SOURCE=<source> bash <source>/.ai.biz/templates/bootstrap
 ```
 
 **Outbound `copy - <path>` does NOT scaffold** — run `@biz-bootstrap init` in target.
+
+**Post-deploy verification (in-place only):** after scaffolding, the script runs `scripts/biz-cursorrules-verify.sh` against the target — `--fix` in `update` mode (pointer re-sync + script-path baking), read-only otherwise. Unrepairable `[FAIL]` findings fail an `update` deploy; otherwise they are reported with the repair hint.
 
 ---
 
@@ -89,6 +98,7 @@ Agent performs rules-aware merge for each merge candidate (skills, standards, do
 | 3 | No `.gitignored` content copied | |
 | 4 | Scaffold ran (in-place only) | |
 | 5 | `update`: merge candidates processed | |
+| 6 | Post-deploy verification ran (in-place); `[FAIL]` findings surfaced or repaired | |
 
 ## Next commands
 

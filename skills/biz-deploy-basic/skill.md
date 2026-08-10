@@ -34,8 +34,16 @@ Thin-client deploy of the `.ai.biz` (Business OS) framework. The target project 
 |-----------|-----------|------|
 | `@biz-deploy-basic - /path/to/target` | outbound (invoked from source) | thin bootstrap no-overwrite |
 | `@biz-deploy-basic` (from target, post-bootstrap) | in-place | re-runs no-overwrite bootstrap + source-pointer sync |
-| `@biz-deploy-basic update` (from target) | in-place | no-overwrite + re-sync source pointer + agent rules-aware merge of differing local-surface files |
-| `@biz-deploy-basic status` | report | read-only: shows `.cursorrules` presence, `AGENT_OS_SOURCE` value + reachability, `.work.biz/` presence, whether local `.ai.biz/skills` exists (fat-client leak check) |
+| `@biz-deploy-basic update` (from target) | in-place | no-overwrite + re-sync source pointer + re-bake script paths + agent rules-aware merge of differing local-surface files |
+| `@biz-deploy-basic status` | report | read-only: delegates `.cursorrules` checks to `scripts/biz-cursorrules-verify.sh` (pointer set + reachable + a Business OS root, Source-resolution section, baked script paths, `.work.biz/` skeleton, `REPLACE:` token count) + fat-client leak check |
+
+**Argument forms are equivalent.** Verbs accept the `--` prefix or bare form, `-` / `--` separators are ignored, and the target path may appear in any position:
+
+```text
+@biz-deploy-basic "/mnt/work/Projects/system-erp" update
+  ≡  @biz-deploy-basic /mnt/work/Projects/system-erp --update
+  ≡  @biz-deploy-basic - --update /mnt/work/Projects/system-erp
+```
 
 **Default:** `status` if no verb matches. **Aliases:** `bootstrap-biz-thin`, `biz-thin` → bare `@biz-deploy-basic`.
 
@@ -73,9 +81,10 @@ Thin-client deploy of the `.ai.biz` (Business OS) framework. The target project 
 
 1. Resolve source `BIZ_ROOT` (explicit `BIZ_SOURCE` env, else script's parent). Validate `templates/cursorrules.template` + `skills/` exist.
 2. Resolve target = `REPO_ROOT` of the consumer (cwd for in-place, or the named path for outbound).
-3. Write `.cursorrules` into the target from the template, substituting `AGENT_OS_SOURCE=REPLACE_BASICSOURCE` → `AGENT_OS_SOURCE=<absolute BIZ_ROOT>`. **No-overwrite** if `.cursorrules` exists; `--force` overwrites.
+3. Write `.cursorrules` into the target from the template, substituting `AGENT_OS_SOURCE=REPLACE_BASICSOURCE` → `AGENT_OS_SOURCE=<absolute BIZ_ROOT>` and baking `bash scripts/<name>` → `bash <BIZ_ROOT>/scripts/<name>` (Change-safety gate table + git-hooks install line — these commands live inside `.cursorrules` itself, so the skill-level source-resolution rule doesn't cover them). **No-overwrite** if `.cursorrules` exists; `--force` overwrites.
 4. Create `.work.biz/` skeleton by copying template files and creating directory structure. `copy_if_missing` enforces no-overwrite.
-5. Report: source pointer value, `.work.biz/` presence, fat-client leak check, next steps.
+5. **Post-deploy verification** (every mode): the script runs `scripts/biz-cursorrules-verify.sh` against the target and surfaces any `[FAIL]` findings. In `update` mode unrepairable findings fail the deploy; in `skip`/`force` they are reported as pre-existing with the repair hint.
+6. Report: source pointer value, `.work.biz/` presence, fat-client leak check, next steps.
 
 **No local `opencode.json`.** When co-installed with Agent OS, register skills via parent `.ai/opencode.json`.
 
@@ -87,7 +96,7 @@ Thin-client deploy of the `.ai.biz` (Business OS) framework. The target project 
 
 After I1 (no-overwrite) the script:
 
-1. **Re-syncs the source pointer** if the target `.cursorrules` carries a stale `AGENT_OS_SOURCE` value (e.g. source moved). Performed in-place on the assignment line only — preserves all other target edits.
+1. **Repairs via the shared verifier** (`scripts/biz-cursorrules-verify.sh --fix --thin`): re-syncs a stale `AGENT_OS_SOURCE` pointer in-place (assignment only — preserves all other target edits) and re-bakes `bash scripts/...` gate-table paths to the current source. **Foreign-pointer guard:** if the existing pointer resolves to a valid root of a *different* framework (e.g. an Agent OS `.ai` in a mixed project), it is left untouched — repair it with that framework's own deploy update.
 2. **Lists merge candidates** among the local surface: existing-but-differing files vs the current source templates (substituted). Candidates:
    - `.cursorrules` (differs from current `template-with-source`)
    - `.work.biz/<file>` (target has user content; templates are skeletons)
@@ -111,16 +120,29 @@ After I1 (no-overwrite) the script:
 
 ## I3 — status (read-only)
 
-Reports:
+Delegates `.cursorrules` checks to `scripts/biz-cursorrules-verify.sh` (single source of truth) and adds the thin-client layout lines. Reports:
 
 | Check | Output |
 |-------|--------|
 | `.cursorrules` present | pass / missing |
-| `AGENT_OS_SOURCE` value + reachable | value + `test -d` result |
-| Source-resolution section present | pass / missing |
-| `.work.biz/` present | pass / missing (list present skeleton files) |
+| `AGENT_OS_SOURCE` value + reachable + a Business OS root | pass / unfilled / unreachable / foreign-framework pointer (warn — mixed project) |
+| Baked gate-table script paths | pass / unbaked literals / stale prefix |
+| Source-resolution section present | pass / missing (merge candidate) |
+| `.work.biz/` skeleton (HANDOFF, NEXT, UNKNOWNS) | pass / missing |
 | Local `.ai.biz/skills/` exists (fat-client leak) | no (good, thin) / yes (warn — mixed) |
 | `REPLACE:` tokens remaining in `.cursorrules` | count (excludes `AGENT_OS_SOURCE` which is filled) |
+
+Exit code is non-zero when any `[FAIL]` finding remains, so `status` doubles as a CI/deploy gate.
+
+### `biz-cursorrules-verify.sh` (standalone use)
+
+```bash
+bash scripts/biz-cursorrules-verify.sh <target-root>            # read-only audit
+bash scripts/biz-cursorrules-verify.sh <target-root> --fix      # mechanical repairs (pointer re-sync, script-path baking)
+bash scripts/biz-cursorrules-verify.sh --fix --thin <target>    # force layout
+```
+
+Flags accept `--` or bare form (`fix` ≡ `--fix`); path may appear in any position. Exit: 0 = pass · 1 = FAIL findings · 2 = usage.
 
 ---
 
@@ -130,13 +152,14 @@ Reports:
 |---|-------|--------|
 | 1 | Source `templates/cursorrules.template` readable | pass |
 | 2 | Source `skills/` directory present | pass |
-| 3 | Target `.cursorrules` exists with valid `AGENT_OS_SOURCE` (resolves to a dir) | |
+| 3 | Target `.cursorrules` exists with valid `AGENT_OS_SOURCE` (resolves to a Business OS root) | |
 | 4 | Source-resolution section present in target `.cursorrules` | |
 | 5 | `.work.biz/` skeleton present (HANDOFF, NEXT, UNKNOWNS at minimum) | |
 | 6 | No-overwrite honored (existing target files preserved; `--force` only when explicitly requested) | |
-| 7 | `update`: source pointer re-synced if stale; merge candidate list produced; no wholesale replaces | |
+| 7 | `update`: source pointer re-synced if stale; script paths baked; merge candidate list produced; no wholesale replaces; foreign-framework pointer left untouched | |
 | 8 | Fat-client leak checked (no unexpected local `.ai.biz/skills/`) | |
-| 9 | User informed that skills load from `$AGENT_OS_SOURCE` at runtime + next steps | |
+| 9 | Post-deploy verification ran (`biz-cursorrules-verify.sh`); `[FAIL]` findings surfaced or repaired | |
+| 10 | User informed that skills load from `$AGENT_OS_SOURCE` at runtime + next steps | |
 
 ## Next commands (in target project)
 

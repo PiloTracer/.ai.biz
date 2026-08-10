@@ -6,28 +6,75 @@
 #
 # Usage:
 #   bash scripts/biz-deploy-files.sh <target-path>              # no-overwrite
+#   bash scripts/biz-deploy-files.sh [status] [target-path]     # read-only report (+ verify)
 #   bash scripts/biz-deploy-files.sh <target-path> --force      # overwrite existing
 #   bash scripts/biz-deploy-files.sh <target-path> --update     # no-overwrite + merge list
 #   BIZ_SOURCE=/path/.ai.biz bash scripts/biz-deploy-files.sh <target-path>
 #
+# Argument forms are equivalent: verbs accept the '--' prefix or bare form
+# (`update` ≡ `--update`, `status` ≡ `--status`), '-' / '--' separators are
+# ignored, and the target path may appear in any position:
+#   biz-deploy-files.sh /path update   ≡   biz-deploy-files.sh /path --update
+#
 set -euo pipefail
 
-RAW_TARGET="${1:?Usage: $0 <target-path> [--force|--update]}"
-shift || true
-MODE="skip"
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --force)   MODE="force" ;;
-    --update)  MODE="update" ;;
-    *) echo "ERROR: unknown flag: $1" >&2; exit 1 ;;
+# ── Argument normalization ─────────────────────────────────────────────
+# Verbs with or without '--', in any position relative to the target path;
+# '-' and '--' (skill parse-table separators) are ignored — a '-' must never
+# become the target directory.
+MODE=""
+RAW_TARGET=""
+for arg in "$@"; do
+  [[ "$arg" == "-" || "$arg" == "--" ]] && continue
+  tok="${arg#--}"
+  case "$tok" in
+    copy|skip) : ;;   # explicit copy verb = default copy mode
+    update|force|status) MODE="$tok" ;;
+    /*|./*|../*|~*|*/*|.)
+      if [[ -z "$RAW_TARGET" ]]; then RAW_TARGET="$arg"
+      else echo "ERROR: multiple target paths: '$RAW_TARGET' and '$arg'" >&2; exit 2; fi ;;
+    *) echo "ERROR: unknown argument: $arg" >&2
+       echo "Usage: $0 [status] [copy] [-] <target-path> [--force|--update] (path must contain '/'; use ./name for local dirs)" >&2
+       exit 2 ;;
   esac
-  shift
 done
+MODE="${MODE:-skip}"
+if [[ -z "$RAW_TARGET" ]]; then
+  if [[ "$MODE" == "status" ]]; then
+    RAW_TARGET="."
+  else
+    echo "Usage: $0 [status] [copy] [-] <target-path> [--force|--update]" >&2
+    exit 2
+  fi
+fi
 
 if [[ -n "${BIZ_SOURCE:-}" ]]; then
   BIZ_ROOT="$(cd "$BIZ_SOURCE" && pwd)"
 else
   BIZ_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
+
+# ── Status mode (read-only) ───────────────────────────────────────────
+if [[ "$MODE" == "status" ]]; then
+  if [[ "$RAW_TARGET" == "." || "$RAW_TARGET" == "$PWD" ]]; then
+    DEST_ROOT="$(pwd)"
+  else
+    DEST_ROOT="$(cd "$RAW_TARGET" && pwd)"
+  fi
+  echo "=== biz-deploy-files status → $DEST_ROOT ==="
+  if [[ -d "${DEST_ROOT}/.ai.biz/skills" ]]; then
+    skill_n="$(find "${DEST_ROOT}/.ai.biz/skills" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')"
+    echo "  .ai.biz/skills: present ($skill_n skill dirs — fat-client)"
+  else
+    echo "  .ai.biz/skills: missing (no fat-client copy at this target)"
+  fi
+  status_rc=0
+  if [[ -f "${DEST_ROOT}/.cursorrules" ]]; then
+    BIZ_SOURCE="$BIZ_ROOT" bash "$BIZ_ROOT/scripts/biz-cursorrules-verify.sh" "$DEST_ROOT" || status_rc=$?
+  else
+    echo "  .cursorrules: absent (nothing to verify — run @biz-bootstrap init there)"
+  fi
+  exit "$status_rc"
 fi
 
 if [[ "$RAW_TARGET" == *.ai.biz ]]; then
@@ -62,7 +109,7 @@ echo "=== biz-deploy-files → $DEST_DIR ==="
 echo "  source: $BIZ_ROOT"
 echo "  mode:   $MODE (no-overwrite by default)"
 
-SKILL_EXCLUDE_REGEX='^(\.github/|\.gitignore$|\.gitattributes$|\.cursorrules$|scripts/biz-deploy-files\.sh$|scripts/biz-deploy-basic\.sh$|scripts/biz-deploy-repo\.sh$)'
+SKILL_EXCLUDE_REGEX='^(\.github/|\.gitignore$|\.gitattributes$|\.cursorrules$|scripts/biz-deploy-files\.sh$|scripts/biz-deploy-basic\.sh$|scripts/biz-deploy-repo\.sh$|scripts/biz-cursorrules-verify\.sh$)'
 
 TMP_LIST="$(mktemp)"
 MERGE_CANDS="$(mktemp)"
@@ -121,6 +168,24 @@ echo ""
 echo "=== Done: files deployed to $DEST_DIR ==="
 if [[ -n "${SCAFFOLD_DONE:-}" ]]; then
   echo "  Scaffold created (.work.biz/, .cursorrules)"
+  # ── Post-deploy verification (in-place only) ───────────────────────
+  # update repairs via --fix; skip/force verifies read-only (repair is
+  # update's job — no-overwrite mode must not edit an existing file).
+  echo ""
+  echo "=== post-deploy verification ==="
+  vr_rc=0
+  if [[ "$MODE" == "update" ]]; then
+    BIZ_SOURCE="$BIZ_ROOT" bash "$BIZ_ROOT/scripts/biz-cursorrules-verify.sh" --fix "$REPO_ROOT" || vr_rc=$?
+  else
+    BIZ_SOURCE="$BIZ_ROOT" bash "$BIZ_ROOT/scripts/biz-cursorrules-verify.sh" "$REPO_ROOT" || vr_rc=$?
+  fi
+  if [[ "$vr_rc" -ne 0 ]]; then
+    if [[ "$MODE" == "update" ]]; then
+      echo "  update could not auto-repair all findings — review [FAIL] lines above"
+      exit "$vr_rc"
+    fi
+    echo "  (findings are pre-existing; run @biz-deploy-files update to repair)"
+  fi
 else
   echo "Next: @biz-bootstrap init or bash templates/bootstrap.sh"
 fi

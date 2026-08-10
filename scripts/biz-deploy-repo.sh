@@ -6,42 +6,86 @@
 #   archive — git archive + extract into target dir (full tree, no .git)
 #
 # Usage:
-#   bash scripts/biz-deploy-repo.sh --status [target-path]
-#   bash scripts/biz-deploy-repo.sh clone    /absolute/path/to/target
-#   bash scripts/biz-deploy-repo.sh archive  /absolute/path/to/target
+#   bash scripts/biz-deploy-repo.sh [--status] [target-path]
+#   bash scripts/biz-deploy-repo.sh [--]clone   [-] /absolute/path/to/target
+#   bash scripts/biz-deploy-repo.sh [--]archive [-] /absolute/path/to/target
+#
+# Argument forms are equivalent: verbs accept the '--' prefix or bare form
+# (`clone` ≡ `--clone`, `archive` ≡ `--archive`, `status` ≡ `--status`),
+# '-' / '--' separators are ignored, and the target path may appear in any
+# position:
+#   biz-deploy-repo.sh archive /path   ≡   biz-deploy-repo.sh /path --archive
 #
 set -euo pipefail
 
-AI_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [[ -n "${BIZ_SOURCE:-}" ]]; then
+  AI_ROOT="$(cd "$BIZ_SOURCE" && pwd)"
+else
+  AI_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
 
-if [[ "${1:-}" == "--status" || "${1:-}" == "status" ]]; then
-  shift || true
-  TARGET="${1:-}"
+# ── Argument normalization ─────────────────────────────────────────────
+# Verbs with or without '--', in any position relative to the target path;
+# '-' and '--' (skill parse-table separators) are ignored — a '-' must never
+# become the target directory.
+MODE=""
+RAW_TARGET=""
+for arg in "$@"; do
+  [[ "$arg" == "-" || "$arg" == "--" ]] && continue
+  tok="${arg#--}"
+  case "$tok" in
+    status|clone|archive) MODE="$tok" ;;
+    /*|./*|../*|~*|*/*|.)
+      if [[ -z "$RAW_TARGET" ]]; then RAW_TARGET="$arg"
+      else echo "ERROR: multiple target paths: '$RAW_TARGET' and '$arg'" >&2; exit 2; fi ;;
+    *) echo "ERROR: unknown argument: $arg (verbs: status clone archive)" >&2
+       exit 2 ;;
+  esac
+done
+MODE="${MODE:-status}"
+
+# ── Status mode (read-only) ───────────────────────────────────────────
+if [[ "$MODE" == "status" ]]; then
+  TARGET="$RAW_TARGET"
   echo "=== biz-deploy-repo status (Business OS) ==="
   echo "  source: $AI_ROOT"
   REMOTE="$(cd "$AI_ROOT" && git remote get-url origin 2>/dev/null || true)"
-  [[ -n "$REMOTE" ]] && echo "  origin: $REMOTE (clone available)" || echo "  origin: none (use archive mode)"
+  if [[ -n "$REMOTE" ]]; then
+    echo "  origin: $REMOTE (clone available)"
+  else
+    echo "  origin: none (use archive mode)"
+  fi
   echo "  branch: $(cd "$AI_ROOT" && git branch --show-current 2>/dev/null || echo '?')"
   echo "  head: $(cd "$AI_ROOT" && git rev-parse --short HEAD 2>/dev/null || echo '?')"
   echo "  modes: clone | archive"
   if [[ -n "$TARGET" ]]; then
-    T="$([ "$TARGET" = "." ] || [ "$TARGET" = "$PWD" ] && pwd || (cd "$TARGET" 2>/dev/null && pwd || echo "$TARGET"))"
+    if [[ "$TARGET" == "." || "$TARGET" == "$PWD" ]]; then
+      T="$(pwd)"
+    else
+      T="$(cd "$TARGET" 2>/dev/null && pwd || echo "$TARGET")"
+    fi
     echo ""
     echo "=== target: $T ==="
-    [[ -e "$T" ]] && echo "  exists: yes" || echo "  exists: no"
-    [[ -e "$T" ]] || exit 0
-    [[ -d "$T/.git" ]] && echo "  .git/: present" || echo "  .git/: absent"
-    [[ -f "$T/.cursorrules" ]] && echo "  .cursorrules: present" || echo "  .cursorrules: missing"
-    [[ -d "$T/.github" ]] && echo "  .github/: present" || echo "  .github/: missing"
-    [[ -d "$T/skills" ]] && echo "  skills/: present" || echo "  skills/: missing"
+    if [[ ! -e "$T" ]]; then
+      echo "  exists: no"
+    else
+      echo "  exists: yes"
+      [[ -d "$T/.git" ]] && echo "  .git/: present" || echo "  .git/: absent"
+      [[ -f "$T/.cursorrules" ]] && echo "  .cursorrules: present" || echo "  .cursorrules: missing"
+      [[ -d "$T/.github" ]] && echo "  .github/: present" || echo "  .github/: missing"
+      [[ -d "$T/skills" ]] && echo "  skills/: present" || echo "  skills/: missing"
+    fi
   fi
   exit 0
 fi
 
-MODE="${1:?Usage: $0 --status [path] | <clone|archive> <target-path>}"
-RAW_TARGET="${2:?Usage: $0 <clone|archive> <target-path>}"
+if [[ -z "$RAW_TARGET" ]]; then
+  echo "Usage: $0 [--status [path]] | <clone|archive> [-] <target-path>" >&2
+  exit 2
+fi
 
 # ── Resolve target ──────────────────────────────────────────────────
+# Always use as-is (unlike biz-deploy-files, this is a full repo deploy)
 DEST_DIR="$RAW_TARGET"
 
 # Ensure parent exists
@@ -81,11 +125,6 @@ if [[ "$MODE" == "clone" ]]; then
 fi
 
 # ── Mode: archive ───────────────────────────────────────────────────
-if [[ "$MODE" != "archive" ]]; then
-  echo "ERROR: unknown mode '$MODE'. Use 'clone' or 'archive'." >&2
-  exit 1
-fi
-
 mkdir -p "$DEST_DIR"
 cd "$AI_ROOT"
 

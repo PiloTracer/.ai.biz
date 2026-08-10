@@ -19,7 +19,7 @@ die() { echo "    FAIL: $1"; errors=$((errors + 1)); }
 echo "=== Business OS Framework Verify ==="
 
 note "Required tools"
-for cmd in git rsync bash grep find; do
+for cmd in git rsync bash grep find perl; do
   if command -v "$cmd" &>/dev/null; then ok "$cmd"; else die "missing $cmd"; fi
 done
 
@@ -28,7 +28,8 @@ git rev-parse --is-inside-work-tree &>/dev/null && ok "inside git work tree" || 
 
 note "Core files"
 for f in README.md START_HERE.md LICENSE templates/bootstrap.sh \
-  scripts/biz-deploy-basic.sh scripts/biz-deploy-files.sh scripts/biz-deploy-repo.sh; do
+  scripts/biz-deploy-basic.sh scripts/biz-deploy-files.sh scripts/biz-deploy-repo.sh \
+  scripts/biz-cursorrules-verify.sh; do
   [[ -f "$AI_ROOT/$f" ]] && ok "$f" || die "missing $f"
 done
 
@@ -99,7 +100,51 @@ if [[ -f "${DB_SMOKE}/.cursorrules" ]] && grep -q 'AGENT_OS_SOURCE=' "${DB_SMOKE
 else
   die "biz-deploy-basic thin-client scaffold failed"
 fi
-rm -rf "$DB_SMOKE"
+
+note "Deploy argument normalization (bare verb ≡ --flag)"
+# The same deploy into two fresh targets via both spellings must produce
+# byte-identical .cursorrules, and '-' separators must be ignored.
+EQ_A="$(mktemp -d)"; EQ_B="$(mktemp -d)"
+bash "$AI_ROOT/scripts/biz-deploy-basic.sh" "$EQ_A" update >/dev/null
+bash "$AI_ROOT/scripts/biz-deploy-basic.sh" - "$EQ_B" --update >/dev/null
+if cmp -s "${EQ_A}/.cursorrules" "${EQ_B}/.cursorrules"; then
+  ok "biz-deploy-basic: '<path> update' ≡ '- <path> --update'"
+else
+  die "biz-deploy-basic: bare 'update' and '--update' produced different .cursorrules"
+fi
+bash "$AI_ROOT/scripts/biz-deploy-basic.sh" status "$EQ_A" >/dev/null \
+  && ok "biz-deploy-basic: bare 'status' accepted (path in any position)" \
+  || die "biz-deploy-basic: bare 'status' form failed on a healthy target"
+bash "$AI_ROOT/scripts/biz-deploy-files.sh" "$EQ_A" --status >/dev/null \
+  && ok "biz-deploy-files: status mode present" \
+  || die "biz-deploy-files: status mode failed"
+bash "$AI_ROOT/scripts/biz-deploy-repo.sh" --status "$EQ_A" >/dev/null \
+  && bash "$AI_ROOT/scripts/biz-deploy-repo.sh" "$EQ_A" status >/dev/null \
+  && ok "biz-deploy-repo: '--status <path>' ≡ '<path> status'" \
+  || die "biz-deploy-repo: status forms diverge"
+rm -rf "$EQ_A" "$EQ_B"
+
+note "biz-cursorrules-verify repair cycle"
+# A deliberately broken thin-client target must FAIL read-only verification,
+# then PASS after --fix re-syncs the pointer and re-bakes script paths.
+CV_SMOKE="$(mktemp -d)"
+bash "$AI_ROOT/scripts/biz-deploy-basic.sh" "$CV_SMOKE" >/dev/null
+mv "${CV_SMOKE}/.cursorrules" "${CV_SMOKE}/.cursorrules.bak"
+sed "s#AGENT_OS_SOURCE=${AI_ROOT}#AGENT_OS_SOURCE=/nonexistent/stale/.ai.biz#" "${CV_SMOKE}/.cursorrules.bak" > "${CV_SMOKE}/.cursorrules"
+rm -f "${CV_SMOKE}/.cursorrules.bak"
+if bash "$AI_ROOT/scripts/biz-cursorrules-verify.sh" "$CV_SMOKE" >/dev/null 2>&1; then
+  die "biz-cursorrules-verify passed a deliberately broken target"
+else
+  ok "biz-cursorrules-verify flags stale AGENT_OS_SOURCE"
+fi
+bash "$AI_ROOT/scripts/biz-cursorrules-verify.sh" "$CV_SMOKE" --fix >/dev/null
+if bash "$AI_ROOT/scripts/biz-cursorrules-verify.sh" "$CV_SMOKE" >/dev/null 2>&1 \
+   && grep -q "AGENT_OS_SOURCE=${AI_ROOT}\$" "${CV_SMOKE}/.cursorrules"; then
+  ok "biz-cursorrules-verify --fix repairs stale pointer"
+else
+  die "biz-cursorrules-verify --fix did not repair the stale pointer"
+fi
+rm -rf "$CV_SMOKE" "$DB_SMOKE"
 
 echo ""
 if [[ "$errors" -eq 0 ]]; then

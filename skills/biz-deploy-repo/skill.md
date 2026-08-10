@@ -29,6 +29,14 @@ Deploys the entire Business OS repository (including `.git/`, `.github/`, `.giti
 | `@biz-deploy-repo` **archive - /path/to/repo** | `git archive HEAD \| tar xf` — full tree, no `.git` |
 | `@biz-deploy-repo` **status** | Report source remote, HEAD, optional target deploy state |
 
+**Argument forms are equivalent.** Verbs accept the `--` prefix or bare form, `-` / `--` separators are ignored, and the target path may appear in any position:
+
+```text
+@biz-deploy-repo archive - /path/to/repo
+  ≡  @biz-deploy-repo /path/to/repo --archive
+  ≡  @biz-deploy-repo --archive /path/to/repo
+```
+
 **Shell (read-only):** `bash scripts/biz-deploy-repo.sh --status [target-path]`
 
 **Default:** `status` if no verb matches.
