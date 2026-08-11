@@ -45,6 +45,14 @@ BLOCKED (prerequisite): strategy-ready not certified
 
 - Exception: `status` mode is read-only and runs without the gate.
 
+## I0b - Context load
+
+Read, if they exist:
+
+- `.work.biz/strategy/pricing.md` — the distilled price range the strategy certifies.
+- `.work.biz/reference/OPERATOR_PROFILE.md` — the operator's runway, available hours, and delivery capacity. These bound the decision: a short runway raises the floor below which work is not survivable, and limited hours cap how many concurrent engagements a price can assume. A skeleton profile (full of `<` placeholders) counts as missing; say so.
+- `.work.biz/reference/PROJECTS.md` — comparable past projects: what similar scope actually cost to deliver, which calibrates the effort angle against history instead of optimism.
+
 ---
 
 ## Modes

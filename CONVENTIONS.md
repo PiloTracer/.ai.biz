@@ -52,12 +52,14 @@ Every content skill (`biz-writing`, `biz-social`, `biz-content`, `biz-youtube`) 
 
 | Event | Who records it | Where |
 |-------|----------------|-------|
-| A piece is drafted and saved or delivered | The drafting skill | Items row at `draft` (owner pass pending) or `ready` |
-| A piece is published | The publish flow that shipped it | Items row → `published` + date + platform/URL; refresh Summary and By platform rows |
+| A piece is drafted and saved or delivered | The drafting skill | Items row at `draft` (owner pass pending) or `ready`, with its pillar |
+| A piece is published | The publish flow that shipped it | Items row → `published` + date + platform/URL; refresh Summary, By platform, and By pillar rows |
 | A publish happened outside any skill ("I posted it yesterday") | `@biz-social log` | Same as above |
-| A conversation comes from a piece | The skill logging the publish or the operator | The tracker's conversations column |
+| A conversation comes from a piece | The skill logging the publish or the operator | The tracker's conversations column and the By pillar row |
 
-Every publish also follows the "What to do after a publish" checklist inside `CONTENT_STATUS.md` itself (platform tracker row, NEXT, HANDOFF, weekly metrics).
+Every publish also follows the "What to do after a publish" checklist inside `CONTENT_STATUS.md` itself (platform tracker row, VOICE_RETRO entry, NEXT, HANDOFF, weekly metrics).
+
+**Pillar traceability:** every piece registers under one pillar, and a pillar is one of the 3–5 strategic messages traceable to `strategy/one-pager.md` / `strategy/offer-scope.md`. Drafting and plan skills assign the pillar at registration, never retroactively in bulk; a published piece with no pillar is a recording failure. `@biz-review quarterly` aggregates conversations per pillar, which is how content performance flows back into strategy instead of dying in the tracker.
 
 ### Self-heal rule
 
@@ -66,6 +68,33 @@ If a content skill is about to record something and `CONTENT_STATUS.md` does not
 ### Split of records
 
 `CONTENT_STATUS.md` is the cross-platform index of what exists and its state. `pipeline/<platform>-tracker.md` holds per-platform performance. Index here, metrics there; never merge them (see `standards/20260621-DIRECTORY_MAP.md` § Tracker rule).
+
+## Voice loop (binding for all content skills)
+
+`reference/VOICE_PROFILE.md` is a hypothesis about how the owner sounds; `reference/VOICE_RETRO.md` is the measurement of whether it holds. The loop only works if every publish records an entry, so the recording step is mandatory, not aspirational.
+
+### Record rule
+
+Every publish flow (`biz-content publish`, `biz-youtube publish`, `biz-social log`, and any skill recording a publish) adds or updates the piece's entry in `reference/VOICE_RETRO.md` in the same session: owner pass done or waived, owner-edit count, and edit classes. If the file does not exist, create it from `templates/work/reference/VOICE_RETRO.md.template` first; a missing retro is never a reason to skip the record.
+
+### Empty-profile warning
+
+If `VOICE_PROFILE.md` exists but is still a skeleton (`<` placeholders remain, or no reference sample is filled), content skills say so in the context summary and treat it as absent: drafts fall back to generic human-voice defaults, and the artifact adds a step without adding value until the owner fills it. `@biz-bootstrap status` reports the same warning.
+
+### Amendment rule
+
+When the same edit class appears three times in `VOICE_RETRO.md`, amend `VOICE_PROFILE.md` instead of letting the owner make the same correction forever. `@biz-review weekly` checks retro coverage against publishes; `@biz-review quarterly` reads the trend row.
+
+## Evidence discipline (binding on framework docs and produced content)
+
+A statistic that states something about the world (market size, behavior rates, benchmarks, conversion figures) must carry one of exactly two marks, in the same sentence or line:
+
+1. **An inline citation** — a named source with enough detail to find it (name + year minimum, URL preferred), or
+2. **An explicit directional marker** — `directional`, `rule of thumb`, `hypothesis to validate`, or `Unverified`, stating that the figure is a heuristic, not a measured fact.
+
+Numbers that are advice rather than claims are exempt by nature and need no marker: buffers ("add 20–30% for unknowns"), format specs ("7–10 slides"), cadence guidance, and price-math examples. The test is: does this number assert how the world *is*, or prescribe what the operator should *do*? Only the first kind needs a citation or a directional marker.
+
+This applies to skills, standards, and concepts (framework prose) as much as to produced content. It is enforced by review, not by a machine check: a grep-based uncited-statistic scanner was evaluated (2026-08-10) and rejected because it cannot tell a claim from advice and drowns real findings in false positives. When prose review finds an unmarked claim, fix it the way `biz-referrals` was fixed: find the source, or de-claim the number into directional language.
 
 ## Business Phase Lifecycle
 

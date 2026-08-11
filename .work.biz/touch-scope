@@ -1,8 +1,10 @@
-# Touch Scope — content status protocol + framework improvements
+# Touch Scope — strategy/career/content loop improvements + quality hardening
 #
-# Session goal: fix publish/status tracking (CONTENT_STATUS.md not wired into
-# publish flows), add biz-social log mode, staged-aware blast-radius check,
-# resolve UNKNOWNS #6, and record session state.
+# Session goal: implement the six approved framework improvements
+# (biz-review monthly re-validation, OPERATOR_PROFILE + career mode,
+# content-strategy pillar loop, PROJECTS.md proof-point bank, voice loop
+# enforcement, one evidence-scan pick), the content appeal standard,
+# routing sync, manifest sync check in framework-verify, and session state.
 
 skills/
 standards/
@@ -12,5 +14,6 @@ CONVENTIONS.md
 CHANGELOG.md
 START_HERE.md
 PROCESS_ROUTER.md
+README.md
 .cursorrules
 .work.biz/

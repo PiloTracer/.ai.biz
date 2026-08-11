@@ -12,6 +12,19 @@ Binding rules for all content produced by `biz-writing`, `biz-social`, `biz-cont
 6. **Repurpose deliberately.** One long-form asset should spawn platform-native derivatives, not identical cross-posts.
 7. **Respond to comments within 24 hours** during the first 72 hours after posting.
 
+## Appeal standard (binding)
+
+Correctness and clean prose are the entry fee, not the differentiator. Content that is merely competent gets scrolled past. Every piece must also clear these six bars:
+
+1. **Position requirement.** Every piece takes a stance an informed peer could disagree with. No neutral summaries, no "it depends" as the thesis. If nobody could disagree, the piece has nothing to say; sharpen it until someone could.
+2. **Scene or number in the opening.** The first two lines contain a concrete scene, a named moment, or a number. Not a concept, not a question about the industry. The reader must land somewhere specific immediately.
+3. **Stakes requirement.** The reader must learn what breaks, for whom, and what it costs. A piece with no consequences is a piece with no reason to keep reading.
+4. **Specificity quota.** At least one proper noun, number, or named artifact per 150 words. Specificity is the biggest single lever for credibility and appeal; abstraction is where generic content hides.
+5. **So-what bar.** If a paragraph's claim could appear unchanged in any competitor's post, delete it or rewrite it until it could only be yours.
+6. **Emotional concreteness.** Name the feeling at the moment of the stakes: dread, relief, embarrassment, the 2am stare at a failing dashboard. Facts tell the reader what happened; the feeling tells them why it matters.
+
+The appeal standard never overrides truth: a sharper claim is never worth an invented detail. When the operator's real proof points are thin, the fix is `reference/PROJECTS.md`, not embellishment.
+
 ## Format-specific rules
 
 ### Long-form writing (article, newsletter, case study)
@@ -68,9 +81,14 @@ Readers and viewers increasingly associate certain stylistic tics with low-effor
   - Bad: "The real problem — the one nobody talks about — is ownership."
   - Good: "The real problem is ownership. Nobody talks about it."
 - **Bullet-point overload.** Lists are scannable, but a post that is 80% bullets reads like a prompt output. Use narrative paragraphs between lists.
+- **Colon-then-bullets inside narrative posts.** A sentence ending in a colon that unleashes a bullet list is the single most recognizable LLM shape in a feed. When the surrounding text is narrative, keep the items in prose or rewrite the lead-in.
 - **Numbered frameworks that don't need numbers.** "3 ways to…" only when the structure genuinely helps the reader. Don't force a count.
 - **Excessive subheadings.** In long-form, one subheading every 200–300 words is enough. More frequent subheadings feel like an outline, not an article.
 - **Overly tidy paragraph symmetry.** Human writing has ragged edges. Not every paragraph needs to be the same length or follow the same shape.
+- **The "not just X, it's Y" construction.** "It's not just a tool, it's a mindset", "X isn't just about Y". A favored AI crescendo that adds emphasis without information. State the Y directly.
+- **Confessional openers.** "Here's the thing:", "Let's be honest", "Real talk:". They simulate candor without delivering it. Say the candid thing without the announcement.
+- **Rhetorical questions as a crutch.** At most one rhetorical question per piece, and never as the opener. Humans assert; chatbots ask and then answer themselves.
+- **Triplet cadence.** Three parallel clauses stacked for rhythm ("The one that… The one that… The one that…") or anaphora repeated down a page reads as generated within two lines. Break the pattern before it starts.
 
 ### Vocabulary red flags
 
@@ -97,6 +115,11 @@ Replace these with plain, specific language:
 | actionable insights | useful findings, what we learned |
 | strategic imperative | something we have to do |
 | digital transformation | be specific: what changed, what system, what result |
+| navigate the complexities | say what you actually did |
+| empower / empower teams | say what they can now do |
+| mission-critical | say what breaks without it |
+| at scale (unquantified) | name the scale: how many users, requests, dollars |
+| journey (as career metaphor) | path, move, transition |
 
 ### Structural red flags
 
@@ -115,9 +138,9 @@ Replace these with plain, specific language:
 
 The goal is not polished prose. The goal is a credible human talking to a peer.
 
-- **Read the draft aloud.** If it sounds like a report, a pitch deck, or a chatbot, rewrite it.
+- **Read the draft aloud.** This is a gauntlet, not a suggestion. If it sounds like a report, a pitch deck, or a chatbot, rewrite it. If you stumble saying a sentence, the reader stumbles reading it.
 - **Use contractions where natural.** "It's", "don't", "can't", "you're" are fine unless the brand voice forbids them.
-- **Vary sentence length.** Mix short punches with longer explanations. Avoid chains of same-length sentences.
+- **Vary sentence length.** Mix short punches with longer explanations. Avoid chains of same-length sentences. Two short-clause sentences back to back is a cadence tell: combine one of them or change its shape.
 - **Allow minor roughness.** A slightly informal opener or a sentence fragment is better than a perfectly balanced but lifeless paragraph.
 - **Write to one person, not an audience.** Use "you" and "I". Avoid "one", "organizations", and "professionals" when you mean the reader.
 - **Prefer plain verbs.** "Use" beats "utilize". "Start" beats "commence". "Fix" beats "remediate".

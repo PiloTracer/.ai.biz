@@ -1,11 +1,11 @@
 ---
 name: biz-strategy
 description: >-
-  Define your niche, unified offer, target buyer, and channel strategy.
-  Produces strategy docs that guide all other business development.
-  Certifies strategy-ready gate. biz-strategy greenfield, biz-strategy probe,
-  biz-strategy amend, biz-strategy reconcile, biz-strategy certify,
-  biz-strategy status.
+  Define your niche, unified offer, target buyer, and channel strategy, and
+  profile the operator behind them. Produces strategy docs that guide all other
+  business development. Certifies strategy-ready gate. biz-strategy greenfield,
+  biz-strategy probe, biz-strategy career, biz-strategy amend,
+  biz-strategy reconcile, biz-strategy certify, biz-strategy status.
 ---
 
 # biz-strategy
@@ -64,6 +64,8 @@ Choice constrains channel, price, and offer structure.
 | `@biz-strategy greenfield - from <file>` | Generate strategy using an existing document as seed. |
 | `@biz-strategy probe` | Adaptive gap-filling questioning. Targets unknown/inferred assumptions. |
 | `@biz-strategy probe - <element>` | Probe a specific element (person, problem, offer, channel, price, geography). |
+| `@biz-strategy career` | Probe the operator (skills, proof points, constraints, risk, career stage); fill `reference/OPERATOR_PROFILE.md`; produce a career-direction read. Runs before or after certification. |
+| `@biz-strategy career - <block>` | Probe one profile block only (skills, proof, constraints, risk, stage, direction). |
 | `@biz-strategy amend - <what changed>` | Record a strategy change made outside greenfield, fold out-of-tree strategy docs back in, and flag dependent artifacts stale. Requires re-certify afterward. |
 | `@biz-strategy reconcile - <what is inconsistent>` | Make a canonical file carry a decision the certified record **already** asserts. Changes no positioning, so it moves no gate and needs no re-certification. Strictly bounded — see I2c. |
 | `@biz-strategy certify` | Deep consistency check. Promotes strategy-ready gate on pass. |
@@ -104,6 +106,8 @@ All strategy files live under `{WORK_BUSINESS_ROOT}` (`.work.biz/`):
 ## I1 — Greenfield mode
 
 Walk through all 6 elements in sequence. Each produces a section for `strategy/one-pager.md`. After each element, summarize the choice before proceeding.
+
+**Operator profile first:** if `{WORK_BUSINESS_ROOT}/reference/OPERATOR_PROFILE.md` exists, read it before starting; it constrains the offer (what the operator can deliver), the channel (available hours), and the price (runway floor). If it does not exist, offer `@biz-strategy career` before Element 1 and proceed either way: greenfield works without it, but every element is sharper with it.
 
 ### Element 1: One Person (Target Buyer)
 
@@ -376,6 +380,47 @@ GATES
 
 ---
 
+## I2d — Career mode
+
+`@biz-strategy career` models the one thing every other skill assumes but nothing records: the operator. Skills, proof points, constraints, risk tolerance, career stage. Strategy advice that ignores what the operator can actually deliver and prove is fiction, and content written without real proof points is generic by construction.
+
+The output lives at `{WORK_BUSINESS_ROOT}/reference/OPERATOR_PROFILE.md` (template: `templates/work/reference/OPERATOR_PROFILE.md.template`). It is deliberately a **reference** artifact, not a strategy file: it is input to positioning decisions, not a positioning decision itself, so it neither promotes nor demotes any gate and never trips the weekly drift check.
+
+### Workflow
+
+1. If `{WORK_BUSINESS_ROOT}/reference/OPERATOR_PROFILE.md` is missing, create it from the template. When it exists, read it first and update rather than restart.
+2. Probe the operator one block at a time. Ask one question at a time; wait for the answer. Skip blocks already filled with content that is still true. A `- <block>` invocation probes only that block.
+
+| Block | Probe questions |
+|-------|-----------------|
+| **Skills** | "What can you do better than most people you've worked with?" "What do people ask you for help with?" "Which of your skills are current, and which are stale?" |
+| **Proof points** | "Name three things you built or led, with numbers: size, timeline, outcome." "What would a former client or manager vouch for?" |
+| **Constraints** | "How many hours per week are actually available for business development?" "What is your runway in months before income pressure forces decisions?" "Anything you will not do: travel, cold calls, on-camera?" |
+| **Risk tolerance** | "What does failure cost you, concretely?" "What bet feels too big right now? What bet feels too small?" |
+| **Career stage** | "Employed, transitioning, or fully independent?" "Is employment a fallback you keep open or a door you are closing?" |
+| **Direction** | "Do you want more of what you do now, a different buyer, a different offer, or a different life shape?" |
+
+3. Fill the profile in place. Proof points must carry numbers and dates; a proof point without a number is a claim, not proof. If the operator cannot name three, say so plainly in the profile and in the report: that gap is the single biggest constraint on credible content and pricing.
+4. Produce a career-direction read grounded in the profile and, when it exists, the certified strategy:
+
+| Read | Meaning |
+|------|---------|
+| **Hold** | Current direction fits skills, proof, and constraints. Keep executing. |
+| **Sharpen** | Direction is right, but the offer or buyer is looser than the proof supports. Route to `@biz-strategy probe` on the named element. |
+| **Transition** | Evidence points at a different buyer, offer, or stage. Route to `@biz-strategy amend` (or `greenfield - force` before first certification). |
+
+Grade every load-bearing statement in the read as Confirmed / Inferred / Unknown, the same discipline as the assumption ledger.
+
+5. If strategy docs exist, cross-check them against the profile: does the offer match what the operator can deliver? Does the channel fit the constraints (an operator with 5 hours a week cannot hold LinkedIn at 3–4 posts/week)? Does the price floor respect the runway? Report mismatches as findings; fixing them is `@biz-strategy amend`'s job, not this mode's.
+
+### Rules
+
+- Career mode writes `reference/OPERATOR_PROFILE.md` and nothing else. It never edits `strategy/`, never touches `gates.md`, and never certifies.
+- A career direction that changes the offer is a strategy change. This mode reports it; `@biz-strategy amend` records it.
+- Proof points are evidence, not marketing. No inflation, no borrowed numbers.
+
+---
+
 ## I3 — Certify mode
 
 Deep consistency check. Produces a pass/fail verdict and promotes the **strategy-ready** gate on pass.
@@ -501,6 +546,8 @@ Strategy status — {WORK_BUSINESS_ROOT}/strategy/
 
   Gate: strategy-ready  {PASS / FAIL / NOT ATTEMPTED}
 
+  Operator profile:     {exists (filled/skeleton) / missing} — reference/OPERATOR_PROFILE.md; run @biz-strategy career to build or update
+
   Out-of-tree strategy docs: {none / list of ideas/positioning_*.md and plans/strategy_*.md found - run @biz-strategy amend to fold in}
 
   Assumption summary:
@@ -529,6 +576,7 @@ Strategy status — {WORK_BUSINESS_ROOT}/strategy/
 | `greenfield` | 45-90 minutes | Full walkthrough. Schedule a block. |
 | `greenfield - from <file>` | 20-40 minutes | Faster if seed doc is detailed. |
 | `probe` | 5-15 minutes | Per element. Variable based on gaps. |
+| `career` | 20-40 minutes | Full profile. A `- <block>` run is 5-10 minutes. |
 | `certify` | 5-10 minutes | Quick if strategy is clean. |
 | `status` | < 1 minute | Read-only. Near-instant. |
 
@@ -558,6 +606,7 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 | Buyer conversations consistently confuse the offer | `@biz-strategy probe - offer` then `@biz-strategy certify` |
 | A positioning decision was made in another skill or session (owner grill, brand session, pricing change) | `@biz-strategy amend` then `@biz-strategy certify` |
 | A canonical file contradicts the certification, but only because a decision the certification already asserts was never transcribed into it | `@biz-strategy reconcile` — no gate moves, no re-certification. Prove all four eligibility conditions in I2c first |
+| Operator circumstances changed (new job situation, runway shift, new proof points, skill decay) | `@biz-strategy career - <block>` to update the profile; escalate to amend only if the read says the offer must change |
 | 6+ months since last certification | `@biz-strategy probe` then `@biz-strategy certify` (re-certify quarterly) |
 
 ---
@@ -586,3 +635,4 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 - `{WORK_BUSINESS_ROOT}/gates.md`
 - `.ai.biz/skills/SKILL_DEPENDENCIES.md`
 - `{WORK_BUSINESS_ROOT}/strategy/changelog.md` (append-only amend and reconcile log)
+- `{WORK_BUSINESS_ROOT}/reference/OPERATOR_PROFILE.md` (operator skills, proof points, constraints; written by career mode)

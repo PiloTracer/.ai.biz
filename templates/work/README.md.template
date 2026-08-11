@@ -14,7 +14,9 @@
 | `reference/BRAND_STATUS.md` | Brand audit history and overhaul log |
 | `reference/VOICE_PROFILE.md` | How you sound. Binding for every content skill, every platform |
 | `reference/VOICE_RETRO.md` | What the draft said vs what you changed. Falling edit counts mean the voice rules work |
+| `reference/OPERATOR_PROFILE.md` | Your skills, proof points, constraints, risk, career stage. Filled by `@biz-strategy career` |
+| `reference/PROJECTS.md` | Proof-point bank: real projects with numbers. Content, proposals, and calls draw on it |
 | `pipeline/<platform>-tracker.md` | Per-platform performance and conversations. Created on first publish |
 | `drafts/` | In-progress drafts |
-| `reference/` | Project reference files (PROJECTS.md, VISUAL_GUIDE.md, etc.) |
+| `reference/` | Other project reference files (VISUAL_GUIDE.md, etc.) |
 | `touch-scope` | Declared change scope for the current work session (session-local, not tracked) |

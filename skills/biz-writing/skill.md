@@ -51,6 +51,8 @@ Read, if they exist, in this order:
 | `.work.biz/strategy/target-buyer-profile.md` | Who reads this content, what they fear, what they value |
 | `.work.biz/strategy/offer-scope.md` | What the offer IS / IS NOT — keeps content on-position |
 | `.work.biz/strategy/channel-plan.md` | Primary channel → matching content format |
+| `.work.biz/reference/OPERATOR_PROFILE.md` | Who the author actually is: skills, constraints, career stage. Keeps claims inside what the operator can deliver and prove. A skeleton-full of `<` placeholders counts as missing; say so |
+| `.work.biz/reference/PROJECTS.md` | The proof-point bank: real projects with numbers. Draw every concrete result from here; respect its disclosure status |
 | `.work.biz/reference/CONTENT_STATUS.md` | What already exists: never re-write a `published` piece for the same platform; prefer advancing a `ready` or `draft` piece over starting fresh |
 | `.work.biz/context/HANDOFF.md` | Recent decisions; avoid contradicting them |
 
@@ -66,7 +68,7 @@ Read `.work.biz/reference/VOICE_PROFILE.md` — the canonical definition of how 
 
 If the profile lists **reference samples**, read the one matching the requested format and match its rhythm, not just its topic. Treat **texture** rules as deliberate: do not normalize long comma-joined sentences, regional English patterns, or fragments into polished prose. If an **owner pass** is mandatory, label the output a draft and say so.
 
-Without a voice profile, output is correctly de-AI-ified but generically human. Note that in the context summary and point at `templates/work/reference/VOICE_PROFILE.md.template`.
+Without a voice profile, output is correctly de-AI-ified but generically human. Note that in the context summary and point at `templates/work/reference/VOICE_PROFILE.md.template`. The same applies when the profile exists but is still a skeleton (`<` placeholders remain, or no reference sample is filled): treat it as absent and warn plainly in the context summary, because an unfilled profile adds a step without adding value (CONVENTIONS § Voice loop).
 
 ### Priority 3 — Project identity file
 
@@ -76,9 +78,12 @@ Read the project root `.cursorrules` (or `AGENTS.md`) — its `REPLACE:` tokens 
 
 These skills exist to produce **technology-related** results. Establish the operator's real tech fingerprint so content is concrete:
 
+- `.work.biz/reference/PROJECTS.md` → the curated proof-point bank. Read it before scanning the repo; it is the authoritative source of citable results.
 - `package.json`, `pyproject.toml`, `requirements.txt`, `go.mod`, `Cargo.toml`, `docker-compose*.yml` → real stack.
 - `README.md` → what the project actually does.
 - Any `work/`, `case-studies/`, or `docs/` folder → real projects to cite with numbers.
+
+**Non-tech hosts:** if no stack manifest exists and the project is clearly not technology work, do not force technical details. Tilt the specificity requirement toward domain evidence instead: numbers, processes, and outcomes from `reference/PROJECTS.md` and `reference/OPERATOR_PROFILE.md`.
 
 ### Priority 5 — Brand standard
 
@@ -118,6 +123,7 @@ Resolve these from the conversation; ask only if genuinely unclear:
 | **Primary audience** | Who reads this, what do they already know? |
 | **Goal** | Inform, attract leads, build trust, convert, entertain? |
 | **Channel** | Blog, LinkedIn, Twitter/X, newsletter, website? |
+| **Position** | What stance does this piece take, and which informed peer could disagree with it? A piece with no defensible position has nothing to say (Content Standard § Appeal standard). |
 | **Tone** | Match brand voice by default; override if specified |
 | **Length** | Match channel norms unless specified |
 | **CTA** | What should the reader do after reading? |
@@ -159,14 +165,15 @@ For pieces over ~600 words, emit a 3–5 bullet outline and confirm direction be
 
 Before delivering any draft, run a self-criticism pass. Do not skip this. Ask:
 
-1. **Hook test:** If the first line appeared alone in a busy LinkedIn feed, would I stop scrolling? Is it a scene, number, or sharp claim, not a generic concept?
-2. **Stakes test:** Can the reader name what broke, for how long, and what it cost? If not, the body is too safe.
-3. **Credibility test:** Does the reader know why the narrator is qualified to say this? Credentials must appear early, not buried in a comment.
-4. **Action test:** Is the actionable framework/checklist in the post body or a carousel? If it only exists in a "first comment" suggestion, the post has no value in the feed.
-5. **AI-cadence test:** Read the draft aloud. If it sounds like a repetitive list of short clauses ("The one that…", "It's about…", "This is why…"), rewrite it as natural prose.
-6. **Human-voice test:** Does it contain any em-dashes, en-dashes, literary flourishes, or polished-report language? If yes, remove or rewrite.
-7. **CTA test:** Is the closing prompt specific and professional, or is it generic engagement bait?
-8. **So-what test:** Would a skeptical reader in the target audience share or save this? If the answer is no, sharpen the insight.
+1. **Hook test:** If the first line appeared alone in a busy LinkedIn feed, would I stop scrolling? Is it a scene, number, or sharp claim, not a generic concept? Do the first two lines satisfy the appeal standard's scene-or-number rule?
+2. **Position test:** Could an informed peer disagree with the thesis? If nobody could, the piece is a neutral summary; sharpen the stance or change the angle.
+3. **Stakes test:** Can the reader name what broke, for how long, and what it cost? If not, the body is too safe. Does the reader feel anything at the moment of the stakes, or just learn facts?
+4. **Credibility test:** Does the reader know why the narrator is qualified to say this? Credentials must appear early, not buried in a comment.
+5. **Action test:** Is the actionable framework/checklist in the post body or a carousel? If it only exists in a "first comment" suggestion, the post has no value in the feed.
+6. **AI-cadence test:** Read the draft aloud. If it sounds like a repetitive list of short clauses ("The one that…", "It's about…", "This is why…"), rewrite it as natural prose. Also scan for the banned constructions in the Content Standard: "not just X, it's Y", confessional openers, colon-then-bullets in narrative, second rhetorical question, triplet cadence.
+7. **Human-voice test:** Does it contain any em-dashes, en-dashes, literary flourishes, or polished-report language? If yes, remove or rewrite.
+8. **CTA test:** Is the closing prompt specific and professional, or is it generic engagement bait?
+9. **So-what test:** Would a skeptical reader in the target audience share or save this? Could any paragraph appear unchanged in a competitor's post? If either answer is wrong for the piece, sharpen it.
 
 If any test fails, revise the draft before moving to Step 4.
 
@@ -355,8 +362,9 @@ Do not pad the response with commentary about what you did. Show the work, not t
 If `.work.biz/` exists, record the piece in `.work.biz/reference/CONTENT_STATUS.md` so later sessions know it exists (create the file from `templates/work/reference/CONTENT_STATUS.md.template` if missing):
 
 - Add an **Items** row: piece title, status `ready`, or `draft` when an owner pass is still required, target platform in the Note column.
+- **Assign the pillar**: name which strategic pillar (from the tracker's **By pillar** list, traceable to one-pager/offer) this piece advances. If the pillar list is empty, define it from the strategy docs first. A piece registered without a pillar is invisible to the quarterly alignment review.
 - If the piece is also saved as a file, use the conventional path `.work.biz/drafts/draft_<topic>.md` and reference it in the Note column.
-- Refresh the **Summary** counts.
+- Refresh the **Summary** counts and the **By pillar** pieces count.
 
 Skip this step only when the user explicitly asked for a throwaway fragment.
 
@@ -366,11 +374,12 @@ Skip this step only when the user explicitly asked for a throwaway fragment.
 
 Build a topic plan / content calendar. Output a Markdown table:
 
-| Week | Date range | Topic | Type | Channel | Angle / hook seed | Target keyword | Repurpose into |
-|------|------------|-------|------|---------|--------------------|----------------|----------------|
+| Week | Date range | Topic | Pillar | Type | Channel | Angle / hook seed | Target keyword | Repurpose into |
+|------|------------|-------|--------|------|---------|--------------------|----------------|----------------|
 
 Rules:
 - Every topic must trace to a loaded audience pain or the operator's proven work. No orphan topics.
+- Every topic names the strategic pillar it advances (the 3–5 messages from one-pager/offer, as listed in `CONTENT_STATUS.md` § By pillar). If a pillar gathers no topics across the horizon, that is a finding: report it, because the plan is not carrying the whole strategy.
 - Balance the four topic buckets (below) across the horizon; never repeat the same bucket three weeks in a row.
 - For each topic, name a real, specific hook seed (not "TBD").
 
@@ -431,6 +440,10 @@ Report:
 
 - [ ] Does the first sentence earn its place, or is it a warm-up?
 - [ ] Is the hook a specific scene, number, or sharp claim, not an abstract concept?
+- [ ] **Appeal:** does the piece take a position an informed peer could disagree with?
+- [ ] **Appeal:** do the first two lines contain a concrete scene, named moment, or number?
+- [ ] **Appeal:** specificity quota met (at least one proper noun, number, or named artifact per 150 words)?
+- [ ] **Appeal:** is the feeling at the moment of the stakes named, not just the facts?
 - [ ] Are the stakes visible: what broke, for how long, and what it cost (time, money, risk)?
 - [ ] Is the narrator's credibility established early, not buried in a comment?
 - [ ] Is there at least one specific number, example, or proof point per major section?

@@ -46,7 +46,11 @@ Read `.work.biz/reference/VOICE_PROFILE.md` before drafting or reviewing any cop
 
 The Content Standard's anti-AI-artifact rules are the floor and always bind (zero em-dashes and en-dashes). The voice profile governs tone, rhythm, structure, and vocabulary above that floor, and its **texture** rules are deliberate: do not normalize them into polished prose. If it lists a **reference sample** for the format you are producing, read it and match its rhythm. If it makes an **owner pass** mandatory, label the output a draft and say so in the delivery.
 
-Report which voice source you loaded, or state plainly that none exists and the output will be generically human.
+Report which voice source you loaded, or state plainly that none exists and the output will be generically human. A profile that is still a skeleton (`<` placeholders remain, no reference sample filled) counts as none: warn plainly, because an unfilled profile adds a step without adding value (CONVENTIONS § Voice loop).
+
+## I0c - Operator proof (read before drafting)
+
+Read `.work.biz/reference/OPERATOR_PROFILE.md` and `.work.biz/reference/PROJECTS.md` if they exist. The profile bounds what the author can credibly claim; the bank supplies the numbers and named results. Draw every concrete result from `PROJECTS.md` and respect its disclosure status. A skeleton profile (full of `<` placeholders) or an empty bank counts as missing: say so in the delivery note, because content without real proof points is generic by construction.
 
 ## Parse invocation
 
@@ -95,6 +99,8 @@ For the same story idea, draft 3 different hooks and pick the strongest:
 | **Hook B: Result-first** | "How I built a financial platform in 7 months — solo" |
 | **Hook C: Controversy-light** | "I don't use serverless for production platforms. Here's why." |
 
+**Selection rule (appeal standard):** whichever hook wins, it must carry a concrete scene, a number, or a defensible position, and the post behind it must take a stance an informed peer could disagree with. A question-based hook earns its place only when the post answers it with something specific and owned, not a neutral survey. If none of the three hooks clears the bar, the story idea is not ready; sharpen it.
+
 Test across posts: track which style gets the most engagement in your content tracker. After 8 posts, double down on what works.
 
 ### 3. Structure the Post
@@ -118,7 +124,8 @@ Test across posts: track which style gets the most engagement in your content tr
 - Does it include specific details? ✅
 - Is there zero pitching? ✅
 - Would you want to hire the person who wrote this? ✅
-- AI-artifact scan passed? ✅ — check `standards/20260621-CONTENT-STANDARD.md` § Anti-AI-artifact rules (em-dashes, hedging, generic transitions, passive voice, empty intensifiers).
+- Appeal standard passed? ✅ — check `standards/20260621-CONTENT-STANDARD.md` § Appeal standard: defensible position, scene/number in the first two lines, named stakes with the feeling at the moment, specificity quota.
+- AI-artifact scan passed? ✅ — check `standards/20260621-CONTENT-STANDARD.md` § Anti-AI-artifact rules (em-dashes, hedging, generic transitions, passive voice, empty intensifiers, banned constructions).
 
 ### 6. Publish + Engage
 - Post it
@@ -129,9 +136,9 @@ Test across posts: track which style gets the most engagement in your content tr
 
 Update `.work.biz/reference/CONTENT_STATUS.md` before the session ends:
 
-1. Mark the piece `published` in the **Items** table with the date and post URL.
-2. Refresh the **By platform** row (published count, last publish date) and the **Summary** counts.
-3. Follow the file's "What to do after a publish" checklist: platform tracker row, `plans/NEXT.md`, `context/HANDOFF.md`, weekly metrics.
+1. Mark the piece `published` in the **Items** table with the date and post URL. Confirm the row names its pillar; assign one from the **By pillar** list if it was still blank.
+2. Refresh the **By platform** row (published count, last publish date), the **By pillar** row, and the **Summary** counts.
+3. Follow the file's "What to do after a publish" checklist: platform tracker row, `reference/VOICE_RETRO.md` entry, `plans/NEXT.md`, `context/HANDOFF.md`, weekly metrics.
 
 If the operator reports later that they posted a piece outside this flow, record it the same way (or via `@biz-social log`).
 

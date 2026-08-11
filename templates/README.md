@@ -32,6 +32,8 @@ Or: `@biz-bootstrap init`
 | `.work.biz/reference/BRAND_STATUS.md` | `work/reference/BRAND_STATUS.md.template` |
 | `.work.biz/reference/VOICE_PROFILE.md` | `work/reference/VOICE_PROFILE.md.template` |
 | `.work.biz/reference/VOICE_RETRO.md` | `work/reference/VOICE_RETRO.md.template` |
+| `.work.biz/reference/OPERATOR_PROFILE.md` | `work/reference/OPERATOR_PROFILE.md.template` |
+| `.work.biz/reference/PROJECTS.md` | `work/reference/PROJECTS.md.template` |
 
 Created on demand rather than at bootstrap: `work/pipeline/platform-tracker.md.template` → `.work.biz/pipeline/<platform>-tracker.md`, instantiated on the first publish to a given platform.
 

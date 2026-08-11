@@ -1,7 +1,34 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** 2026-08-10 — Session closed
-> **Status:** Content Status Protocol shipped: publish/status tracking fixed across all four content skills (only 1 of 4 publish paths wrote `CONTENT_STATUS.md` before), new `@biz-social log` mode, `framework-verify` regression check, `blast-radius-check.sh` staged-aware with a real self-test, UNKNOWNS #6 resolved. Gates: framework-verify PASS, gate-verify PASS, touch-scope PASS. Uncommitted; owner to commit.
+> **Date:** 2026-08-10 — Session closed (continuation of interrupted ses_0121)
+> **Status:** Six framework improvements shipped: `@biz-review monthly` assumption re-validation, `@biz-strategy career` + `OPERATOR_PROFILE.md`, content-strategy pillar loop, `PROJECTS.md` proof-point bank, voice loop enforcement, session content pipeline brief. Plus the content appeal standard, extended anti-AI rules, evidence discipline rule, drift-check scope fix, non-tech tilt (UNKNOWNS #2, #9, #10 resolved), and a bootstrap↔WORK_FILES manifest sync check in framework-verify. Gates: framework-verify PASS (incl. new check), gate-verify PASS, touch-scope PASS. Uncommitted; owner to commit.
+
+---
+
+## Session summary (2026-08-10, continuation close)
+
+The previous session (ses_0121) was interrupted right as it began implementing the approved six-improvement plan, after phase 1 (Content Status Protocol, committed as e08af92). This session resumed from the transcript and completed the plan.
+
+| Step | Status |
+|------|--------|
+| #1 `@biz-review monthly` (I1b): assumption ledger re-grading, dead-assumption routing to amend, Re-validated date | Done |
+| Drift-check scope narrowed to the five positioning files (ledger/changelog/ICP were false-positive by design) | Done |
+| #2 `@biz-strategy career` (I2d): operator probe, Hold/Sharpen/Transition read, cross-check vs certified strategy | Done |
+| #2 `OPERATOR_PROFILE.md` template in reference/ (deliberately not strategy/: no gate interference) | Done |
+| #2 Wiring: biz-writing/biz-social I0, biz-content I0c, biz-youtube operator proof, biz-pricing I0b, greenfield pointer | Done |
+| #3 Pillar loop: CONTENT_STATUS By pillar + Pillar column, CONVENTIONS pillar traceability, assignment in all four content skills + log mode, pillar column in both plan modes | Done |
+| #3 `@biz-review quarterly` content-strategy alignment (conversations per pillar → amend) | Done |
+| #4 `PROJECTS.md` proof-point bank template (dangling DIRECTORY_MAP ref closed); bootstrap + all manifests; sales-skill self-heal wording; content-skill proof wiring | Done |
+| #5 Voice loop: CONVENTIONS § Voice loop (mandatory retro entries, empty-profile warning, amendment rule); publish checklists + log mode record; weekly coverage check; skeleton warnings in all content skills + bootstrap status | Done |
+| #6 Session content pipeline brief at `@biz-session start` (ready/draft/last-publish + one suggested action) | Done |
+| #6 Evidence discipline rule in CONVENTIONS; machine check evaluated (83 hits, mostly advice numbers) and rejected with rationale | Done |
+| Appeal standard (6 bars) in Content Standard; anti-AI additions (5 banned constructions + 5 vocab rows + cadence rules) | Done |
+| Skill checklists: biz-writing position question + position/scene self-critique, biz-social universal format + checklist, biz-content hook selection + step 5 | Done |
+| Non-tech-host conditional tilt (UNKNOWNS #2) | Done |
+| Routing sync: skills/README verbs (monthly, career), PROCESS_ROUTER, START_HERE tree + §3, biz-director intents, README table, .cursorrules + template | Done |
+| framework-verify: bootstrap↔WORK_FILES manifest sync check (real self-check, extraction verified) | Done |
+| UNKNOWNS #2, #9, #10 resolved; NEXT/HANDOFF/CHANGELOG updated | Done |
+| Gates: framework-verify PASS (all checks incl. new one), gate-verify PASS, touch-scope PASS | Done |
 
 ---
 
@@ -84,14 +111,15 @@
 
 | # | Task | Priority |
 |---|------|----------|
-| 1 | Owner review of the uncommitted `future-strategy` changes (VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD → Publishing Standard refactor) | High |
-| 2 | Commit this session's framework changes (content status protocol + blast-radius fix) | High |
-| 3 | Validate the Content Status Protocol on a live target project: run a publish + `@biz-social log` cycle and confirm the tracker stays current | High |
-| 4 | Substack + Threads guides are untested — no project has published to either. Validate against real output before trusting the cadence and format rules | Medium |
-| 5 | Regenerate `.tmp/*.skill` archives — now also missing voice profile, Substack/Threads, reconcile, platform tracker, content status protocol | Medium |
-| 6 | Test revised `biz-writing` skill against a new LinkedIn draft and measure engagement | Medium |
-| 7 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
-| 8 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
+| 1 | Commit this session's framework changes (six improvements + quality hardening + plumbing; see NEXT.md) | High |
+| 2 | Owner review of the uncommitted `future-strategy` changes (VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD → Publishing Standard refactor) | High |
+| 3 | Validate the full loop on a live target project: publish + `@biz-social log` cycle with pillar assignment + VOICE_RETRO entry, then `@biz-strategy career` to fill OPERATOR_PROFILE.md | High |
+| 4 | Validate pillar loop + quarterly alignment on real tracker data (needs ≥1 quarter of pillar-tagged publishes) | Medium |
+| 5 | Substack + Threads guides are untested — no project has published to either. Validate against real output before trusting the cadence and format rules | Medium |
+| 6 | Regenerate `.tmp/*.skill` archives — now also missing this session's additions | Medium |
+| 7 | Test appeal standard + hardened `biz-writing` against a new LinkedIn draft and measure engagement vs `post_01_the_spreadsheet_nobody_owns` | Medium |
+| 8 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
+| 9 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
 
 ---
 
@@ -125,6 +153,11 @@
 | 24 | **One writer per gate is binding** — `active-deal` is promoted by `@biz-discovery run` alone; `@biz-proposal write` is not a promoter. |
 | 25 | **Content Status Protocol is binding on all content skills** — every content skill reads `CONTENT_STATUS.md` before drafting and records into it after producing or publishing; a missing tracker is created from its template at record time, never a reason to skip the record. Publishes that happened outside any skill are recorded via `@biz-social log`. Lifecycle: draft → ready → published (+ blocked, hold). |
 | 26 | **`blast-radius-check.sh` measures the next commit, not the tree** — staged content wins when anything is staged; working-tree-vs-HEAD only when nothing is staged. This is what makes the split-into-scoped-commits workflow executable. |
+| 27 | **OPERATOR_PROFILE lives in `reference/`, not `strategy/`** — it is input to positioning decisions, not a positioning decision. In `strategy/` it would trip the drift check on every career update and could even demote gates; in `reference/` it never interferes with the gate machinery. Same reasoning keeps it out of the weekly date comparison. |
+| 28 | **The drift check compares positioning files only** — one-pager, target-buyer-profile, offer-scope, channel-plan, pricing. The ledger, changelog, and linkedin-icp are non-positioning by design; flagging them trained operators to ignore the check. Dead load-bearing assumptions still surface via monthly re-validation routing through amend. |
+| 29 | **Pillar assignment happens at registration, never retroactively in bulk** — a published piece with no pillar is a recording failure. Pillars are the bridge that lets quarterly reviews aggregate conversations by strategic message. |
+| 30 | **Evidence claims need a citation or a directional marker; a machine check was rejected** — grep cannot tell a claim about the world from advice, and 83 false-positive-prone hits would drown real findings. The rule lives in CONVENTIONS § Evidence discipline and is enforced by prose review. |
+| 31 | **The appeal standard never overrides truth** — sharper is never worth invented detail. When proof points are thin, the fix is `PROJECTS.md`, not embellishment. |
 
 ---
 

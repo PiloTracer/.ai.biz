@@ -140,7 +140,7 @@ All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | Skill | One line | Typical invoke |
 |-------|----------|----------------|
 | **biz-bootstrap** | Scaffold `.work.biz/`, `.cursorrules` from templates | `init` · `status` |
-| **biz-strategy** | Define niche, unified offer, target buyer, channel plan; certifies **strategy-ready** | `greenfield` · `probe` · `status` · `certify` |
+| **biz-strategy** | Define niche, unified offer, target buyer, channel plan; profile the operator; certifies **strategy-ready** | `greenfield` · `probe` · `career` · `status` · `certify` |
 | **biz-brand** | Audit and overhaul LinkedIn, website, brand presence to match offer | `audit` · `overhaul` · `status` |
 | **biz-pricing** | Arrive at value-based pricing for any engagement | `set` · `status` · `revise` |
 | **biz-content** | LinkedIn publishing ops: tracker, calendar, engagement cadence, consistency challenges | `publish` · `plan` · `challenge` · `status` |
@@ -150,7 +150,7 @@ All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-discovery** | Run discovery calls that qualify and uncover the real problem | `run` · `prepare` · `status` |
 | **biz-proposal** | Write proposals with clear scope, pricing, and protection | `write` · `review` · `status` |
 | **biz-objections** | Handle the 7 most common sales objections | `handle` · `roleplay` · `status` |
-| **biz-review** | Weekly/quarterly pipeline, content, and business health review | `weekly` · `quarterly` · `status` |
+| **biz-review** | Weekly/monthly/quarterly pipeline, content, and business health review (monthly = assumption re-validation) | `weekly` · `monthly` · `quarterly` · `status` |
 | **biz-market-validate** | Test offers, niches, and channels with low-cost experiments | `test` · `design` · `status` |
 | **biz-pipeline-diagnosis** | Identify which funnel stage is the bottleneck | `run` · `status` |
 | **biz-session** | Session bookends; updates HANDOFF + NEXT | `start` · `close` · `status` |

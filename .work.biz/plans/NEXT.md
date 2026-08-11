@@ -12,8 +12,8 @@
 
 ## Recommended next
 
-1. **Commit this session's framework changes** — content status protocol, `@biz-social log`, staged-aware blast-radius check, routing sync.
-2. **Validate the Content Status Protocol on a live target project** — run a publish + `@biz-social log` cycle; confirm the tracker stays current across sessions.
+1. **Commit this session's framework changes** — six improvements (monthly re-validation, operator profile + career mode, pillar loop, proof-point bank, voice loop enforcement, session pipeline brief) + appeal standard + evidence rule + manifest sync check.
+2. **Validate the new loop on a live target project** — run a publish + `@biz-social log` cycle, assign pillars, record the VOICE_RETRO entry, and run `@biz-strategy career` to fill `OPERATOR_PROFILE.md`.
 3. **Owner review of the uncommitted `future-strategy` changes** — VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD refactor. Left deliberately uncommitted.
 
 ## Active tasks
@@ -30,7 +30,10 @@
 | 8 | Verify REPLACE tokens filled for adopter projects | Pending | Pre-existing carry-over |
 | 9 | Validate hardened content rules with a live LinkedIn draft | Pending | Compare hook/engagement to `post_01_the_spreadsheet_nobody_owns` |
 | 10 | Fix publish/status tracking in target projects | Done 2026-08-10 | Content Status Protocol in CONVENTIONS; tracker wired into biz-writing, biz-social (+ new `log` mode), biz-content, biz-youtube; self-heal rule; framework-verify regression check |
-| 11 | Validate Content Status Protocol on a live target project | Pending | Run publish + `@biz-social log` cycle end-to-end |
+| 11 | Validate Content Status Protocol on a live target project | Pending | Run publish + `@biz-social log` cycle end-to-end, incl. pillar assignment + VOICE_RETRO entry |
+| 12 | Strategy/career/content loop: six improvements + quality hardening | Done 2026-08-10 | `@biz-review monthly` assumption re-validation; `@biz-strategy career` + OPERATOR_PROFILE; pillar column + quarterly alignment review; PROJECTS.md proof-point bank; voice loop enforcement (UNKNOWNS #10); session content pipeline brief (UNKNOWNS #9 evidence rule); appeal standard + anti-AI additions; drift-check scope narrowed to positioning files; non-tech tilt (UNKNOWNS #2); bootstrap↔WORK_FILES manifest check in framework-verify |
+| 13 | Validate `@biz-strategy career` on a live project | Pending | Fill OPERATOR_PROFILE end-to-end; check the cross-check against certified strategy |
+| 14 | Validate pillar loop + quarterly alignment on real tracker data | Pending | Needs a project with ≥1 quarter of publishes tagged by pillar |
 
 ## Recently completed
 

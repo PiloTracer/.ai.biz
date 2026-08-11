@@ -91,6 +91,33 @@ grep -q '^| `log` |' "$AI_ROOT/skills/README.md" \
   || die "skills/README.md verb table is missing the log verb (biz-social)"
 ok "all four content skills reference CONTENT_STATUS.md; protocol + log verb documented"
 
+note "Bootstrap ↔ WORK_FILES manifest sync"
+# bootstrap.sh and biz-deploy-basic.sh WORK_FILES must list the same
+# .work.biz/ scaffold set. WORK_FILES is the one that fails quietly:
+# --update only offers files listed there, so an artifact missing from it is
+# silently never updated on existing installs. This check is the machine
+# answer to that silent divergence.
+bootstrap_files="$(grep -oE '"\$\{WORK\}/[^"]+"' "$AI_ROOT/templates/bootstrap.sh" \
+  | sed 's|"${WORK}/||; s|"$||' | grep -v '\$' | sort -u)"
+work_files="$(sed -n '/^WORK_FILES=(/,/^)/p' "$AI_ROOT/scripts/biz-deploy-basic.sh" \
+  | grep -oE '"[^"]+"' | tr -d '"' | sort -u)"
+manifest_rc=0
+while IFS= read -r f; do
+  [[ -z "$f" ]] && continue
+  if ! grep -qxF "$f" <<< "$work_files"; then
+    die "bootstrap.sh creates .work.biz/$f but WORK_FILES omits it — biz-deploy-basic --update will never offer it"
+    manifest_rc=1
+  fi
+done <<< "$bootstrap_files"
+while IFS= read -r f; do
+  [[ -z "$f" ]] && continue
+  if ! grep -qxF "$f" <<< "$bootstrap_files"; then
+    die "WORK_FILES lists $f but bootstrap.sh never creates it"
+    manifest_rc=1
+  fi
+done <<< "$work_files"
+[[ "$manifest_rc" -eq 0 ]] && ok "bootstrap.sh and WORK_FILES list the same scaffold set"
+
 note "biz-deploy-files in-place scaffold"
 DF_SMOKE="$(mktemp -d)"
 pushd "$DF_SMOKE" >/dev/null

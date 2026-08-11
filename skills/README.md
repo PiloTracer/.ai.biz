@@ -28,7 +28,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-deploy-files | `biz-deploy-files/` | Deploy `.ai.biz/` files into target project |
 | biz-deploy-repo | `biz-deploy-repo/` | Full git-based deploy (clone or archive) |
 | biz-bootstrap | `biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
-| biz-strategy | `biz-strategy/` | Define niche, offer, positioning; certifies **strategy-ready** |
+| biz-strategy | `biz-strategy/` | Define niche, offer, positioning; profile the operator (`career`); certifies **strategy-ready** |
 | biz-brand | `biz-brand/` | Audit/overhaul LinkedIn, website, brand presence |
 | biz-pricing | `biz-pricing/` | Value-based pricing for any engagement |
 | biz-content | `biz-content/` | LinkedIn publishing ops: publish, plan, 30-day challenge (#CreateImpact), tracker |
@@ -38,7 +38,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-discovery | `biz-discovery/` | Sales discovery calls |
 | biz-proposal | `biz-proposal/` | Proposal writing and scoping |
 | biz-objections | `biz-objections/` | Handle sales objections |
-| biz-review | `biz-review/` | Weekly/quarterly business review |
+| biz-review | `biz-review/` | Weekly/monthly/quarterly business review (monthly = assumption re-validation) |
 | biz-market-validate | `biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
 | biz-session | `biz-session/` | Session open/close, HANDOFF, NEXT; scoped to `.work.biz/`; combinable `close` / `commit` / `push` params |
@@ -80,7 +80,9 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `revise` | Update an existing decision |
 | `find` | Find communities to join (biz-community) |
 | `weekly` | Weekly business review (biz-review) |
-| `quarterly` | Quarterly strategic review (biz-review) |
+| `monthly` | Monthly assumption re-validation: re-grade the assumption ledger, route dead load-bearing assumptions to amend (biz-review) |
+| `quarterly` | Quarterly strategic review incl. content-strategy alignment by pillar (biz-review) |
+| `career` | Probe the operator (skills, proof points, constraints, risk, stage); fill `reference/OPERATOR_PROFILE.md`; career-direction read (biz-strategy) |
 | `roleplay` | Practice objection handling (biz-objections) |
 | `close` / `start` | Session bookends |
 | `commit` / `push` | Scoped session flags with `close` — commit `.work.biz/` (incl. untracked) / push branch; any order, combinable |

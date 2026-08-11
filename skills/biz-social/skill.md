@@ -81,6 +81,8 @@ Read, if they exist:
 | `.work.biz/strategy/linkedin-icp.md` | How the buyer shows up on LinkedIn — titles, hook language, format preference |
 | `.work.biz/strategy/one-pager.md` | Niche, unified offer, price range, geography |
 | `.work.biz/strategy/channel-plan.md` | Primary channel — determines which platforms are primary vs secondary |
+| `.work.biz/reference/OPERATOR_PROFILE.md` | Who the author actually is: skills, constraints, career stage. Keeps claims inside what the operator can deliver and prove. A skeleton-full of `<` placeholders counts as missing; say so |
+| `.work.biz/reference/PROJECTS.md` | The proof-point bank: real projects with numbers behind every concrete result; respect its disclosure status |
 | `.work.biz/reference/CONTENT_STATUS.md` | What already exists on every platform: never re-write a `published` piece for the same platform; prefer advancing a `ready` or `draft` piece over starting fresh |
 | `.work.biz/context/HANDOFF.md` | Recent decisions; avoid contradicting them |
 
@@ -100,7 +102,7 @@ Apply it as follows:
 
 If the profile lists **reference samples**, read the sample matching the requested format before drafting and match its rhythm, not just its topic. If it lists **texture** rules, treat them as deliberate: do not normalize long comma-joined sentences, regional English patterns, or fragments into polished prose. If it names an **owner pass** as mandatory, say so explicitly when delivering and label the output a draft.
 
-Without a voice profile, output will be correctly de-AI-ified but generically human. Say so in the context summary and point the operator at `templates/work/reference/VOICE_PROFILE.md.template`.
+Without a voice profile, output will be correctly de-AI-ified but generically human. Say so in the context summary and point the operator at `templates/work/reference/VOICE_PROFILE.md.template`. The same applies when the profile exists but is still a skeleton (`<` placeholders remain, or no reference sample is filled): treat it as absent and warn plainly, because an unfilled profile adds a step without adding value (CONVENTIONS § Voice loop).
 
 ### Priority 3 — Project identity
 
@@ -108,9 +110,12 @@ Read `.cursorrules` — its `REPLACE:` tokens resolve to `PROJECT_NAME`, `UNIFIE
 
 ### Priority 4 — Tech stack fingerprint
 
+- `.work.biz/reference/PROJECTS.md` → the curated proof-point bank; read it before scanning the repo
 - `package.json`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `docker-compose*.yml` → real tech to cite
 - `README.md` → what the project actually does
 - Any `work/`, `case-studies/`, or `docs/` folder → real proof points
+
+**Non-tech hosts:** if no stack manifest exists and the project is clearly not technology work, tilt the specificity requirement toward domain evidence from `reference/PROJECTS.md` and `reference/OPERATOR_PROFILE.md` instead of forcing technical detail.
 
 ### Priority 5 — Brand standard
 
@@ -203,12 +208,17 @@ The platforms share a common anatomy. Start from this skeleton, then apply the p
 HOOK
   — The first thing the audience sees. It must earn attention in under 3 seconds.
   — Specificity > mystery. Lead with the reader's problem, a concrete result, or a tension.
+  — Appeal standard: the first two lines carry a concrete scene, a named moment, or a number.
   — No clickbait, no ALL CAPS, no hollow intensifiers, no "you won't believe."
 
 BODY
   — One idea per paragraph or segment. White space and rhythm matter.
   — Show, don't tell: replace adjectives with data, examples, names, numbers.
   — Include at least one specific proof point per post (a number, a tradeoff, a hard-won lesson).
+  — Appeal standard: the post takes a position an informed peer could disagree with,
+    names what breaks and for whom (stakes), and keeps the specificity quota
+    (one proper noun, number, or named artifact per 150 words). See
+    standards/20260621-CONTENT-STANDARD.md § Appeal standard.
   — Technology tilt (mandatory for tech-positioned projects): cite concrete stack, failure mode, or metric.
   — Remove marketing language: solution, platform, revolutionary, game-changing, cutting-edge, best-in-class, scalable, robust, seamless, innovative.
 
@@ -273,7 +283,8 @@ Provide the complete, ready-to-post content. Below a divider, offer:
 If `.work.biz/` exists, record the piece in `.work.biz/reference/CONTENT_STATUS.md` so later sessions know it exists (create the file from `templates/work/reference/CONTENT_STATUS.md.template` if missing):
 
 - Add an **Items** row: piece title, status `ready` (or `draft` when an owner pass is still required), target platform in the Note column.
-- Refresh the **By platform** and **Summary** rows.
+- **Assign the pillar**: name which strategic pillar (from the tracker's **By pillar** list, traceable to one-pager/offer) this piece advances. If the pillar list is empty, define it from the strategy docs first.
+- Refresh the **By platform**, **By pillar**, and **Summary** rows.
 - Remind the operator: once posted, record the publish (date + URL) here or via `@biz-social log`. The tracker is only true if publishes land in it.
 
 Skip this step for `research` mode and for throwaway fragments the user explicitly did not want kept.
@@ -608,12 +619,13 @@ Build a platform-specific content calendar. Output a Markdown table.
 
 ### Plan table format
 
-| Day | Date | Platform | Type | Topic | Hook seed | Visual needed | Repurpose source |
-|-----|------|----------|------|-------|-----------|---------------|-----------------|
+| Day | Date | Platform | Type | Topic | Pillar | Hook seed | Visual needed | Repurpose source |
+|-----|------|----------|------|-------|--------|-----------|---------------|-----------------|
 
 ### Planning rules
 
 - Every topic must trace to a loaded audience pain or the operator's proven work
+- Every topic names the strategic pillar it advances (the 3–5 messages from one-pager/offer, as listed in `CONTENT_STATUS.md` § By pillar); report any pillar the calendar leaves silent
 - Vary content types — don't post the same format 5 days in a row
 - Leave 2-3 slots per week for reactive/trending content (especially Instagram and YouTube Shorts)
 - For Reddit: plan 1-2 posts per week max. Focus on comment engagement daily.
@@ -666,6 +678,9 @@ Different platforms support different levels of depth. Structure your content py
 - [ ] Does the CTA / first comment point to a current offer in `strategy/offer-scope.md`? No bare calendar links without a one-line offer bridge; no framings from superseded positioning.
 - [ ] Freshness: if anything under `strategy/` is newer than the last certification (or `gates.md` lacks strategy-ready PASS), surface that before delivering publish-ready copy.
 - [ ] Does the first line/frame/hook earn its place?
+- [ ] **Appeal:** does the piece take a position an informed peer could disagree with?
+- [ ] **Appeal:** do the first two lines/frame carry a scene, named moment, or number?
+- [ ] **Appeal:** are the stakes named (what breaks, for whom, at what cost) and is the feeling at the stakes moment present?
 - [ ] Is there at least one specific number, name, or proof point?
 - [ ] Have I removed all hollow adjectives and marketing language?
 - [ ] Is the length appropriate for this platform?
@@ -842,10 +857,10 @@ Record a publish (or a status change) into `.work.biz/reference/CONTENT_STATUS.m
 ### Workflow
 
 1. Read `.work.biz/reference/CONTENT_STATUS.md`. If missing, create it from `templates/work/reference/CONTENT_STATUS.md.template` first (self-heal rule).
-2. Find the piece in the **Items** table. If it exists as `ready` or `draft`, promote that row; do not add a duplicate. If it does not exist, add a row.
+2. Find the piece in the **Items** table. If it exists as `ready` or `draft`, promote that row; do not add a duplicate. If it does not exist, add a row. Either way, make sure the row names its pillar; if the operator does not know, assign it from the tracker's **By pillar** list and the one-pager.
 3. Set status `published`, the publish date, and platform / URL. Ask for the URL only if it materially helps retrieval; never block the record on a missing URL.
-4. Refresh the **By platform** row (published count, last publish date, conversations column if one was reported) and the **Summary** counts. Update **Last updated**.
-5. Run the file's "What to do after a publish" checklist: platform tracker row (create `pipeline/<platform>-tracker.md` from the template on first publish there), `plans/NEXT.md`, `context/HANDOFF.md`.
+4. Refresh the **By platform** row (published count, last publish date, conversations column if one was reported), the **By pillar** row, and the **Summary** counts. Update **Last updated**.
+5. Run the file's "What to do after a publish" checklist: platform tracker row (create `pipeline/<platform>-tracker.md` from the template on first publish there), `reference/VOICE_RETRO.md` entry (create from template if missing), `plans/NEXT.md`, `context/HANDOFF.md`.
 6. Confirm in one line what was recorded. No commentary beyond that.
 
 ### Rules

@@ -1,13 +1,14 @@
 ---
 name: biz-review
 description: >-
-  Weekly and quarterly business review. Assess pipeline, content performance,
-  and overall business health. biz-review weekly, biz-review quarterly, biz-review status.
+  Weekly, monthly, and quarterly business review. Assess pipeline, content
+  performance, assumption health, and overall business health. biz-review weekly,
+  biz-review monthly, biz-review quarterly, biz-review status.
 ---
 
 # biz-review
 
-**Purpose:** Regular structured review prevents drift. Weekly = tactical. Quarterly = strategic.
+**Purpose:** Regular structured review prevents drift. Weekly = tactical. Monthly = assumption truth. Quarterly = strategic.
 
 ---
 
@@ -30,7 +31,7 @@ BLOCKED (prerequisite): no strategy docs found
 
 | State | Promoted by | Evidence to check |
 |-------|-------------|-------------------|
-| strategy-ready | `@biz-strategy certify` | `.work.biz/strategy/certification.md` exists, and nothing under `strategy/` is newer than it |
+| strategy-ready | `@biz-strategy certify` | `.work.biz/strategy/certification.md` exists, and no **positioning file** under `strategy/` is newer than it (the five decision files: `one-pager.md`, `target-buyer-profile.md`, `offer-scope.md`, `channel-plan.md`, `pricing.md`; ledger, changelog, and ICP are exempt — see the I1 drift check) |
 | brand-ready | `@biz-brand overhaul` | `.work.biz/reference/BRAND_STATUS.md` has an overhaul log entry with a passing five-second test |
 | pipeline-ready | **this skill** | `.work.biz/strategy/pricing.md`, `.work.biz/pipeline/pipeline_tracker.md` (configured, not an empty template), and `.work.biz/pipeline/outreach-cadence.md` all exist and are filled in |
 | sales-ready | `@biz-discovery run` | Pipeline tracker has at least one completed discovery call logged with BANT captured |
@@ -91,12 +92,48 @@ Score each stage 0 (blocked) → 5 (healthy):
 
 ### Drift check (2 min)
 
-1. Compare dates: any file under `.work.biz/strategy/` newer than `strategy/certification.md` -> flag "strategy changed since certification; run @biz-strategy certify".
+1. Compare dates: any **positioning file** under `.work.biz/strategy/` newer than `strategy/certification.md` -> flag "strategy changed since certification; run @biz-strategy certify". Positioning files are the five the certification validates as decisions: `one-pager.md`, `target-buyer-profile.md`, `offer-scope.md`, `channel-plan.md`, `pricing.md`. Exempt by design: `assumption-ledger.md` (monthly re-validation re-grades evidence without changing positioning), `changelog.md` (append-only; reconcile corrections move no gate), and `linkedin-icp.md` (derived artifact written post-certification by `@biz-social icp`). A load-bearing assumption that dies still surfaces: monthly re-validation routes it through `@biz-strategy amend`, which demotes the gate properly.
 2. Glob for strategy-bearing files outside `strategy/` (`ideas/positioning_*.md`, `plans/strategy_*.md`) -> flag "out-of-tree strategy docs; run @biz-strategy amend".
 3. If anything was published this week, confirm `.work.biz/reference/CONTENT_STATUS.md` was updated. If the file is missing entirely, create it from `templates/work/reference/CONTENT_STATUS.md.template` and backfill the pieces known to be published (self-heal rule, see CONVENTIONS § Content Status Protocol) — a missing tracker means every future session loses the publish record.
-4. Run the I0 reconciliation against `{WORK_BUSINESS_ROOT}/gates.md` -> flag any gate claiming PASS without evidence, and demote it.
+4. If anything was published this week, confirm `.work.biz/reference/VOICE_RETRO.md` carries an entry for it (or records the owner pass as waived). A publish with no retro entry means the voice loop did not run and voice convergence is being measured on a partial sample (see CONVENTIONS § Voice loop).
+5. Run the I0 reconciliation against `{WORK_BUSINESS_ROOT}/gates.md` -> flag any gate claiming PASS without evidence, and demote it.
 
 Render findings as a short "Drift check" block in the review output (or "clean" if nothing found).
+
+---
+
+## I1b — Monthly review: assumption re-validation (45 min)
+
+Certification is one-shot: it proves the strategy was consistent on the day it was written. Nothing keeps it true afterward. The weekly drift check compares dates, not evidence. Once a month, re-grade the assumptions themselves, because a strategy whose load-bearing assumption died is wrong no matter how clean its paperwork is.
+
+### Inputs
+
+| Source | What it contributes |
+|--------|---------------------|
+| `strategy/assumption-ledger.md` | The claims under review |
+| `pipeline/pipeline_tracker.md` + `pipeline/*-tracker.md` | What buyers actually did since the last re-validation |
+| `reference/CONTENT_STATUS.md` (conversations column) | Which strategic messages produced conversations, not just reach |
+| Discovery call notes logged in the pipeline tracker | What buyers actually said |
+
+### Re-validation steps
+
+1. Walk every row of `strategy/assumption-ledger.md` and re-grade it against evidence accumulated since certification or the last re-validation:
+   - **Confirmed** — fresh evidence exists for it. Cite the evidence row: tracker entry, call note, or publish + result.
+   - **Inferred** — no new evidence either way. It survives on its original reasoning; say so.
+   - **Unknown** — never tested, still untested. Name the cheapest test (`@biz-market-validate test`).
+   - **Dead** — evidence now contradicts it: buyers consistently say the opposite, the primary channel produced zero conversations after 6–8 publishes, or real calls rejected the price anchor.
+2. Update each row's Evidence column in place and add `Re-validated: <date>` to the ledger's header. Recording the date is what lets the weekly drift check tell a live process from a stale file.
+3. For every **dead** assumption, classify it: **load-bearing** (anchors the buyer, the problem, the offer, or the primary channel) or **peripheral**.
+4. Verdict:
+   - A load-bearing assumption died → route to `@biz-strategy amend` now. Do not wait for the quarterly.
+   - Only peripheral assumptions died → record them in `plans/NEXT.md` for the next amend cycle.
+   - Nothing died → report the grade counts and set the next re-validation date.
+
+### Rules
+
+- Re-validation re-grades evidence; it never rewrites positioning. Any change to buyer, problem, offer, channel, or price goes through `@biz-strategy amend`, which demotes and re-certifies properly.
+- Absence of evidence is not confirmation. An assumption with no evidence either way stays Unknown, however long it has sat there.
+- A dead assumption is a finding, not a failure. The mode that hides a dead assumption is the one that costs the business its quarter.
 
 ---
 
@@ -132,6 +169,23 @@ Render findings as a short "Drift check" block in the review output (or "clean" 
 - Revenue target
 - Content volume commitment
 
+### Content-strategy alignment (quarterly, ~20 min)
+
+Reach is a vanity metric; conversations are the only column that connects content to revenue. Once a quarter, check which **strategic pillar** actually produced pipeline, so performance flows back into strategy instead of dying inside the tracker.
+
+1. Read `reference/CONTENT_STATUS.md`: the **Items** table (pillar column), the **By pillar** aggregate, and each platform's conversations column. Read `pipeline/*-tracker.md` for the per-platform conversations tables.
+2. Aggregate the quarter's conversations by pillar:
+
+| Pillar | Pieces published | Conversations produced | Conversations per piece |
+|--------|------------------|------------------------|-------------------------|
+
+3. Verdict per pillar:
+   - **Converting** — conversations per piece clearly above the rest. Feed it: more topics on this pillar next quarter, and mine it for case studies (`reference/PROJECTS.md`).
+   - **Reaching only** — reach without conversations. It produces authority, not pipeline. Say so plainly; reduce its share or re-shape its CTA toward a conversation.
+   - **Silent** — published, no measurable reaction. Test one sharper angle next quarter or drop the pillar.
+   - **Untracked** — pieces with an empty pillar column. Assign pillars now; a quarter of untagged pieces is exactly what this section exists to prevent.
+4. Feed the result back: a pillar that keeps converting (or keeps failing) across two quarters is strategy evidence. Run `@biz-strategy amend` to let it reshape `channel-plan.md` or the offer emphasis, and record the re-grade in `strategy/assumption-ledger.md`.
+
 ---
 
 ## I3 — Data source
@@ -146,9 +200,12 @@ All numbers come from your **pipeline tracker** (a spreadsheet, CRM, or `.ai.biz
 |---|-------|--------|
 | 1 | Weekly: all numbers pulled and recorded | |
 | 2 | Weekly: bottleneck identified, ONE change set | |
-| 3 | Quarterly: retrospective answers written | |
-| 4 | Quarterly: channel effectiveness scored | |
-| 5 | Quarterly: next quarter focus documented | |
-| 6 | Gate ledger reconciled — every PASS in `.work.biz/gates.md` has its evidence on disk | |
+| 3 | Monthly: every assumption-ledger row re-graded with fresh evidence; `Re-validated` date recorded | |
+| 4 | Monthly: dead assumptions classified; load-bearing deaths routed to `@biz-strategy amend` | |
+| 5 | Quarterly: retrospective answers written | |
+| 6 | Quarterly: channel effectiveness scored | |
+| 7 | Quarterly: content-strategy alignment aggregated by pillar; winners fed back toward amend | |
+| 8 | Quarterly: next quarter focus documented | |
+| 9 | Gate ledger reconciled — every PASS in `.work.biz/gates.md` has its evidence on disk | |
 
 **Next:** `@biz-pipeline-diagnosis run` — deep-dive on the bottleneck you identified.

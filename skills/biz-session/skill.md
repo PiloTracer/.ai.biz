@@ -56,7 +56,12 @@ This skill's **write and git scope is `.work.biz/` only** — the working direct
 1. Read `HANDOFF.md` into context.
 2. Read `NEXT.md` into context.
 3. Read `UNKNOWNS.md` into context.
-4. If `.work.biz/reference/CONTENT_STATUS.md` exists, read it into context.
+4. If `.work.biz/reference/CONTENT_STATUS.md` exists, read it into context and emit a **content pipeline brief** (3-5 lines, no more):
+   - `ready` pieces waiting to be posted (title + platform), oldest first
+   - `draft` pieces waiting on an owner pass
+   - Last publish date, and whether any published piece is still missing its pillar
+   - One suggested action when the pipeline is actionable (e.g. "post <piece> today", "owner pass on <draft>")
+   A tracker that is read but never acted on is indistinguishable from no tracker; the brief is what turns it into action.
 5. Confirm: *"Session started with [N] next items and [M] unknowns."*
 
 **If HANDOFF.md doesn't exist:** Prompt to run `@biz-bootstrap init` or create minimal HANDOFF manually.

@@ -31,6 +31,8 @@
        │
        ├── "I want to plan my strategy"         ──► §3 Strategy
        │
+       ├── "I want a read on my career / what I can prove"  ──► `@biz-strategy career`
+       │
        ├── "I want to fix my brand / online presence"  ──► §4 Brand
        │
         ├── "I want to publish content"           ──► `@biz-content publish` · `@biz-youtube publish`
@@ -46,6 +48,8 @@
        ├── "I have a sales conversation"         ──► §5 Sales
        │
        ├── "I need to review my progress"        ──► `@biz-review weekly`
+       │
+       ├── "I need to re-check the strategy's assumptions"  ──► `@biz-review monthly`
        │
        ├── "I'm closing for the day"             ──► §6 Close
        │
@@ -74,6 +78,8 @@
 |-----------|-----|
 | To start a brand-new business plan | `@biz-strategy greenfield` |
 | Agent should ask questions until it truly understands your situation | `@biz-strategy probe` |
+| To profile your skills, proof points, constraints and get a career read | `@biz-strategy career` |
+| To re-validate the strategy's assumptions (monthly) | `@biz-review monthly` |
 | To check if strategy is done | `@biz-strategy status` then `@biz-strategy certify` |
 | To set pricing for an engagement | `@biz-pricing set` |
 | To test if your offer/niche works | `@biz-market-validate test` |

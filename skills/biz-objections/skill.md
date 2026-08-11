@@ -79,7 +79,7 @@ Handling an objection needs the specific deal's context: what they said, their b
 **Response:**
 
 1. **Yes, always.** "Absolutely. I have several. Let me share the most relevant one."
-2. **Reference the most relevant project from `.work.biz/reference/PROJECTS.md`** (created on first use if missing) that matches their industry or problem type.
+2. **Reference the most relevant project from `.work.biz/reference/PROJECTS.md`** (create from `templates/work/reference/PROJECTS.md.template` if missing) that matches their industry or problem type.
 3. **Tell the story, don't just send a link:** "One client needed [problem]. I built [solution] using [tech]. It took [timeframe]. The result was [outcome]. Here's the case study."
 4. **If you don't have an exact match:** "I haven't built exactly that, but here's something similar: [related project]. The architecture pattern is the same — the domain logic changes."
 
@@ -189,7 +189,7 @@ An objection is handled well when:
 
 - `.work.biz/strategy/one-pager.md` (unified offer — ground responses in the real offer)
 - `.work.biz/strategy/offer-scope.md` (what the offer IS / IS NOT)
-- `.work.biz/reference/PROJECTS.md` (case study references for the "similar work" objection; created on first use if missing)
+- `.work.biz/reference/PROJECTS.md` (case study references for the "similar work" objection; create from `templates/work/reference/PROJECTS.md.template` if missing)
 - `skills/biz-discovery/skill.md` (precedes objections — better discovery means fewer objections)
 - `skills/biz-pricing/skill.md` (for the pricing objection specifically)
 

@@ -94,7 +94,7 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | Intent cluster | Example requests | Skill(s) to route | Gate required |
 |---|---|---|---|
 | **Setup / bootstrap** | "start a new project", "set up my business folder", "create .work.biz" | `@biz-bootstrap init` | — |
-| **Strategy / niche / offer** | "figure out my niche", "define my offer", "who should I target", "what should I sell", "certify my strategy", "check if strategy is ready", "how's my strategy looking" | `@biz-strategy` (greenfield, probe, certify, or status per parse invocation) | scaffold |
+| **Strategy / niche / offer** | "figure out my niche", "define my offer", "who should I target", "what should I sell", "certify my strategy", "check if strategy is ready", "how's my strategy looking", "what should I do with my career", "what can I actually prove", "profile my skills", "am I on the right track career-wise" | `@biz-strategy` (greenfield, probe, career, certify, or status per parse invocation) | scaffold |
 | **Market validation** | "test if my idea works", "validate my niche", "run an experiment", "design a validation test", "design an experiment" | `@biz-market-validate` (test, design, or status per parse invocation) | — (can run any time) |
 | **Brand / LinkedIn / website** | "fix my LinkedIn", "rewrite my profile", "update my website", "make me look professional", "check my brand presence", "how's my LinkedIn doing" | `@biz-brand` (audit, overhaul, or status per parse invocation) | strategy-ready |
 | **Pricing** | "how much should I charge", "set my prices", "price this project", "revise my pricing", "is my pricing right", "what's my current price" | `@biz-pricing` (set, revise, or status per parse invocation) | strategy-ready |
@@ -112,7 +112,7 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Proposals** | "write a proposal", "scope this project", "review my proposal before sending", "check proposal pipeline" | `@biz-proposal` (write, review, or status per parse invocation) | pipeline-ready |
 | **Objections** | "client said it's too expensive", "handle objections", "overcome price concerns", "roleplay objection responses" | `@biz-objections handle` or `roleplay` | active-deal for `handle`; — for `roleplay` |
 | **Pipeline diagnosis** | "nothing is converting", "find my bottleneck", "why aren't we closing" | `@biz-pipeline-diagnosis run` | pipeline tracker with data |
-| **Review / health** | "weekly review", "quarterly review", "how are we doing", "progress check" | `@biz-review` (weekly, quarterly, or status per parse invocation) | at least one strategy doc |
+| **Review / health** | "weekly review", "monthly review", "quarterly review", "how are we doing", "progress check", "re-check my assumptions", "are my strategy assumptions still true" | `@biz-review` (weekly, monthly, quarterly, or status per parse invocation) | at least one strategy doc |
 | **Session management** | "start the day", "close the session", "what was I doing" | `@biz-session start` or `close` or `status` | scaffold |
 | **Project orientation** | "where am I", "what should I do next", "I'm lost" | `@biz-session status` + `@biz-review status` | — |
 | **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@biz-deploy-files copy - <path>` or `@biz-deploy-repo` (clone, archive, or status per parse invocation) | — |

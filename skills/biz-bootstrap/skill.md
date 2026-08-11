@@ -61,6 +61,8 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/reference/BRAND_STATUS.md` | `templates/work/reference/BRAND_STATUS.md.template` — brand audit history and overhaul log; evidence for the `brand-ready` gate |
    | `.work.biz/reference/VOICE_PROFILE.md` | `templates/work/reference/VOICE_PROFILE.md.template` — how this owner sounds; binding for every content skill on every platform. Ships as a skeleton the owner must fill |
    | `.work.biz/reference/VOICE_RETRO.md` | `templates/work/reference/VOICE_RETRO.md.template` — draft vs owner edits; measures whether the voice profile is working |
+   | `.work.biz/reference/OPERATOR_PROFILE.md` | `templates/work/reference/OPERATOR_PROFILE.md.template` — operator skills, proof points, constraints, risk, career stage; filled by `@biz-strategy career`. Ships as a skeleton |
+   | `.work.biz/reference/PROJECTS.md` | `templates/work/reference/PROJECTS.md.template` — proof-point bank content, proposals, and calls draw on; disclosure status is binding |
 
    **Sync rule:** this table, `templates/bootstrap.sh`, `templates/README.md`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, and `skills/biz-deploy-basic/skill.md` must list the same set. `WORK_FILES` is the one that fails quietly: `biz-deploy-basic --update` only offers files listed there, so an artifact missing from it is never updated on existing installs and nothing reports the omission.
 
@@ -98,7 +100,9 @@ Read-only report of the current bootstrap state:
 | `.work.biz/strategy/README.md` exists | `ls "$WORK_DIR/strategy/README.md"` |
 | `.work.biz/reference/CONTENT_STATUS.md` exists | `ls "$WORK_DIR/reference/CONTENT_STATUS.md"` |
 | `.work.biz/reference/BRAND_STATUS.md` exists | `ls "$WORK_DIR/reference/BRAND_STATUS.md"` |
-| `.work.biz/reference/VOICE_PROFILE.md` exists and is filled in | `ls "$WORK_DIR/reference/VOICE_PROFILE.md"`; report `skeleton` if `<` placeholders remain |
+| `.work.biz/reference/VOICE_PROFILE.md` exists and is filled in | `ls "$WORK_DIR/reference/VOICE_PROFILE.md"`; report `skeleton` if `<` placeholders remain, and warn: content skills fall back to generic human-voice defaults until it is filled |
+| `.work.biz/reference/OPERATOR_PROFILE.md` exists and is filled in | `ls "$WORK_DIR/reference/OPERATOR_PROFILE.md"`; report `skeleton` if `<` placeholders remain — run `@biz-strategy career` to fill |
+| `.work.biz/reference/PROJECTS.md` exists and has at least one project | `ls "$WORK_DIR/reference/PROJECTS.md"`; report `empty bank` if no project block is filled — content and calls fall back to generic claims until it is |
 | Which gates are PASS | `grep -A1 '^## ' "$WORK_DIR/gates.md"` — a fresh bootstrap has all five at `NOT MET` |
 | Any `REPLACE:` tokens remain in `.cursorrules` | `grep -c 'REPLACE:' "$PROJECT_ROOT/.cursorrules" \|\| echo 0` |
 

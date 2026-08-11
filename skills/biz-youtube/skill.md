@@ -151,9 +151,9 @@ subscription feed.
 
 Update `.work.biz/reference/CONTENT_STATUS.md` before the session ends:
 
-1. Mark the video `published` in the **Items** table with the date and video URL.
-2. Refresh the **By platform** row (YouTube published count, last publish date, tracker file pointer) and the **Summary** counts.
-3. Append the video to `.work.biz/pipeline/youtube-tracker.md` (create it from `templates/work/pipeline/platform-tracker.md.template` if this is the first publish), and follow the file's "What to do after a publish" checklist for `plans/NEXT.md` and `context/HANDOFF.md`.
+1. Mark the video `published` in the **Items** table with the date and video URL. Confirm the row names its pillar; assign one from the **By pillar** list if it was still blank.
+2. Refresh the **By platform** row (YouTube published count, last publish date, tracker file pointer), the **By pillar** row, and the **Summary** counts.
+3. Append the video to `.work.biz/pipeline/youtube-tracker.md` (create it from `templates/work/pipeline/platform-tracker.md.template` if this is the first publish), add the `reference/VOICE_RETRO.md` entry, and follow the file's "What to do after a publish" checklist for `plans/NEXT.md` and `context/HANDOFF.md`.
 
 ### 8. Repurpose
 
@@ -339,6 +339,17 @@ voice profile governs how the spoken lines sound above that floor, and its
 obvious, because viewers hear the rhythm. If the profile names a reference sample
 for narrative or spoken formats, read it before scripting. If it makes an owner
 pass mandatory, label the script a draft.
+
+**Operator proof.** Read `.work.biz/reference/OPERATOR_PROFILE.md` and
+`.work.biz/reference/PROJECTS.md` before scripting: the profile bounds what the
+presenter can credibly claim, and the bank supplies the numbers, demos, and
+results that make B2B video trustworthy. Camera work exposes invented detail
+faster than text does. Respect the bank's disclosure status, and name the gap
+when the bank is empty.
+
+A profile that is still a skeleton (`<` placeholders remain, no reference
+sample filled) counts as none: say so plainly before scripting, because spoken
+copy is where the gap shows most (CONVENTIONS § Voice loop).
 
 **Channel-plan check.** If `.work.biz/strategy/channel-plan.md` does not list
 YouTube as a channel, or lists it under "explicitly not channels", say so before

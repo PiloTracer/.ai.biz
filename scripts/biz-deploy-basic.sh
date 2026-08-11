@@ -131,6 +131,7 @@ WORK_FILES=(
   "research/research_index.md" "strategy/README.md" "gates.md"
   "reference/CONTENT_STATUS.md" "reference/BRAND_STATUS.md"
   "reference/VOICE_PROFILE.md" "reference/VOICE_RETRO.md"
+  "reference/OPERATOR_PROFILE.md" "reference/PROJECTS.md"
 )
 WORK_DIRS=(
   "context" "plans" "pipeline" "research" "drafts" "strategy" "reference"

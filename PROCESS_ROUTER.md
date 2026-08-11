@@ -20,6 +20,7 @@
 |---|---|
 | Bootstrap `.work.biz/` and `.cursorrules` | `@biz-bootstrap init` |
 | Define your niche, offer, and target buyer | `@biz-strategy greenfield` |
+| Profile your skills, proof points, constraints; get a career read | `@biz-strategy career` |
 | Test if your niche/offer works | `@biz-market-validate test` |
 | Fix your LinkedIn profile and brand | `@biz-brand overhaul` |
 | Publish LinkedIn content | `@biz-content publish` |
@@ -36,6 +37,7 @@
 | Engage in communities | `@biz-community engage` |
 | Diagnose pipeline bottlenecks | `@biz-pipeline-diagnosis run` |
 | Review weekly progress | `@biz-review weekly` |
+| Re-validate the strategy's assumptions | `@biz-review monthly` |
 | Close your session | `@biz-session close` |
 | Open a session | `@biz-session start` |
 | Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |

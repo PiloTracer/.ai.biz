@@ -146,7 +146,7 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | biz-deploy-repo | `skills/biz-deploy-repo/` | Full repo deploy (clone or archive) |
 | biz-deploy-basic | `skills/biz-deploy-basic/` | Thin-client bootstrap — copies `.cursorrules` (with `AGENT_OS_SOURCE` pointer) + `.work.biz/` skeleton; skills resolve from source at runtime. `@biz-deploy-basic`, `@biz-deploy-basic update`, `@biz-deploy-basic status` |
 | biz-bootstrap | `skills/biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
-| biz-strategy | `skills/biz-strategy/` | Niche, offer, positioning, target buyer |
+| biz-strategy | `skills/biz-strategy/` | Niche, offer, positioning, target buyer, operator profile (career) |
 | biz-brand | `skills/biz-brand/` | LinkedIn, website, brand presence |
 | biz-pricing | `skills/biz-pricing/` | Value-based pricing framework |
 | biz-content | `skills/biz-content/` | LinkedIn content publishing and strategy |
@@ -156,7 +156,7 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | biz-discovery | `skills/biz-discovery/` | Sales discovery calls |
 | biz-proposal | `skills/biz-proposal/` | Proposal writing and scoping |
 | biz-objections | `skills/biz-objections/` | Handle sales objections |
-| biz-review | `skills/biz-review/` | Weekly/quarterly business review |
+| biz-review | `skills/biz-review/` | Weekly/monthly/quarterly business review |
 | biz-market-validate | `skills/biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
 | biz-session | `skills/biz-session/` | Session open/close; HANDOFF, NEXT; `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
