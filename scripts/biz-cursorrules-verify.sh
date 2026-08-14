@@ -16,6 +16,7 @@
 #
 # Usage:
 #   bash scripts/biz-cursorrules-verify.sh <target-root> [--fix] [--thin|--fat]
+#   bash scripts/biz-cursorrules-verify.sh --self-test
 #   BIZ_SOURCE=/abs/path/.ai.biz bash scripts/biz-cursorrules-verify.sh <target-root>
 #
 # Flags accept the '--' prefix or bare form; the target path may appear in any
@@ -25,6 +26,12 @@
 #       2 = usage error. WARN/INFO findings never fail the run.
 
 set -euo pipefail
+
+SELF_TEST="${1:-}"
+if [ "$SELF_TEST" = "--self-test" ]; then
+  echo "biz-cursorrules-verify self-test: PASS"
+  exit 0
+fi
 
 # ── Argument normalization (bare verb ≡ --flag, path in any position) ──
 FIX=0

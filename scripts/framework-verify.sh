@@ -67,6 +67,33 @@ while IFS= read -r skill_md; do
 done < <(find "$AI_ROOT/skills" -mindepth 2 -maxdepth 2 -type f -name 'skill.md' | sort)
 ok "all skill.md files are tracked by git"
 
+note "Operator handoff contract adoption"
+# Every skill must reference the Operator handoff contract so operator-facing
+# reports close with Form A/Form B. A skill that drops the reference quietly
+# reverts to ambiguous "what do you need from me?" endings.
+grep -q '^## Operator handoff contract' "$AI_ROOT/skills/SKILL_DEPENDENCIES.md" \
+  || die "skills/SKILL_DEPENDENCIES.md is missing '## Operator handoff contract'"
+while IFS= read -r skill_md; do
+  grep -q "Operator handoff contract" "$skill_md" \
+    || die "${skill_md} does not reference the Operator handoff contract"
+done < <(find "$AI_ROOT/skills" -mindepth 2 -maxdepth 2 -type f -name 'skill.md' | sort)
+ok "SKILL_DEPENDENCIES.md defines the contract and every skill.md references it"
+
+note "Document clarity contract adoption"
+# Doc-generating skills produce reader-facing deliverables (plans, strategy
+# docs, proposals, drafts, reports, validation logs). Each must reference the
+# Document clarity contract so generated documents carry a Status/Needs
+# header, separate Decisions/Open questions lists, and exactly one
+# `## Next action`.
+grep -q '^## Document clarity contract' "$AI_ROOT/skills/SKILL_DEPENDENCIES.md" \
+  || die "skills/SKILL_DEPENDENCIES.md is missing '## Document clarity contract'"
+DOC_GENERATING="biz-strategy biz-brand biz-pricing biz-proposal biz-review biz-writing biz-ideas biz-products biz-content biz-social biz-youtube biz-market-validate biz-pipeline-diagnosis"
+for skill in $DOC_GENERATING; do
+  grep -q "Document clarity contract" "$AI_ROOT/skills/${skill}/skill.md" \
+    || die "skills/${skill}/skill.md is doc-generating but does not reference the Document clarity contract"
+done
+ok "SKILL_DEPENDENCIES.md defines the contract and all $(wc -w <<<"$DOC_GENERATING") doc-generating skills reference it"
+
 note "Standards non-empty"
 std_count=0
 while IFS= read -r f; do
