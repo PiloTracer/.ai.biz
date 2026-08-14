@@ -40,6 +40,7 @@
 | Re-validate the strategy's assumptions | `@biz-review monthly` |
 | Close your session | `@biz-session close` |
 | Open a session | `@biz-session start` |
+| Commit session work without closing | `@biz-session commit` (add `push` to push; `add` to stage only) |
 | Free-text request / don't know skill | `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
 | Deploy `.ai.biz/` to another project | `@biz-deploy-files copy - <path>` |
 | Write a post / article / case study / landing page / email / thread | `@biz-writing write - <topic>` |

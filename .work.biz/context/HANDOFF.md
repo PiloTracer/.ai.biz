@@ -1,7 +1,22 @@
 # HANDOFF — Session Bookmark
 
-> **Date:** 2026-08-10 — Session closed (continuation of interrupted ses_0121)
-> **Status:** Six framework improvements shipped: `@biz-review monthly` assumption re-validation, `@biz-strategy career` + `OPERATOR_PROFILE.md`, content-strategy pillar loop, `PROJECTS.md` proof-point bank, voice loop enforcement, session content pipeline brief. Plus the content appeal standard, extended anti-AI rules, evidence discipline rule, drift-check scope fix, non-tech tilt (UNKNOWNS #2, #9, #10 resolved), and a bootstrap↔WORK_FILES manifest sync check in framework-verify. Gates: framework-verify PASS (incl. new check), gate-verify PASS, touch-scope PASS. Uncommitted; owner to commit.
+> **Date:** 2026-08-13 — Session closed (biz-session parity with Agent OS session-control + repo-role commit scope)
+> **Status:** biz-session brought to full parameter/behavior parity with `.ai/skills/session-control`: standalone `commit` / `commit push` (no close, session stays open), new `add` verb (stage only), `scoped` modifier, `start - <goal>` goal capture, unblock check, task-ref auto-detection incl. `.work.biz/active-ref` (hook-supported), mandatory secrets scan, always-shown commit messages, completion-checklist reports, mode-comparison table. **Commit scope is repo-role aware (owner directive):** source repo (framework at git root, detected via root `skills/biz-session/skill.md`) commits ALL modified/added/new files repo-wide; target projects commit `.work.biz/` only. Behavior change: bare `commit`/`push` no longer imply `close`. Routing/reference files synced. Gates: framework-verify PASS, gate-verify PASS (n/a), touch-scope PASS, blast-radius WARN (routing sync across areas, acknowledged). Committed and pushed via `@biz-session close commit push` (single repo-wide commit per repo-role scope rule; blast-radius downgraded to WARN via the hook's WARN_ONLY for this acknowledged routing sync).
+
+---
+
+## Session summary (2026-08-13, close)
+
+| Step | Status |
+|------|--------|
+| Diffed `skills/biz-session/skill.md` against `/mnt/work/Projects/.ai/skills/session-control` (skill.md + reference.md) | Done |
+| Rewrote biz-session: full parse table (start/close/commit/add/context/status + commit/push/scoped modifiers + begin/open/end/handoff aliases), start protocol S1–S7 (goal capture, unblock check, env snapshot, task-ref → active-ref, HANDOFF Open mark, checklist report) | Done |
+| Close protocol C1–C7: tree audit + secrets scan (halt), verification gate (change-safety scripts), follow-ups, always-shown commit message with BIZ-ref extraction, HANDOFF/NEXT/UNKNOWNS writes, scoped git (default `.work.biz/` incl. untracked; `scoped` = bookend files), post-commit SHA verification | Done |
+| Standalone commit protocol M1–M6 (no HANDOFF/NEXT writes, session stays open) and add protocol (stage-only) — the two biggest parity gaps | Done |
+| Kept biz-specifics: `.work.biz/` state writes, path-scoped commit shape in targets, CONTENT_STATUS pipeline brief on start, context mode with scoped status view | Done |
+| Repo-role commit scope (owner directive): root `skills/biz-session/skill.md` detection; source repo → `git add -A` repo-wide (all modified/added/new files), target → `.work.biz/` only; applied across parse table, C6b, add protocol, context, edge cases, anti-patterns, completion checklist | Done |
+| Routing sync: skills/README (row + verb table + `add`), .cursorrules + templates/cursorrules.template rows, START_HERE §6, .quick/session-lifecycle.md, SKILL_DEPENDENCIES, biz-director intents, PROCESS_ROUTER, README skill table, CHANGELOG Unreleased | Done |
+| Gates: framework-verify PASS, gate-verify PASS (no ledger), touch-scope PASS, blast-radius WARN (9 areas — routing sync, acknowledged) | Done |
 
 ---
 
@@ -111,7 +126,8 @@ The previous session (ses_0121) was interrupted right as it began implementing t
 
 | # | Task | Priority |
 |---|------|----------|
-| 1 | Commit this session's framework changes (six improvements + quality hardening + plumbing; see NEXT.md) | High |
+| 1 | Commit this session's biz-session parity changes (skill rewrite + 9 routing/reference files; see NEXT.md) | High |
+| 1b | Smoke-test the new biz-session verbs on a live target project: standalone `commit` (session stays open), `add` (stage-only), `close commit scoped`, task-ref extraction into `.work.biz/active-ref` | High |
 | 2 | Owner review of the uncommitted `future-strategy` changes (VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD → Publishing Standard refactor) | High |
 | 3 | Validate the full loop on a live target project: publish + `@biz-social log` cycle with pillar assignment + VOICE_RETRO entry, then `@biz-strategy career` to fill OPERATOR_PROFILE.md | High |
 | 4 | Validate pillar loop + quarterly alignment on real tracker data (needs ≥1 quarter of pillar-tagged publishes) | Medium |

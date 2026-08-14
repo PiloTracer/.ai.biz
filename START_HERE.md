@@ -143,9 +143,15 @@ These project-aware generative skills run any time — even before bootstrap. Th
 
 ```text
 @biz-session close                      # safe default — writes HANDOFF/NEXT/UNKNOWNS to .work.biz/, no git
-@biz-session close commit               # + scoped git commit of .work.biz/ (incl. new untracked files)
+@biz-session close commit               # + scoped commit (target project: .work.biz/ only; source repo: all changes repo-wide)
+@biz-session close commit scoped        # + commit of HANDOFF/NEXT/UNKNOWNS only
 @biz-session close push                 # + scoped commit, then git push
 @biz-session close commit push          # all three: write state, scoped commit, push
+
+# mid-session checkpoints (no close, no HANDOFF/NEXT writes):
+@biz-session commit                     # scoped commit (same role rule), session stays open
+@biz-session commit push                # + push, session stays open
+@biz-session add                        # stage the commit scope only, no commit
 ```
 
 ---

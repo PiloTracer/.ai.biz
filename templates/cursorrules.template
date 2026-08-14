@@ -159,7 +159,7 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | biz-review | `skills/biz-review/` | Weekly/monthly/quarterly business review |
 | biz-market-validate | `skills/biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `skills/biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| biz-session | `skills/biz-session/` | Session open/close; HANDOFF, NEXT; `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
+| biz-session | `skills/biz-session/` | Session open/close; HANDOFF, NEXT; `close commit [scoped] [push]`; standalone `commit` / `commit push` (no close) and `add` (stage only); `context` read-only load + uncommitted-aware. Aliased as `session-control` (`@session-control context`, `@session-control start`, etc.) |
 | biz-director | `skills/biz-director/` | Universal orchestrator; free-text → skill routing |
 | biz-writing | `skills/biz-writing/` | Craft of writing articles, posts, case studies, landing pages, emails (project-aware) |
 | biz-social | `skills/biz-social/` | Platform-native social content (Reddit, Instagram, LinkedIn including carousel + native video, Facebook, X, YouTube including Shorts, Substack, Threads). Write, research, repurpose, plan, icp, log publishes. |

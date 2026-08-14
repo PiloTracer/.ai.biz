@@ -41,7 +41,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-review | `biz-review/` | Weekly/monthly/quarterly business review (monthly = assumption re-validation) |
 | biz-market-validate | `biz-market-validate/` | Test offers before committing |
 | biz-pipeline-diagnosis | `biz-pipeline-diagnosis/` | Find and fix funnel bottlenecks |
-| biz-session | `biz-session/` | Session open/close, HANDOFF, NEXT; scoped to `.work.biz/`; combinable `close` / `commit` / `push` params |
+| biz-session | `biz-session/` | Session bookends + scoped git: `start` / `close` / `status` / `context`; `close commit [scoped] [push]`; standalone `commit` / `commit push` (no close) and `add` (stage only). Scope: `.work.biz/` in target projects, repo-wide in the Business OS source repo. Aliased as `session-control` |
 | biz-director | `biz-director/` | Universal orchestrator; maps free-text requests to correct skills, checks gates, chains execution |
 | biz-writing | `biz-writing/` | Craft of writing articles, posts, case studies, landing pages, emails — project-aware, technology-tilted |
 | biz-social | `biz-social/` | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads). Write, research, repurpose, plan, log publishes. |
@@ -85,7 +85,8 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `career` | Probe the operator (skills, proof points, constraints, risk, stage); fill `reference/OPERATOR_PROFILE.md`; career-direction read (biz-strategy) |
 | `roleplay` | Practice objection handling (biz-objections) |
 | `close` / `start` | Session bookends |
-| `commit` / `push` | Scoped session flags with `close` — commit `.work.biz/` (incl. untracked) / push branch; any order, combinable |
+| `commit` / `push` | Session git ops, `.work.biz/` scope (incl. untracked): standalone verbs (checkpoint, no close) or modifiers of `close`; `push` implies commit; any order, combinable (biz-session) |
+| `add` | Stage the `.work.biz/` session scope without committing (biz-session) |
 | `clone` / `archive` | Deploy modes |
 | `copy` | Deploy files mode |
 | `write` | Author content (biz-writing, biz-social) |

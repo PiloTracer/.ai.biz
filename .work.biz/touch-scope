@@ -1,19 +1,20 @@
-# Touch Scope — strategy/career/content loop improvements + quality hardening
+# Touch Scope — biz-session parity with Agent OS session-control
 #
-# Session goal: implement the six approved framework improvements
-# (biz-review monthly re-validation, OPERATOR_PROFILE + career mode,
-# content-strategy pillar loop, PROJECTS.md proof-point bank, voice loop
-# enforcement, one evidence-scan pick), the content appeal standard,
-# routing sync, manifest sync check in framework-verify, and session state.
+# Session goal: bring biz-session to parameter/behavior parity with
+# .ai/skills/session-control (standalone commit/commit push, scoped modifier,
+# add staging verb, task-ref extraction, secrets scan, reports with
+# checklists), adapted to Business OS (.work.biz/ scope, BIZ- refs), plus
+# routing/reference doc sync.
 
-skills/
-standards/
-templates/
-scripts/
-CONVENTIONS.md
-CHANGELOG.md
+skills/biz-session/
+skills/README.md
+skills/SKILL_DEPENDENCIES.md
+skills/biz-director/skill.md
+.cursorrules
+templates/cursorrules.template
 START_HERE.md
 PROCESS_ROUTER.md
+.quick/
 README.md
-.cursorrules
+CHANGELOG.md
 .work.biz/

@@ -153,7 +153,7 @@ All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-review** | Weekly/monthly/quarterly pipeline, content, and business health review (monthly = assumption re-validation) | `weekly` · `monthly` · `quarterly` · `status` |
 | **biz-market-validate** | Test offers, niches, and channels with low-cost experiments | `test` · `design` · `status` |
 | **biz-pipeline-diagnosis** | Identify which funnel stage is the bottleneck | `run` · `status` |
-| **biz-session** | Session bookends; updates HANDOFF + NEXT | `start` · `close` · `status` |
+| **biz-session** | Session bookends + scoped git checkpoints; updates HANDOFF + NEXT | `start` · `close` · `commit` · `add` · `status` · `context` |
 | **biz-deploy-files** | Deploy `.ai.biz/` into target project (no-overwrite default; `--update`/`--force`) | in-place · `copy - <path>` · `status` |
 | **biz-deploy-basic** | Thin-client bootstrap (`.cursorrules` + `.work.biz/` only) | `update` · `status` · `- <path>` |
 | **biz-deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
