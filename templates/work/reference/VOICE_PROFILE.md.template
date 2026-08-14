@@ -4,6 +4,7 @@
 
 **Status:** <draft | locked YYYY-MM-DD>
 **Last revised:** <YYYY-MM-DD> - <note>
+**Needs:** owner fills every `<placeholder>`; drafts stay blocked on this file until then
 
 **Binding.** Every content skill reads this file before drafting: `@biz-writing`, `@biz-social`, `@biz-content`, `@biz-youtube`. It applies to every platform, not just the one you publish on most.
 
@@ -122,3 +123,7 @@ This file is a hypothesis about how the owner sounds. When `reference/VOICE_RETR
 - [ ] Texture rules respected, not "corrected"
 - [ ] Platform format rules from the platform guide respected
 - [ ] Owner pass status stated explicitly in the delivery
+
+## Next action
+
+Next action: none — fill this profile before the first `@biz-writing` / `@biz-social` draft

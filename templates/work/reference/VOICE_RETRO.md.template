@@ -1,5 +1,8 @@
 # Voice Retro — what the draft said vs what the owner changed
 
+**Status:** Draft — <YYYY-MM-DD>
+**Needs:** one entry per published asset, recorded the same session
+
 **Purpose:** make content skill measurable instead of felt. Every published asset gets one short entry. The value is not the individual entry, it is the pattern across ten of them: the edits you keep making are your voice telling us what the drafting rules are still getting wrong, and they should be folded back into `reference/VOICE_PROFILE.md` as they repeat.
 
 **How to use it.** After the owner voice pass, before publishing, record what changed. Keep it to the edits that matter. A reworded sentence counts; a comma does not. Then add the numbers when they land.
@@ -45,3 +48,7 @@ Describe the *class*, not the instance: "replaced abstract opener with a dated c
 **Notes.** What the owner changed and why, in two or three lines. If the pass was waived, say so plainly: a waived pass is a data point about the draft's quality only if you record that no correction was applied.
 
 **Lines flagged pre-publish as least likely to sound like the owner:** list them before the pass, then check afterward whether the owner actually rewrote them. Predicting correctly means the drafting rules already know their own weak spots; predicting wrongly means the diagnosis is off too.
+
+## Next action
+
+Next action: none — entries accumulate as pieces are published

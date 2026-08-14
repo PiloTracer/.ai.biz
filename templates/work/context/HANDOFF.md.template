@@ -2,6 +2,7 @@
 
 > **Date:** YYYY-MM-DD
 > **Status:** Not started
+> **Needs:** review and confirm before the next session starts
 
 ## Current session
 
@@ -20,3 +21,7 @@
 | # | Decision |
 |---|----------|
 | | |
+
+## Next action
+
+`@biz-session start`
