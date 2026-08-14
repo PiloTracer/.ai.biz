@@ -178,6 +178,9 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 - `docker-compose*.yml`
 - `Dockerfile.*`
 - `.env*` (except `.env.example`)
+- `skills/SKILL_DEPENDENCIES.md` (gate graph + clarity contracts)
+- `standards/` (binding business standards)
+- `hooks/` (git hook scripts)
 
 **If you think a change is needed in any protected file:**
 1. Stop.
@@ -244,6 +247,7 @@ Creating or editing files in declared task scope is allowed. Prefer reversible e
 - Be concise. Surface hard truths early.
 - Label uncertainty explicitly.
 - Distinguish: confirmed facts, inferences, proposals.
+- Close every task response per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`): Form A single line when nothing is needed; otherwise `**Needs your approval:**` / `**Needs your answer:**` (numbered lists, never mixed, approvals citing `path:L<n>`) and exactly one `**Next step:**`. Omit empty sections.
 
 ---
 

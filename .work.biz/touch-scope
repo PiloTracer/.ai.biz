@@ -1,20 +1,14 @@
-# Touch Scope — biz-session parity with Agent OS session-control
+# Touch Scope — adopt framework improvements (clarity contracts + audit)
 #
-# Session goal: bring biz-session to parameter/behavior parity with
-# .ai/skills/session-control (standalone commit/commit push, scoped modifier,
-# add staging verb, task-ref extraction, secrets scan, reports with
-# checklists), adapted to Business OS (.work.biz/ scope, BIZ- refs), plus
-# routing/reference doc sync.
+# Session goal: adopt the Operator handoff contract and Document clarity
+# contract (per .work.biz/prompts/adopt-framework-improvements.md) into
+# Business OS, wire framework-verify.sh enforcement, sync templates, and run
+# the structural audit with a report under .work.biz/reports/.
 
-skills/biz-session/
-skills/README.md
+skills/
 skills/SKILL_DEPENDENCIES.md
-skills/biz-director/skill.md
 .cursorrules
-templates/cursorrules.template
-START_HERE.md
-PROCESS_ROUTER.md
-.quick/
-README.md
-CHANGELOG.md
+templates/
+scripts/framework-verify.sh
+scripts/biz-cursorrules-verify.sh
 .work.biz/
