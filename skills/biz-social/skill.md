@@ -365,6 +365,10 @@ Discover trending topics, active discussions, and content gaps on a specific pla
 ```markdown
 ## Research Brief — {Platform} — {Topic/Keyword}
 
+Research brief: trending discussions, content gaps, and recommended content for {Platform}.
+Status: Draft — {date}
+Needs: {the decision or review required, or `none`}
+
 ### Trending now
 | Thread/Post/Trend | Why it's trending | Relevance to {PROJECT_NAME} |
 |-------------------|-------------------|------------------------------|
@@ -388,8 +392,13 @@ Discover trending topics, active discussions, and content gaps on a specific pla
 ### Timing
 - Best posting window: [day + time]
 - Urgency: [evergreen / trending now — act within 48 hours / seasonal]
+
+## Next action
+
+{one action in the exact syntax to run/type, or `Next action: none — <reason>`}
 ```
 
+Close the research brief per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` / `**Needs your answer:**` / exactly one `**Next step:**`).
 
 ### Platform-specific research methods
 
@@ -544,6 +553,10 @@ Assess which platforms fit the project's target buyer profile. Output a platform
 ```markdown
 ## Platform Strategy — {PROJECT_NAME}
 
+Platform strategy: which platforms fit the target buyer, and the recommended platform mix.
+Status: Draft — {date}
+Needs: {the decision or review required, or `none`}
+
 **Primary platform:** {platform} — {rationale in one sentence}
 **Secondary platforms:** {list}
 **Skip for now:** {list with brief reasons}
@@ -601,7 +614,13 @@ Assess which platforms fit the project's target buyer profile. Output a platform
   Week 2: {action}
   Week 3: {action}
   Week 4: {action}
+
+## Next action
+
+{one action in the exact syntax to run/type, or `Next action: none — <reason>`}
 ```
+
+Close the strategy report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` / `**Needs your answer:**` / exactly one `**Next step:**`).
 
 ### Strategy rules (these override an enthusiastic reading of the matrix)
 
@@ -618,6 +637,8 @@ Assess which platforms fit the project's target buyer profile. Output a platform
 Build a platform-specific content calendar. Output a Markdown table.
 
 ### Plan table format
+
+The calendar document opens with a Status/Needs header (what this is; `Status: Draft` + date; one-line Needs) and closes with exactly one `## Next action`, per the Document clarity contract.
 
 | Day | Date | Platform | Type | Topic | Pillar | Hook seed | Visual needed | Repurpose source |
 |-----|------|----------|------|-------|--------|-----------|---------------|-----------------|
@@ -710,6 +731,9 @@ You may only claim the task complete when all are true:
 4. Platform-specific anti-patterns were avoided.
 5. A concrete next step is proposed (e.g., "post to r/subredditname on Tuesday AM," "design the carousel slides in Canva," "run @biz-social repurpose on this for Instagram," "create the thumbnail in 1280x720px before upload").
 
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
+
 ---
 
 ## Time budget
@@ -758,6 +782,10 @@ This is **not** a biz-writing mode. It produces the targeting brief that makes L
 ```markdown
 # LinkedIn ICP — {PROJECT_NAME}
 
+LinkedIn ICP analysis: the targeting brief for LinkedIn content and outreach.
+Status: Draft — {date}
+Needs: {the decision or review required, or `none`}
+
 ## Profile signal
 - Titles: [list]
 - Seniority: [e.g., VP / Director / Founder]
@@ -781,6 +809,10 @@ This is **not** a biz-writing mode. It produces the targeting brief that makes L
 ## Content fit
 - Best formats: [text / carousel / video / newsletter]
 - Proof they need: [case studies, metrics, credentials]
+
+## Next action
+
+{one action in the exact syntax to run/type, or `Next action: none — <reason>`}
 ```
 
 ---
@@ -831,6 +863,8 @@ GAPS
 NEXT
   <single highest-leverage action>
 ```
+
+Close the status report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` / `**Needs your answer:**` / exactly one `**Next step:**`) — the `NEXT` block above does not substitute for this close.
 
 ### Reporting rules
 

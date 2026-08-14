@@ -79,7 +79,9 @@ Read-only. Report where validation stands:
 
 1. **Tests run:** each experiment, its test type (A/B/C), result, and go/no-go decision.
 2. **Decisions pending:** assumptions designed but not yet tested, and tests awaiting their decision deadline.
-3. **Records:** validation experiments and decisions live in `.work.biz/strategy/validation-log.md` (created on first use if missing).
+3. **Records:** validation experiments and decisions live in `.work.biz/strategy/validation-log.md` (created on first use if missing); the log opens with a Status/Needs header, keeps Decisions and Open questions in separate lists, and ends with exactly one `## Next action` per the Document clarity contract.
+
+Close the status report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` / `**Needs your answer:**` / exactly one `**Next step:**`).
 
 ---
 
@@ -92,5 +94,8 @@ Read-only. Report where validation stands:
 | 3 | Test executed (one of the 3 types) | |
 | 4 | Results recorded and decision made | |
 | 5 | Next step documented (go / refine / kill) | |
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
 
 **Next:** If validated → `@biz-strategy greenfield` or build your offer. If killed → test next assumption.

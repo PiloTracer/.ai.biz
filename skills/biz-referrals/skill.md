@@ -70,9 +70,13 @@ Read-only. Report the referral engine state:
 3. **Conversion:** closed deals from referrals, compared against the other channels you run (referrals should out-convert cold and inbound — see I3).
 4. **Records:** referral tracking lives in `.work.biz/pipeline/referral-tracker.md` (created on first use if missing).
 
+Close per the Operator handoff contract: Form A single line (`Next: nothing - work complete`) when nothing is needed; otherwise Form B — `**Needs your approval:**` with `path:L<n>` cites and/or `**Needs your answer:**`, then exactly one `**Next step:**`. Omit empty sections.
+
 ---
 
 ## Completion
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
 
 | # | Check | Result |
 |---|-------|--------|

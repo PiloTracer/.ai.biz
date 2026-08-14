@@ -215,6 +215,7 @@ Run `biz-discovery status` to view:
 - Aging: calls stalled > 7 days without follow-up
 - Conversion rate: discovery call → proposal sent
 - Recent activity log
+- Closing per the Operator handoff contract — Form A (`Next: nothing - work complete`) when nothing is needed; otherwise Form B (`**Needs your approval:**` and/or `**Needs your answer:**`, then exactly one `**Next step:**`).
 
 ---
 
@@ -254,6 +255,12 @@ If discovery calls feel good in the moment but never convert to a proposal stage
 4. **The prospect doesn't see enough value.** Your "match" phase may be too focused on what YOU do, not what THEY get. Reframe: "If we solve this, what changes for your business?"
 5. **You may be booking calls with unqualified prospects.** Review your pipeline: where did these leads come from? If they're from low-quality sources, your pre-call qualification needs to be more aggressive.
 6. **No clear next step agreed on the call.** If the call ends with "let me think about it," you didn't close the Next Steps phase. Always leave with an agreed action.
+
+---
+
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
 
 ---
 

@@ -358,7 +358,11 @@ Before committing to any community, verify:
 | 4 | Engagement tracked in pipeline tracker | |
 | 5 | At least 1 inbound conversation started | |
 
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+
 **Next:** `@biz-social write <platform> - <topic>` to create content for the communities found. `@biz-pipeline-diagnosis run` — check if community engagement is feeding your pipeline.
+
+**Report close:** end the report with `Next: nothing - work complete` (Form A) when nothing is needed from the operator; otherwise close with `**Needs your approval:**` / `**Needs your answer:**` and exactly one `**Next step:**` (Form B).
 
 ---
 

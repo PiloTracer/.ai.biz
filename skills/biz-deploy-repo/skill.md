@@ -94,6 +94,10 @@ Run it before `clone` or `archive` to confirm the source is deployable and inspe
 | 4 | `.cursorrules` present at target root | | |
 | 5 | User informed of next steps | | |
 
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+
+The completion/status report closes with Form A (`Next: nothing - work complete`) when nothing is needed, or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`) when operator input is required — the "Next commands" list below does not substitute for this close.
+
 ## Next commands (in target project)
 
 ```text

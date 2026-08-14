@@ -208,4 +208,9 @@ All numbers come from your **pipeline tracker** (a spreadsheet, CRM, or `.ai.biz
 | 8 | Quarterly: next quarter focus documented | |
 | 9 | Gate ledger reconciled — every PASS in `.work.biz/gates.md` has its evidence on disk | |
 
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
+
 **Next:** `@biz-pipeline-diagnosis run` — deep-dive on the bottleneck you identified.
+
+Close per the Operator handoff contract: Form A (`Next: nothing - work complete`) when nothing is needed; otherwise Form B with `**Needs your approval:**` and/or `**Needs your answer:**`, then exactly one `**Next step:**`. Omit empty sections.

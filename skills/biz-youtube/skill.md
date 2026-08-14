@@ -228,7 +228,7 @@ Assumes medium capacity: 1 long-form every 2 weeks + 2–3 Shorts/week.
 | 29 | Short | "Recap: biggest lesson from 30 days" | — | Upload |
 | 30 | — | — | — | Run `@biz-youtube status` |
 
-Save the active calendar to `.work.biz/plans/youtube-calendar.md` and the running tracker to `.work.biz/pipeline/youtube-tracker.md`.
+Save the active calendar to `.work.biz/plans/youtube-calendar.md` and the running tracker to `.work.biz/pipeline/youtube-tracker.md`. Both documents open with the Status/Needs header and close with exactly one `## Next action` per the Document clarity contract in `skills/SKILL_DEPENDENCIES.md`.
 
 ---
 
@@ -299,7 +299,7 @@ Read `.work.biz/reference/CONTENT_STATUS.md` first for the cross-platform index 
 
 ### Content tracker template
 
-Save this as `.work.biz/pipeline/youtube-tracker.md` (same location as the challenge tracker). If the file does not exist, create it from `templates/work/pipeline/platform-tracker.md.template`, which supplies the channel-status block, the drift rule, and the conversations table that connect the channel to revenue:
+Save this as `.work.biz/pipeline/youtube-tracker.md` (same location as the challenge tracker). If the file does not exist, create it from `templates/work/pipeline/platform-tracker.md.template`, which supplies the channel-status block, the drift rule, and the conversations table that connect the channel to revenue. Add the Status/Needs header at the top and exactly one `## Next action` at the end (Document clarity contract):
 
 | Video | Format | Topic bucket | Publish date | Thumbnail variant | CTR | AVD | Retention % | Impressions | Subs from video | Likes / Comments / Shares | Notes |
 |-------|--------|--------------|--------------|-------------------|-----|-----|-------------|-------------|-----------------|---------------------------|-------|
@@ -432,3 +432,10 @@ If after 10 videos you still see:
 If you reach 20 videos with consistent low CTR and low AVD despite testing,
 YouTube may not fit your niche or your offer positioning needs revision. Run
 `@biz-strategy` before producing more.
+
+---
+
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).

@@ -91,6 +91,10 @@ All strategy files live under `{WORK_BUSINESS_ROOT}` (`.work.biz/`):
 | `strategy/certification.md` | Gate certification record (certify mode writes here) |
 | `strategy/changelog.md` | Append-only record of strategy changes (amend mode writes here; reconcile mode appends entries marked **(correction)**) |
 
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
+
+Every file this skill writes (the strategy docs above, `strategy/certification.md`, `strategy/changelog.md`, `reference/OPERATOR_PROFILE.md`) opens with the ≤4-line Status/Needs header (What / Status + date / Needs) and closes with exactly one `## Next action` section (or one line `Next action: none — <reason>`).
+
 ---
 
 ## I0 — Pre-checks
@@ -376,6 +380,8 @@ APPLIED
 
 GATES
   Unchanged. No re-certification required.
+
+Next: nothing - work complete
 ```
 
 ---
@@ -565,6 +571,8 @@ Strategy status — {WORK_BUSINESS_ROOT}/strategy/
     @biz-strategy greenfield        (if missing or wants full rewrite)
     @biz-strategy probe - <element> (to fill a gap)
     @biz-strategy certify           (to promote gate)
+
+Next: <nothing - status read-only | the single applicable quick action>
 ```
 
 ---
@@ -620,6 +628,12 @@ See `SKILL_DEPENDENCIES.md` for the full gate graph.
 | `@biz-pricing set` | After certification — set specific engagement prices |
 | `@biz-content publish` | After brand-ready gate — publish content aligned to strategy |
 | `@biz-market-validate test` | Anytime — run experiments to validate strategy assumptions |
+
+---
+
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
 
 ---
 

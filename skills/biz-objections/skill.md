@@ -185,6 +185,10 @@ An objection is handled well when:
 - They either agree to move forward or you gave them a clear off-ramp
 - You know whether the objection was resolved or it's a genuine dead end
 
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+
 ## Related Files
 
 - `.work.biz/strategy/one-pager.md` (unified offer — ground responses in the real offer)

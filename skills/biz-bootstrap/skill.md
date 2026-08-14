@@ -108,6 +108,8 @@ Read-only report of the current bootstrap state:
 
 Output a summary table. If the project is fully bootstrapped, recommend next skill: `@biz-strategy greenfield`. If not yet bootstrapped, recommend `@biz-bootstrap init`.
 
+Close the status report per the Operator handoff contract: any missing artifact or `REPLACE:` token needing operator action goes under `**Needs your approval:**` or `**Needs your answer:**`, followed by exactly one `**Next step:**` command; if nothing is needed, end with `Next: nothing - work complete`.
+
 ---
 
 ## Completion
@@ -121,6 +123,8 @@ Output a summary table. If the project is fully bootstrapped, recommend next ski
 | 4 | User informed of `REPLACE:` token checklist | pass |
 | 5 | User informed of next steps | pass |
 
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+
 ## Next commands
 
 ```text
@@ -128,6 +132,8 @@ Output a summary table. If the project is fully bootstrapped, recommend next ski
 @biz-session start          # open first session
 @biz-brand audit                # assess current brand presence
 ```
+
+Close the completion report per the Operator handoff contract: list any post-init checklist item needing operator action under `**Needs your approval:**` or `**Needs your answer:**`, then exactly one `**Next step:**` — the immediate command from the list above; if nothing is needed, end with `Next: nothing - work complete`.
 
 ---
 

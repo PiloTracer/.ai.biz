@@ -100,6 +100,10 @@ Agent performs rules-aware merge for each merge candidate (skills, standards, do
 | 5 | `update`: merge candidates processed | |
 | 6 | Post-deploy verification ran (in-place); `[FAIL]` findings surfaced or repaired | |
 
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+
+The completed checklist closes with Form A (e.g. `Next: nothing - deploy complete`) when nothing is needed, else Form B per the contract above.
+
 ## Next commands
 
 ```text

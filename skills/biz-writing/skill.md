@@ -355,7 +355,9 @@ Provide the complete, ready-to-publish content. Then, below a divider, offer:
 3. **One-sentence summary** of what makes this piece work
 4. **Optional:** a short-form variant (LinkedIn post / thread starter) if the piece is long-form
 
-Do not pad the response with commentary about what you did. Show the work, not the commentary.
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
+
+Do not pad the response with commentary about what you did. Show the work, not the commentary. Close the delivery per the Operator handoff contract: Form A single line when nothing is needed; otherwise Form B (`**Needs your approval:**` with `path:L<n>` cites and/or `**Needs your answer:**`, then exactly one `**Next step:**`).
 
 ### Step 7 — Register the piece (Business OS projects)
 
@@ -363,7 +365,7 @@ If `.work.biz/` exists, record the piece in `.work.biz/reference/CONTENT_STATUS.
 
 - Add an **Items** row: piece title, status `ready`, or `draft` when an owner pass is still required, target platform in the Note column.
 - **Assign the pillar**: name which strategic pillar (from the tracker's **By pillar** list, traceable to one-pager/offer) this piece advances. If the pillar list is empty, define it from the strategy docs first. A piece registered without a pillar is invisible to the quarterly alignment review.
-- If the piece is also saved as a file, use the conventional path `.work.biz/drafts/draft_<topic>.md` and reference it in the Note column.
+- If the piece is also saved as a file, use the conventional path `.work.biz/drafts/draft_<topic>.md` and reference it in the Note column. The saved file opens with the Status/Needs header (≤4 lines: what this is; `Status: Draft | In review | Approved | Superseded` + date; one-line Needs) and closes with exactly one `## Next action` (or one line `Next action: none — <reason>`), per the Document clarity contract.
 - Refresh the **Summary** counts and the **By pillar** pieces count.
 
 Skip this step only when the user explicitly asked for a throwaway fragment.
@@ -382,6 +384,7 @@ Rules:
 - Every topic names the strategic pillar it advances (the 3–5 messages from one-pager/offer, as listed in `CONTENT_STATUS.md` § By pillar). If a pillar gathers no topics across the horizon, that is a finding: report it, because the plan is not carrying the whole strategy.
 - Balance the four topic buckets (below) across the horizon; never repeat the same bucket three weeks in a row.
 - For each topic, name a real, specific hook seed (not "TBD").
+- If the plan is saved as a file, it opens with the Status/Needs header and closes with exactly one `## Next action`, per the Document clarity contract.
 
 **Topic buckets (technology tilt):**
 
@@ -434,6 +437,8 @@ Report:
 - The operator's tech stack fingerprint as detected.
 - Gaps that would improve output if supplied.
 
+Close the status report per the Operator handoff contract: gaps needing operator input go under `**Needs your answer:**` with exactly one `**Next step:**`; if nothing is needed, end with `Next: nothing - work complete`.
+
 ---
 
 ## Quality check before delivering (run internally; do not output the checkboxes)
@@ -476,6 +481,8 @@ You may only claim the task complete when all are true:
 4. Unproven claims are flagged **Unverified** or backed by evidence.
 5. In a Business OS project, a written piece was registered in `CONTENT_STATUS.md` per Step 7.
 6. A concrete next step is proposed (e.g., "supply these proof points," "publish to channel X," "run `@biz-writing repurpose` on this").
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
 
 ---
 

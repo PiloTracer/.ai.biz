@@ -105,7 +105,7 @@ Brand Assets:   2/4 passed
 
 Overall:        9/19 passed
 
-Next step recommended: biz-brand overhaul
+**Next step:** `biz-brand overhaul`
 ```
 
 Append the same scores as a row to the **Audit history** table in `.work.biz/reference/BRAND_STATUS.md` (create it from `templates/work/reference/BRAND_STATUS.md.template` if missing) so `biz-brand status` and the `brand-ready` gate have a durable record. Audit never promotes a gate.
@@ -362,6 +362,8 @@ Brand Assets:
 
 Last audit: [date or never]
 Last overhaul: [date or never]
+
+Next: nothing - work complete
 ```
 
 ---
@@ -462,6 +464,13 @@ The overhaul is complete when:
 3. Report what the gate now unlocks: `@biz-content publish`, `@biz-community engage`.
 
 **On a later overhaul that regresses:** if a re-audit drops below the § 7 bar, demote `brand-ready` to `NOT MET` rather than leaving a stale PASS.
+
+---
+
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
 
 ---
 

@@ -35,6 +35,7 @@ description: >-
 - **Commit message format:** `BIZ-123: description` when a task ref is known, else `type: description` (per `.cursorrules`). Never commit with `type:` format when a ref is known or could reasonably be asked for.
 - **No `Co-authored-by:` trailers** and no agent attribution — hooks strip/reject them.
 - Every mode except `context` and `status` ends with a **completion checklist** — each item `pass` | `fail` | `skip` with evidence.
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
 
 ---
 
@@ -224,6 +225,10 @@ If HANDOFF already says Open and the same goal is restarted, refresh the date on
 
 ### Open blockers
 <from HANDOFF / NEXT, or none>
+
+**Needs your approval:** <numbered decisions, each citing `path:L<n>` — omit if none>
+**Needs your answer:** <numbered questions — omit if none>
+**Next step:** <the one immediate command> — when nothing is needed, close instead with the single Form A line `Next: nothing - work complete`.
 ```
 
 `commit` / `push` / `add` are not valid with `start` — reject with a redirect to `close` or the standalone verb.
@@ -397,6 +402,10 @@ git log -1 --oneline
 
 ### Next session should
 <one line from NEXT.md>
+
+**Needs your approval:** <numbered decisions, each citing `path:L<n>` — omit if none>
+**Needs your answer:** <numbered questions — omit if none>
+**Next step:** <the one immediate command> — when nothing is needed, close instead with the single Form A line `Next: nothing - work complete`.
 ```
 
 ---
@@ -441,6 +450,10 @@ git log -1 --oneline
 **Git:** committed <sha> | push <remote/branch> result
 
 **Session:** still open — no HANDOFF, NEXT, or UNKNOWNS changes.
+
+**Needs your approval:** <numbered decisions, each citing `path:L<n>` — omit if none>
+**Needs your answer:** <numbered questions — omit if none>
+**Next step:** <the one immediate command> — when nothing is needed, close instead with the single Form A line `Next: nothing - work complete`.
 ```
 
 ---
@@ -474,6 +487,10 @@ Never stage outside the role's scope (target: `.work.biz/` only; source: repo-wi
 **Next items:** <N> — first 3: <…>
 **Unanswered:** <M open unknowns>
 **Pick up:** <one line from NEXT.md>
+
+**Needs your approval:** <numbered decisions, each citing `path:L<n>` — omit if none>
+**Needs your answer:** <numbered questions — omit if none>
+**Next step:** <the one immediate command> — when nothing is needed, close instead with the single Form A line `Next: nothing - work complete`.
 ```
 
 Optional: one line on dirty files (no full diff). For a full context load, use **start**; for full load without writes, use **context**.
@@ -537,6 +554,10 @@ Classify the working tree:
 ### No files written
 This mode is read-only: HANDOFF, NEXT, UNKNOWNS, and active-ref are **not** modified.
 To open a session, run `@biz-session start`.
+
+**Needs your approval:** <numbered decisions, each citing `path:L<n>` — omit if none>
+**Needs your answer:** <numbered questions — omit if none>
+**Next step:** <the one immediate command> — when nothing is needed, close instead with the single Form A line `Next: nothing - work complete`.
 ```
 
 ### Anti-patterns (context)

@@ -143,6 +143,8 @@ Use at least 3 of A–E in every `generate`. Never produce 5 ideas that are all 
 
 For each idea, produce a structured entry. Aim for **5–8 ideas** unless the user specifies otherwise. Quality over quantity — ideas that can't survive a basic stress test are cut before delivery.
 
+Frame the full document per the Document clarity contract: open with the Status/Needs header (what this is; `Status: Draft — <date>`; one-line Needs), keep Decisions and Open questions as separate numbered lists (never mixed), and close with exactly one `## Next action` section (or one line `Next action: none — <reason>`). No leftover scaffolding (`REPLACE:*` tokens, empty placeholder sections).
+
 ```
 ### [Idea Name] — [One-line positioning]
 
@@ -196,7 +198,7 @@ Take one idea (by name or index) and try to kill it. The goal is honesty, not va
 4. **Stack test** — Can they build it with the loaded stack? What extension is needed?
 5. **Risk ranking** — Rank the top 3 failure modes by likelihood × impact.
 
-Output: a **Go / Refine / Kill** verdict, the single highest-leverage thing to de-risk first, and one low-cost validation experiment to run this week.
+Output: a **Go / Refine / Kill** verdict, the single highest-leverage thing to de-risk first, and one low-cost validation experiment to run this week. As a document, carry the Status/Needs header and close with exactly one `## Next action` (the validation experiment, in runnable syntax).
 
 ---
 
@@ -215,6 +217,8 @@ Report:
 - Tech stack fingerprint.
 - Whether strategy docs / pipeline data exist (evidence availability).
 - Gaps to supply for stronger ideation.
+
+Close per the Operator handoff contract: Form A (`Next: nothing - work complete`) when no gaps need operator input; otherwise Form B (`**Needs your approval:**` / `**Needs your answer:**` / exactly one `**Next step:**`).
 
 ---
 
@@ -243,6 +247,9 @@ You may only claim the task complete when all are true:
 4. Top-3 ranking + assumption ledger produced.
 5. Biggest risk stated honestly for each idea.
 6. A concrete next step is proposed (e.g., "run `@biz-ideas stress - #2`", "validate with `@biz-market-validate test`").
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
 
 ---
 

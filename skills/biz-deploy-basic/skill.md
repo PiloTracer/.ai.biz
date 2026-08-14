@@ -84,7 +84,7 @@ Thin-client deploy of the `.ai.biz` (Business OS) framework. The target project 
 3. Write `.cursorrules` into the target from the template, substituting `AGENT_OS_SOURCE=REPLACE_BASICSOURCE` → `AGENT_OS_SOURCE=<absolute BIZ_ROOT>` and baking `bash scripts/<name>` → `bash <BIZ_ROOT>/scripts/<name>` (Change-safety gate table + git-hooks install line — these commands live inside `.cursorrules` itself, so the skill-level source-resolution rule doesn't cover them). **No-overwrite** if `.cursorrules` exists; `--force` overwrites.
 4. Create `.work.biz/` skeleton by copying template files and creating directory structure. `copy_if_missing` enforces no-overwrite.
 5. **Post-deploy verification** (every mode): the script runs `scripts/biz-cursorrules-verify.sh` against the target and surfaces any `[FAIL]` findings. In `update` mode unrepairable findings fail the deploy; in `skip`/`force` they are reported as pre-existing with the repair hint.
-6. Report: source pointer value, `.work.biz/` presence, fat-client leak check, next steps.
+6. Report: source pointer value, `.work.biz/` presence, fat-client leak check, next steps — close per the Operator handoff contract (Form A when nothing is needed, Form B otherwise).
 
 **No local `opencode.json`.** When co-installed with Agent OS, register skills via parent `.ai/opencode.json`.
 
@@ -160,6 +160,8 @@ Flags accept `--` or bare form (`fix` ≡ `--fix`); path may appear in any posit
 | 8 | Fat-client leak checked (no unexpected local `.ai.biz/skills/`) | |
 | 9 | Post-deploy verification ran (`biz-cursorrules-verify.sh`); `[FAIL]` findings surfaced or repaired | |
 | 10 | User informed that skills load from `$AGENT_OS_SOURCE` at runtime + next steps | |
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
 
 ## Next commands (in target project)
 

@@ -248,7 +248,9 @@ After execution:
 | Update HANDOFF | Document what was accomplished this session |
 | Update NEXT | Set the next action based on completed work |
 | Update UNKNOWNS | Log any new open questions discovered |
-| Report summary | Brief one-paragraph: what was done, what's next |
+| Report summary | Brief one-paragraph: what was done, what's next; close with Form A or Form B per the Operator handoff contract |
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
 
 ---
 

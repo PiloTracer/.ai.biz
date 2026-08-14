@@ -193,7 +193,7 @@ Draft carousels with `@biz-social write linkedin carousel - <topic>`. Draft text
 
 ### 30-day plan table
 
-Output this table. Rotate topic buckets; no same bucket 3 days in a row.
+Output this table as a document: open it with a Status/Needs header (≤4 lines per the Document clarity contract in `skills/SKILL_DEPENDENCIES.md`) and close it with exactly one `## Next action`; keep Decisions and Open questions as separate numbered lists if either exists. Rotate topic buckets; no same bucket 3 days in a row.
 
 | Day | Format | Topic bucket | Hook seed | Challenge tag | Draft command |
 |-----|--------|--------------|-----------|---------------|---------------|
@@ -309,3 +309,8 @@ If after 6 posts you're still getting <200 impressions:
 5. **Check energy and eye line** — low-energy delivery or eyes drifting off-lens kills trust. Re-record the hook until it feels direct.
 
 If you reach 10 posts with consistent <200 impressions despite trying all of the above, the channel may not work for your niche. Test on a different platform — if you get the same result, the problem is the offer, not the channel.
+
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).

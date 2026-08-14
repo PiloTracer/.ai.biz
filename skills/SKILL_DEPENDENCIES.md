@@ -104,3 +104,64 @@ BLOCKED (prerequisite): <gate description>
   Current state: <current state>
   To proceed: <command to run next>
 ```
+
+---
+
+## Operator handoff contract
+
+Every operator-facing response that completes a task must close so the
+operator can see — without asking — what, if anything, they must do next.
+Every `skills/<id>/skill.md` references this contract, and every
+operator-facing report template closes with Form A or Form B.
+
+1. **Terse output.** Report only what changed and what's needed next. No
+   restating the task, no filler, no unrequested rationale.
+2. **Approvals** go under `**Needs your approval:**` as a numbered list —
+   one decision per item, each citing the exact `path:L<n>` to review.
+3. **Questions** go under `**Needs your answer:**` as their own numbered
+   list — each self-contained, never mixed with decisions.
+4. **Exactly one `**Next step:**`** — the immediate command or action in the
+   exact syntax to run/type. If several sequential actions exist, present
+   only the immediate one.
+5. **Form A (nothing needed):** close with a single line, e.g.
+   `Next: nothing - work complete`. Do not render empty sections.
+6. **Form B (input needed):** `**Needs your approval:**` and/or
+   `**Needs your answer:**`, then `**Next step:**`. Omit any section that
+   has nothing in it.
+7. Report-template sections ("Follow-ups", "Remaining", "Recommended next")
+   never substitute for this close — any operator-required approval or
+   question inside them must also appear in the labeled closing sections.
+
+Enforcement: `scripts/framework-verify.sh` hard-fails when a skill.md does
+not reference this contract.
+
+---
+
+## Document clarity contract
+
+Every generated document (plan, strategy doc, proposal, draft, report,
+review, validation log) must make it immediately obvious what it is, what
+state it is in, and what — if anything — the reader must do next. Every
+doc-generating `skill.md` references this contract.
+
+1. **Status/Needs header (≤4 lines).** Every document opens with:
+   - **What** this is (one sentence).
+   - **Status** — `Draft` | `In review` | `Approved` | `Superseded` (+ date).
+   - **Needs** — one line: the decision or review required, or `none`.
+2. **Brevity.** No boilerplate or filler; every section informs a decision
+   or an action; the first 5 lines carry the gist.
+3. **Exact references.** Claims cite `path:L<n>` (repo-relative);
+   quantitative claims are tagged `measured` | `estimated` | `assumption` |
+   `unknown`.
+4. **Decisions and Open questions in separate lists.** Numbered, each
+   self-contained, never mixed, never buried in prose.
+5. **Exactly one `## Next action`.** Documents that require follow-through
+   end with a `## Next action` section holding one action in the exact
+   syntax to run/type. If nothing is needed, one line instead:
+   `Next action: none — <reason>`.
+6. **No leftover scaffolding.** `REPLACE:*` tokens and instructional
+   comments must be stripped or filled before a document is presented as
+   complete. Never render an empty or placeholder section.
+
+Enforcement: `scripts/framework-verify.sh` hard-fails when a doc-generating
+skill.md does not reference this contract.

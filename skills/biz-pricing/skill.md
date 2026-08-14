@@ -213,12 +213,16 @@ Your pricing decision is correct when:
 ### biz-pricing status — Report Current Pricing Strategy
 
 Output a summary of the last pricing decision including:
+- Status/Needs header (≤4 lines: what this is; Status — `Draft`/`In review`/`Approved`/`Superseded` + date; one-line Needs)
 - Engagement type and scope
 - Price quoted and tiers offered
 - Angles applied (value, effort, market)
 - Decision tree path taken
 - Currency and payment terms
 - Status (pending, quoted, won, lost, revised)
+- Decisions and Open questions as separate numbered lists, never mixed
+- Exactly one `## Next action` section (or one line `Next action: none — <reason>` when nothing is needed)
+- Closing per the Operator handoff contract — Form A (`Next: nothing - work complete`) when nothing is needed; otherwise Form B (`**Needs your approval:**` and/or `**Needs your answer:**`, then exactly one `**Next step:**`).
 
 ---
 
@@ -230,3 +234,10 @@ When market feedback, win/loss data, or changed circumstances demand a pricing r
 3. **Adjust tiers** — Raise or lower by 10–25% based on evidence, not instinct.
 4. **Document the change** — Record old price, new price, and rationale.
 5. **Test for 3 proposals** — Run the new pricing for at least 3 proposals before further revision.
+
+---
+
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).

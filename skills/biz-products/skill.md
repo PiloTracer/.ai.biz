@@ -226,6 +226,8 @@ Evaluate one concept against the quality bar. Output a **Go / Refine / Kill** ve
 4. **Pricing realism** — sourced or marked Unverified.
 5. **The single change most likely to make this succeed.**
 
+Close the verdict report per the Operator handoff contract (Form A single line when nothing is needed; otherwise Form B).
+
 ---
 
 ## I5 — `status` mode (read-only)
@@ -236,6 +238,8 @@ Report:
 - Existing platform surfaces that extensions could attach to.
 - Proof points available (real projects, numbers).
 - Gaps to supply for stronger concepts.
+
+Close the status report per the Operator handoff contract (Form A single line when nothing is needed; otherwise Form B).
 
 ---
 
@@ -264,6 +268,9 @@ You may only claim the task complete when all are true:
 4. Prioritization matrix produced; top concept MVP-scoped.
 5. Each concept states honestly what makes it hard.
 6. A concrete next step is proposed (e.g., "run `@biz-products scope - <top>`", "validate with `@biz-market-validate test`", "spec with `@biz-proposal write`").
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
 
 ---
 

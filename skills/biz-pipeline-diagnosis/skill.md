@@ -117,11 +117,15 @@ Read-only. Report the current diagnosis state:
 1. **Latest diagnosis:** date, funnel metrics pulled, and conversion between stages.
 2. **Bottleneck found:** which stage (Awareness / Interest / Trust / Decision) and the drop-off measured.
 3. **Fixes applied:** the fix chosen, start date, review date, and whether the metric moved at review.
-4. **Records:** diagnoses and fixes live in `.work.biz/reports/` (created on first use if missing).
+4. **Records:** diagnoses and fixes live in `.work.biz/reports/` (created on first use if missing); each report opens with a Status/Needs header (≤4 lines) and ends with exactly one `## Next action` per the Document clarity contract in `skills/SKILL_DEPENDENCIES.md`.
+5. **Close:** end the status report per the Operator handoff contract (Form A `Next: nothing - work complete` when nothing is needed; otherwise Form B).
 
 ---
 
 ## Completion
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
 
 | # | Check | Result |
 |---|-------|--------|
@@ -131,4 +135,4 @@ Read-only. Report the current diagnosis state:
 | 4 | Review date set | |
 | 5 | Bottleneck re-checked at review | |
 
-**Next:** `@biz-review weekly` — check if the fix moved the bottleneck.
+**Next step:** `@biz-review weekly` — check if the fix moved the bottleneck.

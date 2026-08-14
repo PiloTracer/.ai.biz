@@ -59,6 +59,9 @@ From the discovery call and your notes, extract:
 
 Keep it to 2-3 pages max. Each section serves a specific purpose.
 
+- **Document clarity:** every generated document follows the Document clarity contract in `skills/SKILL_DEPENDENCIES.md` (Status/Needs header; separate Decisions / Open questions lists; exactly one `## Next action`; no leftover scaffolding).
+- The proposal document opens with a Status/Needs header (≤4 lines: what this is; **Status:** `Draft` | `In review` | `Approved` | `Superseded` + date; **Needs:** one line — the decision or review required, or `none`) and closes with exactly one `## Next action` section holding one action (or one line `Next action: none — <reason>` when nothing is needed).
+
 #### Section 1: The Problem (Your Understanding)
 
 "Based on our conversation, here's what I understand: [2-3 sentences summarizing their situation in their language]."
@@ -142,6 +145,8 @@ When they ask for extras later, you point here.
 | Closed-lost | Count |
 | Total pipeline value | $ |
 | Stale (no response >10 days) | Count |
+
+Close per the Operator handoff contract: Form A single line (`Next: nothing - work complete`) when nothing is needed; otherwise Form B — `**Needs your approval:**` with `path:L<n>` cites and/or `**Needs your answer:**`, then exactly one `**Next step:**`. Omit empty sections.
 
 ---
 
@@ -235,3 +240,9 @@ A proposal is ready to send when:
 - The price is between your effort-based floor × 1.3 and value-based ceiling × 0.3
 - There's a 7-day expiration date
 - You'd say yes if you received this proposal
+
+---
+
+## Operator handoff
+
+- **Operator handoff:** close every operator-facing report per the Operator handoff contract in `skills/SKILL_DEPENDENCIES.md` (Form A single line when nothing is needed; otherwise `**Needs your approval:**` with `path:L<n>` cites, `**Needs your answer:**`, and exactly one `**Next step:**`; omit empty sections).
