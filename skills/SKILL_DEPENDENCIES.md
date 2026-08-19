@@ -61,7 +61,7 @@ biz-referrals ask  ← no strict gate (can start anytime)
 
 ## System skills (no gate)
 
-`biz-deploy-basic`, `biz-deploy-files`, `biz-deploy-repo`, and `biz-session` are **infrastructure skills** with no prerequisite gate. They can be invoked at any time to manage Business OS deployment, update, and session lifecycle (`@biz-session start` / `@biz-session close` / `@biz-session context`; `close commit [scoped] [push]` for close-time git; standalone `@biz-session commit` / `commit push` / `add` checkpoint without closing — scope `.work.biz/` in target projects, repo-wide in the source repo). Deployment skills do not interact with the business gate graph. `biz-session` is aliased as `session-control` (`@session-control start`, `@session-control context`, etc.).
+`biz-deploy-basic`, `biz-deploy-files`, and `biz-session` are **infrastructure skills** with no prerequisite gate. They can be invoked at any time to manage Business OS deployment, update, and session lifecycle (`@biz-session start` / `@biz-session close` / `@biz-session context`; `close commit [scoped] [push]` for close-time git; standalone `@biz-session commit` / `commit push` / `add` checkpoint without closing — scope `.work.biz/` in target projects, repo-wide in the source repo). Deployment skills do not interact with the business gate graph. `biz-session` is aliased as `session-control` (`@session-control start`, `@session-control context`, etc.).
 
 ## biz-director (meta-skill)
 

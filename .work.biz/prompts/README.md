@@ -8,4 +8,4 @@ Portable prompt archives from OS-framework improvement sessions (approved 2026-0
 | `improve-clarity-of-responses.md` | Response clarity protocol — adopt via `adopt-framework-improvements.md` (Phase 1) |
 | `improve-clarity-of-documentation.md` | Documentation clarity protocol — adopt via `adopt-framework-improvements.md` (Phase 2) |
 | `adopt-framework-improvements.md` | Orchestrates the three portable prompts into a target framework |
-| `20260814-marker-detection-deploy-repo-removal-audit.md` | `.ai`-only historical record (executed 2026-08-14) — not applicable in `.ai.biz`; kept for provenance |
+| `20260814-marker-detection-deploy-repo-removal-audit.md` | historical record (executed in `.ai` 2026-08-14; the deploy-repo removal was re-applied in `.ai.biz` 2026-08-19) |

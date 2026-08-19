@@ -161,7 +161,6 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | Skill | Folder | Purpose |
 |-------|--------|---------|
 | biz-deploy-files | `skills/biz-deploy-files/` | Deploy Business OS files into target project (fat-client) |
-| biz-deploy-repo | `skills/biz-deploy-repo/` | Full repo deploy (clone or archive) |
 | biz-deploy-basic | `skills/biz-deploy-basic/` | Thin-client bootstrap — copies `.cursorrules` (with `AGENT_OS_SOURCE` pointer) + `.work.biz/` skeleton; skills resolve from source at runtime. `@biz-deploy-basic`, `@biz-deploy-basic update`, `@biz-deploy-basic status` |
 | biz-bootstrap | `skills/biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
 | biz-strategy | `skills/biz-strategy/` | Niche, offer, positioning, target buyer, operator profile (career) |

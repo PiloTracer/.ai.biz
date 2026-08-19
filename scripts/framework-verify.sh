@@ -28,7 +28,7 @@ git rev-parse --is-inside-work-tree &>/dev/null && ok "inside git work tree" || 
 
 note "Core files"
 for f in README.md START_HERE.md LICENSE templates/bootstrap.sh \
-  scripts/biz-deploy-basic.sh scripts/biz-deploy-files.sh scripts/biz-deploy-repo.sh \
+  scripts/biz-deploy-basic.sh scripts/biz-deploy-files.sh \
   scripts/biz-cursorrules-verify.sh; do
   [[ -f "$AI_ROOT/$f" ]] && ok "$f" || die "missing $f"
 done
@@ -247,11 +247,6 @@ bash "$AI_ROOT/scripts/biz-deploy-files.sh" . >/dev/null
 [[ -d .ai.biz/skills ]] || die "biz-deploy-files in-place missing .ai.biz/skills"
 popd >/dev/null
 ok "biz-deploy-files in-place creates .ai.biz/ + .work.biz/ + .cursorrules"
-
-note "biz-deploy-repo --status"
-bash "$AI_ROOT/scripts/biz-deploy-repo.sh" --status >/dev/null
-bash "$AI_ROOT/scripts/biz-deploy-repo.sh" --status "$DF_SMOKE" >/dev/null
-ok "biz-deploy-repo --status reports source + target"
 rm -rf "$DF_SMOKE"
 
 note "biz-deploy-basic thin-client scaffold"
@@ -280,10 +275,6 @@ bash "$AI_ROOT/scripts/biz-deploy-basic.sh" status "$EQ_A" >/dev/null \
 bash "$AI_ROOT/scripts/biz-deploy-files.sh" "$EQ_A" --status >/dev/null \
   && ok "biz-deploy-files: status mode present" \
   || die "biz-deploy-files: status mode failed"
-bash "$AI_ROOT/scripts/biz-deploy-repo.sh" --status "$EQ_A" >/dev/null \
-  && bash "$AI_ROOT/scripts/biz-deploy-repo.sh" "$EQ_A" status >/dev/null \
-  && ok "biz-deploy-repo: '--status <path>' ≡ '<path> status'" \
-  || die "biz-deploy-repo: status forms diverge"
 rm -rf "$EQ_A" "$EQ_B"
 
 note "biz-cursorrules-verify repair cycle"

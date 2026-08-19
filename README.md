@@ -30,7 +30,7 @@ Then in chat:
 
 ## What you get
 
-- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-youtube`, `@biz-discovery`, `@biz-proposal`, … run the playbook (24 skills in total).
+- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-youtube`, `@biz-discovery`, `@biz-proposal`, … run the playbook (23 skills in total).
 - **Standards** — binding contracts (business conventions, pricing standard, brand guide, content standard) keep agent output honest.
 - **`.work.biz/`** — the project's memory: strategy docs, plans, pipeline tracker, `gates.md`, `HANDOFF.md`, `NEXT.md`. Survives session boundaries.
 - **Gates** — strategy-ready, brand-ready, pipeline-ready, sales-ready, active-deal, tracked in `.work.biz/gates.md`; skip a step and the agent **stops** with a redirect.
@@ -156,7 +156,6 @@ All **24** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-session** | Session bookends + scoped git checkpoints; updates HANDOFF + NEXT | `start` · `close` · `commit` · `add` · `status` · `context` |
 | **biz-deploy-files** | Deploy `.ai.biz/` into target project (no-overwrite default; `--update`/`--force`) | in-place · `copy - <path>` · `status` |
 | **biz-deploy-basic** | Thin-client bootstrap (`.cursorrules` + `.work.biz/` only) | `update` · `status` · `- <path>` |
-| **biz-deploy-repo** | Full git-based deploy (clone or archive) | `clone - <path>` · `archive - <path>` · `status` |
 | **biz-director** | Universal orchestrator; accepts free-text, routes to correct skills | `<free-text request>` |
 | **biz-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
 | **biz-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |

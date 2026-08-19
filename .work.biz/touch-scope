@@ -1,16 +1,19 @@
-# Touch Scope — sister-framework registry + deploy orchestration upgrade (2026-08-19)
-#
-# Per docs/homogenization/biz.md: add cross-framework discovery (sister-discovery
-# lib), Frameworks registry in .cursorrules + template, deploy fill, verifier
-# checks, framework-verify wiring. No commit/push/delete without explicit ask.
+# Touch Scope — declared 2026-08-19 (biz-deploy-repo removal)
 
 .cursorrules
 templates/cursorrules.template
-scripts/sister-discovery.sh
-scripts/biz-deploy-basic.sh
-scripts/biz-cursorrules-verify.sh
+README.md
+.quick/deploy-to-project.md
+skills/README.md
+skills/SKILL_DEPENDENCIES.md
+skills/biz-director/skill.md
+skills/biz-deploy-files/skill.md
+skills/biz-deploy-repo/
+scripts/biz-deploy-files.sh
 scripts/framework-verify.sh
-reasonix.toml
+scripts/biz-deploy-repo.sh
+CONVENTIONS.md
 CHANGELOG.md
-docs/
-.work.biz/
+.work.biz/plans/NEXT.md
+.work.biz/prompts/README.md
+.work.biz/touch-scope

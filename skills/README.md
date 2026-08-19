@@ -15,7 +15,7 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | Rule | Requirement |
 |------|-------------|
 | **Shape** | `{prefix}-{role}` in **kebab-case** |
-| **Business prefix** | `biz-` for **all** skills — business (`biz-strategy`, `biz-content`), infrastructure (`biz-deploy-basic`, `biz-deploy-files`, `biz-deploy-repo`, `biz-session`), and generative (`biz-writing`, `biz-social`, `biz-ideas`, `biz-products`) |
+| **Business prefix** | `biz-` for **all** skills — business (`biz-strategy`, `biz-content`), infrastructure (`biz-deploy-basic`, `biz-deploy-files`, `biz-session`), and generative (`biz-writing`, `biz-social`, `biz-ideas`, `biz-products`) |
 | **Stable id** | Folder name = `name:` in frontmatter = `@` handle |
 
 ---
@@ -26,7 +26,6 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 |----------|--------|------|
 | biz-deploy-basic | `biz-deploy-basic/` | Thin-client bootstrap (`.cursorrules` + `.work.biz/`); skills load via `AGENT_OS_SOURCE` |
 | biz-deploy-files | `biz-deploy-files/` | Deploy `.ai.biz/` files into target project |
-| biz-deploy-repo | `biz-deploy-repo/` | Full git-based deploy (clone or archive) |
 | biz-bootstrap | `biz-bootstrap/` | Scaffold `.work.biz/`, `.cursorrules` from templates |
 | biz-strategy | `biz-strategy/` | Define niche, offer, positioning; profile the operator (`career`); certifies **strategy-ready** |
 | biz-brand | `biz-brand/` | Audit/overhaul LinkedIn, website, brand presence |
@@ -102,6 +101,6 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `reconcile` | Transcribe certification-asserted decisions into canonical files; no gate moves, no re-certification (biz-strategy) |
 | `icp` | Run LinkedIn ICP analysis, saved to `.work.biz/strategy/linkedin-icp.md` (biz-social) |
 | `log` | Record a publish or status change into `CONTENT_STATUS.md` (biz-social) |
-| `archive` | Move published content pieces from `ideas/` to `ideas.archive/`, mirrored (biz-archive; deploy mode: biz-deploy-repo) |
+| `archive` | Move published content pieces from `ideas/` to `ideas.archive/`, mirrored (biz-archive) |
 | `context` | Read-only full session context load, uncommitted-aware (biz-session) |
 | `update` | Deploy update mode with rules-aware merge (biz-deploy-basic, biz-deploy-files) |

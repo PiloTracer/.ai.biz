@@ -54,6 +54,9 @@ All notable changes to Business OS are documented here.
 - **UNKNOWNS #9** — uncited-statistic enforcement: a grep-based machine check was evaluated and rejected (83 candidate hits, most advice numbers a regex cannot tell from claims, so real findings drown in false positives); the expectation is codified as the Evidence discipline rule in CONVENTIONS and stays enforced by prose review
 - **UNKNOWNS #10** — empty VOICE_PROFILE handling: skeleton profiles are now reported as absent with a warning by the four content skills and `@biz-bootstrap status`, and CONVENTIONS § Voice loop mandates retro entries per publish
 
+### Removed
+- **`biz-deploy-repo` skill + `scripts/biz-deploy-repo.sh`** — full-repo clone/archive deploy removed: it duplicated `biz-deploy-files` for the VCS case and was the only deploy path that copied git artifacts into a target. Use plain `git clone` out-of-band for a full repo mirror. Skill folder, script, registries (`.cursorrules` + template), routing (`skills/README.md`, `biz-director`, `CONVENTIONS.md`, `SKILL_DEPENDENCIES.md`, `biz-deploy-files` contrast note + exclude regex), and verifier self-tests removed (23 skills remain)
+
 ## [v0.6.0] - 2026-08-06
 
 ### Added

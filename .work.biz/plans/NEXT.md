@@ -47,6 +47,7 @@
 
 | # | What was done | Date |
 |---|---------------|------|
+| 0 | `biz-deploy-repo` removed (skill + script + all registry/routing/verifier references) per owner directive; 23 skills remain | 2026-08-19 |
 | 0 | v0.6.1: cross-framework sister discovery + Frameworks registry (sister-discovery.sh, deploy fill, verifier checks, framework-verify wiring) + Agent OS root check with ask-user fallback; biz.md gap list resolved | 2026-08-19 |
 | 0 | Framework consistency audit + bloat reduction: 9 contradiction/dead-ref fixes, pricing dedup (PRICING-STANDARD + biz-pricing canonical), pre-commit change-safety gates warn-only by default; committed by owner as 33f9547 | 2026-08-19 |
 | 0 | biz-session brought to full parity with Agent OS session-control (standalone commit/add/scoped, task-ref + active-ref, secrets scan, checklist reports); routing surfaces synced across 9 files; gates green (blast-radius WARN acknowledged — routing sync) | 2026-08-13 |

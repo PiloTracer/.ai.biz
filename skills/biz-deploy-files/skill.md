@@ -24,7 +24,7 @@ Two-direction deploy of the `.ai.biz` framework into a target project. **Default
 
 **No local `opencode.json`.** When co-installed with Agent OS, register skills via parent `.ai/opencode.json`.
 
-**Contrast with `biz-deploy-repo`:** `biz-deploy-files` copies only the `.ai.biz/` directory (no VCS artifacts).
+`biz-deploy-files` copies only the `.ai.biz/` directory (no VCS artifacts). For a full repo mirror, use plain `git clone` out-of-band.
 
 ---
 

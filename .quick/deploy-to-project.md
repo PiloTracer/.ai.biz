@@ -34,9 +34,10 @@ cd /path/to/target && bash /path/to/.ai.biz/scripts/biz-deploy-files.sh .
 
 ## Full repo
 
-```text
-@biz-deploy-repo clone - /path/to/destination
-@biz-deploy-repo archive - /path/to/destination
+For a full repo mirror (with VCS history), use plain `git clone` out-of-band:
+
+```bash
+git clone /path/to/.ai.biz /path/to/destination
 ```
 
 ## Next steps

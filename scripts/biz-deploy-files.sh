@@ -109,7 +109,7 @@ echo "=== biz-deploy-files → $DEST_DIR ==="
 echo "  source: $BIZ_ROOT"
 echo "  mode:   $MODE (no-overwrite by default)"
 
-SKILL_EXCLUDE_REGEX='^(\.github/|\.gitignore$|\.gitattributes$|\.cursorrules$|scripts/biz-deploy-files\.sh$|scripts/biz-deploy-basic\.sh$|scripts/biz-deploy-repo\.sh$|scripts/biz-cursorrules-verify\.sh$)'
+SKILL_EXCLUDE_REGEX='^(\.github/|\.gitignore$|\.gitattributes$|\.cursorrules$|scripts/biz-deploy-files\.sh$|scripts/biz-deploy-basic\.sh$|scripts/biz-cursorrules-verify\.sh$)'
 
 TMP_LIST="$(mktemp)"
 MERGE_CANDS="$(mktemp)"
