@@ -75,10 +75,23 @@ If a content skill is about to record something and `CONTENT_STATUS.md` does not
 
 Generated content pieces live under `.work.biz/ideas/<subdir>/<piece>/` (one subdir per content type, one directory per piece). When the operator asks to archive published content, `@biz-archive` moves every piece whose tracker row is `published` from `ideas/<subdir>/<piece>` to `ideas.archive/<subdir>/<piece>`, mirroring the subdirectory structure.
 
-- **History is preserved, not rewritten.** The tracker row keeps its `published` status, date, URL, and pillar; Summary, By platform, and By pillar aggregates do not change when a file moves. The move is recorded in the row's Note (`archived → ideas.archive/<subdir>/<piece> (YYYY-MM-DD)`) and the tracker's header changelog. Tracker rows reference pieces by bare directory name, so references survive the move by design.
+- **The publish record survives with the piece.** Each archived directory gets its own `status.md` (per piece, never a centralized `ideas.archive/status.md` — a shared file would need rewriting on every run) carrying the tracker row's data: status, published date, platform/URL, pillar, note. Only after that file is written and verified does the piece's row leave `CONTENT_STATUS.md`.
+- **The tracker slims to the active inventory.** `CONTENT_STATUS.md` lists what is live (`draft`, `ready`, `blocked`, `hold`) plus published pieces not yet archived. Archived pieces leave the Items table; their history lives in the per-piece `status.md` and `pipeline/<platform>-tracker.md`. Lifetime aggregates (By platform `Last publish`, By pillar conversations) stay truthful in the tracker.
 - **Only piece directories move.** Loose files, category `README.md`s, research notes, backup dirs (`_revert_*`), and the legacy `ideas/VOICE_STANDARD.md` voice fallback never move. Pieces not marked `published` stay in `ideas/`.
 - **Git discipline.** Tracked pieces move with `git mv` (staged rename, never committed by the skill), untracked pieces with plain `mv`. The skill never commits, pushes, or deletes; committing is the owner's call.
-- **Idempotent.** Already-archived pieces are detected and skipped; re-running is safe.
+- **Idempotent.** Already-archived pieces are detected and skipped; a missing `status.md` on an already-moved piece is healed from the tracker row on re-run.
+
+## Context budget (binding for session and content skills)
+
+The session-start files — `context/HANDOFF.md`, `plans/NEXT.md`, `plans/UNKNOWNS.md`, `reference/CONTENT_STATUS.md` — are read on every `@biz-session start` and by every content skill's context load. Files that grow without bound tax every session, so they stay lean by rule:
+
+- **Move, never delete.** History leaves the live file only into a sibling archive file — `context/HANDOFF.archive.md`, `plans/NEXT.archive.md`, `plans/UNKNOWNS.archive.md` — with a one-line pointer left behind in the live file. Nothing is ever dropped without a new home.
+- **HANDOFF:** the live file carries the status header, recent session blocks, pending tasks, key decisions, and quick reference. Older session blocks move to `HANDOFF.archive.md` (newest-first preserved). Done at `@biz-session close`.
+- **NEXT:** completed items collapse to one-liners with record pointers; long resolved narration moves to `NEXT.archive.md`. Recommended-next stays fully spelled out.
+- **UNKNOWNS:** resolved rows move to `UNKNOWNS.archive.md` with a pointer row; open rows are never touched.
+- **CONTENT_STATUS:** tracks the active inventory only — archived published pieces leave the Items table once their per-piece `status.md` exists (see Archive rule). Lifetime aggregates stay.
+
+A live file that needs its history for a current decision is a sign the decision was never recorded as a decision — put it in Key decisions, not in the scrollback.
 
 ## Voice loop (binding for all content skills)
 

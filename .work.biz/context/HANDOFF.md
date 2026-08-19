@@ -1,9 +1,25 @@
 # HANDOFF — Session Bookmark
 
 > **Date:** 2026-08-19
-> **Status:** Open — 2026-08-19 — goal: improve the current AI Agent OS Framework skills, concepts and practices
->
-> **Previous session (2026-08-13, closed):** biz-session brought to full parameter/behavior parity with `.ai/skills/session-control`: standalone `commit` / `commit push` (no close, session stays open), new `add` verb (stage only), `scoped` modifier, `start - <goal>` goal capture, unblock check, task-ref auto-detection incl. `.work.biz/active-ref` (hook-supported), mandatory secrets scan, always-shown commit messages, completion-checklist reports, mode-comparison table. **Commit scope is repo-role aware (owner directive):** source repo (framework at git root, detected via root `skills/biz-session/skill.md`) commits ALL modified/added/new files repo-wide; target projects commit `.work.biz/` only. Behavior change: bare `commit`/`push` no longer imply `close`. Routing/reference files synced. Gates: framework-verify PASS, gate-verify PASS (n/a), touch-scope PASS, blast-radius WARN (routing sync across areas, acknowledged). Committed and pushed via `@biz-session close commit push` (single repo-wide commit per repo-role scope rule; blast-radius downgraded to WARN via the hook's WARN_ONLY for this acknowledged routing sync).
+> **Status:** Closed — 2026-08-19 — ideas.archive canonized: new `@biz-archive` skill (per-piece status.md, tracker slims to active inventory), Context budget convention, bootstrap/deploy/routing/verify wired; close commit push
+
+---
+
+## Session summary (2026-08-19, close)
+
+| Step | Status |
+|------|--------|
+| Explored framework + `future-strategy` target: `ideas/` convention existed only in targets, nothing in the framework wrote or described it | Done |
+| Canonized `.work.biz/ideas/<subdir>/<piece>/` + `ideas.archive/` in DIRECTORY_MAP (+ Archive rule) and CONVENTIONS (Content Status Protocol → Archive rule) | Done |
+| New skill `skills/biz-archive/skill.md` (24th): `run` moves `published` pieces to `ideas.archive/` mirrored (`git mv` staged / `mv`), writes per-piece `status.md` publish record, verifies it, then removes the tracker row; `status` dry run; idempotent with catch-up; never commits/pushes/deletes | Done |
+| Tracker slims to active inventory: archived rows leave CONTENT_STATUS once per-piece status.md verified; lifetime aggregates stay truthful; no centralized `ideas.archive/status.md` (owner directive) | Done |
+| Context budget (CONVENTIONS): history moved never deleted — HANDOFF/NEXT/UNKNOWNS slim into sibling `*.archive.md` files; biz-session close C5/C6 performs the slim | Done |
+| Bootstrap pentad: `bootstrap.sh` dir loop + `WORK_DIRS` scaffold `ideas`/`ideas.archive`; biz-bootstrap, templates/README, biz-deploy-basic docs synced | Done |
+| Routing: skills/README (row + `archive` verb), biz-director (intent + gate-exempt), PROCESS_ROUTER, START_HERE, .cursorrules + template, root README (24 skills), SKILL_DEPENDENCIES (ungated utility) | Done |
+| framework-verify: archive wiring block (11 greps) + new WORK_DIRS↔bootstrap.sh symmetry check | Done |
+| Evidence-checked against `future-strategy` uncommitted slim-down (17 per-piece status.md, HANDOFF.archive.md) — framework matches the proven pattern; target repo not modified | Done |
+| Gates: framework-verify PASS, gate-verify PASS (n/a), touch-scope PASS, blast-radius WARN (11 areas, cross-cutting by design, acknowledged) | Done |
+| Round 1 committed by owner as `087981f`; round 2 via close commit push | Done |
 
 ---
 
@@ -128,13 +144,13 @@ The previous session (ses_0121) was interrupted right as it began implementing t
 
 | # | Task | Priority |
 |---|------|----------|
-| 1 | Commit this session's biz-session parity changes (skill rewrite + 9 routing/reference files; see NEXT.md) | High |
-| 1b | Smoke-test the new biz-session verbs on a live target project: standalone `commit` (session stays open), `add` (stage-only), `close commit scoped`, task-ref extraction into `.work.biz/active-ref` | High |
-| 2 | Owner review of the uncommitted `future-strategy` changes (VOICE_PROFILE migration, channel-plan Substack correction, VOICE_STANDARD → Publishing Standard refactor) | High |
+| 1 | Smoke-test `@biz-archive` on `future-strategy` once its uncommitted slim-down lands: `status` dry run, catch-up path for any archived piece missing status.md, tracker row removal | High |
+| 1b | Smoke-test the biz-session verbs on a live target project: standalone `commit` (session stays open), `add` (stage-only), `close commit scoped`, task-ref extraction into `.work.biz/active-ref` | High |
+| 2 | Owner review/commit of the uncommitted `future-strategy` slim-down (HANDOFF/NEXT/UNKNOWNS/CONTENT_STATUS + 17 status.md files + HANDOFF.archive.md); stale live-path refs remain in CONTENT_MATRIX.md, OWNER_RUNBOOK.md, VOICE_PROFILE.md:48 | High |
 | 3 | Validate the full loop on a live target project: publish + `@biz-social log` cycle with pillar assignment + VOICE_RETRO entry, then `@biz-strategy career` to fill OPERATOR_PROFILE.md | High |
 | 4 | Validate pillar loop + quarterly alignment on real tracker data (needs ≥1 quarter of pillar-tagged publishes) | Medium |
 | 5 | Substack + Threads guides are untested — no project has published to either. Validate against real output before trusting the cadence and format rules | Medium |
-| 6 | Regenerate `.tmp/*.skill` archives — now also missing this session's additions | Medium |
+| 6 | Regenerate `.tmp/*.skill` archives — now also missing biz-archive and the archive/context-budget changes | Medium |
 | 7 | Test appeal standard + hardened `biz-writing` against a new LinkedIn draft and measure engagement vs `post_01_the_spreadsheet_nobody_owns` | Medium |
 | 8 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
 | 9 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
@@ -176,6 +192,8 @@ The previous session (ses_0121) was interrupted right as it began implementing t
 | 29 | **Pillar assignment happens at registration, never retroactively in bulk** — a published piece with no pillar is a recording failure. Pillars are the bridge that lets quarterly reviews aggregate conversations by strategic message. |
 | 30 | **Evidence claims need a citation or a directional marker; a machine check was rejected** — grep cannot tell a claim about the world from advice, and 83 false-positive-prone hits would drown real findings. The rule lives in CONVENTIONS § Evidence discipline and is enforced by prose review. |
 | 31 | **The appeal standard never overrides truth** — sharper is never worth invented detail. When proof points are thin, the fix is `PROJECTS.md`, not embellishment. |
+| 32 | **The publish record lives with the piece, the tracker tracks the live inventory** — archiving writes a per-piece `status.md` (never a centralized `ideas.archive/status.md`, which would need rewriting every run); only after that record is verified does the row leave CONTENT_STATUS. Lifetime aggregates (By platform Last publish, By pillar conversations) stay in the tracker. |
+| 33 | **Context budget: history is moved, never deleted** — session-start files (HANDOFF, NEXT, UNKNOWNS, CONTENT_STATUS) stay lean; older material moves to sibling `*.archive.md` files with a pointer line. biz-session close performs the slim. |
 
 ---
 

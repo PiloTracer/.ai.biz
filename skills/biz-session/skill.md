@@ -295,19 +295,20 @@ Detect and list: uncommitted work outside the commit scope (target role: outside
 
 ### C5 — Update HANDOFF (mandatory on close)
 
-Rewrite the top sections (keep history append-only):
+Rewrite the top sections (history moves to the sibling archive, it is never deleted — CONVENTIONS § Context budget):
 
 1. Header: `**Status:** Closed — <date> — <one-line session outcome>`, `**Date:** <today>`
 2. Prepend a session summary table for this session (what was done, one row per step)
-3. Refresh **Pending for next session** and **Key decisions** (append new locked decisions; never rewrite history)
+3. Refresh **Pending for next session** and **Key decisions** (append new locked decisions)
 4. Remove any stale "in progress" wording — a closed session must not say it is open
+5. **Slim (Context budget):** when HANDOFF carries more than ~5 session blocks or has grown past what a session start should load, move the older session blocks (keep the newest few) into `.work.biz/context/HANDOFF.archive.md` — newest-first preserved, one pointer line left in HANDOFF. Create the archive file on first use. Never drop a block without it landing in the archive file.
 
 **Cleanup:** remove `.work.biz/active-ref` if it exists (`rm -f .work.biz/active-ref`).
 
 ### C6 — Update NEXT + UNKNOWNS (mandatory on close)
 
-- NEXT: move completed items to done with date; set **one** clear recommended next; refresh active tasks and owner blockers.
-- UNKNOWNS: mark resolved rows with date; add new open questions.
+- NEXT: move completed items to done with date; set **one** clear recommended next; refresh active tasks and owner blockers. Collapse long completed narration to one-liners with record pointers; bulk resolved material moves to `.work.biz/plans/NEXT.archive.md` (Context budget).
+- UNKNOWNS: mark resolved rows with date; add new open questions. Resolved rows may move in bulk to `.work.biz/plans/UNKNOWNS.archive.md` with a pointer row left behind; open rows are never moved.
 
 ### C6b — Git actions (only when `commit`/`push` requested)
 

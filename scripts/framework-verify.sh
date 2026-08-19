@@ -135,6 +135,14 @@ grep -q "ideas.archive" "$AI_ROOT/templates/work/reference/CONTENT_STATUS.md.tem
   || die "CONTENT_STATUS.md.template is missing the archive convention"
 grep -q "ideas.archive" "$AI_ROOT/templates/work/README.md.template" \
   || die "work/README.md.template is missing the ideas.archive/ row"
+grep -q "status.md" "$AI_ROOT/skills/biz-archive/skill.md" \
+  || die "skills/biz-archive/skill.md does not write the per-piece status.md publish record"
+grep -q "status.md" "$AI_ROOT/templates/work/reference/CONTENT_STATUS.md.template" \
+  || die "CONTENT_STATUS.md.template does not document the per-piece status.md / active-inventory rule"
+grep -q "Context budget" "$AI_ROOT/CONVENTIONS.md" \
+  || die "CONVENTIONS.md is missing the Context budget section"
+grep -q "HANDOFF.archive.md" "$AI_ROOT/skills/biz-session/skill.md" \
+  || die "biz-session close does not implement the HANDOFF slim-down (Context budget)"
 ok "biz-archive skill + Archive rule + verb + directory map + templates all wired"
 
 note "Bootstrap ↔ WORK_DIRS dir sync"
