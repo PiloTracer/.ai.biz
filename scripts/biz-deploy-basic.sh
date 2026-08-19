@@ -133,8 +133,10 @@ WORK_FILES=(
   "reference/VOICE_PROFILE.md" "reference/VOICE_RETRO.md"
   "reference/OPERATOR_PROFILE.md" "reference/PROJECTS.md"
 )
+# Must match the dir loop in templates/bootstrap.sh (framework-verify checks this).
 WORK_DIRS=(
   "context" "plans" "pipeline" "research" "drafts" "strategy" "reference"
+  "ideas" "ideas.archive"
 )
 
 echo "=== biz-deploy-basic (Business OS) → $DEST_ROOT (thin-client bootstrap) ==="

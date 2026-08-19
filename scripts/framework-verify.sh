@@ -118,6 +118,49 @@ grep -q '^| `log` |' "$AI_ROOT/skills/README.md" \
   || die "skills/README.md verb table is missing the log verb (biz-social)"
 ok "all four content skills reference CONTENT_STATUS.md; protocol + log verb documented"
 
+note "Archive wiring (ideas → ideas.archive)"
+# The archive feature only works if every surface agrees: the skill exists, the
+# binding rules are documented, the verb is routable, and the directory map
+# canonizes both directories. A missing surface silently reverts target
+# projects to ad-hoc manual moves.
+grep -q "ideas.archive" "$AI_ROOT/skills/biz-archive/skill.md" \
+  || die "skills/biz-archive/skill.md does not reference ideas.archive"
+grep -q "Archive rule" "$AI_ROOT/CONVENTIONS.md" \
+  || die "CONVENTIONS.md is missing the Archive rule (Content Status Protocol)"
+grep -q "ideas.archive" "$AI_ROOT/standards/20260621-DIRECTORY_MAP.md" \
+  || die "standards/20260621-DIRECTORY_MAP.md does not canonize ideas.archive/"
+grep -q '^| `archive` |' "$AI_ROOT/skills/README.md" \
+  || die "skills/README.md verb table is missing the archive verb (biz-archive)"
+grep -q "ideas.archive" "$AI_ROOT/templates/work/reference/CONTENT_STATUS.md.template" \
+  || die "CONTENT_STATUS.md.template is missing the archive convention"
+grep -q "ideas.archive" "$AI_ROOT/templates/work/README.md.template" \
+  || die "work/README.md.template is missing the ideas.archive/ row"
+ok "biz-archive skill + Archive rule + verb + directory map + templates all wired"
+
+note "Bootstrap ↔ WORK_DIRS dir sync"
+# The dir loop in bootstrap.sh and WORK_DIRS in biz-deploy-basic.sh must list
+# the same .work.biz/ scaffold directories. WORK_FILES has a machine check;
+# dirs drifted unchecked until this one existed.
+bootstrap_dirs="$(sed -n 's/^for dir in \(.*\); do$/\1/p' "$AI_ROOT/templates/bootstrap.sh" | tr ' ' '\n' | sort -u)"
+work_dirs="$(sed -n '/^WORK_DIRS=(/,/^)/p' "$AI_ROOT/scripts/biz-deploy-basic.sh" \
+  | grep -oE '"[^"]+"' | tr -d '"' | sort -u)"
+dir_rc=0
+while IFS= read -r d; do
+  [[ -z "$d" ]] && continue
+  if ! grep -qxF "$d" <<< "$work_dirs"; then
+    die "bootstrap.sh creates dir .work.biz/$d but WORK_DIRS omits it"
+    dir_rc=1
+  fi
+done <<< "$bootstrap_dirs"
+while IFS= read -r d; do
+  [[ -z "$d" ]] && continue
+  if ! grep -qxF "$d" <<< "$bootstrap_dirs"; then
+    die "WORK_DIRS lists $d but bootstrap.sh never creates it"
+    dir_rc=1
+  fi
+done <<< "$work_dirs"
+[[ "$dir_rc" -eq 0 ]] && ok "bootstrap.sh dir loop and WORK_DIRS list the same scaffold dirs"
+
 note "Bootstrap ↔ WORK_FILES manifest sync"
 # bootstrap.sh and biz-deploy-basic.sh WORK_FILES must list the same
 # .work.biz/ scaffold set. WORK_FILES is the one that fails quietly:

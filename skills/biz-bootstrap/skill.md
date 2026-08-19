@@ -64,7 +64,7 @@ Entry point for setting up Business OS in any project. Creates the `.work.biz/` 
    | `.work.biz/reference/OPERATOR_PROFILE.md` | `templates/work/reference/OPERATOR_PROFILE.md.template` — operator skills, proof points, constraints, risk, career stage; filled by `@biz-strategy career`. Ships as a skeleton |
    | `.work.biz/reference/PROJECTS.md` | `templates/work/reference/PROJECTS.md.template` — proof-point bank content, proposals, and calls draw on; disclosure status is binding |
 
-   **Sync rule:** this table, `templates/bootstrap.sh`, `templates/README.md`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, and `skills/biz-deploy-basic/skill.md` must list the same set. `WORK_FILES` is the one that fails quietly: `biz-deploy-basic --update` only offers files listed there, so an artifact missing from it is never updated on existing installs and nothing reports the omission.
+   **Sync rule:** this table, `templates/bootstrap.sh`, `templates/README.md`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, and `skills/biz-deploy-basic/skill.md` must list the same set. `WORK_FILES` is the one that fails quietly: `biz-deploy-basic --update` only offers files listed there, so an artifact missing from it is never updated on existing installs and nothing reports the omission. The same rule binds the directory set: the `bootstrap.sh` dir loop and `WORK_DIRS` must match (`framework-verify.sh` checks both).
 
    Not scaffolded here, created on first use: `templates/work/pipeline/platform-tracker.md.template` → `.work.biz/pipeline/<platform>-tracker.md`.
 
@@ -118,7 +118,7 @@ Close the status report per the Operator handoff contract: any missing artifact 
 |---|-------|--------|
 | 1 | `.cursorrules` created from template (or skipped if existing) | pass |
 | 2 | `.work.biz/` skeleton created with all template files | pass |
-| 3 | All directories (`context/`, `plans/`, `pipeline/`, `research/`, `drafts/`, `strategy/`, `reference/`) exist | pass |
+| 3 | All directories (`context/`, `plans/`, `pipeline/`, `research/`, `drafts/`, `strategy/`, `reference/`, `ideas/`, `ideas.archive/`) exist | pass |
 | 3b | `.work.biz/gates.md` exists with all five gates at `NOT MET` | pass |
 | 4 | User informed of `REPLACE:` token checklist | pass |
 | 5 | User informed of next steps | pass |

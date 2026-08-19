@@ -29,6 +29,8 @@ A pillar is one of the 3–5 strategic messages the offer stands on, traceable t
 
 Status values: `draft` (needs owner edits) · `ready` (publication-ready) · `published` (live; date + URL required) · `blocked` (say why in Note) · `hold` (say until what in Note).
 
+Piece directories live under `.work.biz/ideas/<subdir>/<piece>/`. When the operator archives published content (`@biz-archive`), a `published` piece moves to `.work.biz/ideas.archive/<subdir>/<piece>/` (structure mirrored); the row keeps its `published` status, date, and URL, and the Note records `archived → ideas.archive/<subdir>/<piece> (YYYY-MM-DD)`.
+
 Pillar must name one entry from **By pillar**; leave blank only while a piece is unclassified, and never leave a published piece unclassified.
 
 | # | Piece | Pillar | Status | Published | Platform / URL | Note |

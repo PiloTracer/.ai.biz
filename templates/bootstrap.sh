@@ -74,7 +74,7 @@ copy_if_missing "${TPL}/reference/VOICE_RETRO.md.template" "${WORK}/reference/VO
 copy_if_missing "${TPL}/reference/OPERATOR_PROFILE.md.template" "${WORK}/reference/OPERATOR_PROFILE.md"
 copy_if_missing "${TPL}/reference/PROJECTS.md.template" "${WORK}/reference/PROJECTS.md"
 
-for dir in context plans pipeline research drafts strategy reference; do
+for dir in context plans pipeline research drafts strategy reference ideas ideas.archive; do
   mkdir -p "${WORK}/${dir}"
 done
 

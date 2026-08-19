@@ -25,6 +25,8 @@
 - `plans/UNKNOWNS.md` — open questions
 - `pipeline/pipeline_tracker.md` — sales pipeline
 - `reference/CONTENT_STATUS.md` — publish/status tracker
+- `ideas/` — generated content pieces, one subdir per content type, one directory per piece
+- `ideas.archive/` — published pieces, moved from `ideas/` with the structure mirrored (see Archive rule)
 - `reference/BRAND_STATUS.md` — brand audit history and overhaul log
 - `reference/VOICE_PROFILE.md` — canonical voice definition (binding for all content skills)
 - `reference/VOICE_RETRO.md` — draft vs owner edits; amend the voice profile when an edit class repeats three times
@@ -68,6 +70,15 @@ If a content skill is about to record something and `CONTENT_STATUS.md` does not
 ### Split of records
 
 `CONTENT_STATUS.md` is the cross-platform index of what exists and its state. `pipeline/<platform>-tracker.md` holds per-platform performance. Index here, metrics there; never merge them (see `standards/20260621-DIRECTORY_MAP.md` § Tracker rule).
+
+### Archive rule
+
+Generated content pieces live under `.work.biz/ideas/<subdir>/<piece>/` (one subdir per content type, one directory per piece). When the operator asks to archive published content, `@biz-archive` moves every piece whose tracker row is `published` from `ideas/<subdir>/<piece>` to `ideas.archive/<subdir>/<piece>`, mirroring the subdirectory structure.
+
+- **History is preserved, not rewritten.** The tracker row keeps its `published` status, date, URL, and pillar; Summary, By platform, and By pillar aggregates do not change when a file moves. The move is recorded in the row's Note (`archived → ideas.archive/<subdir>/<piece> (YYYY-MM-DD)`) and the tracker's header changelog. Tracker rows reference pieces by bare directory name, so references survive the move by design.
+- **Only piece directories move.** Loose files, category `README.md`s, research notes, backup dirs (`_revert_*`), and the legacy `ideas/VOICE_STANDARD.md` voice fallback never move. Pieces not marked `published` stay in `ideas/`.
+- **Git discipline.** Tracked pieces move with `git mv` (staged rename, never committed by the skill), untracked pieces with plain `mv`. The skill never commits, pushes, or deletes; committing is the owner's call.
+- **Idempotent.** Already-archived pieces are detected and skipped; re-running is safe.
 
 ## Voice loop (binding for all content skills)
 

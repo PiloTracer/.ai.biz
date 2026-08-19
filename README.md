@@ -30,7 +30,7 @@ Then in chat:
 
 ## What you get
 
-- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-youtube`, `@biz-discovery`, `@biz-proposal`, … run the playbook (23 skills in total).
+- **Skills** — `@biz-strategy`, `@biz-brand`, `@biz-content`, `@biz-youtube`, `@biz-discovery`, `@biz-proposal`, … run the playbook (24 skills in total).
 - **Standards** — binding contracts (business conventions, pricing standard, brand guide, content standard) keep agent output honest.
 - **`.work.biz/`** — the project's memory: strategy docs, plans, pipeline tracker, `gates.md`, `HANDOFF.md`, `NEXT.md`. Survives session boundaries.
 - **Gates** — strategy-ready, brand-ready, pipeline-ready, sales-ready, active-deal, tracked in `.work.biz/gates.md`; skip a step and the agent **stops** with a redirect.
@@ -161,6 +161,7 @@ All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-i
 | **biz-writing** | Write articles, posts, case studies, landing pages, emails (project-aware, tech-tilted) | `write - <topic>` · `plan - <horizon>` · `repurpose - <src>` · `audit - <draft>` |
 | **biz-social** | Platform-native social content (Reddit, Instagram, LinkedIn incl. carousel + native video, Facebook, X, YouTube incl. Shorts, Substack, Threads) | `write - <platform>` · `research - <platform>` · `repurpose - <src>` · `plan - <horizon>` |
 | **biz-ideas** | Structured, stress-tested business/venture/pivot idea generation | `generate - <domain>` · `stress - <idea>` · `pivot - <situation>` |
+| **biz-archive** | Archive published content pieces: `ideas/` → `ideas.archive/` (mirrored), tracker annotated | `run` · `status` |
 | **biz-products** | Buildable, stack-fit product/service concepts + MVP scoping | `generate - <space>` · `extend - <product>` · `scope - <concept>` · `audit - <concept>` |
 
 Gates between skills: [`skills/SKILL_DEPENDENCIES.md`](skills/SKILL_DEPENDENCIES.md).

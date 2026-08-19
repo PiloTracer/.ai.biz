@@ -114,6 +114,7 @@ These project-aware generative skills run any time — even before bootstrap. Th
 | Repurpose one asset into multiple platform formats | `@biz-social repurpose - <source>` |
 | Plan a cross-platform social content calendar | `@biz-social plan - <30 days>` |
 | Record a publish / mark a piece live ("I posted X on Y") | `@biz-social log - <piece> - <platform>` |
+| Archive published content pieces (`ideas/` → `ideas.archive/`) | `@biz-archive run` (dry run: `@biz-archive status`) |
 | Build a YouTube publishing calendar / 30-day challenge | `@biz-youtube plan` · `@biz-youtube challenge` |
 | Business / venture / pivot ideas | `@biz-ideas generate - <domain>` |
 | Stress-test one idea (try to kill it) | `@biz-ideas stress - <idea>` |

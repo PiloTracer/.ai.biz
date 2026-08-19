@@ -31,6 +31,7 @@ biz-social repurpose ← no hard gate
 biz-social icp ← no hard gate (improves with strategy-ready; produces linkedin-icp.md)
 biz-social strategy ← requires strategy-ready
 biz-social plan ← requires strategy-ready
+biz-archive run/status ← no hard gate (requires CONTENT_STATUS.md with published rows)
         │
         ▼
 biz-discovery run  ← requires pipeline-ready; promotes sales-ready + active-deal
@@ -53,6 +54,10 @@ biz-referrals ask  ← no strict gate (can start anytime)
 ### Generative skills (no gate)
 
 `biz-writing`, `biz-social`, `biz-ideas`, and `biz-products` are **project-aware generative skills**: they have **no prerequisite gate** for `write`, `research`, `repurpose`, and `audit` modes and can be invoked at any time, even before `biz-bootstrap init`. They load the host project's own context dynamically (`.cursorrules`, `.work.biz/strategy/*`, `README.md`, stack manifests) and fall back to a bundled example profile when none exists. They produce dramatically better output when the host project is bootstrapped and strategy-certified, because audience, offer, stack, and channel are then loaded from project memory rather than guessed.
+
+### Content-lifecycle utility (no gate)
+
+`biz-archive` (`run`, `status`) moves published content pieces from `.work.biz/ideas/` to `.work.biz/ideas.archive/` per the Archive rule in `CONVENTIONS.md` § Content Status Protocol. It has no prerequisite gate but does useful work only when `reference/CONTENT_STATUS.md` has `published` rows. It never commits, pushes, or deletes; committing staged renames is the owner's call.
 
 ## System skills (no gate)
 
@@ -91,6 +96,7 @@ biz-referrals ask  ← no strict gate (can start anytime)
 | `biz-proposal` | `pipeline-ready` | `status` |
 | `biz-objections` | `active-deal` (`handle` only) | `roleplay`, `status` |
 | `biz-social` | `strategy-ready` (`strategy`, `plan` only) | `write`, `research`, `repurpose`, `icp`, `log`, `status` |
+| `biz-archive` | — (no gate) | `run`, `status` |
 
 **Demotion.** A gate that no longer holds must be demoted, not left as a stale PASS. `@biz-strategy amend` demotes `strategy-ready` and cascades to `brand-ready`, `pipeline-ready`, and `sales-ready`. `@biz-review status` reconciles the whole ledger and demotes any gate whose evidence is missing. `scripts/gate-verify.sh` fails the build when a PASS lacks its evidence.
 

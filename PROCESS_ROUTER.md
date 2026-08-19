@@ -25,6 +25,7 @@
 | Fix your LinkedIn profile and brand | `@biz-brand overhaul` |
 | Publish LinkedIn content | `@biz-content publish` |
 | Record a publish / mark a piece live | `@biz-social log - <piece> - <platform>` |
+| Archive published content pieces (`ideas/` → `ideas.archive/`) | `@biz-archive run` (dry run: `@biz-archive status`) |
 | Create a YouTube video | `@biz-social write youtube` · `@biz-youtube publish` |
 | Plan YouTube content strategy / calendar | `@biz-youtube plan` |
 | Audit / rebrand a YouTube channel | `@biz-brand audit` (YouTube section) |

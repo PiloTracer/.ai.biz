@@ -39,7 +39,9 @@ Created on demand rather than at bootstrap: `work/pipeline/platform-tracker.md.t
 
 Copied manually, not at bootstrap: `work/touch-scope.template` → `.work.biz/touch-scope`, to declare change scope (see `.cursorrules` § Change safety).
 
-**Sync rule:** this table, `templates/bootstrap.sh`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, and `skills/biz-bootstrap/skill.md` § I1 must list the same set. `biz-deploy-basic --update` only offers files in `WORK_FILES`, so an omission there means an artifact is silently never updated on existing installs.
+**Sync rule:** this table, `templates/bootstrap.sh`, `scripts/biz-deploy-basic.sh` `WORK_FILES`, and `skills/biz-bootstrap/skill.md` § I1 must list the same set. `biz-deploy-basic --update` only offers files in `WORK_FILES`, so an omission there means an artifact is silently never updated on existing installs. The directory set is bound the same way: the `bootstrap.sh` dir loop and `WORK_DIRS` must match (`framework-verify.sh` checks both).
+
+Scaffolded as empty directories (no template): `.work.biz/` `context`, `plans`, `pipeline`, `research`, `drafts`, `strategy`, `reference`, `ideas`, `ideas.archive`.
 
 ## `REPLACE:` checklist (`.cursorrules`)
 

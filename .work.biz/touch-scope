@@ -1,0 +1,17 @@
+# Touch Scope — ideas.archive publish-archiving feature (2026-08-19)
+#
+# Canonize .work.biz/ideas/ + add @biz-archive (standalone skill) that moves
+# published pieces to .work.biz/ideas.archive/ with mirrored structure.
+
+.cursorrules
+.work.biz/
+skills/
+scripts/framework-verify.sh
+scripts/biz-deploy-basic.sh
+templates/
+standards/20260621-DIRECTORY_MAP.md
+CONVENTIONS.md
+PROCESS_ROUTER.md
+START_HERE.md
+CHANGELOG.md
+README.md

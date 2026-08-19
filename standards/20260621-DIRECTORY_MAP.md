@@ -68,12 +68,19 @@ Stored in the consumer project. Never copied from source; owned by the user and 
 │   ├── PROJECTS.md            # Case studies and proof points
 │   └── VISUAL_GUIDE.md        # Banner specs, palette, typography
 ├── drafts/                    # In-progress drafts
+├── ideas/                     # Generated content pieces: one subdir per content type
+│                              # (posts/, articles/, substack/, x/, videos-linkedin/, ...),
+│                              # one directory per piece
+├── ideas.archive/             # Published pieces, moved from ideas/ by @biz-archive
+│                              # with the subdirectory structure mirrored
 └── touch-scope                # Declared change scope for current work (session-local)
 ```
 
 **Path rule:** `biz-strategy` writes strategy artifacts to `.work.biz/strategy/`. All other skills read from `.work.biz/strategy/`. Do not scatter strategy files under `.work.biz/plans/`.
 
 **Tracker rule:** `reference/CONTENT_STATUS.md` is the cross-platform index of what content exists and whether it is published. `pipeline/<platform>-tracker.md` holds per-platform performance. Keep them separate: a single shared metrics schema forces every platform to be measured by impressions, which is the metric least connected to revenue. Every tracker carries a conversations table, because a platform with reach and no conversations is producing authority rather than pipeline and should be reported that way. Who reads and writes `CONTENT_STATUS.md`, the lifecycle states, and the self-heal rule are defined in `CONVENTIONS.md` § Content Status Protocol.
+
+**Archive rule:** when the operator asks to archive published content, `@biz-archive` moves each `published` piece from `ideas/<subdir>/<piece>` to `ideas.archive/<subdir>/<piece>`, mirroring the subdirectory structure. The `CONTENT_STATUS.md` row keeps its `published` status, date, URL, and pillar — archiving changes the file location, never the publish history; the move is annotated in the row's Note. Only piece directories move: loose files, category `README.md`s, research notes, backup dirs, and the legacy `ideas/VOICE_STANDARD.md` voice fallback stay in place. Moves use `git mv` for tracked files (staged, never committed by the skill) and plain `mv` for untracked ones.
 
 **Voice rule:** `.work.biz/reference/VOICE_PROFILE.md` is the canonical location for the owner's voice definition. Content skills read it there first, then fall back to the legacy paths `ideas/VOICE_STANDARD.md`, `reference/VOICE_STANDARD.md`, and `reference/voice-profile.md`. Do not scatter voice rules across scoped documents: a voice file scoped to one directory only applies when work happens in that directory, which is how LinkedIn-only voice discipline happens by accident.
 

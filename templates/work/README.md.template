@@ -18,5 +18,7 @@
 | `reference/PROJECTS.md` | Proof-point bank: real projects with numbers. Content, proposals, and calls draw on it |
 | `pipeline/<platform>-tracker.md` | Per-platform performance and conversations. Created on first publish |
 | `drafts/` | In-progress drafts |
+| `ideas/` | Generated content pieces, one subdir per content type, one directory per piece |
+| `ideas.archive/` | Published pieces, moved from `ideas/` by `@biz-archive` with the structure mirrored |
 | `reference/` | Other project reference files (VISUAL_GUIDE.md, etc.) |
 | `touch-scope` | Declared change scope for the current work session (session-local, not tracked) |
