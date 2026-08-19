@@ -1,18 +1,16 @@
-# Touch Scope — framework consistency audit + bloat reduction (2026-08-19)
+# Touch Scope — sister-framework registry + deploy orchestration upgrade (2026-08-19)
 #
-# User directive: guarantee consistency across the Agent OS framework skills
-# and knowledgebase; remove bloating. No commit/push/delete without explicit ask.
-# Follow-up: pre-commit hooks made warn-only by default (GATES_ENFORCE opt-in).
+# Per docs/homogenization/biz.md: add cross-framework discovery (sister-discovery
+# lib), Frameworks registry in .cursorrules + template, deploy fill, verifier
+# checks, framework-verify wiring. No commit/push/delete without explicit ask.
 
-README.md
-CONVENTIONS.md
-CHANGELOG.md
-agent.os.framework.md
 .cursorrules
-hooks/pre-commit
-standards/20260621-BUSINESS-CONVENTIONS.md
-standards/20260621-PRICING-STANDARD.md
-skills/biz-director/skill.md
-skills/biz-pricing/skill.md
-skills/biz-proposal/skill.md
+templates/cursorrules.template
+scripts/sister-discovery.sh
+scripts/biz-deploy-basic.sh
+scripts/biz-cursorrules-verify.sh
+scripts/framework-verify.sh
+reasonix.toml
+CHANGELOG.md
+docs/
 .work.biz/

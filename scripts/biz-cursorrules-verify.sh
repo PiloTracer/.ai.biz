@@ -78,6 +78,30 @@ note() { echo "  [info] $1"; }
 # skill. Used to tell a stale biz pointer apart from a foreign framework's.
 is_biz_root() { [[ -f "$1/skills/biz-deploy-basic/skill.md" ]]; }
 
+# Shared sister-framework discovery (family naming `pilo.ai.<fw>.logicbison` +
+# legacy `.ai.<fw>`) — see scripts/sister-discovery.sh. Optional: when the lib
+# is absent the checks below degrade to "custom cell" notes.
+if [[ -f "${BIZ_ROOT}/scripts/sister-discovery.sh" ]]; then
+  # shellcheck source=/dev/null
+  source "${BIZ_ROOT}/scripts/sister-discovery.sh"
+fi
+find_sister() {
+  local fw="$1"
+  command -v find_sister_dir >/dev/null 2>&1 || { printf ''; return 0; }
+  find_sister_dir "$BIZ_ROOT" "$fw" "$BIZ_ROOT/.." "$(dirname "$DEST_ROOT")" "$DEST_ROOT" || true
+}
+baked_sister_paths() {
+  local fw="$1" names_re
+  command -v sister_names >/dev/null 2>&1 || { printf ''; return 0; }
+  names_re="$(sister_names "$fw" "$BIZ_ROOT" | sed 's/[.[\*^$()+?{|]/\\&/g' | paste -sd'|' -)"
+  # Registry Path column only (field 4 of `| Framework | Director | Path | … |`
+  # rows): strip backticks and the " (default …)" / " (discovered at deploy
+  # time)" annotation. The Bootstrap-artifact column (field 5) must never match.
+  grep -E '^\| `\.ai' "$CURS_DEST" 2>/dev/null \
+    | awk -F'|' '{gsub(/`/, "", $4); gsub(/ \(default[^)]*\)/, "", $4); gsub(/ \(discovered at deploy time\)/, "", $4); gsub(/^ +| +$/, "", $4); if ($4 ~ /('"$names_re"')/) print $4}' \
+    | sort -u || true
+}
+
 get_source() {
   [[ -f "$CURS_DEST" ]] || { printf ''; return 0; }
   local s
@@ -91,7 +115,9 @@ get_source() {
 # ── Layout detection (unless forced) ──────────────────────────────────
 SRC_VALUE="$(get_source)"
 if [[ -z "$LAYOUT" ]]; then
-  if [[ -n "$SRC_VALUE" && "$SRC_VALUE" != "REPLACE_BASICSOURCE" ]]; then
+  if is_biz_root "$DEST_ROOT" && [[ "$(cd "$DEST_ROOT" && pwd)" == "$BIZ_ROOT" ]]; then
+    LAYOUT="source"   # self-hosted framework repo — registry cells are filled paths; AGENT_OS_SOURCE stays REPLACE_BASICSOURCE by design
+  elif [[ -n "$SRC_VALUE" && "$SRC_VALUE" != "REPLACE_BASICSOURCE" ]]; then
     LAYOUT="thin"
   elif [[ -d "${DEST_ROOT}/.ai.biz/skills" ]]; then
     LAYOUT="fat"
@@ -141,6 +167,44 @@ if [[ "$FIX" -eq 1 && -f "$CURS_DEST" ]]; then
     cmp -s "$before" "$CURS_DEST" || echo "  [fix] re-baked script paths → $BIZ_ROOT/scripts/"
     rm -f "$before"
   fi
+  # Sister framework cells (both target layouts; the source repo's own cells are
+  # filled paths and are never mutated by --fix).
+  if [[ "$LAYOUT" != "source" ]] && [[ -n "${FRAMEWORK_SLOTS:-}" ]]; then
+    for fw in $FRAMEWORK_SLOTS; do
+      [[ "$fw" == "biz" ]] && continue   # self — registry row is "*this directory*"
+      FWU="$(echo "$fw" | tr '[:lower:]' '[:upper:]')"
+      token="REPLACE:AI_${FWU}_PATH"
+      sister_dir="$(find_sister "$fw" || true)"
+      if grep -q "$token" "$CURS_DEST"; then
+        if [[ -n "$sister_dir" ]]; then
+          fw_esc="${sister_dir//\//\\/}"
+          perl -i -pe "s{${token} \\(default:? \\\`[^)]*\\)}{${fw_esc} (discovered at deploy time)}" "$CURS_DEST"
+          echo "  [fix] sister .ai.${fw}: filled ${token} → ${sister_dir}"
+        fi
+        continue
+      fi
+      while IFS= read -r old; do
+        [[ -z "$old" ]] && continue
+        if [[ ! -d "$old" && -n "$sister_dir" && "$old" != "$sister_dir" ]]; then
+          perl -i -pe "s{\\Q${old}\\E}{${sister_dir}}g" "$CURS_DEST"
+          echo "  [fix] sister .ai.${fw}: re-pointed ${old} → ${sister_dir}"
+        fi
+      done < <(baked_sister_paths "$fw")
+    done
+
+    # Agent OS root cell (registry `.ai` row — the "big brother" orchestrator,
+    # not a framework slot): fill REPLACE:AI_PATH when a root is discoverable;
+    # if neither `../.ai` nor the family-named root exists, leave the cell for
+    # the operator (the check section reports it — never guess this cell).
+    if command -v find_agent_os_dir >/dev/null 2>&1; then
+      ai_dir="$(find_agent_os_dir "$BIZ_ROOT" "$BIZ_ROOT/.." "$(dirname "$DEST_ROOT")" "$DEST_ROOT" || true)"
+      if grep -q 'REPLACE:AI_PATH' "$CURS_DEST" && [[ -n "$ai_dir" ]]; then
+        ai_esc="${ai_dir//\//\\/}"
+        perl -i -pe "s{REPLACE:AI_PATH \\(default:? \\\`[^)]*\\)}{${ai_esc} (discovered at deploy time)}" "$CURS_DEST"
+        echo "  [fix] Agent OS root: filled REPLACE:AI_PATH → ${ai_dir}"
+      fi
+    fi
+  fi
 fi
 
 # ── Checks ─────────────────────────────────────────────────────────────
@@ -175,8 +239,12 @@ check_baked_refs() {
   done <<< "$refs"
 }
 
+# Self-hosted source repo: AGENT_OS_SOURCE stays REPLACE_BASICSOURCE by design
+# (fat-client marker), registry cells are filled paths — nothing to repair.
+if [[ "$LAYOUT" == "source" ]]; then
+  ok "self-hosted framework source repo (AGENT_OS_SOURCE=REPLACE_BASICSOURCE by design — not a target)"
 # Thin-client: source pointer + baked executable paths.
-if [[ "$LAYOUT" == "thin" ]]; then
+elif [[ "$LAYOUT" == "thin" ]]; then
   SRC_NOW="$(get_source)"
   if ! grep -q 'AGENT_OS_SOURCE=' "$CURS_DEST"; then
     baked_biz="$(grep -oE '/[^ `|"]+/\.ai\.biz\b' "$CURS_DEST" 2>/dev/null | sort -u || true)"
@@ -239,6 +307,68 @@ for f in context/HANDOFF.md plans/NEXT.md plans/UNKNOWNS.md; do
   [[ -f "${DEST_ROOT}/.work.biz/${f}" ]] || { fail ".work.biz/${f}: missing (run @biz-deploy-basic or @biz-bootstrap init)"; missing_work=1; }
 done
 [[ "$missing_work" -eq 0 ]] && ok ".work.biz/ skeleton: present (HANDOFF, NEXT, UNKNOWNS)"
+
+# Sister framework cells (all layouts; the source repo validates its filled cells).
+if [[ -n "${FRAMEWORK_SLOTS:-}" ]]; then
+  for fw in $FRAMEWORK_SLOTS; do
+    [[ "$fw" == "biz" ]] && continue   # self — registry row is "*this directory*"
+    FWU="$(echo "$fw" | tr '[:lower:]' '[:upper:]')"
+    token="REPLACE:AI_${FWU}_PATH"
+    if grep -q "$token" "$CURS_DEST"; then
+      sister_dir="$(find_sister "$fw" || true)"
+      if [[ -n "$sister_dir" ]]; then
+        warn ".ai.${fw}: installed at ${sister_dir} but cell unfilled (${token}) — run @biz-deploy-basic update"
+      else
+        checked="$(sister_names "$fw" "$BIZ_ROOT" | paste -sd' ' -)"
+        note ".ai.${fw}: not installed (checked ${checked} next to source + target; runtime auto-discover reports degraded — for other dir names, fill the cell manually)"
+      fi
+      continue
+    fi
+    baked="$(baked_sister_paths "$fw")"
+    if [[ -z "$baked" ]]; then
+      note ".ai.${fw}: custom cell value (non-standard — verify manually)"
+      continue
+    fi
+    while IFS= read -r b; do
+      [[ -z "$b" ]] && continue
+      # Resolve relative registry cells (e.g. `../.ai.ui`) against the repo root.
+      [[ "$b" != /* ]] && b="${DEST_ROOT}/${b}"
+      if [[ -d "$b" && -f "${b}/skills/README.md" ]]; then
+        ok ".ai.${fw} → ${b} (reachable)"
+      else
+        fail ".ai.${fw} → ${b} STALE (not a valid framework dir — run deploy update)"
+      fi
+    done <<< "$baked"
+  done
+fi
+
+# Agent OS root cell (registry `.ai` row — the "big brother" orchestrator, not
+# a framework slot). Unfilled token + discoverable root → warn; unfilled and
+# neither `../.ai` nor the family-named root exists → ask the operator for the
+# correct path (never guess). Filled cell → reachability check like any other.
+if command -v find_agent_os_dir >/dev/null 2>&1; then
+  if grep -q 'REPLACE:AI_PATH' "$CURS_DEST"; then
+    ai_dir="$(find_agent_os_dir "$BIZ_ROOT" "$BIZ_ROOT/.." "$(dirname "$DEST_ROOT")" "$DEST_ROOT" || true)"
+    if [[ -n "$ai_dir" ]]; then
+      warn ".ai (Agent OS): installed at ${ai_dir} but cell unfilled (REPLACE:AI_PATH) — run @biz-deploy-basic update"
+    else
+      warn ".ai (Agent OS): neither ../.ai nor the family-named root found (checked $(agent_os_names "$BIZ_ROOT" | paste -sd' ' -)) — ask the operator for the correct path and fill the cell manually; never guess this cell"
+    fi
+  else
+    ai_cell="$(grep -E '^\| `\.ai` \(Agent OS\)' "$CURS_DEST" 2>/dev/null \
+      | awk -F'|' '{gsub(/`/, "", $4); gsub(/ \(default[^)]*\)/, "", $4); gsub(/ \(discovered at deploy time\)/, "", $4); gsub(/^ +| +$/, "", $4); print $4}')"
+    if [[ -z "$ai_cell" ]]; then
+      note ".ai (Agent OS): no registry row found — custom .cursorrules (verify manually)"
+    else
+      [[ "$ai_cell" != /* ]] && ai_cell="${DEST_ROOT}/${ai_cell}"
+      if [[ -d "$ai_cell" && -f "${ai_cell}/skills/README.md" ]]; then
+        ok ".ai (Agent OS) → ${ai_cell} (reachable)"
+      else
+        fail ".ai (Agent OS) → ${ai_cell} STALE (not a valid Agent OS root — run deploy update or ask the operator for the correct path)"
+      fi
+    fi
+  fi
+fi
 
 replace_count="$(grep -c 'REPLACE:' "$CURS_DEST" 2>/dev/null || true)"
 note "REPLACE: tokens remaining: ${replace_count:-0} (operator fills project tokens; AGENT_OS_SOURCE excluded)"

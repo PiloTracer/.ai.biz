@@ -12,10 +12,10 @@
 
 ## Recommended next
 
-1. **Smoke-test `@biz-archive` on a live target** (`future-strategy` once its uncommitted slim-down lands) — `status` dry run, catch-up path for archived pieces missing `status.md`, tracker row removal.
-2. **Smoke-test the new biz-session verbs on a live target project** — standalone `commit` keeps the session open, `add` stages without committing, `close commit scoped` commits bookend files only, task-ref lands in `.work.biz/active-ref` and the commit subject.
-3. **Owner review of the uncommitted `future-strategy` slim-down** — HANDOFF/NEXT/UNKNOWNS/CONTENT_STATUS + 17 per-piece status.md files + HANDOFF.archive.md; stale live-path refs remain in CONTENT_MATRIX.md, OWNER_RUNBOOK.md, VOICE_PROFILE.md:48.
-4. **Validate the content status loop on a live target project** — publish + `@biz-social log` cycle, pillar assignment, VOICE_RETRO entry, `@biz-strategy career` to fill OPERATOR_PROFILE.md.
+1. **Smoke-test the Frameworks registry on a live thin-client target** — run `@biz-deploy-basic update` on a deployed project, confirm sister cells fill (or warn correctly when a sister is absent), and confirm `@biz-cursorrules-verify` validates the Agent OS cell.
+2. **Smoke-test `@biz-archive` on a live target** (`future-strategy` once its uncommitted slim-down lands) — `status` dry run, catch-up path for archived pieces missing `status.md`, tracker row removal.
+3. **Smoke-test the new biz-session verbs on a live target project** — standalone `commit` keeps the session open, `add` stages without committing, `close commit scoped` commits bookend files only, task-ref lands in `.work.biz/active-ref` and the commit subject.
+4. **Owner review of the uncommitted `future-strategy` slim-down** — HANDOFF/NEXT/UNKNOWNS/CONTENT_STATUS + 17 per-piece status.md files + HANDOFF.archive.md; stale live-path refs remain in CONTENT_MATRIX.md, OWNER_RUNBOOK.md, VOICE_PROFILE.md:48.
 
 ## Active tasks
 
@@ -40,11 +40,14 @@
 | 17 | biz-archive + ideas/ideas.archive canonization + context budget | Done 2026-08-19 | New 24th skill `@biz-archive` (run/status): moves `published` pieces to `ideas.archive/` mirrored, writes per-piece `status.md` publish record, removes tracker row after verification (tracker = active inventory); CONVENTIONS Archive rule + Context budget (history moved to sibling `*.archive.md`, never deleted); biz-session close slims HANDOFF/NEXT/UNKNOWNS; bootstrap scaffolds both dirs; routing across 8 surfaces; framework-verify archive wiring + WORK_DIRS checks; evidence-checked against future-strategy's manual slim-down |
 | 18 | Smoke-test `@biz-archive` on a live project | Pending | status dry run; catch-up for archived pieces missing status.md; verify tracker slim + aggregates stay truthful |
 | 19 | Owner decision: deletion candidates + full dedup refactor | Pending | Deletion candidates listed in HANDOFF pending #10; dedup tradeoff in UNKNOWNS #11 — needs explicit owner ask before any deletion |
+| 20 | Homogenization: Frameworks registry + sister discovery + Agent OS root check | Done 2026-08-19 | Per docs/homogenization/biz.md: `sister-discovery.sh` lib, 7-row registry in .cursorrules + template, deploy-time fill of REPLACE:AI_*_PATH cells, verifier cell checks incl. Agent OS row (`pilo.ai.logicbison` → `../.ai` fallback, ask-operator when neither); gap list resolved (F2 source-layout PASS, F1, reasonix.toml reset, tmp artifacts gone); released v0.6.1 |
+| 21 | Smoke-test registry fill on a live thin-client target | Pending | `@biz-deploy-basic update` on a deployed project; confirm cells fill or warn; verify Agent OS cell via biz-cursorrules-verify |
 
 ## Recently completed
 
 | # | What was done | Date |
 |---|---------------|------|
+| 0 | v0.6.1: cross-framework sister discovery + Frameworks registry (sister-discovery.sh, deploy fill, verifier checks, framework-verify wiring) + Agent OS root check with ask-user fallback; biz.md gap list resolved | 2026-08-19 |
 | 0 | Framework consistency audit + bloat reduction: 9 contradiction/dead-ref fixes, pricing dedup (PRICING-STANDARD + biz-pricing canonical), pre-commit change-safety gates warn-only by default; committed by owner as 33f9547 | 2026-08-19 |
 | 0 | biz-session brought to full parity with Agent OS session-control (standalone commit/add/scoped, task-ref + active-ref, secrets scan, checklist reports); routing surfaces synced across 9 files; gates green (blast-radius WARN acknowledged — routing sync) | 2026-08-13 |
 | 0 | Content Status Protocol + `@biz-social log`; tracker read/write wired into all four content skills; self-heal rule; staged-aware `blast-radius-check.sh` with real self-test; UNKNOWNS #6 resolved; routing docs synced | 2026-08-10 |

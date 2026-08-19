@@ -163,9 +163,73 @@ fi
 #      doesn't unambiguously cover them — bake the resolved absolute path here
 #      instead of relying on read-time interpretation.
 subst_cursorules() {
-  BIZ_ROOT_ESC="${BIZ_ROOT//\//\\/}"
-  perl -pe "s/AGENT_OS_SOURCE=REPLACE_BASICSOURCE/AGENT_OS_SOURCE=${BIZ_ROOT_ESC}/" "$TPL_CURS" \
-    | perl -pe "s{bash (?<!/)scripts/}{bash ${BIZ_ROOT_ESC}/scripts/}g"
+  local BIZ_ROOT_ESC="${BIZ_ROOT//\//\\/}"
+  local SIBLING_PARENT tmpfile
+  SIBLING_PARENT="$(cd "$BIZ_ROOT/.." && pwd)"
+  tmpfile="$(mktemp)"
+
+  # Step 1: substitute AGENT_OS_SOURCE
+  perl -pe "s/AGENT_OS_SOURCE=REPLACE_BASICSOURCE/AGENT_OS_SOURCE=${BIZ_ROOT_ESC}/" "$TPL_CURS" > "$tmpfile"
+
+  # Step 2: discover and fill sister framework paths at deploy time (Frameworks
+  # registry in the target .cursorrules). Sister dir names follow legacy
+  # `.ai.<fw>` or family naming — see scripts/sister-discovery.sh. If a sister
+  # exists on disk, bake its absolute path into the REPLACE:AI_*_PATH cell; if
+  # absent, leave the token and say what was checked + how to adjust (manual
+  # cell fill; runtime auto-discover reports degraded routing).
+  if [[ -f "${BIZ_ROOT}/scripts/sister-discovery.sh" ]]; then
+    # shellcheck source=/dev/null
+    source "${BIZ_ROOT}/scripts/sister-discovery.sh"
+    local fw
+    for fw in $FRAMEWORK_SLOTS; do
+      [[ "$fw" == "biz" ]] && continue   # self — registry row is "*this directory*", never a token
+      local token_upper token fw_dir_abs fw_esc checked
+      token_upper="$(echo "$fw" | tr '[:lower:]' '[:upper:]')"
+      token="REPLACE:AI_${token_upper}_PATH"
+      fw_dir_abs="$(find_sister_dir "$BIZ_ROOT" "$fw" "$SIBLING_PARENT" || true)"
+      if [[ -n "$fw_dir_abs" ]]; then
+        fw_esc="${fw_dir_abs//\//\\/}"
+        perl -i -pe "s{${token} \\(default:? \\\`[^)]*\\)}{${fw_esc} (discovered at deploy time)}" "$tmpfile"
+        if grep -q "$token" "$tmpfile"; then
+          echo "  frameworks: WARN ${token} cell did not match expected template shape — left for runtime auto-discover" >&2
+        else
+          echo "  frameworks: resolved ${token} → ${fw_dir_abs}" >&2
+        fi
+      else
+        checked="$(sister_names "$fw" "$BIZ_ROOT" | paste -sd' ' -)"
+        echo "  frameworks: ${token} not found (checked ${checked} in $SIBLING_PARENT) —" >&2
+        echo "    if the sister exists under another dir name, fill ${token} manually in" >&2
+        echo "    the target .cursorrules; naming: legacy .ai.<fw> or family naming" >&2
+        echo "    (see scripts/sister-discovery.sh)." >&2
+      fi
+    done
+
+    # Agent OS root (registry `.ai` row — the "big brother" orchestrator, not a
+    # framework slot): fill REPLACE:AI_PATH from the family-named root or
+    # legacy `../.ai`. If neither exists, leave the token and say so — the
+    # operator must set the correct path, never a guess.
+    local ai_dir ai_esc
+    ai_dir="$(find_agent_os_dir "$BIZ_ROOT" "$SIBLING_PARENT" || true)"
+    if [[ -n "$ai_dir" ]]; then
+      ai_esc="${ai_dir//\//\\/}"
+      perl -i -pe "s{REPLACE:AI_PATH \\(default:? \\\`[^)]*\\)}{${ai_esc} (discovered at deploy time)}" "$tmpfile"
+      if grep -q 'REPLACE:AI_PATH' "$tmpfile"; then
+        echo "  frameworks: WARN REPLACE:AI_PATH cell did not match expected template shape — left for runtime auto-discover" >&2
+      else
+        echo "  frameworks: resolved REPLACE:AI_PATH → ${ai_dir}" >&2
+      fi
+    else
+      echo "  frameworks: REPLACE:AI_PATH not found (checked $(agent_os_names "$BIZ_ROOT" | paste -sd' ' -) in $SIBLING_PARENT) —" >&2
+      echo "    ask the operator for the Agent OS root path and fill REPLACE:AI_PATH" >&2
+      echo "    manually in the target .cursorrules. Never guess this cell." >&2
+    fi
+  fi
+
+  # Step 3: bake resolved script paths (Change-safety gate table + hook install)
+  perl -i -pe "s{bash (?<!/)scripts/}{bash ${BIZ_ROOT_ESC}/scripts/}g" "$tmpfile"
+
+  cat "$tmpfile"
+  rm -f "$tmpfile"
 }
 
 write_cursorules() {

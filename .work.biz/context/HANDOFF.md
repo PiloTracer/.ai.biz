@@ -1,7 +1,21 @@
 # HANDOFF — Session Bookmark
 
 > **Date:** 2026-08-19
-> **Status:** Closed — 2026-08-19 — framework consistency audit: 9 contradiction/dead-ref fixes, pricing dedup (PRICING-STANDARD + biz-pricing canonical), pre-commit change-safety gates warn-only by default (GATES_ENFORCE=1 opt-in); session work committed by owner as 33f9547, close commit push
+> **Status:** Closed — 2026-08-19 — homogenization changeset (Frameworks registry + sister discovery, per docs/homogenization/biz.md) verified, gap list resolved, Agent OS root check added (`../.ai` / family root, ask-user fallback); released as v0.6.1; close commit push
+
+---
+
+## Session summary (2026-08-19, homogenization + v0.6.1 close)
+
+| Step | Status |
+|------|--------|
+| Verified uncommitted homogenization changeset against `docs/homogenization/biz.md`: sister-discovery.sh, 7-row Frameworks registry in .cursorrules + template, deploy fill, verifier cell checks, framework-verify wiring — all faithful | Done |
+| Deploy smoke `/tmp/smoke-biz`: 5 sister tokens filled at deploy time, target verifier PASS | Done |
+| Gap list resolved: F2 (`--self-test` present; source-repo run PASSes via new `source` layout), F1 (NEXT template has `## Next action`), stale tmp artifacts gone, `reasonix.toml` allow-list reset (rename-era one-offs) | Done |
+| Agent OS root check (owner directive): `agent_os_names`/`find_agent_os_dir` in sister-discovery.sh (family root `pilo.ai.logicbison` preferred, legacy `../.ai` fallback; neither → ask the operator, never guess); template `.ai` row now `REPLACE:AI_PATH`; deploy fills it; verifier validates the filled cell (STALE = FAIL) | Done |
+| Gates: framework-verify PASS (incl. new registry wiring + AI_PATH token), touch-scope PASS, gate-verify PASS (n/a), blast-radius WARN (acknowledged) | Done |
+| biz.md updated: gaps marked resolved, checklist ticked | Done |
+| Release v0.6.1: CHANGELOG cut, tag, GitHub release | Done |
 
 ---
 

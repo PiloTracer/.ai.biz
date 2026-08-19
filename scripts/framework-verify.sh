@@ -145,6 +145,48 @@ grep -q "HANDOFF.archive.md" "$AI_ROOT/skills/biz-session/skill.md" \
   || die "biz-session close does not implement the HANDOFF slim-down (Context budget)"
 ok "biz-archive skill + Archive rule + verb + directory map + templates all wired"
 
+note "Frameworks registry wiring (cross-framework discovery)"
+# The sister-framework registry only works if every surface agrees: the shared
+# discovery lib exists, the source .cursorrules and the deployed template carry
+# the registry, and both the deploy script and the verifier use the lib. A
+# missing surface silently breaks cross-framework routing in thin targets.
+[[ -f "$AI_ROOT/scripts/sister-discovery.sh" ]] \
+  || die "scripts/sister-discovery.sh missing (cross-framework discovery)"
+grep -q 'FRAMEWORK_SLOTS=' "$AI_ROOT/scripts/sister-discovery.sh" \
+  || die "scripts/sister-discovery.sh does not export FRAMEWORK_SLOTS"
+grep -q 'Frameworks registry' "$AI_ROOT/.cursorrules" \
+  || die ".cursorrules is missing the Frameworks registry"
+grep -q 'Path resolution' "$AI_ROOT/.cursorrules" \
+  || die ".cursorrules Frameworks registry lacks the path-resolution contract"
+for fwrow in '| `\.ai\.biz`' '| `\.ai`' '| `\.ai\.cto`' '| `\.ai\.flutter`' '| `\.ai\.mlt`' '| `\.ai\.soc`' '| `\.ai\.ui`'; do
+  grep -qE "$fwrow" "$AI_ROOT/.cursorrules" \
+    || die ".cursorrules Frameworks registry missing row: $fwrow"
+done
+for tok in AI_PATH AI_UI_PATH AI_SOC_PATH AI_CTO_PATH AI_FLUTTER_PATH AI_MLT_PATH; do
+  grep -q "REPLACE:${tok} " "$AI_ROOT/templates/cursorrules.template" \
+    || die "templates/cursorrules.template missing REPLACE:${tok} cell"
+done
+grep -q 'sister-discovery.sh' "$AI_ROOT/scripts/biz-deploy-basic.sh" \
+  || die "biz-deploy-basic.sh does not source sister-discovery.sh"
+grep -q 'FRAMEWORK_SLOTS' "$AI_ROOT/scripts/biz-deploy-basic.sh" \
+  || die "biz-deploy-basic.sh does not fill the REPLACE:AI_*_PATH cells"
+grep -q 'sister-discovery.sh' "$AI_ROOT/scripts/biz-cursorrules-verify.sh" \
+  || die "biz-cursorrules-verify.sh does not source sister-discovery.sh"
+ok "sister-discovery lib + registry (7 rows) + template tokens + deploy/verifier wiring all present"
+# Reachability of the source registry's filled path cells is host state, not
+# wiring — a host without a sister installed must still verify green (runtime
+# routes that framework degraded, per the path-resolution contract).
+while IFS='|' read -r _ _ _ cell _; do
+  [[ "$cell" == *"*this directory*"* ]] && continue
+  p="$(printf '%s' "$cell" | tr -d '`' | sed 's/ (default[^)]*)//' | xargs)"
+  [[ -z "$p" || "$p" == REPLACE:* ]] && continue
+  if [[ -d "$AI_ROOT/$p" && -f "$AI_ROOT/$p/skills/README.md" ]]; then
+    ok "registry cell ${p} resolves"
+  else
+    echo "    info: registry cell ${p} not installed on this host (runtime routes degraded)"
+  fi
+done < <(sed -n '/^| `\.ai\.biz`/,/^$/p' "$AI_ROOT/.cursorrules")
+
 note "Bootstrap ↔ WORK_DIRS dir sync"
 # The dir loop in bootstrap.sh and WORK_DIRS in biz-deploy-basic.sh must list
 # the same .work.biz/ scaffold directories. WORK_FILES has a machine check;
