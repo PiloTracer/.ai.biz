@@ -39,12 +39,13 @@
 | 16 | Smoke-test new biz-session verbs on a live project | Pending | standalone commit, add, close commit scoped, active-ref extraction; verify role detection in both a source checkout and a target project |
 | 17 | biz-archive + ideas/ideas.archive canonization + context budget | Done 2026-08-19 | New 24th skill `@biz-archive` (run/status): moves `published` pieces to `ideas.archive/` mirrored, writes per-piece `status.md` publish record, removes tracker row after verification (tracker = active inventory); CONVENTIONS Archive rule + Context budget (history moved to sibling `*.archive.md`, never deleted); biz-session close slims HANDOFF/NEXT/UNKNOWNS; bootstrap scaffolds both dirs; routing across 8 surfaces; framework-verify archive wiring + WORK_DIRS checks; evidence-checked against future-strategy's manual slim-down |
 | 18 | Smoke-test `@biz-archive` on a live project | Pending | status dry run; catch-up for archived pieces missing status.md; verify tracker slim + aggregates stay truthful |
+| 19 | Owner decision: deletion candidates + full dedup refactor | Pending | Deletion candidates listed in HANDOFF pending #10; dedup tradeoff in UNKNOWNS #11 — needs explicit owner ask before any deletion |
 
 ## Recently completed
 
 | # | What was done | Date |
 |---|---------------|------|
-| 0 | `@biz-archive` skill + `ideas/`/`ideas.archive/` canonization + per-piece status.md tracker slimming + Context budget convention; bootstrap/deploy/routing/verify wired; framework now 24 skills | 2026-08-19 |
+| 0 | Framework consistency audit + bloat reduction: 9 contradiction/dead-ref fixes, pricing dedup (PRICING-STANDARD + biz-pricing canonical), pre-commit change-safety gates warn-only by default; committed by owner as 33f9547 | 2026-08-19 |
 | 0 | biz-session brought to full parity with Agent OS session-control (standalone commit/add/scoped, task-ref + active-ref, secrets scan, checklist reports); routing surfaces synced across 9 files; gates green (blast-radius WARN acknowledged — routing sync) | 2026-08-13 |
 | 0 | Content Status Protocol + `@biz-social log`; tracker read/write wired into all four content skills; self-heal rule; staged-aware `blast-radius-check.sh` with real self-test; UNKNOWNS #6 resolved; routing docs synced | 2026-08-10 |
 | 0 | v0.6.0: `biz-*` skill id rename across the whole framework; 29-fix consistency sweep (deploy `--update` path doubling, phantom status verbs, Substack/Threads parse rows, one-writer active-deal, unsourced biz-referrals stats); gates green | 2026-08-06 |

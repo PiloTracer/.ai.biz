@@ -1,7 +1,21 @@
 # HANDOFF — Session Bookmark
 
 > **Date:** 2026-08-19
-> **Status:** Closed — 2026-08-19 — ideas.archive canonized: new `@biz-archive` skill (per-piece status.md, tracker slims to active inventory), Context budget convention, bootstrap/deploy/routing/verify wired; close commit push
+> **Status:** Closed — 2026-08-19 — framework consistency audit: 9 contradiction/dead-ref fixes, pricing dedup (PRICING-STANDARD + biz-pricing canonical), pre-commit change-safety gates warn-only by default (GATES_ENFORCE=1 opt-in); session work committed by owner as 33f9547, close commit push
+
+---
+
+## Session summary (2026-08-19, consistency audit close)
+
+| Step | Status |
+|------|--------|
+| Audited today's commits (087981f, dd4531e) + framework-wide: two deep audits (skills; knowledgebase/standards/templates) + spot-checks of every finding | Done |
+| Fixed contradictions/dead refs: active-deal one-writer (BUSINESS-CONVENTIONS), README 23→24, CONVENTIONS phase chain, README `strategy_*.md` path, CHANGELOG duplicate headings, false PROTECTED_SURFACES.json claim, biz-director deploy-basic routing + strategy glob, stale `.work.biz/README` + `prompts/README` | Done |
+| Pricing dedup (low-risk, owner-approved): PRICING-STANDARD gains reduce-scope rule; retainer table moved to `biz-pricing` § Post-Delivery Offers; `biz-proposal` points at both | Done |
+| `hooks/pre-commit` change-safety gates warn-only by default (owner request: commit/push without blockers); `GATES_ENFORCE=1` restores blocking; tracking hooks unchanged; `.cursorrules` + CHANGELOG documented | Done |
+| Context budget slim: older session blocks (07-30, 07-21) moved to `HANDOFF.archive.md` | Done |
+| All 14 session files committed + pushed by owner as `33f9547` | Done |
+| Gates: touch-scope PASS, framework-verify PASS, gate-verify PASS (n/a) | Done |
 
 ---
 
@@ -102,43 +116,7 @@ The previous session (ses_0121) was interrupted right as it began implementing t
 
 ---
 
-## Session summary (2026-07-30, close)
-
-| Step | Status |
-|------|--------|
-| Canonical `reference/VOICE_PROFILE.md` template + wired into all four content skills | Done |
-| `reference/VOICE_RETRO.md` template — voice convergence measurement | Done |
-| `platforms/substack.md` (R7) + `platforms/threads.md` (R8) + algorithm standard sections | Done |
-| Missing platform-specific anti-AI tics (Instagram, Facebook, Substack, Threads) | Done |
-| `@biz-social status` (I6) implemented — was advertised in four places, never written | Done |
-| `pipeline/platform-tracker.md.template` — per-platform ops layer | Done |
-| `@biz-strategy reconcile` (I2c) — consistency repair without a gate cascade | Done |
-| Graded-claims rule + voice-convergence section in Content Standard | Done |
-| `biz-director` routes for Substack/Threads + content-strategy + content-scripts intents | Done |
-| Gate-ledger parser: tolerate hand annotations; reject pending-phase false positive | Done |
-| `bootstrap.sh` rejects positional args (was silently scaffolding into the framework repo) | Done |
-| `biz-deploy-basic --update` manifest drift — `WORK_FILES` missed 7 artifacts | Done |
-| `install-git-hooks.sh` — unknown-flag guard, real `--self-test`, backup path | Done |
-| Consistency fixes: biz-strategy gate self-contradiction, README missing biz-youtube, 3 dangling paths, unsourced stats | Done |
-| Consumer project (`future-strategy`): VOICE_PROFILE migration + channel-plan Substack correction | Done (left uncommitted for owner review) |
-| Commit and push | Done |
-
----
-
-## Session summary (2026-07-21, close)
-
-| Step | Status |
-|------|--------|
-| Canonical strategy path conventions clarified (`strategy/` flat names; `plans/strategy_*.md` historical only) | Done |
-| Add `biz-strategy amend` + `strategy/changelog.md` + audience hierarchy + out-of-tree fold-in | Done |
-| Gate pre-check (strategy-ready via `gates.md`) on biz-brand, biz-pricing, biz-content | Done |
-| biz-review weekly drift check (stale cert, out-of-tree strategy, CONTENT_STATUS) | Done |
-| biz-social quality gates: buyer/offer/freshness vs strategy | Done |
-| `CONTENT_STATUS.md` template + bootstrap wiring (biz-bootstrap + bootstrap.sh) | Done |
-| Document gated-skill self-verify in SKILL_DEPENDENCIES; list `amend` in skills/README | Done |
-| Commit and push | Done |
-
----
+> Older session summaries (2026-07-30 and earlier) moved to `context/HANDOFF.archive.md` (Context budget).
 
 ## Pending for next session
 
@@ -154,6 +132,8 @@ The previous session (ses_0121) was interrupted right as it began implementing t
 | 7 | Test appeal standard + hardened `biz-writing` against a new LinkedIn draft and measure engagement vs `post_01_the_spreadsheet_nobody_owns` | Medium |
 | 8 | Smoke-test `@biz-strategy amend` + re-certify path on a host with out-of-tree positioning docs | Medium |
 | 9 | Delete or refresh `.work.biz/touch-scope` when not in a scoped edit session | Low |
+| 10 | Owner decision: deletion candidates (`.work.biz/prompts/20260814-marker-detection-deploy-repo-removal-audit.md` — `.ai`-only; `docs/adoption/FROM_AGENT_OS.md` + `docs/guides/workflows/README.md` stubs; `examples/`; stale `.tmp/*.skill`) | Low |
+| 11 | Full dedup refactor: shared publishing-ops skeleton (biz-content/biz-youtube) + I0 context contract (biz-writing/biz-social) — portability tradeoff (UNKNOWNS #11) | Low |
 
 ---
 
@@ -194,6 +174,8 @@ The previous session (ses_0121) was interrupted right as it began implementing t
 | 31 | **The appeal standard never overrides truth** — sharper is never worth invented detail. When proof points are thin, the fix is `PROJECTS.md`, not embellishment. |
 | 32 | **The publish record lives with the piece, the tracker tracks the live inventory** — archiving writes a per-piece `status.md` (never a centralized `ideas.archive/status.md`, which would need rewriting every run); only after that record is verified does the row leave CONTENT_STATUS. Lifetime aggregates (By platform Last publish, By pillar conversations) stay in the tracker. |
 | 33 | **Context budget: history is moved, never deleted** — session-start files (HANDOFF, NEXT, UNKNOWNS, CONTENT_STATUS) stay lean; older material moves to sibling `*.archive.md` files with a pointer line. biz-session close performs the slim. |
+| 34 | **Change-safety gates are warn-only in the pre-commit hook by default** — `hooks/pre-commit` runs touch-scope-verify + blast-radius-check with `--warn-only` on every commit (prints findings, never blocks); `GATES_ENFORCE=1 git commit …` restores blocking, `WARN_ONLY=1` forces warn-only. Tracking hooks (prepare-commit-msg ref prefix, commit-msg Co-authored-by rejection, post-commit commit-ref metadata) unchanged. Decided so the operator can commit/push from the shell without being stopped by the gates. |
+| 35 | **Pricing rules have one canonical home** — binding rules in `standards/20260621-PRICING-STANDARD.md` (fixed-price only, 50% upfront, never discount — reduce scope instead); post-delivery offer table canonical in `skills/biz-pricing/skill.md` § Post-Delivery Offers; `biz-proposal` points at both instead of restating them. |
 
 ---
 
