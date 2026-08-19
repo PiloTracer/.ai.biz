@@ -115,11 +115,11 @@ When they ask for extras later, you point here.
 
 ### 3. Pricing Guidance
 
+Binding pricing rules live in `standards/20260621-PRICING-STANDARD.md` (fixed price only; 50% upfront before work begins; never discount — reduce scope instead; Wire/Wise preferred, +3% for credit card). Apply per proposal:
+
 - **For a clear-scope project:** Fixed price for the full engagement
 - **For a fuzzy-scope project:** Fixed price for Phase 1 only; Phase 2-3 priced after Phase 1 completes
-- **If they want a discount:** Don't discount. Reduce scope. Offer Phase 1 only at a lower price point
-- **Deposit:** Always 50% upfront before any work begins
-- **Payment method:** Wire / Wise (preferred), Stripe (credit card, costs you ~3%)
+- **If they want a discount:** Never discount (standard). Offer Phase 1 only at a lower price point
 
 ---
 
@@ -152,14 +152,7 @@ Close per the Operator handoff contract: Form A single line (`Next: nothing - wo
 
 ## Ongoing Maintenance — What to Offer After Delivery
 
-| Option | Price | What's Included |
-|---|---|---|
-| **Warranty period** (30 days) | Free | Bug fixes for delivered scope only. No new features. |
-| **Monthly retainer** | $1k-$3k/month | Server monitoring, security patches, bug fixes, <5 hrs/month support |
-| **On-call retainer** | $500/month + $150/hr | Priority email response, hourly rate for actual work |
-| **Ad-hoc** | $150/hr | No commitment — they email you when something breaks |
-
-**Recommendation:** Offer a 30-day warranty (free) then a monthly retainer if they want ongoing support.
+Offer guidance is canonical in `skills/biz-pricing/skill.md` § Post-Delivery Offers (warranty, monthly/on-call retainers, ad-hoc support). Default offer: a 30-day free warranty, then a monthly retainer if they want ongoing support.
 
 ---
 

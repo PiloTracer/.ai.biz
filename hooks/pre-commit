@@ -1,12 +1,27 @@
 #!/bin/sh
-# pre-commit — change-safety gate (enforcing by default).
-# Set WARN_ONLY=1 to downgrade failures to warnings.
+# pre-commit — change-safety gate (warning-only by default).
+#
+# Runs touch-scope-verify + blast-radius-check on every commit and PRINTS
+# their findings, but never blocks the commit: an operator committing from
+# the shell is not stopped by the change-safety gates. The checks still run
+# (and still exit non-zero when invoked directly as `bash scripts/<check>.sh`),
+# so sessions and agents get the same feedback without losing control of the
+# repo.
+#
+# Tracking is unaffected: HANDOFF/NEXT/UNKNOWNS, .work.biz/active-ref ref
+# prefixing (prepare-commit-msg), and the Co-authored-by rejection
+# (commit-msg) are all separate hooks/skills and keep working.
+#
+# To restore blocking for a repo (or a single commit), set GATES_ENFORCE=1:
+#   GATES_ENFORCE=1 git commit ...
+# WARN_ONLY=1 is still honored as an explicit override.
 
 WARN_ONLY="${WARN_ONLY:-0}"
+GATES_ENFORCE="${GATES_ENFORCE:-0}"
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 
 EXTRA_ARGS=""
-if [ "$WARN_ONLY" = "1" ]; then
+if [ "$GATES_ENFORCE" != "1" ] || [ "$WARN_ONLY" = "1" ]; then
   EXTRA_ARGS="--warn-only"
 fi
 
@@ -23,7 +38,7 @@ for check in touch-scope-verify blast-radius-check; do
   if [ -f "${SCRIPTS}/${check}.sh" ]; then
     if ! bash "${SCRIPTS}/${check}.sh" $EXTRA_ARGS; then
       MSG="  CHECK: ${SCRIPTS}/${check}.sh"
-      if [ "$WARN_ONLY" = "1" ]; then
+      if [ -n "$EXTRA_ARGS" ]; then
         echo "WARN: ${MSG}"
       else
         echo "FAIL: ${MSG}" >&2

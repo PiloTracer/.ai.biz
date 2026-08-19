@@ -1,17 +1,18 @@
-# Touch Scope — ideas.archive publish-archiving feature (2026-08-19)
+# Touch Scope — framework consistency audit + bloat reduction (2026-08-19)
 #
-# Canonize .work.biz/ideas/ + add @biz-archive (standalone skill) that moves
-# published pieces to .work.biz/ideas.archive/ with mirrored structure.
+# User directive: guarantee consistency across the Agent OS framework skills
+# and knowledgebase; remove bloating. No commit/push/delete without explicit ask.
+# Follow-up: pre-commit hooks made warn-only by default (GATES_ENFORCE opt-in).
 
-.cursorrules
-.work.biz/
-skills/
-scripts/framework-verify.sh
-scripts/biz-deploy-basic.sh
-templates/
-standards/20260621-DIRECTORY_MAP.md
-CONVENTIONS.md
-PROCESS_ROUTER.md
-START_HERE.md
-CHANGELOG.md
 README.md
+CONVENTIONS.md
+CHANGELOG.md
+agent.os.framework.md
+.cursorrules
+hooks/pre-commit
+standards/20260621-BUSINESS-CONVENTIONS.md
+standards/20260621-PRICING-STANDARD.md
+skills/biz-director/skill.md
+skills/biz-pricing/skill.md
+skills/biz-proposal/skill.md
+.work.biz/

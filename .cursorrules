@@ -105,6 +105,8 @@ Run before commit / before claiming completion:
 
 **Declare scope first:** Copy `templates/work/touch-scope.template` → `.work.biz/touch-scope`.
 
+**Hook behavior:** the installed `pre-commit` hook runs the touch-scope + blast-radius checks in **warn-only** mode — it prints findings on every commit but never blocks one. Restore blocking for a repo/commit with `GATES_ENFORCE=1 git commit ...` (`WARN_ONLY=1` forces warn-only). The scripts above still exit non-zero when run directly.
+
 ---
 
 ## Source resolution — fat-client vs thin-client (MANDATORY before reading any `.ai.biz/...` path)

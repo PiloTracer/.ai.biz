@@ -123,7 +123,7 @@ This applies to skills, standards, and concepts (framework prose) as much as to 
 ## Business Phase Lifecycle
 
 ```
-strategy-ready → brand-ready → pipeline-ready → sales-ready → execution → review
+strategy-ready → brand-ready → pipeline-ready → sales-ready → active-deal
 ```
 
 ### Phase Definitions

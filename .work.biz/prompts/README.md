@@ -1,10 +1,11 @@
-# Project prompts (`.work/prompts/`)
+# Framework prompts (`.work.biz/prompts/`)
 
-> **Navigation only.** This README is the same in every adopter repo. `decision_*_*.md` files are written by **`@plan-foundation`** (P2 questionnaires) and archived after the corresponding ADR is decided. `initial.md` is user scratch only and is not touched by any skill unless you explicitly name it.
+Portable prompt archives from OS-framework improvement sessions (approved 2026-08-14). Each file is a self-contained prompt: run inside any OS framework repo (`.ai`, `.ai.ui`, `.ai.biz`, `.ai.soc`); execution writes a report; fixes only with explicit same-message approval. Superseded prompts are kept for provenance, not re-run.
 
-| File | Purpose | Read by skills? |
-|------|---------|-----------------|
-| `decision_*_*.md` | Archived owner questionnaires (ADR input) | On demand |
-| `initial.md` | **User scratch only** | **No** - unless user explicitly names this path |
-
-Skills read **foundation doc 01** (`*-01-*-initial-scope.md`) for canonical product intent, not `initial.md`.
+| File | Purpose |
+|------|---------|
+| `framework-audit.md` | Structural audit of an OS framework repo (clarity-contract adoption, wiring, drift) |
+| `improve-clarity-of-responses.md` | Response clarity protocol — adopt via `adopt-framework-improvements.md` (Phase 1) |
+| `improve-clarity-of-documentation.md` | Documentation clarity protocol — adopt via `adopt-framework-improvements.md` (Phase 2) |
+| `adopt-framework-improvements.md` | Orchestrates the three portable prompts into a target framework |
+| `20260814-marker-detection-deploy-repo-removal-audit.md` | `.ai`-only historical record (executed 2026-08-14) — not applicable in `.ai.biz`; kept for provenance |

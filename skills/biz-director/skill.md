@@ -116,7 +116,7 @@ Parse the user's request against this routing table. Match on intent, not keywor
 | **Review / health** | "weekly review", "monthly review", "quarterly review", "how are we doing", "progress check", "re-check my assumptions", "are my strategy assumptions still true" | `@biz-review` (weekly, monthly, quarterly, or status per parse invocation) | at least one strategy doc |
 | **Session management** | "start the day", "close the session", "what was I doing", "commit my progress", "checkpoint without closing", "stage my session work" | `@biz-session start` or `close` or `commit` / `add` or `status` | scaffold |
 | **Project orientation** | "where am I", "what should I do next", "I'm lost" | `@biz-session status` + `@biz-review status` | — |
-| **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project" | `@biz-deploy-files copy - <path>` or `@biz-deploy-repo` (clone, archive, or status per parse invocation) | — |
+| **Deploy to project** | "deploy to my project", "copy .ai.biz to another repo", "clone Business OS", "archive deploy to a project", "deploy a thin client", "bootstrap-basic a project", "update my installed copy" | `@biz-deploy-files copy - <path>` or `@biz-deploy-repo` (clone, archive, or status per parse invocation) or `@biz-deploy-basic` (<path>, update, or status per parse invocation) | — |
 | **Content writing (craft)** | "write me a post about X", "draft an article on Y", "help me write something for LinkedIn", "write a LinkedIn post", "publish an article" (when no integration/ops needed), "case study", "landing page copy", "email sequence", "repurpose this draft", "audit my draft" | `@biz-writing` (write, plan, repurpose, audit, or status per parse invocation) | — (no hard gate; improves with strategy/brand-ready) |
 | **Business ideas** | "give me business ideas for...", "what businesses could benefit from...", "how could I monetize...", "I want to start something in...", "pivot my business", "stress-test this idea", "new venture directions" | `@biz-ideas` (generate, stress, pivot, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
 | **Product / service ideas** | "what product could I build for...", "give me SaaS product ideas in...", "what features should I add", "I want a tool that...", "service package ideas", "scope an MVP for", "evaluate this product concept", "extend my platform" | `@biz-products` (generate, extend, scope, audit, or status per parse invocation) | — (no hard gate; improves with strategy-ready) |
@@ -193,7 +193,7 @@ Some skills have lighter prerequisites that are not formal gates:
 
 | Skill | Requires | How to verify |
 |-------|---------|---------------|
-| `@biz-review weekly` | At least one strategy doc exists | Check `.work.biz/strategy/` for any `strategy_*.md` or `certification.md` |
+| `@biz-review weekly` | At least one strategy doc exists | Check `.work.biz/strategy/` for any of the canonical files (`one-pager.md`, `target-buyer-profile.md`, `offer-scope.md`, `channel-plan.md`, `pricing.md`) or `certification.md` |
 | `@biz-pipeline-diagnosis run` | Pipeline tracker has data | Check `.work.biz/pipeline/pipeline_tracker.md` has ≥1 row of deal data |
 
 **Blocked output shape:**

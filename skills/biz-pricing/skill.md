@@ -116,6 +116,21 @@ What would the buyer's next-best option cost?
 
 ---
 
+### Post-Delivery Offers — What to Offer After Delivery
+
+What to offer once a project ships. Canonical for `biz-proposal`'s Ongoing Maintenance section.
+
+| Option | Price | What's Included |
+|---|---|---|
+| **Warranty period** (30 days) | Free | Bug fixes for delivered scope only. No new features. |
+| **Monthly retainer** | $1k–$3k/month | Server monitoring, security patches, bug fixes, <5 hrs/month support |
+| **On-call retainer** | $500/month + $150/hr | Priority email response, hourly rate for actual work |
+| **Ad-hoc** | $150/hr | No commitment — they email you when something breaks |
+
+**Recommendation:** Offer a 30-day warranty (free) then a monthly retainer if they want ongoing support.
+
+> Support retainers price *availability*, not project outcomes — the standing exception to fixed-price-only (PRICING-STANDARD). Keep project engagements fixed-price; keep support as retainers, never bill a project hourly.
+
 ### The Decision Tree
 
 ```

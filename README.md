@@ -135,7 +135,7 @@ State lives in one file, `.work.biz/gates.md`, and exactly one skill may promote
 
 ### Skills at a glance
 
-All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
+All **24** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
 
 | Skill | One line | Typical invoke |
 |-------|----------|----------------|
@@ -221,7 +221,7 @@ Then:
 3. `.work.biz/gates.md`
 4. `.work.biz/context/HANDOFF.md`
 5. `.work.biz/plans/NEXT.md`
-6. `.work.biz/strategy/strategy_*.md` when present
+6. `.work.biz/strategy/` (one-pager, target-buyer-profile, offer-scope, channel-plan, pricing) when present
 
 **Free-text entry point:** Don't know which skill to run? → `@biz-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework).
 

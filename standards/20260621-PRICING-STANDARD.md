@@ -24,6 +24,7 @@ Binding rules for pricing engagements. All `biz-pricing`, `biz-proposal`, and `b
 2. **Out-of-scope items** are listed explicitly to prevent scope creep.
 3. **Assumptions** are documented; if an assumption fails, it triggers a change order.
 4. **Change order process:** any scope change requires written client approval and a price/time adjustment before work proceeds.
+5. **Never discount. Reduce scope instead.** A lower price comes from a smaller Phase 1 or fewer deliverables, never from cutting the rate on unchanged scope.
 
 ## Risk management
 

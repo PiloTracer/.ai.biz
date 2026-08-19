@@ -20,7 +20,7 @@ State is recorded in one place: `.work.biz/gates.md`. A state counts as reached 
 | `brand-ready` | `@biz-brand overhaul` | `.work.biz/reference/BRAND_STATUS.md` has an overhaul entry with a passing five-second test; audit shows offer, proof, and CTA are clear |
 | `pipeline-ready` | `@biz-review status` | `.work.biz/strategy/pricing.md`, `.work.biz/pipeline/pipeline_tracker.md`, and `.work.biz/pipeline/outreach-cadence.md` all exist and are filled in |
 | `sales-ready` | `@biz-discovery run` | Pipeline tracker has at least one completed discovery call logged with BANT captured |
-| `active-deal` | `@biz-discovery run` or `@biz-proposal write` | Pipeline tracker has at least one deal at Conversation stage or later |
+| `active-deal` | `@biz-discovery run` | Pipeline tracker has at least one deal at Conversation stage or later |
 
 **Demotion is mandatory.** A state whose evidence no longer holds must be set back to `NOT MET`. `@biz-strategy amend` demotes `strategy-ready` and cascades downstream; `@biz-review status` reconciles the whole ledger. A stale PASS is worse than no gate at all, because downstream skills act on it.
 
