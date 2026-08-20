@@ -135,7 +135,7 @@ State lives in one file, `.work.biz/gates.md`, and exactly one skill may promote
 
 ### Skills at a glance
 
-All **24** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
+All **23** skills live under [`skills/`](skills/README.md). Invoke as `@<skill-id>` plus a mode.
 
 | Skill | One line | Typical invoke |
 |-------|----------|----------------|
