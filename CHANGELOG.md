@@ -2,6 +2,17 @@
 
 All notable changes to Business OS are documented here.
 
+## [v0.6.2] - 2026-08-21
+
+### Added
+- **`@biz-advisory` — situational business counsel skill** — the framework had strong workflows (strategy, pricing, sales, content) and generative skills (ideas, products) but nothing owned the messy "here is my situation — what should I do?" question; advice quality depended entirely on the model's native judgment. `biz-advisory` encodes the advisor craft as a protocol: I0 context contract (operator profile, strategy docs, pipeline evidence, capability fingerprint), a **mandatory reframe pass** (individuals → delivery unit, skill → productized outcome, history → first channel, competitor → complementor channel, tool fluency → control layer), ≥5 ranked options each with "don't sell X — sell Y" positioning and researched market precedent, mandatory **anti-advice** (what NOT to do — premature LLC/logo/website before customers), parallel-track sequencing with a 30-day frame, a decisive "what I would actually do", assumption ledger, quality checklist, completion gate. Calibrated against a real advisory case (laid-off architect + QA + developer team → product-rescue squad). Verbs: `advise` (default, free-text situation), `patterns`, `status`. Ungated; improves with strategy-ready
+- **BIZ-10 Advisory Patterns** (`concepts/advisory-patterns/`) — the reusable judgment-pattern library `biz-advisory` draws on: 10 generalized patterns (team-as-product, productized entry offer, trigger-based demand, anchor channel, complementor channel, dual-track hedging, customers-before-company, modular configurations, control-layer positioning, outcome-over-people), each with when-it-applies, the move, and the failure mode
+- **`@biz-sources` — advisory-source curation skill** — answers "where do we get stronger coaching material" durably: finds, vets (exists / says-what's-claimed / freshness / bias), and organizes external sources into a living catalog at `.work.biz/research/sources.md` grouped by domain (positioning, pricing, sales & outreach, niche research, productized/fractional services, AI-services market, content, operator craft), each entry carrying what it's good for and how to mine it. Ships a seed catalog of well-known starting points (Dunford, Enns, Stark, patio11, Indie Hackers, First Round Review, Lenny's, fractional-services marketplaces) explicitly marked verify-before-citing. Verbs: `find`, `list`, `add`, `status`. Ungated; feeds the evidence passes of `biz-advisory`, `biz-ideas`, `biz-market-validate`, `biz-pricing`
+- **Routing wired through** `skills/README.md` (skill rows + `advise`/`patterns`/`list` verbs), `skills/SKILL_DEPENDENCIES.md` (ungated counsel-skills registration), `biz-director` intent table, `START_HERE.md` (decision tree + command table), `PROCESS_ROUTER.md`, `.cursorrules` + `templates/cursorrules.template` skills tables, root `README.md` (25 skills), `concepts/README.md` (BIZ-10 + trigger row); `biz-advisory` and `biz-sources` added to the `framework-verify.sh` doc-generating list
+
+### Fixed
+- **`biz-cursorrules-verify.sh` pipefail abort on custom `.cursorrules`** — the Agent OS registry-cell extraction pipeline (`grep -E … | awk …`) had no `|| true`, so under `set -euo pipefail` the script exited 1 mid-run whenever a target had no registry `.ai` row (any custom standalone layout), printing no verdict. Post-deploy verification of `biz-deploy-basic update` against such targets reported spurious failure. Added the guard; self-test passes
+
 ## [v0.6.1] - 2026-08-19
 
 ### Added

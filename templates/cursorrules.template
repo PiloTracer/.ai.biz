@@ -181,6 +181,8 @@ Reusable agent skills live under `skills/` (or `$AGENT_OS_SOURCE/skills/` in thi
 | biz-ideas | `skills/biz-ideas/` | Structured, stress-tested business/venture idea generation |
 | biz-archive | `skills/biz-archive/` | Archive published content pieces: `ideas/` → `ideas.archive/` (mirrored), tracker annotated, history preserved |
 | biz-products | `skills/biz-products/` | Buildable, stack-fit product/service concept generation + MVP scoping |
+| biz-advisory | `skills/biz-advisory/` | Situational business counsel: asset reframe pass, ranked options with market evidence, anti-advice, decisive recommendation + 30-day step |
+| biz-sources | `skills/biz-sources/` | Curate and mine business-advisory sources (positioning, pricing, sales, fractional/AI-services market) into a living catalog |
 
 **Usage:** When a task matches a skill's purpose, read `skill.md` and follow the workflow.
 

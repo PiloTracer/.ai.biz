@@ -48,12 +48,18 @@ biz-referrals ask  ← no strict gate (can start anytime)
          ├── biz-writing write/plan/repurpose/audit ← run any time (improves with strategy-ready + brand-ready)
          ├── biz-social write/research/repurpose/icp ← run any time (improves with strategy-ready; best after @biz-community find)
          ├── biz-ideas generate/stress/pivot ← run any time (improves with strategy-ready)
-         └── biz-products generate/extend/scope/audit ← run any time (improves with strategy-ready)
+         ├── biz-products generate/extend/scope/audit ← run any time (improves with strategy-ready)
+         ├── biz-advisory advise/patterns ← run any time (improves with strategy-ready + operator profile)
+         └── biz-sources find/list/add ← run any time
 ```
 
 ### Generative skills (no gate)
 
 `biz-writing`, `biz-social`, `biz-ideas`, and `biz-products` are **project-aware generative skills**: they have **no prerequisite gate** for `write`, `research`, `repurpose`, and `audit` modes and can be invoked at any time, even before `biz-bootstrap init`. They load the host project's own context dynamically (`.cursorrules`, `.work.biz/strategy/*`, `README.md`, stack manifests) and fall back to a bundled example profile when none exists. They produce dramatically better output when the host project is bootstrapped and strategy-certified, because audience, offer, stack, and channel are then loaded from project memory rather than guessed.
+
+### Advisory & sources skills (no gate)
+
+`biz-advisory` (`advise`, `patterns`, `status`) and `biz-sources` (`find`, `list`, `add`, `status`) are **counsel skills** with no prerequisite gate. `biz-advisory` answers situational "what should I do?" questions (reframe pass, ranked options, evidence, anti-advice, decisive recommendation); it improves with strategy-ready and a filled `reference/OPERATOR_PROFILE.md`, and hands off to `biz-strategy` / `biz-market-validate` once a direction is chosen — it never moves gates itself. `biz-sources` curates the advisory-source catalog at `.work.biz/research/sources.md` that feeds the evidence passes of other skills.
 
 ### Content-lifecycle utility (no gate)
 

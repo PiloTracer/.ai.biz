@@ -12,41 +12,38 @@
 
 ## Recommended next
 
-1. **Smoke-test the Frameworks registry on a live thin-client target** — run `@biz-deploy-basic update` on a deployed project, confirm sister cells fill (or warn correctly when a sister is absent), and confirm `@biz-cursorrules-verify` validates the Agent OS cell.
-2. **Smoke-test `@biz-archive` on a live target** (`future-strategy` once its uncommitted slim-down lands) — `status` dry run, catch-up path for archived pieces missing `status.md`, tracker row removal.
-3. **Smoke-test the new biz-session verbs on a live target project** — standalone `commit` keeps the session open, `add` stages without committing, `close commit scoped` commits bookend files only, task-ref lands in `.work.biz/active-ref` and the commit subject.
-4. **Owner review of the uncommitted `future-strategy` slim-down** — HANDOFF/NEXT/UNKNOWNS/CONTENT_STATUS + 17 per-piece status.md files + HANDOFF.archive.md; stale live-path refs remain in CONTENT_MATRIX.md, OWNER_RUNBOOK.md, VOICE_PROFILE.md:48.
+1. **Smoke-test `@biz-advisory` on `future-strategy`** against its own feedback case (`.work.biz/feedback/20260820-small-rescue-team.md`) — does a cold run clear the calibration bar (reframe pass, ranked options with precedent, anti-advice, decisive recommendation)? Gaps become new BIZ-10 patterns (UNKNOWNS #12).
+2. **Owner review/commit of the uncommitted `future-strategy` changes** — the earlier slim-down plus today's thin-client update merge (merged `.cursorrules` with family-path re-point + Source-resolution wiring, `.work.biz` skeleton appends, new `strategy/README.md` + `reference/BRAND_STATUS.md`); its `PATHS.md` still carries stale `/mnt/work/Projects/.ai*` paths.
+3. **First `@biz-sources find` run on a live project** — seed `.work.biz/research/sources.md`, confirm the vetting step holds (UNKNOWNS #13).
+4. **Smoke-test `@biz-archive` on a live target** (`future-strategy` once its uncommitted changes land) — `status` dry run, catch-up path for archived pieces missing `status.md`, tracker row removal.
+5. **Smoke-test the new biz-session verbs on a live target project** — standalone `commit` keeps the session open, `add` stages without committing, `close commit scoped` commits bookend files only, task-ref lands in `.work.biz/active-ref` and the commit subject.
 
 ## Active tasks
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1 | Implement verb dispatch in biz-market-validate / biz-pipeline-diagnosis / biz-referrals | Done 2026-08-06 | Status sections added to all three + biz-deploy-repo; biz-social Substack/Threads and biz-community `find x` parse gaps closed in the same sweep |
-| 2 | Owner review of uncommitted `future-strategy` changes | Pending | Consumer repo; four files touched |
-| 3 | Source or de-claim remaining unsourced stats | Done 2026-08-06 | `biz-referrals` 5-8x + close-rate table de-claimed; biz-brand/biz-youtube checked, their figures are cited |
-| 4 | Fix `blast-radius-check.sh` to measure staged content | Done 2026-08-10 | Staged content wins when anything is staged; working-tree sweep only when nothing staged; real self-test with 4 scenarios |
+| 2 | Owner review of uncommitted `future-strategy` changes | Pending | Consumer repo; slim-down set + today's update merge (.cursorrules, .work.biz appends, 2 new skeletons); PATHS.md stale |
 | 5 | Validate Substack + Threads guides against real published output | Pending | Both untested; no project has published to either |
-| 6 | Regenerate `.tmp/*.skill` archives | Pending | Include voice profile, Substack/Threads, reconcile, platform tracker, graded claims, content status protocol |
+| 6 | Regenerate `.tmp/*.skill` archives | Pending | Include voice profile, Substack/Threads, reconcile, platform tracker, graded claims, content status protocol, biz-archive, biz-advisory, biz-sources |
 | 7 | Smoke-test `@biz-strategy amend` + re-certify | Pending | Fold out-of-tree docs; confirm changelog + stale NEXT flags |
 | 8 | Verify REPLACE tokens filled for adopter projects | Pending | Pre-existing carry-over |
 | 9 | Validate hardened content rules with a live LinkedIn draft | Pending | Compare hook/engagement to `post_01_the_spreadsheet_nobody_owns` |
-| 10 | Fix publish/status tracking in target projects | Done 2026-08-10 | Content Status Protocol in CONVENTIONS; tracker wired into biz-writing, biz-social (+ new `log` mode), biz-content, biz-youtube; self-heal rule; framework-verify regression check |
 | 11 | Validate Content Status Protocol on a live target project | Pending | Run publish + `@biz-social log` cycle end-to-end, incl. pillar assignment + VOICE_RETRO entry |
-| 12 | Strategy/career/content loop: six improvements + quality hardening | Done 2026-08-10 | `@biz-review monthly` assumption re-validation; `@biz-strategy career` + OPERATOR_PROFILE; pillar column + quarterly alignment review; PROJECTS.md proof-point bank; voice loop enforcement (UNKNOWNS #10); session content pipeline brief (UNKNOWNS #9 evidence rule); appeal standard + anti-AI additions; drift-check scope narrowed to positioning files; non-tech tilt (UNKNOWNS #2); bootstrap↔WORK_FILES manifest check in framework-verify |
 | 13 | Validate `@biz-strategy career` on a live project | Pending | Fill OPERATOR_PROFILE end-to-end; check the cross-check against certified strategy |
 | 14 | Validate pillar loop + quarterly alignment on real tracker data | Pending | Needs a project with ≥1 quarter of publishes tagged by pillar |
-| 15 | biz-session parity with Agent OS session-control | Done 2026-08-13 | Full parameter surface: standalone `commit`/`commit push` (no close), `add` (stage-only), `scoped` modifier, `start - <goal>`, unblock check, task-ref auto-detection + `.work.biz/active-ref`, secrets scan, always-shown commit messages, checklist reports; repo-role commit scope (source repo → all files repo-wide, target → `.work.biz/` only); behavior change: bare `commit`/`push` no longer imply close; routing/reference files synced |
 | 16 | Smoke-test new biz-session verbs on a live project | Pending | standalone commit, add, close commit scoped, active-ref extraction; verify role detection in both a source checkout and a target project |
-| 17 | biz-archive + ideas/ideas.archive canonization + context budget | Done 2026-08-19 | New 24th skill `@biz-archive` (run/status): moves `published` pieces to `ideas.archive/` mirrored, writes per-piece `status.md` publish record, removes tracker row after verification (tracker = active inventory); CONVENTIONS Archive rule + Context budget (history moved to sibling `*.archive.md`, never deleted); biz-session close slims HANDOFF/NEXT/UNKNOWNS; bootstrap scaffolds both dirs; routing across 8 surfaces; framework-verify archive wiring + WORK_DIRS checks; evidence-checked against future-strategy's manual slim-down |
 | 18 | Smoke-test `@biz-archive` on a live project | Pending | status dry run; catch-up for archived pieces missing status.md; verify tracker slim + aggregates stay truthful |
 | 19 | Owner decision: deletion candidates + full dedup refactor | Pending | Deletion candidates listed in HANDOFF pending #10; dedup tradeoff in UNKNOWNS #11 — needs explicit owner ask before any deletion |
-| 20 | Homogenization: Frameworks registry + sister discovery + Agent OS root check | Done 2026-08-19 | Per docs/homogenization/biz.md: `sister-discovery.sh` lib, 7-row registry in .cursorrules + template, deploy-time fill of REPLACE:AI_*_PATH cells, verifier cell checks incl. Agent OS row (`pilo.ai.logicbison` → `../.ai` fallback, ask-operator when neither); gap list resolved (F2 source-layout PASS, F1, reasonix.toml reset, tmp artifacts gone); released v0.6.1 |
-| 21 | Smoke-test registry fill on a live thin-client target | Pending | `@biz-deploy-basic update` on a deployed project; confirm cells fill or warn; verify Agent OS cell via biz-cursorrules-verify |
+| 21 | Smoke-test registry fill on a live thin-client target | Done 2026-08-21 | `@biz-deploy-basic update` on `future-strategy`: sister tokens resolved at deploy, verifier validated the merged `.cursorrules` (PASS) after the pipefail fix; target's custom standalone layout (no registry rows) reports info-level "custom cell" notes by design |
+| 22 | Advisory capability: `@biz-advisory` + `@biz-sources` + BIZ-10 | Done 2026-08-21 | 24th/25th skills; mandatory reframe pass + anti-advice + decisive recommendation calibrated on the rescue-team feedback case; 10-pattern library in `concepts/advisory-patterns/`; source catalog at `.work.biz/research/sources.md` with verify-before-citing seeds; registered across 10 surfaces; v0.6.2 |
+| 23 | Smoke-test `@biz-advisory` on a live project | Pending | Calibration run against the rescue-team case (UNKNOWNS #12); gaps feed BIZ-10 |
+| 24 | First `@biz-sources find` run on a live project | Pending | Seed + vet the catalog (UNKNOWNS #13) |
 
 ## Recently completed
 
 | # | What was done | Date |
 |---|---------------|------|
+| 0 | v0.6.2: `@biz-advisory` (situational counsel: reframe pass, ranked options with precedent, anti-advice, decisive pick) + `@biz-sources` (advisory-source curation) + BIZ-10 Advisory Patterns; `future-strategy` thin-client update merged + verified; `biz-cursorrules-verify.sh` pipefail fix | 2026-08-21 |
 | 0 | `biz-deploy-repo` removed (skill + script + all registry/routing/verifier references) per owner directive; 23 skills remain | 2026-08-19 |
 | 0 | v0.6.1: cross-framework sister discovery + Frameworks registry (sister-discovery.sh, deploy fill, verifier checks, framework-verify wiring) + Agent OS root check with ask-user fallback; biz.md gap list resolved | 2026-08-19 |
 | 0 | Framework consistency audit + bloat reduction: 9 contradiction/dead-ref fixes, pricing dedup (PRICING-STANDARD + biz-pricing canonical), pre-commit change-safety gates warn-only by default; committed by owner as 33f9547 | 2026-08-19 |

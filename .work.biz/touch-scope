@@ -1,19 +1,18 @@
-# Touch Scope — declared 2026-08-19 (biz-deploy-repo removal)
+# Touch Scope — declared 2026-08-21 (advisory capability: biz-advisory + biz-sources + BIZ-10)
 
 .cursorrules
 templates/cursorrules.template
 README.md
-.quick/deploy-to-project.md
+START_HERE.md
+PROCESS_ROUTER.md
+CHANGELOG.md
 skills/README.md
 skills/SKILL_DEPENDENCIES.md
 skills/biz-director/skill.md
-skills/biz-deploy-files/skill.md
-skills/biz-deploy-repo/
-scripts/biz-deploy-files.sh
+skills/biz-advisory/
+skills/biz-sources/
 scripts/framework-verify.sh
-scripts/biz-deploy-repo.sh
-CONVENTIONS.md
-CHANGELOG.md
-.work.biz/plans/NEXT.md
-.work.biz/prompts/README.md
+scripts/biz-cursorrules-verify.sh
+concepts/README.md
+concepts/advisory-patterns/
 .work.biz/touch-scope

@@ -45,6 +45,10 @@
        │
        ├── "I want product / service / SaaS concepts"  ──► `@biz-products generate - <space>`
        │
+       ├── "What should I do? (situation advice)"  ──► `@biz-advisory - <situation>`
+       │
+       ├── "I need better sources / where to learn"  ──► `@biz-sources find - <topic>`
+       │
        ├── "I have a sales conversation"         ──► §5 Sales
        │
        ├── "I need to review my progress"        ──► `@biz-review weekly`
@@ -123,6 +127,9 @@ These project-aware generative skills run any time — even before bootstrap. Th
 | Extension concepts for an existing product | `@biz-products extend - <product>` |
 | Scope a minimal MVP for one concept | `@biz-products scope - <concept>` |
 | Evaluate one concept (Go/Refine/Kill) | `@biz-products audit - <concept>` |
+| Situational advice — "what should I do?" | `@biz-advisory - <situation>` |
+| Advisory reframe patterns (BIZ-10) | `@biz-advisory patterns` |
+| Curate advisory / evidence sources | `@biz-sources find - <topic>` · `@biz-sources list` |
 
 ---
 

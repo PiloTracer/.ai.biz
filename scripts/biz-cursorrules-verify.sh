@@ -356,7 +356,7 @@ if command -v find_agent_os_dir >/dev/null 2>&1; then
     fi
   else
     ai_cell="$(grep -E '^\| `\.ai` \(Agent OS\)' "$CURS_DEST" 2>/dev/null \
-      | awk -F'|' '{gsub(/`/, "", $4); gsub(/ \(default[^)]*\)/, "", $4); gsub(/ \(discovered at deploy time\)/, "", $4); gsub(/^ +| +$/, "", $4); print $4}')"
+      | awk -F'|' '{gsub(/`/, "", $4); gsub(/ \(default[^)]*\)/, "", $4); gsub(/ \(discovered at deploy time\)/, "", $4); gsub(/^ +| +$/, "", $4); print $4}' || true)"
     if [[ -z "$ai_cell" ]]; then
       note ".ai (Agent OS): no registry row found — custom .cursorrules (verify manually)"
     else

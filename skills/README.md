@@ -47,6 +47,8 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | biz-ideas | `biz-ideas/` | Structured, stress-tested business/venture idea generation; archetypes + assumption ledger |
 | biz-archive | `biz-archive/` | Archive published content pieces: `ideas/` → `ideas.archive/` (mirrored), tracker annotated, history preserved |
 | biz-products | `biz-products/` | Buildable, stack-fit product/service concepts + MVP scoping + prioritization matrix |
+| biz-advisory | `biz-advisory/` | Situational business counsel: asset reframe pass, ranked options with evidence, anti-advice, decisive recommendation |
+| biz-sources | `biz-sources/` | Curate and mine business-advisory sources into a living catalog (`.work.biz/research/sources.md`) |
 
 **Typical flow (greenfield):** `@biz-bootstrap init` → `@biz-strategy greenfield` → `@biz-strategy certify` → `@biz-brand audit` → `@biz-pricing set` → `@biz-community find` → `@biz-social strategy` → `@biz-social write` → `@biz-youtube plan` → ...
 
@@ -104,3 +106,6 @@ Portable, tool-agnostic business workflows. Each skill is a folder with `skill.m
 | `archive` | Move published content pieces from `ideas/` to `ideas.archive/`, mirrored (biz-archive) |
 | `context` | Read-only full session context load, uncommitted-aware (biz-session) |
 | `update` | Deploy update mode with rules-aware merge (biz-deploy-basic, biz-deploy-files) |
+| `advise` | Full situational advisory pass: reframe, ranked options, evidence, anti-advice, decisive recommendation (biz-advisory) |
+| `patterns` | List/apply the advisory pattern library, BIZ-10 (biz-advisory) |
+| `list` | Show the curated advisory-source catalog (biz-sources) |

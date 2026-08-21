@@ -15,6 +15,7 @@ Business concept prompts that guide strategic thinking and decision-making. Each
 | BIZ-07 | Content Platform Algorithms | Maximizing organic reach per platform; content type, link strategy, timing, anti-patterns |
 | BIZ-08 | LinkedIn ICP | Calibrating LinkedIn content to the buyer who engages on-platform (titles, hooks, formats) |
 | BIZ-09 | Content Topic Buckets | Balancing the content mix across four buckets |
+| BIZ-10 | Advisory Patterns | Reframing underpriced assets in messy "what should I do?" situations |
 
 ### Trigger Table
 

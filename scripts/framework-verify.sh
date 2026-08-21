@@ -87,7 +87,7 @@ note "Document clarity contract adoption"
 # `## Next action`.
 grep -q '^## Document clarity contract' "$AI_ROOT/skills/SKILL_DEPENDENCIES.md" \
   || die "skills/SKILL_DEPENDENCIES.md is missing '## Document clarity contract'"
-DOC_GENERATING="biz-strategy biz-brand biz-pricing biz-proposal biz-review biz-writing biz-ideas biz-products biz-content biz-social biz-youtube biz-market-validate biz-pipeline-diagnosis"
+DOC_GENERATING="biz-strategy biz-brand biz-pricing biz-proposal biz-review biz-writing biz-ideas biz-products biz-content biz-social biz-youtube biz-market-validate biz-pipeline-diagnosis biz-advisory biz-sources"
 for skill in $DOC_GENERATING; do
   grep -q "Document clarity contract" "$AI_ROOT/skills/${skill}/skill.md" \
     || die "skills/${skill}/skill.md is doc-generating but does not reference the Document clarity contract"
